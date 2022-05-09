@@ -1,0 +1,150 @@
+// margin style
+@use "sass:math";
+
+@mixin margin {
+  @content;
+}
+
+// font style
+@mixin font($font-weight: 400, $font-family: "Lato", $font-style: normal) {
+  font-family: $font-family, sans-serif;
+  font-style: $font-style;
+  font-weight: $font-weight;
+}
+// for font-size
+@mixin pxtorem($target: 16, $context: 16) {
+  font-size: #{math.div($target, $context)}rem;
+}
+
+// for height and width
+@mixin width_height($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// for text transform capitalize, uppercase lowercase
+@mixin text_transform($capitalize: capitalize) {
+  text-transform: $capitalize;
+}
+
+@mixin break_word {
+  overflow: hidden;
+  word-break: break-word;
+}
+@mixin align_center {
+  text-align: center;
+}
+@mixin line_height($line-height: 1.5rem) {
+  line-height: $line-height;
+}
+
+@mixin border($border: 0, $border-radius: 0) {
+  border: $border;
+  border-radius: $border-radius;
+}
+// for placeholder
+@mixin placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+// For responsive design
+@mixin breakpoint($min: 0, $max: 0) {
+  $type: type-of($min);
+
+  @if $type == string {
+    @if $min == gFold {
+      @media only screen and (max-width: 300.98px) {
+        @content;
+      }
+    }
+
+    @if $min == xSmall {
+      @media only screen and (max-width: 480.98px) {
+        @content;
+      }
+    } @else if $min == mobile {
+      @media only screen and (min-width: 481px) and (max-width: 576.98px) {
+        @content;
+      }
+    } @else if $min == xs {
+      @media only screen and (max-width: 767.98px) {
+        @content;
+      }
+    } @else if $min == sm {
+      @media only screen and (min-width: 768px) {
+        @content;
+      }
+    } @else if $min == ipad {
+      @media only screen and (max-width: 991.98px) {
+        @content;
+      }
+    } @else if $min == md {
+      @media only screen and (min-width: 992px) {
+        @content;
+      }
+    } @else if $min == max1300 {
+      @media only screen and (max-width: 1300.98px) {
+        @content;
+      }
+    } @else if $min == min1301 {
+      @media only screen and (min-width: 1301px) {
+        @content;
+      }
+    } @else if $min == min1200 {
+      @media only screen and (min-width: 1200px) {
+        @content;
+      }
+    } @else if $min == max1600 {
+      @media only screen and (max-width: 1600.98px) {
+        @content;
+      }
+    } @else if $min == min1601 {
+      @media only screen and (min-width: 1601px) {
+        @content;
+      }
+    } @else if $min == min1801 {
+      @media only screen and (min-width: 1801px) {
+        @content;
+      }
+    }
+    // Otherwise pass a warning to the compiler as to the appropriate options
+    @else {
+      @warn "The breakpoint mixin supports the following attributes: xSmall, mobile, xs, sm, ipad, md";
+    }
+  } @else if $type == number {
+    // Allow for custom parameters for min and max size
+    $query: "all" !default;
+    @if $min != 0 and $max != 0 {
+      $query: "(min-width: #{$min}) and (max-width: #{$max})";
+    } // set both min and max
+    @else if $min != 0 and $max == 0 {
+      $query: "(min-width: #{$min})";
+    } // set just min
+    @else if $min == 0 and $max != 0 {
+      $query: "(max-width: #{$max})";
+    } // set just max
+    @media #{$query} {
+      @content;
+    }
+  }
+}
+@mixin padding($top: null, $right: null, $bottom: null, $left: null) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}

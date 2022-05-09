@@ -1,0 +1,124 @@
+@import "/src/styles/mixins";
+@import "/src/styles/extend";
+.login_popup,.signup_popup{
+    .card{
+        padding: 40px;
+        //top: 50%;
+        // left: 50;
+        //transform: translate(0%, -40%);
+        //position: absolute;
+        margin-top: 100%;
+        text-align: center;
+        margin: auto;
+        background: var(--white);
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        border: none;
+        // width: 25%;
+        text-align: center;
+        // height: 596px;
+        @include breakpoint(xSmall){
+            width: 80%;
+            padding: 30px 20px;
+        }
+        .text-30-600-36{
+            color: var(--black-light);
+            @include breakpoint(ipad){
+                @include pxtorem(20);
+                @include line_height(27px);
+            } 
+        }
+        .text-18-400-27{
+            @include font(400);
+            @include pxtorem(18);
+            @include line_height(27px);
+            color: var(--black-light);
+            padding: 20px 0px;
+            @include breakpoint(ipad) {
+                @include pxtorem(16);
+            }
+        }
+        span{
+            color: var(--blue);
+        }
+        .card-body{
+            margin: auto;
+            form{
+                input{
+                    width: 100%;
+                   //@include width_height(400px,63px);
+                    &:focus {
+                        outline: none;
+                        box-shadow: none;
+                        border: 1px solid #62177C;
+                    }
+                    .invalid-feedback{
+                        text-align: left;
+                        border: 1px solid green !important;
+                        &:focus {
+                            outline: none;
+                            box-shadow: none;
+                            border: 1px solid green;
+                        }
+                    }
+                    @include breakpoint(sm){
+                        @include width_height(400px,63px); 
+                    }
+                }
+                .form-floating>label{
+                    @include pxtorem(18);
+                    // display: flex;
+                    // justify-content: center;
+                    // align-items: center;
+                    font-family: 'Lato';
+                    color: var(--gray-light);
+                    @include breakpoint(ipad) {
+                        @include pxtorem(14);
+                    }
+                }
+                .btn{
+                    @include margin {
+                        margin: 30px auto 0px;
+                    }
+                    width: 100%;
+                    @include width_height(81%,50px);
+                    @include pxtorem(20);
+                    @include line_height(24px);
+                    @include breakpoint(sm) {
+                    @include width_height(220px,50px);
+                    }
+                    @include breakpoint(ipad){
+                        @include pxtorem(18);
+                    }
+                    &:focus {
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+                .invalid-feedback{
+                    text-align: left;
+                }
+            }
+        }
+        .title{
+            @include breakpoint(sm){
+                @include margin {
+                    margin-bottom: 56px;
+                }
+            }
+        }
+        .btnn{
+            @include margin {
+            margin-top: 160px !important;
+            }
+        }
+        .Action_btn{
+            @include margin {
+                margin: 30px auto 30px !important;
+                @include breakpoint(xSmall){
+                    margin: 0px auto !important;
+                }
+            }
+        }
+    }
+}

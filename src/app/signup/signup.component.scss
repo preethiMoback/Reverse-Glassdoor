@@ -1,0 +1,19 @@
+@import "/src/styles/mixins";
+@import "/src/styles/extend";
+.login_popup{
+    .card{
+           //dontuse
+    // @include margin {
+    //     margin: 60px 0 0;
+    //     @include breakpoint(xs) {
+    //         margin: 0px !important;
+    //     }
+    //     @include breakpoint(ipad) {
+    //         margin: 15px 0px;
+    //     }
+    // }
+    }
+    .text-30-600-36{
+        color: var(--black-light);
+    }
+}

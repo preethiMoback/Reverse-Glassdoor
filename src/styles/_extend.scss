@@ -1,0 +1,80 @@
+.container {
+    // @include breakpoint($max: 2559.98px) {
+    //     max-width: 89vw;
+    // }
+    // @include breakpoint($min: 2560px) {
+    //     max-width: 2360px;
+    // }  
+}
+
+.text-30-600-36{
+    @include font(600);
+    @include pxtorem(30);
+    @include line_height(36px);
+    @include breakpoint(xs) {
+        @include pxtorem(16);
+        @include line_height(20px);
+    }
+    @include breakpoint($min: 768px, $max: 1023px) {
+        @include pxtorem(20);
+    }
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--purple);
+    border-radius: 5px;
+    color: var(--white);
+    backdrop-filter: blur(20px);
+    @include font(500);
+    &:hover{
+        opacity: 0.8;
+    } 
+    @include breakpoint(ipad){
+        @include pxtorem(18);
+        @include line_height(25px);
+        height: 55px;
+    }
+}
+.input-group{
+    border-radius: 5px;
+    input{
+        @include font(400);
+        @include pxtorem(20);
+        @include line_height(36px);
+        color: var(--gray);
+        padding-left: 40px;
+        &:focus {
+            outline: none;
+           box-shadow: none;
+        }
+        @include breakpoint(xs) {
+            @include pxtorem(16);
+            @include line_height(0px);
+            padding-left: 20px;
+        }
+    }
+    .input-group-text{
+        background-color: var(--purple);
+        border: none;
+        cursor: pointer;
+        &:hover{
+            opacity: 0.8;
+        }
+        img{
+        position: relative;
+        top: 8px;
+        width: 50px;
+        }
+    }
+}
+.text-25-400-30{
+    @include pxtorem(25);
+    @include line_height(30px);
+    @include font(400);
+    color: var(--gray-lighter);
+    @include breakpoint(ipad){
+        @include pxtorem(18);
+    }
+}

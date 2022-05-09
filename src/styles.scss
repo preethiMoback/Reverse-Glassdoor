@@ -1,0 +1,21 @@
+@import 'styles/colors.css';
+@import "/src/styles/mixins";
+@import "/src/styles/extend";
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    @include pxtorem(13);
+    color: #000;
+    background-color: #fff;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+}
+.container {
+    // @include breakpoint(xs) {
+    //   padding-right: 25px !important;
+    //   padding-left: 25px !important;
+    // }
+}

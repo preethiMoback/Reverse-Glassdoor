@@ -1,0 +1,180 @@
+@import "/src/styles/mixins";
+@import "/src/styles/extend";
+.home_section{
+    .hero_section{
+        @include margin {
+            margin: 60px 0 0;
+            @include breakpoint(xs) {
+                margin: 0px !important;
+            }
+            @include breakpoint(ipad) {
+                margin: 15px 0px;
+            }
+        }
+        background-image: url("../../assets/Images/homepage_background_image.svg");
+        height: 800px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        @include breakpoint(xs) {
+            height: 50vh;
+        }
+        .card{
+            width: 75%;
+            height: 360px;
+            transform: translate(20%, 50%);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(2px);
+            border-radius: 10px;
+            @include breakpoint(xs) {
+                width: 100%;
+                transform: translate(0%, 50%);
+                height: 240px;
+            }
+            .card_title{
+                color: var(--white);
+                @include font(700);
+                @include pxtorem(35);
+                @include line_height(48px);
+                padding: 70px 0px;
+                @include breakpoint(xSmall) {
+                    @include pxtorem(20);
+                    @include line_height(30px);
+                    padding: 30px 0px;
+                }
+                @include breakpoint($min: 768px, $max: 1023px) {
+                    @include pxtorem(25);
+                }
+            }
+        }
+        .input-group{
+            //border-radius: 5px;
+            width: 80%;
+            margin: auto;
+            // input{
+            //     @include font(400);
+            //     @include pxtorem(20);
+            //     @include line_height(36px);
+            //     color: var(--gray);
+            //     padding-left: 40px;
+            //     &:focus {
+            //         outline: none;
+            //        box-shadow: none;
+            //     }
+            //     @include breakpoint(xs) {
+            //         @include pxtorem(16);
+            //         @include line_height(0px);
+            //         padding-left: 20px;
+            //     }
+            // }
+            // .input-group-text{
+            //     background-color: var(--purple);
+            //     border: none;
+            //     cursor: pointer;
+            //     &:hover{
+            //         opacity: 0.8;
+            //     }
+            //     img{
+            //     position: relative;
+            //     top: 8px;
+            //     width: 50px;
+            //     }
+            // }
+        }
+    }
+    .search_candidate_section{
+        background-color: #F4F4F4;
+        .search_candidates_img img{
+            @include width_height(100%, 380px);
+            @include breakpoint(xs) {
+                width: 100%;
+                @include width_height(100%, 200px);
+                @include margin {
+                    margin:40px 0px 0px;
+                }
+            }
+        }
+    }
+    .write_review_section{
+        .write_review_textarea{
+            text-align: right;
+            @include breakpoint(xSmall) {
+                text-align: left;
+            }
+        }
+        .write-review_btn{
+            float: right;
+            @include breakpoint(xSmall) {
+                float: left;
+            }
+        }
+    }
+    .search_candidate_section, .write_review_section {
+        padding: 100px 0px;
+        @include breakpoint(ipad){
+            padding: 50px 0px;
+        }
+        .btn{
+            // background: var(--purple);
+            // backdrop-filter: blur(20px);
+            // border-radius: 5px;
+            // color: var(--white);
+            @include width_height(465px, 79px);
+            // border-radius: 5px;
+            // display: flex;
+            justify-content: space-evenly;
+            // align-items: center;
+            // @include font(500);
+            @include pxtorem(30);
+            @include line_height(36px);
+            @include margin {
+                margin-top: 70px;
+            }
+            // &:hover{
+            //     opacity: 0.8;
+            // } 
+            @include breakpoint(xSmall){
+                @include margin {
+                    margin: 50px auto;
+                }
+            }
+            @include breakpoint(ipad) {
+                width: 90%;
+                @include pxtorem(18);
+                @include line_height(25px);
+                height: 55px;
+                @include margin {
+                    margin: 50px 0px;
+                }
+            }
+        }
+        h1{
+            @include font(700);
+            @include pxtorem(35);
+            @include line_height(147%);
+            color: var(--black-light); 
+            padding: 30px 0px;
+            @include breakpoint(ipad) {
+                @include pxtorem(20);
+                padding: 10px 0px;
+            }
+        }
+        small{
+            @include font(400);
+            @include pxtorem(25);
+            @include line_height(147%);
+            @include breakpoint(ipad) {
+                @include pxtorem(16);
+            }
+        }
+    }
+    .write-review_btn,.btn img{
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+
+
+
