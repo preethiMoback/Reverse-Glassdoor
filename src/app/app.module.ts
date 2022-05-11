@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxStarRatingModule } from 'ngx-star-rating';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     FormsModule,
     ReactiveFormsModule,
     NgxStarRatingModule,
+    CommonModule,
     RatingModule.forRoot()
   ],
   providers: [],
