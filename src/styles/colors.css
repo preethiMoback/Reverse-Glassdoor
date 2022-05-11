@@ -4,8 +4,8 @@
   /* --White-Smoke: #f3f3f3; */
   --white: #FFFFFF;
   --gray: #BABABA;
-  /* --dark-gray: #C4C4C4; */
-  /* --grey-light: #F8F8F8; */
+  --dark-gray: #C4C4C4;
+  --grey-light: #626262;
   --grey-lighter: #767676; 
   --purple:#62177C;
   --black-light:#484547;
@@ -14,3 +14,4 @@
   --light-green:#0C9A9A;
   --red:#D32800;
 }
+

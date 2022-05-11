@@ -1,0 +1,98 @@
+@import "/src/styles/mixins";
+@import "/src/styles/extend";
+p{
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+    color: var(--grey-light);
+    display: flex;
+    align-items: center;
+    padding: 40px 20px;
+    cursor: pointer;
+    i{
+        font-size: 50px;
+        padding-right: 15px;
+    }
+    &:hover{
+        opacity: 0.8;
+    }
+
+}
+.candidate_review{
+    margin-top: 130px;
+    .candidate_review_card{
+        background: var(--white);
+        box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
+        border-radius: 10px;
+        .text-30-600-36{
+            color: var(--purple);
+        }
+    }
+    .card{
+        padding:40px 80px;
+        @include breakpoint(ipad){
+            padding:20px 20px;
+        }
+        .card-title{
+            padding-left: 16px;
+        }
+        .card-body{
+            .form__section .form-group, .form-check{
+                padding-top: 45px;
+                @include breakpoint(ipad){
+                    padding-top: 20px;
+                }
+                label{
+                    @include font(400);
+                    @include pxtorem(20);
+                    @include line_height(22px);
+                    @include breakpoint (sm){
+                        height: 40px;
+                        display: flex;
+                        align-items:flex-end;
+                    }
+                    @include breakpoint(ipad){
+                        @include pxtorem(16);
+                    }
+                }
+                input, textarea{
+                    margin-top: 10px;
+                    @include pxtorem(18);
+                    @include breakpoint(ipad){
+                        @include pxtorem(16);
+                    }
+                    &:focus {
+                        outline: none;
+                        box-shadow: none;
+                       }
+                }
+                rating{
+                    margin-top: 10px;
+                    @include pxtorem(32);
+                    color: var(--dark-gray);
+                }
+            }
+            .btn{
+                @include width_height(153px, 49px);
+                @include pxtorem(20);
+                @include line_height(24px);
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+            .form-radio{
+                @include breakpoint(sm){
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+            .form-radio .form-check label,.form-check label{
+                @include breakpoint(sm){
+                @include line_height(55px!important);
+                padding-top: 20px;
+                }
+            }
+        }
+    }
+}
