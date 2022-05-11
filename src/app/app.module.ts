@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxStarRatingModule } from 'ngx-star-rating';
-import { RatingModule, RatingConfig } from 'ngx-bootstrap/rating';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +13,9 @@ import { SignupComponent } from './signup/signup.component';
 import { DashboardpageComponent } from './dashboardpage/dashboardpage.component';
 import { HeaderDashboardpageComponent } from './shared-components/header-dashboardpage/header-dashboardpage.component';
 import { CandidateReviewComponent } from './dashboardpage/candidate-review/candidate-review.component';
+import { RatingModule } from 'ngx-bootstrap/rating';
+
+
 
 
 @NgModule({
@@ -35,9 +37,9 @@ import { CandidateReviewComponent } from './dashboardpage/candidate-review/candi
     FormsModule,
     ReactiveFormsModule,
     NgxStarRatingModule,
-    RatingModule
+    RatingModule.forRoot()
   ],
-  providers: [RatingConfig],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

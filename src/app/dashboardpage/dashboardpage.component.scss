@@ -112,21 +112,51 @@
 
 .candidates_details{
     position: relative;
-    margin-top: 10%;
+    padding-top: 10%;
+    background-color: var(--dusky-white);
     .card{
         @include breakpoint(sm){
             // @include width_height(422px, 422px);
         }
         padding: 30px;
         border-radius: 10px;
+        figure{
+            position: relative;
+            svg{
+                position: absolute;
+                width: 2em;
+                font-size: 1em;
+                padding: 0.4em;
+                top: 7em;
+                left: 7.5em;
+                color: var(--purple);
+                background-color: var(--light-purple);
+                border-radius: 100%;
+            }
+        }
+          
+
         .profile_details{
             .text-35-700-42{
                 @include pxtorem(35);
                 @include line_height(42px);
+                margin-top: 0.3em; 
                 @include font(700);
                 @include breakpoint(ipad){
                     @include pxtorem(20);
                     @include line_height(30px);
+                }
+            }
+            .more-horiz-icon{
+                float: right;
+                width: 3em;
+                padding: 0.5em;
+                height: 2.5em;
+                box-shadow: 1px 1px var(--purple);
+                border-radius: 3px;
+                text-align: center;
+                svg{
+                    fill: var(--purple);
                 }
             }
             a{
@@ -161,10 +191,13 @@
                 border-bottom: none;
                 display: flex;
                 justify-content: space-between;
-                .nav-link{
+                .nav-item{
                     cursor: pointer;
+                    .nav-link{
                     border: none;
-                    &:hover,&:active{
+                    color: var(--black-light);
+                    }
+                   &:hover,[class*= "active"]  {
                         color: var(--purple) !important;
                         border-bottom: 5px solid #62177C !important;
                     }
@@ -172,7 +205,7 @@
                         @include pxtorem(40);
                         @include line_height(48px);
                         @include font(500);
-                        color: var(--black-light);
+                        // color: var(--black-light);
                         text-align: center; 
                         @include breakpoint(ipad){
                             @include pxtorem(20 );
@@ -182,7 +215,7 @@
                         @include pxtorem(22);
                         @include line_height(26px);
                         @include font(500);
-                        color: var(--black-light);
+                        // color: var(--black-light);
                         @include breakpoint(ipad){
                             @include pxtorem(18);
                         }
@@ -201,6 +234,7 @@
             }
             .text-25-400-30{
                 color: var(--black-light);
+                margin-bottom: 1em ;
             }
             .text-20-400-24{
                 @include pxtorem(20);
@@ -239,6 +273,31 @@
             }
             .rejected_color{
                 color: var(--red);
+            }
+            .ratings{
+                rating{
+                    font-size: 1.4em;
+                    color: var(--gold);
+                    span[class*= "!active"]{
+                        color: var(--grey-lighter) !important;
+                    }
+  
+                }
+                .thumbs-rating{
+                    display: flex;
+                    svg{
+                        // color: var(--grey-lighter);
+                        margin-left: 0.2em;
+                        cursor: pointer;
+                        background-color: gainsboro;
+                        text-align: center;
+                        padding: 0.2em;
+                        border-radius: 100%;
+                        width: 1.3em;
+                        fill: var(--grey-lighter);
+                    }
+                }
+               
             }
         }
     }
