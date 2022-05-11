@@ -78,3 +78,27 @@
         @include pxtorem(18);
     }
 }
+p{
+    @include font(500);
+    @include pxtorem(25);
+    @include line_height(30px);
+    color: var(--grey-light);
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    cursor: pointer;
+    @include breakpoint(ipad){
+        @include pxtorem(20);
+    }
+    i{
+        font-size: 50px;
+        padding-right: 15px;
+        @include breakpoint(ipad){
+            @include pxtorem(30);
+        }
+    }
+    &:hover{
+        opacity: 0.8;
+    }
+
+}

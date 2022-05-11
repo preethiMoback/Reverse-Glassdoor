@@ -3,30 +3,6 @@
 .candidate_review{
     padding: 60px 0px;
     background-color: var(--dusky-white);
-    p{
-        @include font(500);
-        @include pxtorem(25);
-        @include line_height(30px);
-        color: var(--grey-light);
-        display: flex;
-        align-items: center;
-        padding-left: 40px;
-        cursor: pointer;
-        @include breakpoint(ipad){
-            @include pxtorem(20);
-        }
-        i{
-            font-size: 50px;
-            padding-right: 15px;
-            @include breakpoint(ipad){
-                @include pxtorem(30);
-            }
-        }
-        &:hover{
-            opacity: 0.8;
-        }
-    
-    }
     .candidate_review_card{
         background: var(--white);
         box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
@@ -50,9 +26,9 @@
                     padding-top: 20px;
                 }
                 label{
-                    @include font(400);
+                    @include font(500);
                     @include pxtorem(20);
-                    @include line_height(22px);
+                    @include line_height(24px);
                     @include breakpoint (sm){
                         height: 40px;
                         display: flex;
@@ -65,6 +41,7 @@
                 input, textarea{
                     margin-top: 10px;
                     @include pxtorem(18);
+                    @include font(400);
                     resize: none;
                     @include breakpoint(ipad){
                         @include pxtorem(16);
@@ -79,6 +56,38 @@
                     @include pxtorem(32);
                     color: var(--dark-gray);
                 }
+                .switch-toggle {
+                    margin-top: 1em;
+                    float: left;
+                    background: var(--white);
+                    border: 1px solid var(--purple);
+                    border-radius: 5px;
+                    label{
+                        //width: 6.5em;
+                        padding: 2em;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        @include breakpoint(ipad){
+                            padding: 1em;
+                        }
+
+                    }
+                    input{
+                     position: absolute;
+                     opacity: 0;
+                     &:checked + label{
+                         background: var(--purple);
+                         color: var(--white)
+                     }
+                    }
+                    input + label{
+                            padding: 1em;
+                            float:left;
+                            color: var(--purple);
+                            cursor: pointer;
+                    }
+                 }
             }
             .btn{
                 @include width_height(153px, 49px);
@@ -90,11 +99,19 @@
                 }
             }
             .form-radio{
+                input[type=radio]{
+                    border: 2px solid #626262;;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    &::after, &:checked{
+                        background: var(--purple) !important;
+                     }
+                }
                 @include breakpoint(sm){
                     display: flex;
                     justify-content: space-between;
+                    }
                 }
-            }
             .form-radio .form-check label,.form-check label{
                 @include breakpoint(sm){
                 @include line_height(55px!important);

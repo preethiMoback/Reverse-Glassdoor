@@ -11,7 +11,7 @@
                 Back
             </p>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8">
             <div class="container">
                 <div class="card candidate_review_card">
                    <div class="card-title text-30-600-36">
@@ -130,12 +130,25 @@
                                      </div>
                                     <div class="col-md-12">
                                         <div class="form-group rating-star">
-                                           <label>Overall Rating*</label>
+                                           <label>Overall Rating*</label><br>
                                            <rating 
                                                [max]="max" 
                                                [readonly]="false" 
                                                [titles]="['one','two','three','four']">
                                            </rating>        
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <div class="toggle-button">
+                                                <label>What is the type of review?</label><br>
+                                            <div class="switch-toggle switch-2 switch-candy">
+                                            <input id="on" name="state-d" type="radio" checked="" />
+                                            <label for="on" onclick="">Positive</label>
+                                            <input id="off" name="state-d" type="radio" />
+                                            <label for="off" onclick="">Negative</label>
+                                          </div>
+                                            </div>
                                         </div>
                                     </div>
                                      <div class="col-md-12">
@@ -169,3 +182,117 @@
         </div>
     </div>
 </div>
+
+
+<!-- <div class="Advancesearch_section">
+    <div class="container-fluid p-0">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-4">
+                    <p routerLink="/dashboardpage">
+                        <i class="fa fa-angle-left pr-5" aria-hidden="true"></i>
+                        Back
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-title text-30-600-36">
+                        Search using details mentioned in resume
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="card-body">
+                        <div class="form__section">
+                            <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Candidate Name *</label>
+                                            <input 
+                                                type="text" 
+                                                formControlName="name" 
+                                                class="form-control" 
+                                                [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" 
+                                                placeholder="Name of the Candidate"
+                                            />
+                                            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                                                <div *ngIf="f['name'].errors['required']">Name is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Candidate Email id *</label>
+                                            <input 
+                                                type="text" 
+                                                formControlName="email" 
+                                                class="form-control" 
+                                                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" 
+                                                placeholder="Candidate’s mail id"
+                                            />
+                                            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                                <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label for="mobileNumber">Phone Number*</label>  
+                                            <input   
+                                                formControlName="phoneNumber"  
+                                                id="phoneNumber"   
+                                                type="text"   
+                                                class="form-control" 
+                                                [ngClass]="{ 'is-invalid': submitted && f['phoneNumber'].errors }"
+                                            />  
+                                            <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
+                                                <div *ngIf="f['phoneNumber'].errors['required']">Phone Number is required</div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label for="mobileNumber">Primary Skill</label>  
+                                            <input   
+                                                formControlName="primaryskill"     
+                                                type="text"   
+                                                class="form-control" 
+                                                [ngClass]="{ 'is-invalid': submitted && f['primaryskill'].errors }"
+                                                placeholder="Candidate’s primary skill"
+                                            />  
+                                            <div *ngIf="submitted && f['primaryskill'].errors" class="invalid-feedback">
+                                                <div *ngIf="f['primaryskill'].errors['required']">Candidate’s primary skill</div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label>Candidate Current organisation*</label>
+                                            <input 
+                                                type="text" 
+                                                formControlName="companyName" 
+                                                class="form-control" 
+                                                [ngClass]="{ 'is-invalid': submitted && f['companyName'].errors }" 
+                                                placeholder="Organisation name"
+                                            />
+                                            <div *ngIf="submitted && f['companyName'].errors" class="invalid-feedback">
+                                                <div *ngIf="f['companyName'].errors['required']">Company Name is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 d-none d-md-block">
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn">Submit</button> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
