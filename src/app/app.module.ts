@@ -11,6 +11,10 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardpageComponent } from './dashboardpage/dashboardpage.component';
 import { HeaderDashboardpageComponent } from './shared-components/header-dashboardpage/header-dashboardpage.component';
+import { RatingModule } from 'ngx-bootstrap/rating';
+
+
+
 
 @NgModule({
   declarations: [
@@ -28,6 +32,7 @@ import { HeaderDashboardpageComponent } from './shared-components/header-dashboa
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    RatingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
