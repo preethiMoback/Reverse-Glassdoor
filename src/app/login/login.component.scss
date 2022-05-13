@@ -21,7 +21,7 @@
             width: 80%;
             padding: 30px 20px;
         }
-        .text-30-600-36{
+        .text-30-700-36{
             color: var(--black-light);
             @include breakpoint(ipad){
                 @include pxtorem(20);
@@ -67,9 +67,6 @@
                 }
                 .form-floating>label{
                     @include pxtorem(18);
-                    // display: flex;
-                    // justify-content: center;
-                    // align-items: center;
                     font-family: 'Lato';
                     color: var(--gray-light);
                     @include breakpoint(ipad) {

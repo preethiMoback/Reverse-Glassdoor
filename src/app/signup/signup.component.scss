@@ -1,19 +1,248 @@
 @import "/src/styles/mixins";
 @import "/src/styles/extend";
-.login_popup{
-    .card{
-           //dontuse
-    // @include margin {
-    //     margin: 60px 0 0;
-    //     @include breakpoint(xs) {
-    //         margin: 0px !important;
-    //     }
-    //     @include breakpoint(ipad) {
-    //         margin: 15px 0px;
-    //     }
-    // }
+.container-fluid{
+    background-color: var(--dusky-white);
+    .left-container{
+        padding: 60px 0px;
+        .candidate-card{
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
+            margin: 2em;
+            .text-30-700-36{
+            @include pxtorem(30);
+            @include line_height(36px);
+            @include font(600);
+            padding: 0.5em 1em;
+            }
+            .card-header{
+                background-color: var(--purple);
+                color: white;
+                border-radius: 10px;
+            }
+            .card-body{
+                padding: 1em;
+                .text-20-400-24{
+                    @include pxtorem(20);
+                    @include line_height(24px);
+                    @include font(400);
+                    margin: 0.5em 0;
+                    color:var(--black);
+                    @include breakpoint(ipad){
+                        @include pxtorem(16);
+                    }
+                    i{
+                        font-size: 1.5em;
+                        color: var(--purple);
+                    }
+                }
+            }
+        }
     }
-    .text-30-600-36{
+   .review-card{
+       padding: 4em;
+       border-radius: 10px;
+       box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
+       .text-25-400-30{
         color: var(--black-light);
+        @include pxtorem(25);
+        @include line_height(30px);
+        @include font(400);
+        margin: 1em 0 ;
+        .fa-user-circle{
+            color: var(--grey-lighter);
+            font-size: 1.4em;
+        }
+    }
+    .card-title{
+        @include pxtorem(25);
+        @include line_height(30px);
+        @include font(700);
+        color: var(--black);
+        margin-bottom: 1em;
+    }
+    .text-20-400-24{
+        @include pxtorem(20);
+        @include line_height(24px);
+        @include font(400);
+        color:var(--grey-lighter);
+        @include breakpoint(ipad){
+            @include pxtorem(16);
+        }
+    }
+    .btn-align{
+        display: flex;
+        align-items: center;
+        .view_btn{
+            @include width_height(230px, 60px);
+            border:2px solid #62177C;
+            border-radius: 5px;
+            color: var(--purple);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 45px;
+        }
+    }
+        .thumbs-rating{
+            display: flex;
+            .thumbs-icon{
+                margin-left: 0.4em;
+                cursor: pointer;
+                background-color: gainsboro;
+                text-align: center;
+                padding:8px 10px;
+                border-radius: 100%;
+                color: var(--grey-lighter);
+            }
+        }
+   }
+}
+
+
+
+
+
+.Onboarding_reviewpage{
+    .container-fluid{
+        background-color: var(--dusky-white);
+        min-height: 100vh;
+        .Onboarding_reviewContainer{
+            padding: 60px 0px;
+            min-height: 100vh;
+            @include breakpoint(sm){
+                //width: 91%;
+            }
+            .card-title{
+                padding: 10px;
+                @include breakpoint(sm){
+                    padding: 30px 60px 0px 60px;
+                }
+                .text-30-700-36, .text-25-400-30, .text-20-400-24 {
+                    padding-bottom: 10px;
+                    @include breakpoint(sm){
+                        padding-bottom: 18px;
+                    }
+                }
+                .text-25-400-30{
+                    @include breakpoint(ipad){
+                        @include pxtorem(16);
+                    }
+                    .fa-user-circle{
+                        color: var(--grey-lighter);
+                    }
+                }
+                .ratings{
+                    margin-left:56px;
+                }
+            }
+            .card-body{
+                @include breakpoint(sm){
+                    padding: 30px 60px 60px 60px;
+                }
+                .text-20-400-24{
+                    @include font(400);
+                    @include pxtorem(20);
+                    @include line_height(31px);
+                    color: var(--black);
+                    @include breakpoint(ipad){
+                        @include pxtorem(16);
+                        @include line_height(31px);
+                    }
+                }
+                .help_btn{
+                    display: flex;
+                    margin-top: 50px;
+                }
+                .help_btnn{
+                    margin-top: 30px;
+                    display: flex;
+                    justify-content: space-around;
+                    @include breakpoint(sm){
+                        width: 50%;
+                    }
+                    .helpful_btn{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 47px;
+                        width: 40%;
+                        cursor: pointer;
+                        &:hover,[class*= "active"]{
+                            background: #FFFFFF;
+                            box-shadow: 2px 2px 10px rgb(98 23 124 / 20%);
+                            border-radius: 10px;
+                        }
+                    }
+                }
+            }
+        }
+        .candidate-card{
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
+            margin: 1em;
+            @include breakpoint(sm){
+                margin-top: 136px;
+            }
+            @include breakpoint(min1601){
+                margin: 136px 100px;
+            }
+            .card-header{
+                background-color: var(--purple);
+                color: white;
+                border-radius: 10px;
+                display:flex;
+                justify-content: left;
+                align-items: left;
+                @include breakpoint(xSmall){
+                    height: 73px;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+            .text-30-700-36{
+                @include pxtorem(30);
+                @include line_height(36px);
+                @include font(500);
+                padding: 0.5em 1em;
+                @include breakpoint(ipad){
+                    @include pxtorem(20);
+                    padding: 0.8em 1em;
+                }
+                @include breakpoint(xSmall){
+                    padding: 0px;
+                }
+            }
+            .card-body{
+                .text-20-400-24{
+                    @include pxtorem(20);
+                    @include line_height(24px);
+                    @include font(400);
+                    color:var(--black);
+                    @include breakpoint(ipad){
+                        @include pxtorem(15);
+                    }
+                    // img{
+                    //     font-size: 1.5em;
+                    //     color: var(--purple);
+                    //     padding: 0.5em 1em;
+                    //     @include breakpoint(xs){
+                    //         padding-left: 0px;
+                    //         font-size: 14px;
+                    //     }
+                    // }
+                    i{
+                        font-size: 1.5em;
+                        color: var(--purple);
+                        padding: 0.5em 1em;
+                        @include breakpoint(xs){
+                            padding-left: 0px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+
+    

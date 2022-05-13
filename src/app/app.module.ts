@@ -15,6 +15,7 @@ import { DashboardpageComponent } from './dashboardpage/dashboardpage.component'
 import { HeaderDashboardpageComponent } from './shared-components/header-dashboardpage/header-dashboardpage.component';
 import { CandidateReviewComponent } from './dashboardpage/candidate-review/candidate-review.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
+import { AdvancedSearchComponent } from './dashboardpage/advanced-search/advanced-search.component';
 
 
 
@@ -30,6 +31,7 @@ import { RatingModule } from 'ngx-bootstrap/rating';
     DashboardpageComponent,
     HeaderDashboardpageComponent,
     CandidateReviewComponent,
+    AdvancedSearchComponent,
   
   ],
   imports: [

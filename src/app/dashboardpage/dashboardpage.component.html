@@ -1,5 +1,5 @@
 <app-header-dashboardpage></app-header-dashboardpage>
-<div class="fixed-top dashboardpage_header">
+<!-- <div class="fixed-top dashboardpage_header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-4 col-lg-4">
@@ -12,11 +12,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-md-1 col-lg-1">
-                <div class="d-flex vertical_line">
-                    <div class="vr"></div>
-                </div>
-            </div> -->
             <div class="col-12 col-md-7 col-lg-7">
                <div class="d-flex">
                 <form action="/action_page.php">
@@ -36,7 +31,40 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<div class="fixed-top dashboardpage_header">
+    <div class="container-fluid search-bar-container">
+        <div class="write-review-btn">
+            <div class="btn write-review_btn" routerLink="/candidatereview">
+                <span>
+                    <img src="../../assets/Images/write_review_icon.svg" alt="write_review_icon">
+                </span>
+                Write review
+            </div>
+            <div>
+            </div>
+        </div>
+        <div class="search-bar">
+            <form action="/action_page.php">
+                <div class="input-group">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  <input type="text" class="form-control" placeholder="Search about candidate by name, email id or phone-number" name="email">
+                  <span class="input-group-text">
+                      <figure>
+                        <img src="../../assets/Images/Search_buttonicon.svg" alt="Search_buttonicon">
+                      </figure>
+                  </span>
+                </div>
+            </form>
+        </div>
+        <div class="action_btn" routerLink="/advancedsearch">
+            Advanced Search
+        </div>
+    </div>
 </div>
+
+
 <div class="candidates_details">
     <div class="container">
         <div class="">
@@ -115,25 +143,6 @@
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                     <div *ngFor="let candidate of candidateData">
-                                        <!-- <div class="row">
-                                            <div class="col-md-8">
-                                                <div class="text-25-700-30">
-                                                    {{candidate.name}}
-                                                </div>
-                                                <div class="text-25-400-30">
-                                                    Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="text-20-600-24">
-                                                    <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{candidate.success}}
-                                                </div>
-                                                <div class="view_btn text-20-400-24">
-                                                    View Review
-                                                </div>
-                                            </div>
-                                        </div> -->
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
@@ -143,6 +152,30 @@
                                                     Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
                                                 </div>
                                                 <div class="text-25-400-30">
+                                                    <div class="row ratings ">
+                                                        <div class="col-md-4">
+                                                            <rating [(ngModel)]="rate" [max]=5 [readonly]="false"></rating>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="thumbs-rating">
+                                                                <div class="thumbs-up-rating">
+                                                                    <span class=" text-20-400-24">13</span>
+                                                                   <span class="thumbs-icon">
+                                                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                                                   </span>
+                                                                </div>
+                                                                <div class="thumbs-down-rating">
+                                                                    <span class="text-20-400-24">13</span>
+                                                                    <span class="thumbs-icon">
+                                                                        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <span class="text-20-400-24">20 views</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="text-25-400-30">
                                                     <div class="row ratings ">
                                                         <rating class="col-md-4" [(ngModel)]="rate" [max]=5 [readonly]="false"></rating>
                                                         <div class="col-md-8 thumbs-rating">
@@ -161,7 +194,7 @@
                                                             <span class="col-md-3 text-20-400-24">20 views</span>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="text-20-600-24">
@@ -172,16 +205,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-
-
-
-
-
-
-
-
                                         <hr>
                                     </div>
                                     <div *ngFor="let candidate of candidateData">

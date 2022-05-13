@@ -7,7 +7,7 @@
     // }  
 }
 
-.text-30-600-36{
+.text-30-700-36{
     @include font(600);
     @include pxtorem(30);
     @include line_height(36px);
@@ -89,6 +89,7 @@ p{
     cursor: pointer;
     @include breakpoint(ipad){
         @include pxtorem(20);
+        padding-left: 20px;
     }
     i{
         font-size: 50px;
@@ -101,4 +102,23 @@ p{
         opacity: 0.8;
     }
 
+}
+
+.text-20-400-24{
+    @include pxtorem(20);
+    @include line_height(24px);
+    @include font(400);
+    color:var(--grey-lighter);
+    @include breakpoint(ipad){
+        @include pxtorem(16);
+    }
+}
+.ratings{
+    rating{
+        font-size: 1.4em;
+        color: var(--gold);
+        span[class*= "!active"]{
+            color: var(--grey-lighter) !important;
+        }
+    }
 }

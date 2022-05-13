@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
+  rate = 1;
+  reviewData = [
+    {"name": "Manohar Kunireddi", "success":"Approved","rejected":"Rejected","pending":"Approval pending", "by":"Davis Kuruvilla (Bighaat pvt ltd)"},
+    {"name": "Amit","rejected":"Rejected","success":"Approved","pending":"Approval pending","by":"Davis Kuruvilla (Bighaat pvt ltd)"},
+    {"name": "Puneet ","success":"Approved","rejected":"Rejected","pending":"Approval pending","by":"Davis Kuruvilla (Bighaat pvt ltd)"},
+  ];
   constructor() { }
 
   ngOnInit(): void {
