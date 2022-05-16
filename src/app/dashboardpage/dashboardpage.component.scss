@@ -3,7 +3,9 @@
 
 .dashboardpage_header{
     padding: 20px 20px;
-    margin-top:92px;
+    @include margin {
+        margin-top: 92px;
+    }
     background-color: var(--white);
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -241,7 +243,9 @@
             .text-35-700-42{
                 @include pxtorem(35);
                 @include line_height(42px);
-                margin-top: 0.3em; 
+                @include margin {
+                    margin-top: 0.3em;
+                }
                 @include font(700);
                 @include breakpoint(ipad){
                     @include pxtorem(20);
@@ -334,19 +338,21 @@
                     }
                 }
             }
-            .text-25-700-30{
-                @include pxtorem(25);
-                @include line_height(30px);
-                @include font(400);
-                color: var(--black);
-                padding: 45px 0px 20px 0px;
-                @include breakpoint(ipad){
-                    @include pxtorem(18);
-                }
-            }
+            // .text-25-700-30{
+            //     @include pxtorem(25);
+            //     @include line_height(30px);
+            //     @include font(400);
+            //     color: var(--black);
+            //     padding: 45px 0px 20px 0px;
+            //     @include breakpoint(ipad){
+            //         @include pxtorem(18);
+            //     }
+            // }
             .text-25-400-30{
                 color: var(--black-light);
-                margin-bottom: 1em ;
+                @include margin {
+                    margin-bottom: 1em ;
+                }
             }
             .text-18-400-21{
                 @include pxtorem(18);
@@ -360,18 +366,18 @@
                 }
             }
             .view_btn{
-                height: 60px;
-                border:2px solid #62177C;
-                border-radius: 5px;
-                color: var(--purple);
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                // height: 60px;
+                // border:2px solid #62177C;
+                // border-radius: 5px;
+                // color: var(--purple);
+                // display: flex;
+                // justify-content: center;
+                // align-items: center;
                 // add icons and remove the padding
                 margin-bottom: 45px;
-                @include breakpoint(min1200) {
-                    @include width_height(230px, 60px);
-                }
+                // @include breakpoint(min1200) {
+                //     @include width_height(230px, 60px);
+                // }
             }
             .text-20-600-24{
                 @include pxtorem(20);
@@ -392,19 +398,24 @@
                 //     }
   
                 // }
-                .thumbs-rating{
-                    display: flex;
-                    .thumbs-icon{
-                        margin-left: 0.4em;
-                        cursor: pointer;
-                        background-color: gainsboro;
-                        text-align: center;
-                        padding:8px 10px;
-                        border-radius: 100%;
-                        //width: 1.3em;
-                        color: var(--grey-lighter);
-                    }
-                }
+                // .thumbs-rating{
+                //     display: flex;
+                //     .thumbs-icon{
+                //         @include margin {
+                //             margin-left: 0.4em;
+                //         }
+                //         cursor: pointer;
+                //         background-color: #C4C4C4;
+                //         text-align: center;
+                //         padding:8px 10px;
+                //         border-radius: 100%;
+                //         //width: 1.3em;
+                //         color: var(--grey-light);
+                //     }
+                //     .text-20-400-24{
+                //         margin: 0.4em;
+                //     }
+                // }
             }
         }
     }

@@ -19,6 +19,35 @@
         @include pxtorem(20);
     }
 }
+.text-25-400-30{
+    @include pxtorem(25);
+    @include line_height(30px);
+    @include font(400);
+    color: var(--gray-lighter);
+    @include breakpoint(ipad){
+        @include pxtorem(18);
+    }
+}
+
+.text-20-400-24{
+    @include pxtorem(20);
+    @include line_height(24px);
+    @include font(400);
+    color:var(--grey-lighter);
+    @include breakpoint(ipad){
+        @include pxtorem(16);
+    }
+}
+.text-25-700-30{
+    @include pxtorem(25);
+    @include line_height(30px);
+    @include font(400);
+    color: var(--black);
+    padding: 45px 0px 20px 0px;
+    @include breakpoint(ipad){
+        @include pxtorem(18);
+    }
+}
 .btn{
     display: flex;
     justify-content: center;
@@ -69,15 +98,6 @@
         }
     }
 }
-.text-25-400-30{
-    @include pxtorem(25);
-    @include line_height(30px);
-    @include font(400);
-    color: var(--gray-lighter);
-    @include breakpoint(ipad){
-        @include pxtorem(18);
-    }
-}
 p{
     @include font(500);
     @include pxtorem(25);
@@ -103,22 +123,122 @@ p{
     }
 
 }
-
-.text-20-400-24{
-    @include pxtorem(20);
-    @include line_height(24px);
-    @include font(400);
-    color:var(--grey-lighter);
-    @include breakpoint(ipad){
-        @include pxtorem(16);
-    }
-}
 .ratings{
     rating{
         font-size: 1.4em;
         color: var(--gold);
         span[class*= "!active"]{
             color: var(--grey-lighter) !important;
+        }
+    }
+}
+
+
+.thumbs-rating{
+    display: flex;
+    .thumbs-icon{
+        @include margin {
+            margin-left: 0.4em;
+        }
+        cursor: pointer;
+        background-color: #C4C4C4;
+        text-align: center;
+        padding:7px 10px;
+        border-radius: 100%;
+        color: var(--grey-light);
+        @include pxtorem(26);
+    }
+    .text-20-400-24{
+        @include margin {
+            margin-top: 0.4em;
+         }
+        @include breakpoint(min1200){
+            @include margin {
+               margin-left: 0.4em;
+            }
+        }
+    }
+}
+.view_btn{
+    height: 60px;
+    border:2px solid #62177C;
+    border-radius: 5px;
+    color: var(--purple);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // add icons and remove the padding
+    //margin-bottom: 45px;
+    @include breakpoint(min1200) {
+        @include width_height(230px, 60px);
+    }
+}
+
+.candidate-card{
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
+    @include margin {
+        margin: 1em;
+    }
+    @include breakpoint(sm){
+        margin-top: 136px;
+    }
+    @include breakpoint(min1601){
+        margin: 136px 100px;
+    }
+    .card-header{
+        background-color: var(--purple);
+        color: white;
+        border-radius: 10px;
+        display:flex;
+        justify-content: left;
+        align-items: left;
+        @include breakpoint(xSmall){
+            height: 73px;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .text-30-700-36{
+        @include pxtorem(30);
+        @include line_height(36px);
+        @include font(500);
+        padding: 0.5em 1em;
+        @include breakpoint(ipad){
+            @include pxtorem(20);
+            padding: 0.8em 1em;
+        }
+        @include breakpoint(xSmall){
+            padding: 0px;
+        }
+    }
+    .card-body{
+        .text-20-400-24{
+            @include pxtorem(20);
+            @include line_height(24px);
+            @include font(400);
+            color:var(--black);
+            @include breakpoint(ipad){
+                @include pxtorem(15);
+            }
+            // img{
+            //     font-size: 1.5em;
+            //     color: var(--purple);
+            //     padding: 0.5em 1em;
+            //     @include breakpoint(xs){
+            //         padding-left: 0px;
+            //         font-size: 14px;
+            //     }
+            // }
+            i{
+                font-size: 1.5em;
+                color: var(--purple);
+                padding: 0.5em 1em;
+                @include breakpoint(xs){
+                    padding-left: 0px;
+                    font-size: 14px;
+                }
+            }
         }
     }
 }

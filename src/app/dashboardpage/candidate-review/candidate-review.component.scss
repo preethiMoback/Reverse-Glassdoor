@@ -42,7 +42,9 @@
                     }
                 }
                 input, textarea{
-                    margin-top: 10px;
+                    @include margin {
+                        margin-top: 10px;
+                    }
                     @include pxtorem(18);
                     @include font(400);
                     resize: none;
@@ -55,12 +57,16 @@
                        }
                 }
                 rating{
-                    margin-top: 10px;
+                    @include margin {
+                        margin-top: 10px;
+                    }
                     @include pxtorem(32);
                     color: var(--dark-gray);
                 }
                 .switch-toggle {
-                    margin-top: 1em;
+                    @include margin {
+                        margin-top: 1em;
+                    }
                     float: left;
                     background: var(--white);
                     border: 1px solid var(--purple);

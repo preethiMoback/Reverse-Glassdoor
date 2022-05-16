@@ -1,102 +1,111 @@
 @import "/src/styles/mixins";
 @import "/src/styles/extend";
-.container-fluid{
-    background-color: var(--dusky-white);
-    .left-container{
-        padding: 60px 0px;
-        .candidate-card{
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
-            margin: 2em;
-            .text-30-700-36{
-            @include pxtorem(30);
-            @include line_height(36px);
-            @include font(600);
-            padding: 0.5em 1em;
-            }
-            .card-header{
-                background-color: var(--purple);
-                color: white;
-                border-radius: 10px;
-            }
-            .card-body{
-                padding: 1em;
-                .text-20-400-24{
-                    @include pxtorem(20);
-                    @include line_height(24px);
-                    @include font(400);
-                    margin: 0.5em 0;
-                    color:var(--black);
-                    @include breakpoint(ipad){
-                        @include pxtorem(16);
-                    }
-                    i{
-                        font-size: 1.5em;
-                        color: var(--purple);
-                    }
-                }
-            }
-        }
-    }
-   .review-card{
-       padding: 4em;
-       border-radius: 10px;
-       box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
-       .text-25-400-30{
-        color: var(--black-light);
-        @include pxtorem(25);
-        @include line_height(30px);
-        @include font(400);
-        margin: 1em 0 ;
-        .fa-user-circle{
-            color: var(--grey-lighter);
-            font-size: 1.4em;
-        }
-    }
-    .card-title{
-        @include pxtorem(25);
-        @include line_height(30px);
-        @include font(700);
-        color: var(--black);
-        margin-bottom: 1em;
-    }
-    .text-20-400-24{
-        @include pxtorem(20);
-        @include line_height(24px);
-        @include font(400);
-        color:var(--grey-lighter);
-        @include breakpoint(ipad){
-            @include pxtorem(16);
-        }
-    }
-    .btn-align{
-        display: flex;
-        align-items: center;
-        .view_btn{
-            @include width_height(230px, 60px);
-            border:2px solid #62177C;
-            border-radius: 5px;
-            color: var(--purple);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 45px;
-        }
-    }
-        .thumbs-rating{
-            display: flex;
-            .thumbs-icon{
-                margin-left: 0.4em;
-                cursor: pointer;
-                background-color: gainsboro;
-                text-align: center;
-                padding:8px 10px;
-                border-radius: 100%;
-                color: var(--grey-lighter);
-            }
-        }
-   }
-}
+// .container-fluid{
+//     background-color: var(--dusky-white);
+//     .left-container{
+//         padding: 60px 0px;
+//         .candidate-card{
+//             border-radius: 10px;
+//             box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
+//             @include margin {
+//                 margin: 2em;
+//             }
+//             .text-30-700-36{
+//             @include pxtorem(30);
+//             @include line_height(36px);
+//             @include font(600);
+//             padding: 0.5em 1em;
+//             }
+//             .card-header{
+//                 background-color: var(--purple);
+//                 color: white;
+//                 border-radius: 10px;
+//             }
+//             .card-body{
+//                 padding: 1em;
+//                 .text-20-400-24{
+//                     @include pxtorem(20);
+//                     @include line_height(24px);
+//                     @include font(400);
+//                     @include margin {
+//                         margin: 0.5em 0;
+//                     }
+//                     color:var(--black);
+//                     @include breakpoint(ipad){
+//                         @include pxtorem(16);
+//                     }
+//                     i{
+//                         font-size: 1.5em;
+//                         color: var(--purple);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//    .review-card{
+//        padding: 4em;
+//        border-radius: 10px;
+//        box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
+//        .text-25-400-30{
+//         color: var(--black-light);
+//         @include margin {
+//             margin: 1em 0;
+//         }
+//         .fa-user-circle{
+//             color: var(--grey-lighter);
+//             font-size: 1.4em;
+//         }
+//     }
+//     .card-title{
+//         @include pxtorem(25);
+//         @include line_height(30px);
+//         @include font(700);
+//         color: var(--black);
+//         @include margin {
+//             margin-bottom: 1em;
+//         }
+//     }
+//     .text-20-400-24{
+//         @include pxtorem(20);
+//         @include line_height(24px);
+//         @include font(400);
+//         color:var(--grey-lighter);
+//         @include breakpoint(ipad){
+//             @include pxtorem(16);
+//         }
+//     }
+//     .btn-align{
+//         display: flex;
+//         align-items: center;
+//         .view_btn{
+//             @include width_height(230px, 60px);
+//             border:2px solid #62177C;
+//             border-radius: 5px;
+//             color: var(--purple);
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             @include margin {
+//                 margin-bottom: 45px;
+//             }
+//         }
+//     }
+//         // .thumbs-rating{
+//         //     display: flex;
+//         //     .thumbs-icon{
+//         //         @include margin {
+//         //             margin-left: 0.4em;
+//         //         }
+//         //         cursor: pointer;
+//         //         background-color: gainsboro;
+//         //         text-align: center;
+//         //         padding:8px 10px;
+//         //         border-radius: 100%;
+//         //         color: var(--grey-lighter);
+//         //     }
+//         // }
+//    }
+// }
 
 
 
@@ -109,9 +118,6 @@
         .Onboarding_reviewContainer{
             padding: 60px 0px;
             min-height: 100vh;
-            @include breakpoint(sm){
-                //width: 91%;
-            }
             .card-title{
                 padding: 10px;
                 @include breakpoint(sm){
@@ -132,7 +138,9 @@
                     }
                 }
                 .ratings{
-                    margin-left:56px;
+                    @include margin {
+                        margin-left:56px;
+                    }
                 }
             }
             .card-body{
@@ -151,10 +159,14 @@
                 }
                 .help_btn{
                     display: flex;
-                    margin-top: 50px;
+                    @include margin {
+                        margin-top: 50px;
+                    }
                 }
                 .help_btnn{
-                    margin-top: 30px;
+                    @include margin {
+                        margin-top: 30px;
+                    }
                     display: flex;
                     justify-content: space-around;
                     @include breakpoint(sm){
@@ -164,8 +176,7 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        height: 47px;
-                        width: 40%;
+                        @include width_height(40%, 47px);
                         cursor: pointer;
                         &:hover,[class*= "active"]{
                             background: #FFFFFF;
@@ -176,73 +187,77 @@
                 }
             }
         }
-        .candidate-card{
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
-            margin: 1em;
-            @include breakpoint(sm){
-                margin-top: 136px;
-            }
-            @include breakpoint(min1601){
-                margin: 136px 100px;
-            }
-            .card-header{
-                background-color: var(--purple);
-                color: white;
-                border-radius: 10px;
-                display:flex;
-                justify-content: left;
-                align-items: left;
-                @include breakpoint(xSmall){
-                    height: 73px;
-                    justify-content: center;
-                    align-items: center;
-                }
-            }
-            .text-30-700-36{
-                @include pxtorem(30);
-                @include line_height(36px);
-                @include font(500);
-                padding: 0.5em 1em;
-                @include breakpoint(ipad){
-                    @include pxtorem(20);
-                    padding: 0.8em 1em;
-                }
-                @include breakpoint(xSmall){
-                    padding: 0px;
-                }
-            }
-            .card-body{
-                .text-20-400-24{
-                    @include pxtorem(20);
-                    @include line_height(24px);
-                    @include font(400);
-                    color:var(--black);
-                    @include breakpoint(ipad){
-                        @include pxtorem(15);
-                    }
-                    // img{
-                    //     font-size: 1.5em;
-                    //     color: var(--purple);
-                    //     padding: 0.5em 1em;
-                    //     @include breakpoint(xs){
-                    //         padding-left: 0px;
-                    //         font-size: 14px;
-                    //     }
-                    // }
-                    i{
-                        font-size: 1.5em;
-                        color: var(--purple);
-                        padding: 0.5em 1em;
-                        @include breakpoint(xs){
-                            padding-left: 0px;
-                            font-size: 14px;
-                        }
-                    }
-                }
-            }
-        }
     }
 }
 
     
+
+
+
+/////dashboard page copy
+
+.review_card-section{
+    background-color: var(--dusky-white);
+    min-height: 100vh;
+    .allreview_card{
+        padding: 20px;
+        @include breakpoint(sm){
+            padding: 25px 70px 50px 70px;
+        }
+        .text-25-700-30{
+            @include font(700);
+            @include breakpoint(xs){
+                padding: 20px 0px;
+                @include pxtorem(22);
+            }
+        }
+        .text-25-400-30{
+            color: var(--black-light);
+            @include margin {
+                margin: 1em 0;
+            }
+            .fa-user-circle{
+                color: var(--grey-lighter);
+                font-size: 1.4em;
+            }
+        }
+        .view_btn{
+            position: relative;
+            top: 45%;
+            @include margin {
+                margin-left: auto;
+            }
+            @include breakpoint(xs){
+                width: 50%;
+                @include margin {
+                    margin: 0;
+                }
+                
+            }
+        }
+    }
+    hr{
+        @include margin {
+            margin-top: 45px;
+        }
+        @include breakpoint(xs){
+            @include margin {
+                margin-top: 60px;
+            } 
+        }
+    }
+    .back_btn{
+        margin-top: 70px;
+        @include breakpoint(sm){
+            margin-top: 70px;
+        }
+    }
+    .candidate-card{
+        @include breakpoint(sm){
+            margin-top: 136px;
+        }
+        @include breakpoint(min1601){
+            margin: 70px 12px;
+        }
+    }
+}

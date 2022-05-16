@@ -15,7 +15,9 @@
         }
     .form__section{
         .form-group{
-            margin-top: 30px;
+            @include margin {
+                margin-top: 30px;
+            }
         }
         label{
             @include font(500);
@@ -32,7 +34,9 @@
             }
         }
         input{
-            margin-top: 10px;
+            @include margin {
+                margin-top: 10px;
+            }
             @include pxtorem(18);
             @include font(400);
             height: 60px;
@@ -46,7 +50,9 @@
                }
         }
         .btn{
-            margin-top: 70px;
+            @include margin {
+                margin-top: 70px;
+            }
             @include width_height(153px, 49px);
                 @include pxtorem(20);
                 @include line_height(24px);
