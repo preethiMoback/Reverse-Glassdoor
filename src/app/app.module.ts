@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxStarRatingModule } from 'ngx-star-rating';
 import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +15,8 @@ import { HeaderDashboardpageComponent } from './shared-components/header-dashboa
 import { CandidateReviewComponent } from './dashboardpage/candidate-review/candidate-review.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { AdvancedSearchComponent } from './dashboardpage/advanced-search/advanced-search.component';
+import { AdvancedSearchResultsComponent } from './dashboardpage/advanced-search/advanced-search-results/advanced-search-results.component';
+
 
 
 
@@ -32,6 +33,7 @@ import { AdvancedSearchComponent } from './dashboardpage/advanced-search/advance
     HeaderDashboardpageComponent,
     CandidateReviewComponent,
     AdvancedSearchComponent,
+    AdvancedSearchResultsComponent,
   
   ],
   imports: [
@@ -39,7 +41,6 @@ import { AdvancedSearchComponent } from './dashboardpage/advanced-search/advance
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxStarRatingModule,
     CommonModule,
     RatingModule.forRoot()
   ],

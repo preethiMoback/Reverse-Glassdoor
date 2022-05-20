@@ -9,6 +9,8 @@ import { FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class AdvancedSearchComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
+  details:any;
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -37,13 +39,30 @@ export class AdvancedSearchComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.registerForm.invalid) {
-        return;
-    }
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+
+  // if (!this.registerForm.valid) {
+  //   return;
+  // } 
+    var name = this.registerForm.get('name')?.value;
+    var email= this.registerForm.get('email')?.value;
+    var phoneNumber = this.registerForm.get('phoneNumber')?.value;
+    var primaryskill = this.registerForm.get('primaryskill')?.value;
+    var companyName = this.registerForm.get('companyName')?.value;
+    var details = name + ", "+email+", "+ phoneNumber + ", "+ primaryskill +", "+companyName; 
+    console.log(details);
+    return details;
+  
 }
 
 
+// onSubmit(){
+//   this.submitted = true;
+//   if (this.registerForm.invalid) {
+//       return;
+//   } 
+//   alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+
+// };
 
   onReset() {
       this.submitted = false;

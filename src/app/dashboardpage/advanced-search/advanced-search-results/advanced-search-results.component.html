@@ -1,6 +1,6 @@
 
 <app-header-dashboardpage></app-header-dashboardpage>
-<div class="Advancesearch_section" *ngIf="!submitted && !registerForm.valid" >
+<div class="Advancesearch_section" *ngIf="(!submitted && !registerForm.valid) || (submitted && !registerForm.valid) || (!submitted && registerForm.valid )" >
     <div class="container-fluid p-0">
         <div class="card">
             <div class="row">
@@ -32,6 +32,7 @@
                                                 class="form-control nosubmit"
                                                 id="form-control" 
                                                 [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" 
+                                                [(ngModel)]="name"
                                                 placeholder="Name of the Candidate"
                                             />
                                             <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
@@ -51,7 +52,7 @@
                                                 placeholder="Candidate’s mail id"
                                             />
                                             <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-                                                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                                <!-- <div *ngIf="f['email'].errors['required']">Email is required</div> -->
                                                 <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
                                             </div>
                                         </div>
@@ -104,8 +105,11 @@
                                     </div>
                                     <div class="col-md-12 d-none d-md-block">
                                         <div class="d-flex justify-content-center">
-                                            <button class="btn" type="submit">Search</button> 
+                                            <button class="btn" >Search</button> 
                                         </div>
+                                    </div>
+                                    <div class="col-md-12 d-none d-md-block" *ngIf="!registerForm.valid && submitted">
+                                        At least one field is required
                                     </div>
                                 </div>
                             </form>
@@ -126,7 +130,7 @@
 
 
 
-  <div class="Advancesearch_section" *ngIf="submitted " >
+  <div class="Advancesearch_section" *ngIf="registerForm.valid && submitted " >
     <div class="container-fluid p-0">
         <div class="card">
             <div class="row showingResults_section">
@@ -209,3 +213,4 @@
                     </div>
     </div>
 </div>
+

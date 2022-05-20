@@ -1,0 +1,157 @@
+<app-header-dashboardpage></app-header-dashboardpage>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-5 col-lg-5 left-container">
+            <div class="row">
+                <div class="col-md-2">
+                    <p routerLink="/dashboardpage">
+                        <i class="fa fa-angle-left pr-5" aria-hidden="true"></i>
+                        Back
+                    </p>
+                </div>
+            </div>
+            <div class="card candidate-card">
+                <div class="card-header text-30-600-36">
+                    <h4>Candidate's Review</h4>
+                  </div>
+
+                  <div class="row card-body">
+                      <div class="col-md-7 text-30-600-36">
+                        <h3>Mahesh Rudra Badaballa</h3>
+                      </div>
+                      <div class="row text-20-400-24">
+                          <div class="col-md-2">
+                              <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </div>
+                         badaballarocks@gmail.com
+                      </div>
+                      <div class="row text-20-400-24">
+                        <div class="col-md-2">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </div>
+                        +91 8928382945
+                    </div>
+                    <div class="row text-20-400-24">
+                        <div class="col-md-2">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                        </div>
+                        Figma, Adobe XD                    
+                    </div>
+                    <div class="row text-20-400-24">
+                        <div class="col-md-2">
+                            <i class="fa fa-building-o" aria-hidden="true"></i>
+                        </div>
+                        Bighaat Agro Pvt Ltd                    
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+        <div class="col-12 col-md-7 col-lg-7">
+            <div class="card content__part mt-4 review-card">            
+                        <div *ngFor="let candidate of reviewData">
+                            <div class="row">
+                                <div class="col-md-8">   
+                                    <div class="card-title">
+                                        Onboarding Review  
+                                    </div>
+                                    <div class="text-20-400-24">13th Mar 2022.</div>
+
+                                    <div class="text-25-400-30">
+                                        by <span><i class="fa fa-user-circle" aria-hidden="true"></i>
+                                        </span> {{candidate.by}}
+                                    </div>
+                                    
+                                    <div class="text-25-400-30">
+                                        <div class="row ratings ">
+                                            <div class="col-md-8 thumbs-rating">
+                                                <div class="col-md-3 thumbs-up-rating">
+                                                    <span class=" text-20-400-24">13</span>
+                                                   <span class="thumbs-icon">
+                                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                                   </span>
+                                                </div>
+                                                <div class="col-md-3 thumbs-down-rating">
+                                                    <span class="text-20-400-24">13</span>
+                                                    <span class="thumbs-icon">
+                                                        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                <span class="col-md-3 text-20-400-24">20 views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4 btn-align">
+                                    <div class="view_btn col-md-4 text-20-400-24">
+                                        View Review
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div *ngFor="let candidate of reviewData">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="card-title">
+                                        Interview Review  
+                                    </div>
+                                    <div class="text-20-400-24">28th feb 2022.</div>
+                                    <div class="text-25-400-30">
+                                        by <span><i class="fa fa-user-circle" aria-hidden="true"></i>
+                                        </span> {{candidate.by}}
+                                    </div>
+                                    <div class="text-25-400-30">
+                                        <div class="row ratings ">
+                                            <div class="col-md-8 thumbs-rating">
+                                                <div class="col-md-3 thumbs-up-rating">
+                                                    <span class=" text-20-400-24">13</span>
+                                                   <span class="thumbs-icon">
+                                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                                   </span>
+                                                </div>
+                                                <div class="col-md-3 thumbs-down-rating">
+                                                    <span class="text-20-400-24">13</span>
+                                                    <span class="thumbs-icon">
+                                                        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                <span class="col-md-3 text-20-400-24">20 views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4 btn-align">
+                                    <div class=" view_btn text-20-400-24">
+                                        View Review
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div *ngFor="let candidate of reviewData">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="card-title">
+                                        Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-4 ">
+                                    <div class="view_btn text-20-400-24">
+                                        View Review
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+            </div> 
+        </div>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+@import "/src/styles/mixins";
+@import "/src/styles/extend";
+
+
+
+.container-fluid{
+    background-color: var(--dusky-white);
+
+    .left-container{
+        padding: 60px 0px;
+        .candidate-card{
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
+            margin: 2em;
+            .text-30-600-36{
+            @include pxtorem(30);
+            @include line_height(36px);
+            @include font(600);
+            padding: 0.5em 1em;
+
+            }
+            .card-header{
+                background-color: var(--purple);
+                color: white;
+                border-radius: 10px;
+            }
+            .card-body{
+                padding: 1em;
+                .text-20-400-24{
+                    @include pxtorem(20);
+                    @include line_height(24px);
+                    @include font(400);
+                    margin: 0.5em 0;
+                    color:var(--black);
+                    @include breakpoint(ipad){
+                        @include pxtorem(16);
+                    }
+                    i{
+                        font-size: 1.5em;
+                        color: var(--purple);
+
+                    }
+                }
+            }
+        }
+    }
+   .review-card{
+       padding: 4em;
+       border-radius: 10px;
+       box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
+
+       .text-25-400-30{
+        color: var(--black-light);
+        @include pxtorem(25);
+        @include line_height(30px);
+        @include font(400);
+        margin: 1em 0 ;
+        .fa-user-circle{
+            color: var(--grey-lighter);
+            font-size: 1.4em;
+        }
+    }
+    .card-title{
+        @include pxtorem(25);
+        @include line_height(30px);
+        @include font(700);
+        color: var(--black);
+        margin-bottom: 1em;
+    }
+    .text-20-400-24{
+        @include pxtorem(20);
+        @include line_height(24px);
+        @include font(400);
+        color:var(--grey-lighter);
+        @include breakpoint(ipad){
+            @include pxtorem(16);
+        }
+    }
+    .btn-align{
+        display: flex;
+        align-items: center;
+        @include breakpoint(ipad) {
+            @include width_height(200px, 60px);
+        }
+        .view_btn{
+            @include width_height(230px, 60px);
+            border:2px solid #62177C;
+            border-radius: 5px;
+            color: var(--purple);
+            display: flex;
+            justify-content: center;
+            align-items: center;           
+        }
+    }   
+        .thumbs-rating{
+            display: flex; 
+            justify-content: space-between;
+            @include breakpoint(ipad) {
+                @include pxtorem(16);
+                @include width_height(300px, 60px);
+            }
+            .thumbs-icon{
+                margin-left: 0.4em;
+                cursor: pointer;
+                @include pxtorem(20);
+                background-color: gainsboro;
+                text-align: center;
+                padding:8px 10px;
+                border-radius: 100%;
+                color: var(--grey-lighter); 
+                @include breakpoint(ipad) {
+                    @include pxtorem(16);
+                } 
+            }
+        }
+   }
+}

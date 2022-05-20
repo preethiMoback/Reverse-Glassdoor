@@ -9,6 +9,7 @@ import { DashboardpageComponent } from './dashboardpage/dashboardpage.component'
 import { HeaderDashboardpageComponent } from './shared-components/header-dashboardpage/header-dashboardpage.component';
 import { CandidateReviewComponent } from './dashboardpage/candidate-review/candidate-review.component';
 import { AdvancedSearchComponent } from './dashboardpage/advanced-search/advanced-search.component';
+import { AdvancedSearchResultsComponent } from './dashboardpage/advanced-search/advanced-search-results/advanced-search-results.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path: 'mainpageheader',  component: HeaderDashboardpageComponent },
   { path: 'candidatereview',  component: CandidateReviewComponent },
   { path: 'advancedsearch',  component: AdvancedSearchComponent },
+  { path: 'advancedsearchresults',  component: AdvancedSearchResultsComponent },
+
 ];
 
 @NgModule({
