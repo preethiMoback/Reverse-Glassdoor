@@ -15,7 +15,7 @@ import { HeaderDashboardpageComponent } from './shared-components/header-dashboa
 import { CandidateReviewComponent } from './dashboardpage/candidate-review/candidate-review.component';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { AdvancedSearchComponent } from './dashboardpage/advanced-search/advanced-search.component';
-import { AdvancedSearchResultsComponent } from './dashboardpage/advanced-search/advanced-search-results/advanced-search-results.component';
+import { NgxUiLoaderModule } from "ngx-ui-loader";
 
 
 
@@ -33,7 +33,6 @@ import { AdvancedSearchResultsComponent } from './dashboardpage/advanced-search/
     HeaderDashboardpageComponent,
     CandidateReviewComponent,
     AdvancedSearchComponent,
-    AdvancedSearchResultsComponent,
   
   ],
   imports: [
@@ -42,7 +41,8 @@ import { AdvancedSearchResultsComponent } from './dashboardpage/advanced-search/
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    RatingModule.forRoot()
+    RatingModule.forRoot(),
+    NgxUiLoaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
