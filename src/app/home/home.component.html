@@ -1,4 +1,196 @@
-<app-header></app-header>
+
+<!-- Home_page-headerSection -->
+<header class="fixed-top header_section">
+    <div class="container">
+        <div class="hero_section">
+            <div class="hero_logo">
+                <div class="text-50-900-60" routerLink="/">Reverse Glassdoor</div>
+            </div>
+            <div class="hero_text">
+              <ul class="text-30-700-36">
+                <li (click)="onClickOpenpopup()"><a>Login</a></li>
+                <li routerLink="/signup"><a>Sign up</a></li>
+              </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<!-- popup_section -->
+<div class="login_popup h-100 d-flex justify-content-center align-items-center">
+    <!-- //logincard -->
+    <div class="card" *ngIf="isOpenpopup" >
+        <div class="card-title">
+            <h1 class="text-30-700-36">Login to find out about <br> your candidate</h1>
+            <h3 class="text-18-400-27">By proceeding you agree to our <span>T & C</span></h3>
+        </div>
+        <div class="card-body p-0">
+            <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-group form-floating mb-4">
+                    <input
+                        type="text" 
+                        id="floatingInput" 
+                        formControlName="email" 
+                        class="form-control" 
+                        placeholder="name@example.com" 
+                        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" 
+                    >
+                    <label for="floatingInput" >
+                        Email address
+                    </label>
+                    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                        <div *ngIf="f['email'].errors['required']">Email is required</div>
+                        <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="form-group form-floating mb-4">
+                    <input 
+                        type="text" 
+                        formControlName="password"
+                        class="form-control" 
+                        id="floatingPassword" 
+                        placeholder="Password"
+                        [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" 
+                    >
+                    <label for="floatingPassword">
+                        Password
+                    </label>
+                    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                        <div *ngIf="f['password'].errors['required']">password is required</div>
+                        <!-- <div *ngIf="f['password'].errors['password']">Email must be a valid email address</div> -->
+                    </div>
+                </div>
+                <div class="">
+                    <button class="btn">Login</button> 
+                </div>
+                <div class="">
+                    <h3 class="text-18-400-27"><span>Forgot password ?</span></h3>
+                    <h3 class="text-18-400-27">Don’t have an account ? <span>Sign Up</span></h3>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- //Forgot Your Password? -->
+    <!-- <div class="card">
+        <div class="card-title">
+            <h1 class="title text-30-700-36">Forgot Your Password?</h1>
+            <h3 class="text-18-400-27">Please enter registered e-mail address <br> You will recieve an OTP to the given e-mail.</h3>
+        </div>
+        <div class="card-body p-0">
+            <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-group form-floating mb-4">
+                    <input
+                        type="text" 
+                        id="floatingInput" 
+                        formControlName="email" 
+                        class="form-control" 
+                        placeholder="name@example.com" 
+                        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" 
+                    >
+                    <label for="floatingInput" >
+                        Email address
+                    </label>
+                    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                        <div *ngIf="f['email'].errors['required']">Email is required</div>
+                        <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+                    </div>
+                </div>
+                <div class="btnn">
+                    <button class="btn">Request OTP</button>
+                </div>
+                <div class="">
+                    <h3 class="text-18-400-27"><span>Back to Login</span></h3>
+                </div>
+            </form>
+        </div>
+    </div> -->
+    <!-- //OTP Verification -->
+    <!-- <div class="card">
+        <div class="card-title">
+            <h1 class="title text-30-700-36">OTP Verification</h1>
+            <h3 class="text-18-400-27">We have sent an OTP to the given mail address.<br>(mailaddress@company.com)</h3>
+        </div>
+        <div class="card-body p-0">
+           <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-group form-floating mb-4">
+                    <input 
+                        type="text" 
+                        formControlName="otp"
+                        class="form-control" 
+                        id="floatingInput" 
+                        placeholder="Enter OTP" 
+                        type="text" 
+                        [ngClass]="{ 'is-invalid': submitted && f['otp'].errors }" 
+                    >
+                    <label for="floatingInput">
+                        Enter OTP
+                    </label>
+                    <div *ngIf="submitted && f['otp'].errors" class="invalid-feedback">
+                        <div *ngIf="f['otp'].errors['required']">Please enter OTP</div>
+                    </div>
+                </div>
+                <div class="btnn">
+                    <button class="btn">Verify OTP</button>
+                </div>
+                <div class="">
+                    <h3 class="text-18-400-27"><span>Back to Login</span></h3>
+                </div>
+            </form>
+        </div>
+    </div> -->
+    <!-- Change Password -->
+    <!-- <div class="card">
+        <div class="card-title">
+            <h1 class="title text-30-700-36">Change Password</h1>
+            <h3 class="text-18-400-27"><B>Note:</B> Shouldn’t repeat previous two passwords</h3>
+            <h3 class="text-18-400-27 pt-0">Password should contain minimum 8 <br>characters (An upper case, lower case, special<br> characters and numbers).</h3>
+        </div>
+        <div class="card-body p-0">
+            <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-group form-floating mb-4">
+                    <input 
+                        type="text" 
+                        formControlName="createpassword"
+                        class="form-control" 
+                        id="floatingPassword" 
+                        placeholder="Create Password"
+                        [ngClass]="{ 'is-invalid': submitted && f['createpassword'].errors }" 
+                    >
+                    <label for="floatingPassword">
+                        Create Password
+                    </label>
+                    <div *ngIf="submitted && f['createpassword'].errors" class="invalid-feedback">
+                        <div *ngIf="f['createpassword'].errors['required']">password is required</div>
+                        <div *ngIf="f['createpassword'].errors['minlength']">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="form-group form-floating mb-4">
+                    <input 
+                        type="text" 
+                        formControlName="confirmpassword"
+                        class="form-control" 
+                        id="floatingPassword" 
+                        placeholder="Re-type Password"
+                        [ngClass]="{ 'is-invalid': submitted && f['confirmpassword'].errors }" 
+                    >
+                    <label for="floatingPassword">
+                        Re-type Password
+                    </label>
+                    <div *ngIf="submitted && f['confirmpassword'].errors" class="invalid-feedback">
+                        <div *ngIf="f['confirmpassword'].errors['required']">Confirm password is required</div>
+                    </div>
+                </div>
+                <div class="">
+                    <button class="btn">Change Password</button>
+                </div>
+            </form>
+        </div>
+    </div> -->
+</div>
+
+
+<!-- Content_section -->
 <div class="home_section">
     <div class="hero_section">
         <div class="container">
@@ -16,6 +208,12 @@
                       </span>
                     </div>
                 </form>
+                <div class="write-reviewbtn text-30-500-36">
+                    <span>
+                        <img src="../../assets/Images/write_review_icon.svg" alt="write_review_icon">
+                    </span>
+                    Write a review?
+                </div>
             </div>
         </div>
     </div>
@@ -84,4 +282,3 @@
         </div>
     </div>
 </div>
-

@@ -1,70 +1,70 @@
 @import "/src/styles/mixins";
 @import "/src/styles/extend";
 
-.header_section{
-    padding: 20px 20px;
-    background-color: var(--white);
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
-    // @include breakpoint($min: 768px,$max: 1300px) {
-    //     padding: 20px 20px;
-    // }
-    @include breakpoint(sm){
-       padding: 40px 40px;
-    }
-    .hero_section{
-        display: flex;
-        justify-content: space-between;
-        .hero_logo{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            .text-50-900-60{
-                @include font(900);
-                @include pxtorem(50);
-                @include line_height(60px);
-                color: var(--purple);
-                cursor: pointer;
-                @include breakpoint(xs) {
-                    @include line_height(20px);
-                    @include pxtorem(17);
-                }
-                @include breakpoint($min: 768px, $max: 1023px) {
-                    @include line_height(25px);
-                    @include pxtorem(30);
-                }
-            }
-        }
-        .hero_text{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            .text-30-700-36{
-                color: var(--purple);
-            }
-            ul{
-                list-style-type: none;
-                display: flex;
-                @include margin {
-                    margin: 10px 0px;
-                }
-                li{
-                    padding-left: 71px;
-                    cursor: pointer;
-                    &:hover{
-                        opacity: 0.8;
-                    }
-                    @include breakpoint(xSmall) {
-                        padding-left: 15px;
-                    }
-                    @include breakpoint(ipad) {
-                        padding-left: 40px;
-                    }
-                }
+// .header_section{
+//     padding: 20px 20px;
+//     background-color: var(--white);
+//     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+//     // @include breakpoint($min: 768px,$max: 1300px) {
+//     //     padding: 20px 20px;
+//     // }
+//     // @include breakpoint(sm){
+//     //    padding: 40px 40px;
+//     // }
+//     .hero_section{
+//         display: flex;
+//         justify-content: space-between;
+//         .hero_logo{
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             .text-50-900-60{
+//                 @include font(900);
+//                 @include pxtorem(50);
+//                 @include line_height(60px);
+//                 color: var(--purple);
+//                 cursor: pointer;
+//                 @include breakpoint(xs) {
+//                     @include line_height(20px);
+//                     @include pxtorem(17);
+//                 }
+//                 @include breakpoint($min: 768px, $max: 1023px) {
+//                     @include line_height(25px);
+//                     @include pxtorem(30);
+//                 }
+//             }
+//         }
+//         .hero_text{
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             .text-30-700-36{
+//                 color: var(--purple);
+//             }
+//             ul{
+//                 list-style-type: none;
+//                 display: flex;
+//                 @include margin {
+//                     margin: 10px 0px;
+//                 }
+//                 li{
+//                     padding-left: 71px;
+//                     cursor: pointer;
+//                     &:hover{
+//                         opacity: 0.8;
+//                     }
+//                     @include breakpoint(xSmall) {
+//                         padding-left: 15px;
+//                     }
+//                     @include breakpoint(ipad) {
+//                         padding-left: 40px;
+//                     }
+//                 }
 
-            }
-        }
-    }
-}
+//             }
+//         }
+//     }
+// }
 
 
 

@@ -1,4 +1,4 @@
-.container {
+.container, .container-fluid {
     // @include breakpoint($max: 2559.98px) {
     //     max-width: 89vw;
     // }
@@ -18,6 +18,19 @@
     @include breakpoint($min: 768px, $max: 1023px) {
         @include pxtorem(20);
     }
+}
+.text-30-500-36{
+    @include font(500);
+    @include pxtorem(30);
+    @include line_height(36px);
+    color: var(--white);
+    @include breakpoint(xs) {
+        @include pxtorem(16);
+        @include line_height(20px);
+    }
+    @include breakpoint($min: 768px, $max: 1023px) {
+        @include pxtorem(20);
+    } 
 }
 .text-25-400-30{
     @include pxtorem(25);

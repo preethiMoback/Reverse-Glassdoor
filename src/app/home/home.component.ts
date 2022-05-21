@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
 
   registerForm!: FormGroup;
   submitted = false;
+  isOpenpopup: boolean = false ;
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -48,4 +49,8 @@ export class HomeComponent implements OnInit {
     }
 }
 
+onClickOpenpopup() {
+  this.isOpenpopup = ! this.isOpenpopup;
+  //return this.isOpenpopup;
+}
 }
