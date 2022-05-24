@@ -1,0 +1,135 @@
+@import "/src/styles/mixins";
+@import "/src/styles/extend";
+
+
+.candidate_review{
+    padding: 60px 0px;
+    background-color: var(--dusky-white);
+    .candidate_review_card{
+        background: var(--white);
+        box-shadow: 0px 0px 10px rgba(98, 23, 124, 0.1);
+        border-radius: 10px;
+        .text-30-700-36{
+            color: var(--purple);
+        }
+    }
+    .card{
+        padding:40px 80px;
+        @include breakpoint(ipad){
+            padding:20px 20px;
+        }
+        .card-title{
+            padding-left: 16px;
+        }
+        .card-body{
+            .form-group input{
+                height: 60px;
+            }
+            .form__section .form-group, .form-check{
+                padding-top: 45px;
+                @include breakpoint(ipad){
+                    padding-top: 20px;
+                }
+                label{
+                    @include font(500);
+                    @include pxtorem(20);
+                    @include line_height(24px);
+                    @include breakpoint (sm){
+                        height: 40px;
+                        display: flex;
+                        align-items:flex-end;
+                    }
+                    @include breakpoint(ipad){
+                        @include pxtorem(16);
+                    }
+                }
+                input, textarea{
+                    @include margin {
+                        margin-top: 10px;
+                    }
+                    @include pxtorem(18);
+                    @include font(400);
+                    resize: none;
+                    @include breakpoint(ipad){
+                        @include pxtorem(16);
+                    }
+                    &:focus {
+                        outline: none;
+                        box-shadow: none;
+                       }
+                }
+                rating{
+                    @include margin {
+                        margin-top: 10px;
+                    }
+                    @include pxtorem(32);
+                    color: var(--dark-gray);
+                }
+                .switch-toggle {
+                    @include margin {
+                        margin-top: 1em;
+                    }
+                    float: left;
+                    background: var(--white);
+                    border: 1px solid var(--purple);
+                    border-radius: 5px;
+                    label{
+                        //width: 6.5em;
+                        padding: 2em;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        @include breakpoint(ipad){
+                            padding: 1em;
+                        }
+
+                    }
+                    input{
+                     position: absolute;
+                     opacity: 0;
+                     &:checked + label{
+                         background: var(--purple);
+                         color: var(--white)
+                     }
+                    }
+                    input + label{
+                            padding: 1em;
+                            float:left;
+                            color: var(--purple);
+                            cursor: pointer;
+                    }
+                 }
+            }
+            .btn{
+                @include width_height(153px, 49px);
+                @include pxtorem(20);
+                @include line_height(24px);
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+            }
+            .form-radio{
+                input[type=radio]{
+                    border: 2px solid #626262;;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    @include width_height(15px, 15px);
+                    &::after, &:checked{
+                        background: var(--purple) !important;
+                     }
+                }
+                @include breakpoint(sm){
+                    display: flex;
+                    justify-content: space-between;
+                    }
+                }
+            .form-radio .form-check label,.form-check label{
+                @include breakpoint(sm){
+                @include line_height(55px!important);
+                padding-top: 20px;
+                }
+            }
+        }
+    }
+}

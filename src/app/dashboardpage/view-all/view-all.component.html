@@ -1,0 +1,184 @@
+<app-header-dashboardpage></app-header-dashboardpage>
+<div class="viewall_section">
+    <div class="container-fluid p-0">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-4">
+                    <p routerLink="/dashboardpage">
+                        <i class="fa fa-angle-left pr-5" aria-hidden="true"></i>
+                        Back
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-title text-30-700-36">
+                        All Reviews
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="allreviews_section">
+        <div class="container">
+            <div class="card content__part mt-4">
+                <div class="card-title">
+                    All reviews<a class="text-18-400-21" routerLink="/viewall">View All</a>
+                </div>
+                <div class="content__part">
+                    <div *ngFor="let candidate of candidateData">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="text-25-700-30">
+                                    {{candidate.name}}
+                                </div>
+                                <div class="text-25-400-30">
+                                    Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
+                                </div>
+                                <div class="text-25-400-30">
+                                    <div class="row ratings">
+                                        <div class="col-md-4">
+                                            <rating [(ngModel)]="rate" [max]=5 [readonly]="false"></rating>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="thumbs-rating">
+                                                <div class="thumbs-up-rating">
+                                                    <span class=" text-20-400-24">13</span>
+                                                   <span class="thumbs-icon">
+                                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                                   </span>
+                                                </div>
+                                                <div class="thumbs-down-rating">
+                                                    <span class="text-20-400-24">13</span>
+                                                    <span class="thumbs-icon">
+                                                        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                                <span class="text-20-400-24">20 views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="view_list">
+                                    <div class="text-20-600-24">
+                                        <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{candidate.success}}
+                                    </div>
+                                    <div class="view_btn text-20-400-24">
+                                        View Review
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div *ngFor="let candidate of candidateData">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="text-25-700-30">
+                                    {{candidate.name}}
+                                </div>
+                                <div class="text-25-400-30">
+                                    Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
+                                </div>
+                                <div class="text-25-400-30">
+                                    Reason for rejection
+                                </div>
+                                <div class="text-20-400-24" >
+                                    Improper way of feedback
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="view_list">
+                                    <div class="text-20-600-24 rejected_color">
+                                        <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{candidate.rejected}}
+                                    </div>
+                                    <div class="view_btn text-20-400-24">
+                                        View Review
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       <hr>
+                    </div>
+                    <div *ngFor="let candidate of candidateData">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="text-25-700-30">
+                                    {{candidate.name}}
+                                </div>
+                                <div class="text-25-400-30">
+                                    Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="view_list">
+                                    <div class="text-20-600-24">
+                                        <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{candidate.success}}
+                                    </div>
+                                    <div class="view_btn text-20-400-24">
+                                        View Review
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div *ngFor="let candidate of candidateData">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="text-25-700-30">
+                                    {{candidate.name}}
+                                </div>
+                                <div class="text-25-400-30">
+                                    Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
+                                </div>
+                                <br>
+                                <div class="text-25-400-30">
+                                    Reason for rejection
+                                </div>
+                                <div class="text-20-400-24">
+                                    Improper way of feedback
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="view_list">
+                                    <div class="text-20-600-24 rejected_color">
+                                        <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{candidate.rejected}}
+                                    </div>
+                                    <div class="view_btn text-20-400-24">
+                                        View Review
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div *ngFor="let candidate of candidateData">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="text-25-700-30">
+                                    {{candidate.name}}
+                                </div>
+                                <div class="text-25-400-30">
+                                    Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="view_list">
+                                    <div class="text-20-600-24 rejected_color">
+                                        {{candidate.pending}}
+                                    </div>
+                                    <div class="view_btn text-20-400-24">
+                                        View Review
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

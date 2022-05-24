@@ -173,17 +173,18 @@ p{
     }
 }
 .view_btn{
-    height: 60px;
+    height: 49px;
     border:2px solid #62177C;
     border-radius: 5px;
     color: var(--purple);
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     // add icons and remove the padding
     //margin-bottom: 45px;
     @include breakpoint(min1200) {
-        @include width_height(230px, 60px);
+        @include width_height(230px, 49px);
     }
 }
 
@@ -254,4 +255,38 @@ p{
             }
         }
     }
+}
+.text-25-400-30{
+    color: var(--black-light);
+    @include margin {
+        margin-bottom: 1em ;
+    }
+}
+.text-18-400-21{
+    @include pxtorem(18);
+    @include line_height(21px);
+    @include font(400);
+    color: var(--blue);
+    text-decoration: underline;
+    padding-left: 40px;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.8;
+    }
+    @include breakpoint(ipad){
+        @include pxtorem(16);
+    }
+}
+.text-20-600-24{
+    @include pxtorem(20);
+    @include line_height(24px);
+    @include font(600);
+    color:var(--light-green);  
+    padding: 45px 0px; 
+    // @include breakpoint(sm){
+    //     text-align: right;
+    // }
+}
+.rejected_color{
+    color: var(--red);
 }

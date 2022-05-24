@@ -1,0 +1,40 @@
+@import "/src/styles/mixins";
+@import "/src/styles/extend";
+
+
+.viewall_section{
+    background-color: var(--dusky-white) !important;
+    .card{
+        padding:50px 0px 20px 0px;
+        .card-title{
+            @include pxtorem(30);
+            @include line_height(36px);
+            @include font(700);
+            color: var(--black);
+            @include breakpoint(ipad){
+                @include pxtorem(25);
+            }
+        }
+    }
+    .allreviews_section{
+        @include breakpoint(min1601){
+            width: 50%;
+            margin: auto;
+        }
+        .card{
+            padding: 30px;
+            .view_list{
+                @include breakpoint(sm){
+                    display: grid;
+                    justify-content: flex-end;
+                }
+                .text-20-600-24{
+                    @include breakpoint(sm){
+                        text-align: right;
+                    }
+                }
+            }
+        }
+    }
+    
+}

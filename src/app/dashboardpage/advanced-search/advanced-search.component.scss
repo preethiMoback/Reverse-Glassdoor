@@ -60,93 +60,90 @@
                     outline: none;
                     box-shadow: none;
                 }
+            }
+        }
+        .text-30-700-36{
+        }
+        .text-25-500-30{
+            @include pxtorem(25);
+            @include line_height(30px);
+            @include font(500);
+            color: var(--black);
+            padding: 0px 0px 15px 62px;
+            a{
+                text-decoration: none;
+                color: var(--blue);
+                @include margin {margin-top: 10px;}
 
+            }
+            @include breakpoint(ipad){
+                @include pxtorem(16);
+            }
         }
+        .fa-check{
+            color: var(--light-green) !important;
+            font-weight: 100;
+        }
+    }
+    .candidate-card{
+        @include margin {margin: 20px 0;}
+        @include breakpoint($min:1300px){
+            width: 85%;
+        }
+        .card{
+            border-radius: 10px;
+            padding: 0;
+            @include breakpoint($min: 768px,$max: 1199px){
+                padding-right: 30px;
+            }
 
-    }
-    .text-30-700-36{
-        i{
-        color: var(--purple);
-        position: relative;
-        margin: 10px;
-        border-radius: 10px;
-        height: 45.29px;
-        font-size: 42px; 
-        @include breakpoint(ipad){
-            @include pxtorem(18);
-        }  
-        }
-    }
-    .text-25-500-30{
-        @include pxtorem(25);
-        @include line_height(30px);
-        @include font(500);
-        color: var(--black);
-        padding: 25px 0px 0px 50px;
-        a{
-            text-decoration: none;
-        }
-        @include breakpoint(ipad){
-            @include pxtorem(16);
-        }
-    }
-    .btn-sec{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: flex-start;
-        @include breakpoint(xs){
-            align-items: center;
-        }
-        .write{
-            @include width_height(215px, 49px);
-            background-color: var(--purple);
-            color: white;
-            border-radius: 5px;
-            @include breakpoint(ipad) {
-                @include width_height(150px, 49px);
-                @include pxtorem(14);
-            }
-            @include breakpoint(xs){
-                @include width_height(215px, 30px);
-                @include margin{margin-top: 1em};
-            }
-        }
-        .check{
-            @include width_height(215px, 49px);
-            border: 1px solid var(--purple);
-            border-radius: 5px;
-            background-color: white;
-            color: var(--purple);
-            @include breakpoint(ipad) {
-
-                @include width_height(150px, 49px);
-                @include pxtorem(14);
-            }
-            @include breakpoint(xs){
-                @include width_height(215px, 30px);
-                @include margin{margin-top: 1em};
+            .btn-sec{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                @include breakpoint(xs){
+                    align-items: center;
+                }
+                .write{
+                    @include width_height(215px, 49px);
+                    // background-color: var(--purple);
+                    color: var(--white);
+                    // border-radius: 5px;
+                    @include margin{margin: 1em 0em};
+                    @include breakpoint(ipad) {
+                        @include width_height(150px, 30px);
+                        @include pxtorem(14);
+                    }
+                    @include breakpoint(xs){
+                        //@include width_height(px, 30px);
+                        @include margin{margin-top: 1em};
+                    }
+                }
+                .check{
+                    @include width_height(215px, 49px);
+                    border: 1px solid var(--purple);
+                    border-radius: 5px;
+                    background-color: white;
+                    color: var(--purple);
+                    @include breakpoint(ipad) {
+                        @include width_height(150px, 30px);
+                        @include pxtorem(14);
+                    }
+                    @include breakpoint(xs){
+                        //@include width_height(215px, 30px);
+                        //@include margin{margin-top: 1em};
+                    }
+                }
             }
         }
     }
-    .fa-check{
-        color: var(--light-green) !important;
-        font-weight: 100;
-    }
-}
-.candidate-card{
-    .card{
-        border-radius: 10px;
-        padding: 0;
-    }
-}
-input.nosubmit {
-    display: block;
-    padding: 9px 4px 9px 40px;
-    background: transparent url("../../../assets/Images/search_icon.svg")no-repeat 40px center;
-    background-size: 30px;
-    }  
+    input.nosubmit {
+        display: block;
+        padding: 9px 4px 9px 40px;
+        background: transparent url("../../../assets/Images/search_icon.svg")no-repeat 40px center;
+        background-size: 30px;
+    } 
 }
 
-  
 

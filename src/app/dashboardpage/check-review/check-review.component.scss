@@ -1,0 +1,78 @@
+@import "/src/styles/mixins";
+@import "/src/styles/extend";
+
+.review_card-section{
+    background-color: var(--dusky-white);
+    min-height: 100vh;
+    .allreview_card{
+        padding: 20px;
+        @include breakpoint(sm){
+            padding: 25px 70px 50px 70px;
+        }
+        .text-25-700-30{
+            @include font(700);
+            @include breakpoint(xs){
+                padding: 20px 0px;
+                @include pxtorem(22);
+            }
+        }
+        .text-25-400-30{
+            color: var(--black-light);
+            @include margin {
+                margin: 1em 0;
+            }
+            .fa-user-circle{
+                color: var(--grey-lighter);
+                font-size: 1.4em;
+            }
+        }
+        .view_btn{
+            position: relative;
+            top: 45%;
+            @include margin {
+                margin-left: auto;
+            }
+            @include breakpoint(xs){
+                width: 50%;
+                @include margin {
+                    margin: 0;
+                }
+                
+            }
+        }
+    }
+    hr{
+        @include margin {
+            margin-top: 45px;
+        }
+        @include breakpoint(xs){
+            @include margin {
+                margin-top: 60px;
+            } 
+        }
+    }
+    .back_btn{
+        margin-top: 70px;
+        @include breakpoint(sm){
+            margin-top: 70px;
+        }
+    }
+    .write{
+        @include width_height(215px, 49px);
+        @include breakpoint(ipad) {
+            @include width_height(150px, 30px);
+            @include pxtorem(14);
+        }
+        @include breakpoint(min1601){
+            margin: 70px 50px;
+        }
+    }
+    .candidate-card{
+        @include breakpoint(sm){
+            margin-top: 136px;
+        }
+        @include breakpoint(min1601){
+            margin: 70px 50px;
+        }
+    }
+}

@@ -127,11 +127,13 @@
                 </div>
                 <div class="col-md-10">
                     <div class="card-title text-30-700-36">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                        Showing search results for
+                        <span>
+                            <img src="../../assets/Images/search_resulticon.svg" alt="search_resulticon">
+                        </span>
+                        Showing search results
                     </div>
                     <div class="search-results text-25-500-30">
-                     '{{onSubmit()}}'
+                        {{onSubmit()}}
                     </div>
                     <div class="text-25-500-30">
                         <a href="">
@@ -144,28 +146,21 @@
         <div class="container">
             <div class="candidate-card">
                 <div class="card">
-                    <div class="card-body row">
+                    <div class="row card-body">
                         <div class="col-md-9">
-                            <div> 
-                            <span class="text-30-700-36">
-                                Mahesh Rudra Badaballa
-                            </span>
-                            <span class="text-20-400-24">
-                                <i class="fa fa-check" aria-hidden="true"></i>
-                            </span>
+                            <div class="text-30-700-36">
+                                Mahesh Rudra Badaballa<i class="fa fa-check" aria-hidden="true"></i>
                             </div>
                             <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    badaballarocks@gmail.com
-                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                    badaballarocks@gmail.com<i class="fa fa-check" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    +91 8928382945
-                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                    +91 8928382945 <i class="fa fa-check" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="person_information">
@@ -182,10 +177,10 @@
                             </div>
                         </div>
                         <div class="col-md-3 btn-sec">
-                            <div class="write btn text-20-400-24">
+                            <div class="write btn text-20-400-24"  routerLink="/writereview">
                                 Write Review
                             </div>
-                            <div class="check btn text-20-400-24">
+                            <div class="check btn text-20-400-24" routerLink="/checkreview">
                                 Check Reviews
                             </div>
                         </div>
