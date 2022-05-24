@@ -30,37 +30,173 @@
         }
         .hero_icons{
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            ul{
-                list-style-type: none;
-                display: flex;
-                @include margin {
-                    margin: 10px 0px;
+            margin-right: 3em;
+            @include breakpoint(ipad){
+                margin-right: 0;
+            }
+            .dropdown{
+                padding-left: 71px;
+                cursor: pointer;
+                z-index: 2;
+                position: static;
+                &:hover{
+                    opacity: 1;
                 }
-                li{
-                    padding-left: 71px;
-                    cursor: pointer;
-                    &:hover{
-                        opacity: 0.8;
-                    }
-                    @include breakpoint(xSmall) {
-                        padding-left: 15px;
-                    }
+                @include breakpoint(xSmall) {
+                    padding-left: 15px;
+                }
+                @include breakpoint(ipad) {
+                    padding-left: 40px;
+                }
+                img{
+                    width: 50px;
+                    height: 50px; 
                     @include breakpoint(ipad) {
-                        padding-left: 40px;
+                        @include width_height(30px,30px);
                     }
-                    img{
-                        width: 30px;
-                        height: 30px; 
-                        @include breakpoint(sm) {
-                            @include width_height(40px,40px);
+                }
+                .dropdown-menu{
+                    padding: 0;
+                    width: 32em;
+                    border-radius: 10px;
+                    // overflow:scroll;
+                    @include breakpoint(xs){
+                        width: 18em;
+                    }
+                
+                .card{
+                    padding: 0 1em;
+                    border-radius: 10px;
+                    width: 100%;
+                    .card-title{
+                        margin: 1em;
+                        @include pxtorem(30);
+                        @include line_height(36px);
+                        @include font(700);
+                        color: var(--black);
+                        @include breakpoint(ipad){
+                            @include pxtorem(20);
                         }
                     }
-                }
+                    .card-body{
+                        padding: 0;
+                        .card{
+                            width: 100%;
+                           margin: 5px 0;
+                           border-top: none;
+                            .card-body{
+                                padding: 2px;
+                                overflow:hidden;
+                                clear: both;
+                            }
+                        }
+                        .text-20-600-24{
+                            @include pxtorem(20);
+                            @include line_height(24px);
+                            @include font(400);
+                            color:var(--black);  
+                            padding: 45px 0px; 
+                            @include breakpoint(xs){
+                            @include pxtorem(14);
+                            @include line_height(12px);
+                            }
+                            .status{
+                                width: 0.8em;
+                            }
+                        }
+                        .text-18-400-21{
+                            @include pxtorem(18);
+                            @include line_height(21px);
+                            @include font(400);
+                            margin: 10px 0;
+                            color: gray;
+                            @include breakpoint(ipad){
+                                @include pxtorem(16);
+                            }
+                        }
+                        .reject{
+                            border-left: 10px solid var(--red);
+                        }
+                        .approve{
+                            border-left: 10px solid var(--light-green);
 
+                        }
+                       
+                        .rejected_color{
+                            color: var(--red);
+                        }
+                        .approved_color{
+                            color: var(--light-green);
+                        }
+                    }
+                    
+                }
+            }
+            #edit-profile{
+                width: 10em;
+                border-radius: 10px;
+                padding: 1em;
+                &:hover{
+                    opacity: 1;
+                }
+                @include breakpoint(sm){
+                    width: 7em;
+                    padding: 5px;
+                }
+                .text-20-600-24{
+                    @include pxtorem(20);
+                    @include line_height(24px);
+                    @include font(400);
+                    color:var(--black);  
+                    @include breakpoint(xs){
+                        @include pxtorem(14);
+                    @include line_height(12px);
+                    }
+                }
+                a{
+                    margin: 1em 0;
+                }
             }
         }
+        
     }
 }
+}
+//         .hero_icons{
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             ul{
+//                 list-style-type: none;
+//                 display: flex;
+//                 @include margin {
+//                     margin: 10px 0px;
+//                 }
+//                 li{
+//                     padding-left: 71px;
+//                     cursor: pointer;
+//                     &:hover{
+//                         opacity: 0.8;
+//                     }
+//                     @include breakpoint(xSmall) {
+//                         padding-left: 15px;
+//                     }
+//                     @include breakpoint(ipad) {
+//                         padding-left: 40px;
+//                     }
+//                     img{
+//                         width: 30px;
+//                         height: 30px; 
+//                         @include breakpoint(sm) {
+//                             @include width_height(40px,40px);
+//                         }
+//                     }
+//                 }
+
+//             }
+//         }
+//     }
+// }
 
