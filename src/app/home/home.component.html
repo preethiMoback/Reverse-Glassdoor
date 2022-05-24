@@ -8,8 +8,8 @@
             </div>
             <div class="hero_text">
               <ul class="text-30-700-36">
-                <li (click)="onClickOpenpopup()"><a>Login</a></li>
-                <li routerLink="/signup"><a>Sign up</a></li>
+                <li (click)="changeStep(1)"><a>Login</a></li>
+                <li (click)="changeStep(1)" routerLink="/login"><a>Sign up</a></li>
               </ul>
             </div>
         </div>
@@ -20,7 +20,7 @@
 <!-- popup_section -->
 <div class="login_popup h-100 d-flex justify-content-center align-items-center">
     <!-- //logincard -->
-    <div class="card" *ngIf="isOpenpopup" >
+    <div class="card" *ngIf="step==1">
         <div class="card-title">
             <h1 class="text-30-700-36">Login to find out about <br> your candidate</h1>
             <h3 class="text-18-400-27">By proceeding you agree to our <span>T & C</span></h3>
@@ -65,14 +65,14 @@
                     <button class="btn">Login</button> 
                 </div>
                 <div class="">
-                    <h3 class="text-18-400-27"><span>Forgot password ?</span></h3>
-                    <h3 class="text-18-400-27">Don’t have an account ? <span>Sign Up</span></h3>
+                    <h3 class="text-18-400-27" (click)="changeStep(2)"><span>Forgot password ?</span></h3>
+                    <h3 class="text-18-400-27" (click)="changeStep(0)">Don’t have an account ? <span>Sign Up</span></h3>
                 </div>
             </form>
         </div>
     </div>
     <!-- //Forgot Your Password? -->
-    <!-- <div class="card">
+    <div class="card" *ngIf="step==2">
         <div class="card-title">
             <h1 class="title text-30-700-36">Forgot Your Password?</h1>
             <h3 class="text-18-400-27">Please enter registered e-mail address <br> You will recieve an OTP to the given e-mail.</h3>
@@ -97,16 +97,16 @@
                     </div>
                 </div>
                 <div class="btnn">
-                    <button class="btn">Request OTP</button>
+                    <button class="btn" (click)="changeStep(3)">Request OTP</button>
                 </div>
                 <div class="">
-                    <h3 class="text-18-400-27"><span>Back to Login</span></h3>
+                    <h3 class="text-18-400-27" (click)="changeStep(1)"><span>Back to Login</span></h3>
                 </div>
             </form>
         </div>
-    </div> -->
+    </div>
     <!-- //OTP Verification -->
-    <!-- <div class="card">
+    <div class="card" *ngIf="step==3">
         <div class="card-title">
             <h1 class="title text-30-700-36">OTP Verification</h1>
             <h3 class="text-18-400-27">We have sent an OTP to the given mail address.<br>(mailaddress@company.com)</h3>
@@ -131,16 +131,16 @@
                     </div>
                 </div>
                 <div class="btnn">
-                    <button class="btn">Verify OTP</button>
+                    <button class="btn" (click)="changeStep(4)">Verify OTP</button>
                 </div>
                 <div class="">
-                    <h3 class="text-18-400-27"><span>Back to Login</span></h3>
+                    <h3 class="text-18-400-27" (click)="changeStep(1)"><span>Back to Login</span></h3>
                 </div>
             </form>
         </div>
-    </div> -->
+    </div>
     <!-- Change Password -->
-    <!-- <div class="card">
+    <div class="card" *ngIf="step==4">
         <div class="card-title">
             <h1 class="title text-30-700-36">Change Password</h1>
             <h3 class="text-18-400-27"><B>Note:</B> Shouldn’t repeat previous two passwords</h3>
@@ -182,13 +182,12 @@
                     </div>
                 </div>
                 <div class="">
-                    <button class="btn">Change Password</button>
+                    <button class="btn" (click)="changeStep(1)">Change Password</button>
                 </div>
             </form>
         </div>
-    </div> -->
+    </div>
 </div>
-
 
 <!-- Content_section -->
 <div class="home_section">

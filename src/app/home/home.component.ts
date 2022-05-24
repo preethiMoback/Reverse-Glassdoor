@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
   isOpenpopup: boolean = false ;
+  step = -1;
+ 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -49,8 +51,13 @@ export class HomeComponent implements OnInit {
     }
 }
 
-onClickOpenpopup() {
-  this.isOpenpopup = ! this.isOpenpopup;
-  //return this.isOpenpopup;
+// onClickOpenpopup() {
+//   //  this.step=1;
+
+//   //this.isOpenpopup = ! this.isOpenpopup;
+//   //return this.isOpenpopup;
+// }
+changeStep(stepVal:number){
+  this.step = stepVal;
 }
 }
