@@ -14,6 +14,7 @@ import { CheckReviewComponent } from './dashboardpage/check-review/check-review.
 import { ViewReviewComponent } from './dashboardpage/view-review/view-review.component';
 import { ViewAllComponent } from './dashboardpage/view-all/view-all.component';
 import { DashboardReviewComponent } from './dashboardpage/dashboard-review/dashboard-review.component';
+import { SearchResultComponent } from './dashboardpage/search-result/search-result.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'checkreview',  component: CheckReviewComponent },
   { path: 'viewreview',  component: ViewReviewComponent },
   { path: 'viewall',  component: ViewAllComponent },
-  { path: 'dashboardreview',  component: DashboardReviewComponent }
+  { path: 'dashboardreview',  component: DashboardReviewComponent },
+  { path: 'searchresult',  component: SearchResultComponent },
 ];
 
 @NgModule({
