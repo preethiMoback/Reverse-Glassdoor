@@ -3,19 +3,25 @@
 
 .dashboardpage_header{
     @include margin {
-        margin-top: 92px;
+        margin-top: 101px;
     }
+    z-index: 1;
     background-color: var(--white);
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     justify-content: center;
     align-items: center;
     @include breakpoint(sm){
-        margin-top:101px;
+        margin-top:  96px;
+    }
+    @include breakpoint(xs){
+        margin-top: 80px;
+    }
+    @include breakpoint(ipad){
+        margin-top: 64px;
     }
     .search-bar-container{
         @include breakpoint(sm){
-           // padding: 0.5em;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -48,9 +54,6 @@
             }
         }
         .search-bar{
-            // @include margin {
-            //     margin: 20px 0px;
-            // }
             @include breakpoint(sm){
                 width: 60%;
             }
@@ -60,23 +63,30 @@
             @include breakpoint(ipad) {
                 @include width_height(200px, 60px);
             }
+            @include breakpoint(xs) {
+                @include width_height(180px, 50px);
+            }
         }
         .write-review_btn{
             display: flex;
             justify-content: space-evenly;
             @include pxtorem(25);
             @include line_height(30px);
-            // @include margin {
-            //     margin: 20px 20px;
-            // }
             @include breakpoint(ipad) {
                 @include pxtorem(20);
             }
             @include breakpoint(xs){
+                @include line_height(24px);
+                @include pxtorem(16);
                 @include margin {
-                margin: 0px 0px 10px 0px;
+                margin: 10px 0px 10px 0px;
                 }
              }
+             img{
+                @include breakpoint(xs){
+                    @include width_height(25px, 30px);
+                }
+            }
         }
         .vl {
             border-right: 1px solid #FFFFFF;
@@ -108,6 +118,7 @@
                 border-radius: 5px !important;
                 @include breakpoint(xSmall){
                     @include pxtorem(18);
+                    height : 50px;
                 }
                 &:focus {
                     outline: none;
@@ -122,10 +133,14 @@
             }
             .input-group-text{
                 height: 67px;
+                @include breakpoint(xSmall){
+                    height : 50px;
+                }
                 img{
                     @include breakpoint(xSmall){
                         width: 40px;
                         border-radius: 10px;
+                        height : 50px;
                     }
                 }
             }
@@ -144,7 +159,13 @@
 
 .candidates_details{
     position: relative;
-    padding-top: 10%;
+    padding-top: 12%;
+    @include breakpoint(ipad){
+        padding-top: 15%;
+    }
+    @include breakpoint(xs){
+        padding-top: 54%;
+    }
     background-color: var(--dusky-white);
     .card{
         padding: 30px;
@@ -262,41 +283,25 @@
                     }
                 }
             }
-            // .text-25-400-30{
-            //     color: var(--black-light);
-            //     @include margin {
-            //         margin-bottom: 1em ;
-            //     }
-            // }
-            // .text-18-400-21{
-            //     @include pxtorem(18);
-            //     @include line_height(21px);
-            //     @include font(400);
-            //     color: var(--blue);
-            //     text-decoration: underline;
-            //     padding-left: 40px;
-            //     cursor: pointer;
-            //     &:hover{
-            //         opacity: 0.8;
-            //     }
-            //     @include breakpoint(ipad){
-            //         @include pxtorem(16);
-            //     }
-            // }
             .view_btn{
                 // add icons and remove the padding
                 margin-bottom: 45px;
+                @include breakpoint(ipad){
+                    padding: 5px 10px;
+                }
+                @include breakpoint(xs){
+                    margin-bottom: 10px;
+                }
             }
-            // .text-20-600-24{
-            //     @include pxtorem(20);
-            //     @include line_height(24px);
-            //     @include font(600);
-            //     color:var(--light-green);  
-            //     padding: 45px 0px; 
-            // }
-            // .rejected_color{
-            //     color: var(--red);
-            // }
+            .text-right{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-end;
+                @include breakpoint(xs){
+                    align-items: flex-start;
+                }
+            }
         }
     }
 }

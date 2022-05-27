@@ -162,8 +162,10 @@
                                            <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input mt-1" 
                                            [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }" />
                                            <label for="acceptTerms" class="form-check-label">
-                                               I agree to your <a href="">Terms of Use.</a> This review about the mentioned
+                                              <span>
+                                                I agree to your <a href="">Terms of Use.</a> This review about the mentioned
                                                candidate is genuine.
+                                              </span> 
                                            </label>
                                            <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">Accept Ts & Cs is required</div>
                                        </div>

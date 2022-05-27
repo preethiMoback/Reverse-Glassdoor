@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormDataService } from '../form-data.service';
 
 @Component({
   selector: 'app-search-result',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchResultComponent implements OnInit {
 
-  constructor() { }
+ data = this.formData.getData();       
+
+  constructor(private formData:FormDataService) { }
 
   ngOnInit(): void {
   }
+
+
 
 }
