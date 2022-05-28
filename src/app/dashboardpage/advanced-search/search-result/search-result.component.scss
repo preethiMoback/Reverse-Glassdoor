@@ -10,7 +10,7 @@
         }
         .card-title{
             @include breakpoint (xs){
-                text-align: center;
+                text-align: left;
                 @include pxtorem(20);
                 padding: 0px 30px;
                 @include line_height(30px);
