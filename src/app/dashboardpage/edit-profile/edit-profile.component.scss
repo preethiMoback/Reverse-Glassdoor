@@ -1,0 +1,160 @@
+@import "/src/styles/mixins";
+@import "/src/styles/extend";
+
+.profile-page{
+    background-color: var(--dusky-white) !important;
+    .card{
+        padding:50px 0px 0px 0px;
+        .card-title{
+            @include pxtorem(30);
+            @include line_height(36px);
+            @include font(700);
+            color: var(--black);
+            @include breakpoint(ipad){
+                @include pxtorem(25);
+            }
+            .nav-tabs{
+                border-bottom: none;
+                display: flex;
+                justify-content: flex-start;
+                gap: 2em;
+                .nav-item{
+                    cursor: pointer;
+                    .nav-link{
+                    border: none;
+                    color: var(--black-light);
+                    }
+                   &:hover,[class*= "active"]  {
+                        color: var(--purple) !important;
+                        border-bottom: 8px solid #62177C !important;
+                    }
+                }
+            }
+        }
+        .text{
+            text-align: left;
+            @include breakpoint(xs){
+                text-align: center;
+            }
+        }
+    }
+    .profile-change{
+        min-height: 100vh;
+        position: relative;
+        padding-top: 4%;
+        .card{
+            padding: 30px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 10px;
+            .figure{
+                position: relative;
+                border-radius: 100%;
+                @include width_height(149px, 149px);
+                img {
+                    background-size: cover;
+                    border-radius: 100%;
+                    object-fit: scale-down;
+                    @include width_height(149px, 149px);
+                }
+            }
+            .write{
+                position: relative;
+                overflow: hidden;
+                input{
+                    position: absolute;
+                    top: 0;
+                    right:0;
+                    min-width: 100%;
+                    min-height: 100%;
+                    font-size: 100px;
+                    text-align: right;
+                    opacity: 0;
+                    outline: none;
+                    cursor: pointer;
+                    display: block;
+                }
+            }
+        }
+    }
+    .edit-profile-form{
+        .card{
+            padding: 3rem 7rem;
+            text-align: left;
+        }
+        label{
+            margin: 5px;
+            height: 40px;
+            display: flex;
+            align-items:flex-end;
+            @include breakpoint(ipad){
+                @include pxtorem(16);
+            }
+        }
+        input{
+            @include margin {
+                margin-top: 10px;
+            }
+            @include pxtorem(18);
+            @include font(400);
+            resize: none;
+            @include breakpoint(ipad){
+                @include pxtorem(16);
+            }
+            &:focus {
+                outline: none;
+                box-shadow: none;
+               }
+        }
+
+    }
+    .text-18-400-22{
+        @include pxtorem(20px);
+        @include line_height(21px);
+        @include font(400);  
+    }
+    .btn{
+        @include width_height(215px, 49px);
+    }
+    .modal-content{
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        text-align: left;
+        @include width_height (500px, 70px) ;
+        @include breakpoint(ipad){
+            width: 450px;
+        }
+        @include breakpoint(xs){
+            width: 300px;
+        }
+        
+        .body-modal{
+        display: flex;
+        border-radius: 10px;
+        background-color: var(--light-green);
+        justify-content: space-around;
+        align-items: flex-end;
+        color: var(--dusky-white);
+        @include width_height (500px, 70px) ;
+        @include breakpoint(ipad){
+            width: 450px;
+        }
+        @include breakpoint(xs){
+            @include width_height(300px, 70px)
+        }
+        
+       i{
+        font-size: 2rem;
+        
+    }
+       .vl {
+        border-right: 2px solid #FFFFFF;
+        height: 3rem;
+        width: 1px;
+        box-shadow: 1px 0px 4px rgba(98, 23, 124, 0.25);
+      }
+    }
+    }
+}

@@ -1,0 +1,175 @@
+<app-header-dashboardpage></app-header-dashboardpage>
+<div class="profile-page">
+    <div class="container-fluid p-0">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-2">
+                    <p routerLink="/dashboardpage">
+                        <i class="fa fa-angle-left pr-5" aria-hidden="true"></i>
+                        Back
+                    </p>
+                </div>
+                <div class="col-md-10 text">
+                    <div class="card-title">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item active">
+                                <a class="nav-link active" href="#" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"  role="tab" aria-controls="nav-profile" aria-selected="true">
+                                    <div class="text-30-700-36">Profile</div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" id="nav-premium-tab" data-bs-toggle="tab" data-bs-target="#nav-premium"  role="tab" aria-controls="nav-premium" aria-selected="false">
+                                  <div class="text-30-700-36">Premium account</div>
+                                </a>
+                              </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content profile-change" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-4">
+                            <div class="profile-card">
+                                <div class="card">
+                                    <div class="profile-img">
+                                        <div class="figure">
+                                            <img [src]="url" alt="profile_img">
+                                        </div>
+                                    </div>
+                                    <button class="col-md-6 btn text-20-400-24 write profile-btn">
+                                            Upload a new photo
+                                        <input id="fileInput" type='file' (change)="onSelectFile($event)">
+                                    </button>
+                                    <button class="col-md-6 btn text-20-400-24 check profile-btn" (click)="delete()">
+                                            Remove Photo
+                                    </button>
+                                    <div class="condition text-18-400-22">
+                                        <b>Note:</b> The size shouldn’t exceed <strong>5MB</strong>
+                                    </div>
+                                    <div class="condition-2 text-18-400-22">
+                                         image should be in following formats jpg, png
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-8">
+                            <div class="edit-profile-form">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form__section">
+                                            <form id="#registerForm"
+                                             [formGroup]="registerForm">
+                                                <div class="row g-3">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Full Name</label>
+                                                            <input 
+                                                                type="text" 
+                                                                formControlName="name" 
+                                                                class="form-control" 
+                                                                [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" 
+                                                                placeholder="Name of the Candidate"
+                                                            />
+                                                            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                                                                <div *ngIf="f['name'].errors['required']">Name is required</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="text-18-400-22">Mail id</label>
+                                                            <input 
+                                                                type="text" 
+                                                                formControlName="email" 
+                                                                class="form-control" 
+                                                                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" 
+                                                                placeholder="Candidate’s mail id"
+                                                            />
+                                                            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                                                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                                                <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="text-18-400-22">Organization Name</label>
+                                                            <input 
+                                                                type="text" 
+                                                                formControlName="companyName" 
+                                                                class="form-control" 
+                                                                [ngClass]="{ 'is-invalid': submitted && f['companyName'].errors }" 
+                                                                placeholder="Organisation name"
+                                                            />
+                                                            <div *ngIf="submitted && f['companyName'].errors" class="invalid-feedback">
+                                                                <div *ngIf="f['companyName'].errors['required']">Company Name is required</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 ">
+                                                        <div class="form-group">
+                                                            <label for="mobileNumber" class="text-18-400-22">Phone No.</label>  
+                                                            <input   
+                                                                formControlName="phoneNumber"  
+                                                                id="phoneNumber"   
+                                                                type="text"   
+                                                                class="form-control" 
+                                                                [ngClass]="{ 'is-invalid': submitted && f['phoneNumber'].errors }"
+                                                            />  
+                                                            <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
+                                                                <div *ngIf="f['phoneNumber'].errors['required']">Phone Number is required</div>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10 col-10 ">
+                                                        <div class="form-group">
+                                                            <label for="mobileNumber"></label>
+                                                            <input 
+                                                                type="text" 
+                                                                formControlName="phoneNumber" 
+                                                                class="form-control" 
+                                                                [ngClass]="{ 'is-invalid': submitted && f['phoneNumber'].errors }" 
+                                                            />
+                                                        </div>
+                                                      </div>
+                                                      <div class="col-md-12">
+                                                          <a href="" class="text-18-400-22">Change existing Password ?</a>
+                                                      </div>
+                                                    <div class="col-md-12">
+                                                        <div class="d-flex justify-content-start">
+                                                            <button class="btn"  data-toggle="modal" data-target="#exampleModalCenter">Update</button> 
+                                                        </div>
+                                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                              <div class="modal-content">
+                                                                    <div class="body-modal text-25-700-30">
+                                                                        <div>
+                                                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                                                        </div>
+                                                                        <div class="vl"></div>
+                                                                        Profile Successfully Updated
+                                                                    </div>  
+                                                              </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="tab-content premium-content" id="nav-tabContent">
+            <div class="tab-pane fade show" id="nav-premium" role="tabpanel" aria-labelledby="nav-premium-tab">
+            </div>
+        </div>  
+    </div>
+</div>

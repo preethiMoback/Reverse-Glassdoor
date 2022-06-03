@@ -15,6 +15,9 @@ import { ViewReviewComponent } from './dashboardpage/view-review/view-review.com
 import { ViewAllComponent } from './dashboardpage/view-all/view-all.component';
 import { DashboardReviewComponent } from './dashboardpage/dashboard-review/dashboard-review.component';
 import { SearchResultComponent } from './dashboardpage/advanced-search/search-result/search-result.component';
+import { ViewOthersReviewComponent } from './dashboardpage/view-others-review/view-others-review.component';
+import { EditProfileComponent } from './dashboardpage/edit-profile/edit-profile.component';
+import { WriteReviewAgainComponent } from './dashboardpage/write-review-again/write-review-again.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -31,6 +34,12 @@ const routes: Routes = [
   { path: 'viewall',  component: ViewAllComponent },
   { path: 'dashboardreview',  component: DashboardReviewComponent },
   { path: 'searchresult',  component: SearchResultComponent },
+  { path: 'othersreviews',  component: ViewOthersReviewComponent  },
+  { path: 'editprofile',  component: EditProfileComponent  },
+  { path: 'writereviewagain',  component: WriteReviewAgainComponent },
+
+
+
 ];
 
 @NgModule({

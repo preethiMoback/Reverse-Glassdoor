@@ -27,11 +27,6 @@
                         color: var(--grey-lighter);
                     }
                 }
-                .ratings{
-                    // @include margin {
-                    //     margin-left:56px;
-                    // }
-                }
             }
             .card-body{
                 @include breakpoint(sm){

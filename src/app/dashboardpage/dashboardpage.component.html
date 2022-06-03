@@ -40,14 +40,38 @@
                     <div class="profile_card">
                         <div class="card">
                             <div class="profile_img">
-                                <figure>
-                                    <img src="../../assets/Images/profile_img.svg" alt="profile_img">
-                                   <a href="">
+                                <div class="figure">
+                                    <img [src]="url" alt="profile_img">
+                                   <a href=""  data-toggle="modal" data-target="#exampleModalCenter">
                                     <div class="edit-icon">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </div>
                                    </a> 
-                                </figure>
+                                </div>
+
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                            
+                                                <a type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </a>
+                                                <div class="body-modal">
+                                                    <h2>Upload Profile Photo</h2>
+                                               <div class="text-18-400-22">
+                                                A profile picture helps people recognize you and people will trust in your reviews.
+                                               </div> 
+                                               <span type="button" class="btn btn-primary">
+                                                   Upload Photo
+                                                   <input id="fileInput" type='file' (change)="onSelectFile($event)">
+                                               </span>
+            
+                                                </div>
+                                                
+                                      </div>
+                                    </div>
+                                  </div>
+
                             </div>
                             <div class="profile_details">
                                 <h2 class="text-35-700-42">
@@ -250,7 +274,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-4 text-right">
-                                                <div class="text-20-600-24 rejected_color">
+                                                <div class="text-20-600-24 pending-color">
                                                     {{candidate.pending}}
                                                 </div>
                                                 <div class="view_btn text-20-400-24">

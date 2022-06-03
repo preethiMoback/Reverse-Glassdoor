@@ -8,6 +8,10 @@
     .hero_section{
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        @include breakpoint(xSmall){
+            justify-content: center;
+        }
         .hero_logo{
             display: flex;
             justify-content: center;
@@ -36,6 +40,37 @@
             @include breakpoint(ipad){
                 margin-right: 0;
             }
+            @include breakpoint(sm){
+                // align-items: center;
+                // justify-content: flex-start;
+            }
+            .hdr-btn{
+                @include breakpoint(min1200) {
+                    @include width_height(290px, 67px);
+                }
+                color: var(--purple);
+                background-color: white;
+                border: 3px solid var(--purple);
+                @include font(700);
+                min-width: 119.38px;
+                border-radius: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                @include pxtorem(25);
+                @include line_height(30px);
+                @include breakpoint(ipad){
+                    border: 2px solid var(--purple);
+                    padding: 5px 10px;
+                    @include font(400);
+                }
+                @include breakpoint(xs) {
+                    @include line_height(20px);
+                    @include pxtorem(17);
+                    margin-left: 5px;
+                }
+            }
             .dropdown{
                 padding-left: 71px;
                 cursor: pointer;
@@ -44,11 +79,11 @@
                 &:hover{
                     opacity: 1;
                 }
-                @include breakpoint(xSmall) {
-                    padding-left: 15px;
-                }
                 @include breakpoint(ipad) {
                     padding-left: 40px;
+                }
+                @include breakpoint(xSmall) {
+                    padding-left: 15px;
                 }
                 img{
                     width: 50px;
@@ -159,6 +194,9 @@
                 }
                 a{
                     padding: 1em;
+                    &:hover{
+                        background-color: var(--hover);
+                    }
                 }
             }
         }

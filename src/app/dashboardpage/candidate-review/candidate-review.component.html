@@ -1,8 +1,5 @@
 <app-header-dashboardpage></app-header-dashboardpage>
-<!-- <rating [(ngModel)]="value" 
-[max]="max" 
-[readonly]="false" 
-[titles]="['one','two','three','four']"></rating> -->
+
 <div class="candidate_review">
     <div class="row">
         <div class="col-md-2">
@@ -76,10 +73,6 @@
                                                class="form-control" 
                                                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" 
                                            />
-                                           <!-- <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-                                               <div *ngIf="f['email'].errors['required']">Email is required</div>
-                                               <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
-                                           </div> -->
                                        </div>
                                      </div>
                                      <div class="col-md-6">
@@ -154,7 +147,7 @@
                                      <div class="col-md-12">
                                        <div class="form-group text_area">
                                            <label>Give your review</label>
-                                           <textarea class="form-control" rows="7" placeholder="Please write aboout the candidate review here"></textarea>
+                                           <textarea class="form-control" rows="7" placeholder="Please write about the candidate review here"></textarea>
                                        </div>
                                      </div>
                                      <div class="col-md-12">

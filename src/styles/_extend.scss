@@ -79,6 +79,30 @@
         height: 55px;
     }
 }
+.write{
+    @include width_height(215px, 49px);
+    color: var(--white) !important;
+    @include margin{margin: 1em 0em};
+    @include breakpoint(ipad) {
+        @include width_height(150px, 30px);
+        @include pxtorem(14);
+    }
+    @include breakpoint(xs){
+        @include margin{margin-top: 1em};
+    }
+}
+.check{
+    @include width_height(215px, 49px);
+    border: 3px solid var(--purple);
+    border-radius: 5px;
+    @include font(500);
+    background-color: white;
+    color: var(--purple) !important;
+    @include breakpoint(ipad) {
+        @include width_height(150px, 30px);
+        @include pxtorem(14);
+    }
+}
 .input-group{
     border-radius: 5px;
     input{
@@ -299,4 +323,7 @@ p{
 }
 .rejected_color{
     color: var(--red);
+}
+.pending-color{
+    color: var(--faded-red);
 }

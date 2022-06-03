@@ -22,6 +22,9 @@ import { ViewReviewComponent } from './dashboardpage/view-review/view-review.com
 import { ViewAllComponent } from './dashboardpage/view-all/view-all.component';
 import { DashboardReviewComponent } from './dashboardpage/dashboard-review/dashboard-review.component';
 import { SearchResultComponent } from './dashboardpage/advanced-search/search-result/search-result.component';
+import { ViewOthersReviewComponent } from './dashboardpage/view-others-review/view-others-review.component';
+import { EditProfileComponent } from './dashboardpage/edit-profile/edit-profile.component';
+import { WriteReviewAgainComponent } from './dashboardpage/write-review-again/write-review-again.component';
 
 
 
@@ -44,6 +47,9 @@ import { SearchResultComponent } from './dashboardpage/advanced-search/search-re
     ViewAllComponent,
     DashboardReviewComponent,
     SearchResultComponent,
+    ViewOthersReviewComponent,
+    EditProfileComponent,
+    WriteReviewAgainComponent,
   
   ],
   imports: [
