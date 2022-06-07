@@ -28,8 +28,8 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="candidate-card">
+        <div class="container" style="position: relative;">
+            <div class="candidate-card" ngxUiLoaderBlurred [loaderId]="'loader-01'">
                 <div class="card">
                     <div class="row card-body">
                         <div class="col-md-9">
@@ -72,6 +72,7 @@
                     </div>
                 </div>
             </div>
+            <ngx-ui-loader [loaderId]="'loader-01'"></ngx-ui-loader>
         </div>
     </div>
 </div>

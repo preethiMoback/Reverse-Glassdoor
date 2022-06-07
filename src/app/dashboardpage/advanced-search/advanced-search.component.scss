@@ -1,5 +1,10 @@
 @import "/src/styles/mixins";
 @import "/src/styles/extend";
+@keyframes from-top {
+    0%  {transform:translateY(-1000px);}
+    100% { transform:translateY(0)}
+  }
+
 .Advancesearch_section{
     background-color: var(--dusky-white) !important;
     height: 100vh;
@@ -8,6 +13,11 @@
         @include breakpoint(ipad){
             margin-top: -10px;
         }
+        transform:translateY(-1000px);
+        animation-name:from-top;
+        animation-fill-mode: forwards;
+        animation-duration:1s;
+        animation-timing-function: ease-out;
         .card-title{
             @include breakpoint (xs){
                 text-align: center;
@@ -17,6 +27,12 @@
             }
         }
     .form__section{
+        transform:translateY(-1000px);
+        animation-name:from-top;
+        animation-fill-mode: forwards;
+        animation-duration:1s;
+        animation-timing-function: ease-out;
+        animation-delay: 1s;
         .form-group{
             @include margin {
                 margin-top: 30px;
