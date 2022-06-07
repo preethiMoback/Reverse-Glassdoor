@@ -1,9 +1,32 @@
 @import "/src/styles/mixins";
 @import "/src/styles/extend";
+@keyframes left {
+    0%  {transform:translateX(-1000px);}
+    100% { transform:translateX(0)}
+  }
+  @keyframes right {
+    0%  {transform:translateX(1000px);}
+    100% { transform:translateX(0)}
+  }
+
 
 .review_card-section{
     background-color: var(--dusky-white);
     min-height: 100vh;
+    .from-left{
+        transform:translateX(-1000px);
+            animation-name:left;
+            animation-fill-mode: forwards;
+            animation-duration:1s;
+            animation-timing-function: ease-out;
+    }
+    .from-right{
+        transform:translateX(1500px);
+            animation-name:right;
+            animation-fill-mode: forwards;
+            animation-duration:1s;
+            animation-timing-function: ease-out;
+    }
     .allreview_card{
         padding: 20px;
         @include breakpoint(sm){

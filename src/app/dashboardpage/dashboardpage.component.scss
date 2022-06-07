@@ -1,9 +1,13 @@
 @import "/src/styles/mixins";
 @import "/src/styles/extend";
+@keyframes mymove {
+    0%  {transform:translateY(500px);}
+    100% { transform:translateY(0)}
+  }
 
 .dashboardpage_header{
     @include margin {
-        margin-top: 101px;
+        padding-top: 110px;
     }
     z-index: 1;
     background-color: var(--white);
@@ -11,14 +15,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    @include breakpoint(sm){
-        margin-top:  96px;
-    }
     @include breakpoint(xs){
-        margin-top: 80px;
+        padding-top: 80px;
     }
     @include breakpoint(ipad){
-        margin-top: 64px;
+        padding-top: 80px;
     }
     .search-bar-container{
         @include breakpoint(sm){
@@ -147,14 +148,6 @@
         }
     }
 }
-
-
-
-
-
-
-
-
 
 
 .candidates_details{
@@ -303,6 +296,13 @@
             @include breakpoint(sm){
                 height: 200px;
             }
+        }
+        .content__part{
+            transform:translateY(500px);
+            animation-name:mymove;
+            animation-fill-mode: forwards;
+            animation-duration:1s;
+            animation-timing-function: ease-out;
         }
         .card{
             .card-title{

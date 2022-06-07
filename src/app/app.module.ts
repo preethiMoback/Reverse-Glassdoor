@@ -25,7 +25,7 @@ import { SearchResultComponent } from './dashboardpage/advanced-search/search-re
 import { ViewOthersReviewComponent } from './dashboardpage/view-others-review/view-others-review.component';
 import { EditProfileComponent } from './dashboardpage/edit-profile/edit-profile.component';
 import { WriteReviewAgainComponent } from './dashboardpage/write-review-again/write-review-again.component';
-
+import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
 
 
 
@@ -59,7 +59,19 @@ import { WriteReviewAgainComponent } from './dashboardpage/write-review-again/wr
     ReactiveFormsModule,
     CommonModule,
     RatingModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    NgxUiLoaderModule.forRoot({
+  "fgsColor": "#62177C",
+  "fgsPosition": "center-center",
+  "fgsSize": 200,
+  "fgsType": "fading-circle",
+  "overlayColor": "#F4F4F4",
+  "hasProgressBar": false,
+  "minTime": 400,
+  "text": "Searching Please Wait",
+  "textColor": "#000000",
+  "textPosition": "center-center",
+      })
   ],
   providers: [],
   bootstrap: [AppComponent]
