@@ -2,7 +2,7 @@
 @import "/src/styles/extend";
 
 .header_section{
-    padding: 20px 20px;
+    padding: 20px;
     background-color: var(--white);
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
     .hero_section{
@@ -61,7 +61,6 @@
                     padding: 0;
                     width: 32em;
                     border-radius: 10px;
-                    // overflow:scroll;
                     @include breakpoint(xs){
                         width: 18em;
                     }
@@ -111,9 +110,12 @@
                             @include line_height(21px);
                             @include font(400);
                             margin: 10px 0;
+                            padding: 0;
+                            text-decoration: none;
+                            text-align: start;
                             color: gray;
                             @include breakpoint(ipad){
-                                @include pxtorem(16);
+                                @include pxtorem(12);
                             }
                         }
                         .reject{
@@ -137,12 +139,12 @@
             #edit-profile{
                 width: 10em;
                 border-radius: 10px;
-                padding: 1em;
+                // padding: 1em;
                 &:hover{
                     opacity: 1;
                 }
                 @include breakpoint(sm){
-                    width: 7em;
+                    width: 5em;
                     padding: 5px;
                 }
                 .text-20-600-24{
@@ -156,7 +158,7 @@
                     }
                 }
                 a{
-                    margin: 1em 0;
+                    padding: 1em;
                 }
             }
         }

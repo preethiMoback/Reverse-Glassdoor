@@ -10,7 +10,7 @@
         }
         .card-title{
             @include breakpoint (xs){
-                text-align: center;
+                text-align: left;
                 @include pxtorem(20);
                 padding: 0px 30px;
                 @include line_height(30px);
@@ -65,8 +65,8 @@
                 }
             }
         }
-        .text-30-700-36{
-        }
+        // .text-30-700-36{
+        // }
         .text-25-500-30{
             @include pxtorem(25);
             @include line_height(30px);
@@ -144,7 +144,7 @@
     input.nosubmit {
         display: block;
         padding: 9px 4px 9px 40px;
-        background: transparent url("../../../assets/Images/search_icon.svg")no-repeat 40px center;
+        background: transparent url("./../../../../assets/Images/search_icon.svg")no-repeat 40px center;
         background-size: 30px;
     } 
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors} from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormDataService } from './form-data.service';
+
 
 @Component({
   selector: 'app-advanced-search',
@@ -7,12 +10,22 @@ import { FormControl, FormBuilder, FormGroup, Validators, ValidatorFn, AbstractC
   styleUrls: ['./advanced-search.component.scss']
 })
 export class AdvancedSearchComponent implements OnInit {
+
+
   registerForm!: FormGroup;
   submitted = false;
-  details:any;
+  name:string ='';
+  email:any;
+  phoneNumber:any;
+  primaryskill:any;
+  companyName:any;
+  details: any;
 
 
-  constructor(private formBuilder: FormBuilder) { }
+
+  constructor(private formBuilder: FormBuilder,
+              private router: Router, 
+              private formData :FormDataService) { }
 
   ngOnInit() {
     this.createForm();
@@ -48,24 +61,28 @@ export class AdvancedSearchComponent implements OnInit {
     if (!this.registerForm.valid) {
       this.submitted = false;
       return;
-    }else{
-      var name = this.registerForm.get('name')?.value;
-      var email= this.registerForm.get('email')?.value;
-      var phoneNumber = this.registerForm.get('phoneNumber')?.value;
-      var primaryskill = this.registerForm.get('primaryskill')?.value;
-      var companyName = this.registerForm.get('companyName')?.value;
-      var details = name + ", "+email+", "+ phoneNumber + ", "+ primaryskill +", "+companyName; 
-      console.log(details);
-      return details;
-    }
-
+    } 
+    else{
+      this.router.navigate(['/searchresult']);
+      this.formData.setData( this.details = 
+        (this.registerForm.get('name')?.value)
+        + "," +
+        (this.registerForm.get('email')?.value)
+        + "," + 
+        (this.registerForm.get('phoneNumber')?.value)
+        + "," +  
+        ( this.registerForm.get('primaryskill')?.value) 
+        + "," +
+        (this.registerForm.get('companyName')?.value)
+      )    
+              ;
+        }
   }
-
+ 
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
   }
-
 }
 
 

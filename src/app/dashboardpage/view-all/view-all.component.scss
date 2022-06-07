@@ -15,6 +15,12 @@
                 @include pxtorem(25);
             }
         }
+        .text{
+            text-align: left;
+            @include breakpoint(xs){
+                text-align: center;
+            }
+        }
     }
     .allreviews_section{
         @include breakpoint(min1601){
@@ -23,15 +29,13 @@
         }
         .card{
             padding: 30px;
-            .view_list{
-                @include breakpoint(sm){
-                    display: grid;
-                    justify-content: flex-end;
-                }
-                .text-20-600-24{
-                    @include breakpoint(sm){
-                        text-align: right;
-                    }
+            .text-right{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-end;
+                @include breakpoint(xs){
+                    align-items: flex-start;
                 }
             }
         }

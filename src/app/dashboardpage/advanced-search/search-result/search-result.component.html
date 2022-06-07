@@ -1,0 +1,77 @@
+<app-header-dashboardpage></app-header-dashboardpage>
+
+<div class="Advancesearch_section">
+    <div class="container-fluid p-0">
+        <div class="card">
+            <div class="row showingResults_section">
+                <div class="col-md-2">
+                    <p routerLink="/advancedsearch">
+                        <i class="fa fa-angle-left pr-5" aria-hidden="true"></i>
+                        Back
+                    </p>
+                </div>
+                <div class="col-md-10">
+                    <div class="card-title text-30-700-36">
+                        <span>
+                            <img src="./../../../../assets/Images/search_resulticon.svg" alt="search_resulticon">
+                        </span>
+                        Showing search results
+                    </div>
+                    <div class="search-results text-25-500-30">
+                        {{data}}
+                    </div>
+                    <div class="text-25-500-30">
+                        <a href="">
+                            Modify <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="candidate-card">
+                <div class="card">
+                    <div class="row card-body">
+                        <div class="col-md-9">
+                            <div class="text-30-700-36">
+                                Mahesh Rudra Badaballa<i class="fa fa-check" aria-hidden="true"></i>
+                            </div>
+                            <div class="person_information">
+                                <div class="text-20-400-24">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    badaballarocks@gmail.com<i class="fa fa-check" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="person_information">
+                                <div class="text-20-400-24">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    +91 8928382945 <i class="fa fa-check" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="person_information">
+                                <div class="text-20-400-24">
+                                    <i class="fa fa-cog" aria-hidden="true"></i>
+                                    Figma, Adobe XD
+                                </div>
+                            </div>
+                            <div class="person_information">
+                                <div class="text-20-400-24">
+                                    <i class="fa fa-building-o" aria-hidden="true"></i>
+                                    Bighaat Agro Pvt Ltd
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 btn-sec">
+                            <div class="write btn text-20-400-24"  routerLink="/writereview">
+                                Write Review
+                            </div>
+                            <div class="check btn text-20-400-24" routerLink="/checkreview">
+                                Check Reviews
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

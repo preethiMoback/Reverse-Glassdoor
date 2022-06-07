@@ -149,6 +149,9 @@ p{
 
 .thumbs-rating{
     display: flex;
+    @include breakpoint(xs){
+        margin-top: 12px;
+    }
     .thumbs-icon{
         @include margin {
             margin-left: 0.4em;
@@ -160,6 +163,9 @@ p{
         border-radius: 100%;
         color: var(--grey-light);
         @include pxtorem(26);
+        @include breakpoint(ipad){
+            font-size: 1.2em;
+        }
     }
     .text-20-400-24{
         @include margin {
@@ -174,17 +180,27 @@ p{
 }
 .view_btn{
     height: 49px;
-    border:2px solid #62177C;
+    border:3px solid #62177C;
     border-radius: 5px;
     color: var(--purple);
+    @include font(700);
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width:200px;
     cursor: pointer;
     // add icons and remove the padding
-    //margin-bottom: 45px;
+    margin-bottom: 45px;
     @include breakpoint(min1200) {
         @include width_height(230px, 49px);
+    }
+    @include breakpoint(ipad){
+        border: 2px solid var(--purple);
+        padding: 5px 10px;
+        @include font(400);
+    }
+    @include breakpoint(xs){
+        margin-bottom: 40px;
     }
 }
 
@@ -235,15 +251,6 @@ p{
             @include breakpoint(ipad){
                 @include pxtorem(15);
             }
-            // img{
-            //     font-size: 1.5em;
-            //     color: var(--purple);
-            //     padding: 0.5em 1em;
-            //     @include breakpoint(xs){
-            //         padding-left: 0px;
-            //         font-size: 14px;
-            //     }
-            // }
             i{
                 font-size: 1.5em;
                 color: var(--purple);
@@ -283,6 +290,9 @@ p{
     @include font(600);
     color:var(--light-green);  
     padding: 45px 0px; 
+    @include breakpoint(xs){
+        padding: 20px 0;
+    }
     // @include breakpoint(sm){
     //     text-align: right;
     // }

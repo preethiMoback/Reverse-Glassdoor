@@ -59,12 +59,13 @@
     }
     .write{
         @include width_height(215px, 49px);
+        margin: 1em;
         @include breakpoint(ipad) {
             @include width_height(150px, 30px);
             @include pxtorem(14);
         }
         @include breakpoint(min1601){
-            margin: 70px 50px;
+            margin: 70px 60px;
         }
     }
     .candidate-card{

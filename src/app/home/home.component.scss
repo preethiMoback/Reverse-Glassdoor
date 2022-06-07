@@ -14,6 +14,7 @@
     .hero_section{
         display: flex;
         justify-content: space-between;
+
         .hero_logo{
             display: flex;
             justify-content: center;
@@ -38,6 +39,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-right: 3em;
             .text-30-700-36{
                 color: var(--purple);
             }
@@ -70,41 +72,39 @@
 
 .home_section{
     .hero_section{
-        @include margin {
-            margin: 20px 0 0;
             @include breakpoint(xs) {
                 margin: 0px !important;
             }
             @include breakpoint(ipad) {
                 margin: 15px 0px;
             }
-        }
+        
         background-image: url("../../assets/Images/homepage_background_image.svg");
-        height: 800px;
+        height: 750px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
         text-align: center;
         @include breakpoint(xs) {
-            height: 60vh;
+            height: 85vh;
         }
         .card{
-            width: 75%;
-            height: 360px;
+            width: 70%;
+            height: 330px;
             transform: translate(20%, 50%);
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(2px);
             border-radius: 10px;
             @include breakpoint(xs) {
                 width: 100%;
-                transform: translate(0%, 50%);
+                transform: translate(0%, 30%);
                 height: 240px;
             }
             .card_title{
                 color: var(--white);
                 @include font(700);
-                @include pxtorem(40);
+                @include pxtorem(35);
                 @include line_height(48px);
                 padding: 70px 0px;
                 @include breakpoint(xSmall) {
@@ -141,6 +141,7 @@
         .input-group{
             width: 80%;
             margin: auto;
+
         }
     }
     .search_candidate_section{
@@ -165,13 +166,27 @@
         }
         .write-review_btn{
             float: right;
-            @include breakpoint(xSmall) {
-                float: left;
+            width :320px !important; 
+            @include breakpoint(ipad) {
+                width: 240px !important;
+            }
+            @include breakpoint(xSmall){
+                float: none;
+            }
+        }
+        .write_review_img img{
+            @include width_height(100%, 380px);
+            @include breakpoint(xs) {
+                width: 100%;
+                @include width_height(100%, 200px);
+                @include margin {
+                    margin:40px 0px 0px;
+                }
             }
         }
     }
     .search_candidate_section, .write_review_section {
-        padding: 100px 0px;
+        padding: 100px;
         @include breakpoint(ipad){
             padding: 50px 0px;
         }
@@ -190,12 +205,12 @@
                 }
             }
             @include breakpoint(ipad) {
-                width: 90%;
+                width: 95%;
                 @include pxtorem(18);
                 @include line_height(25px);
                 height: 55px;
                 @include margin {
-                    margin: 50px 0px;
+                    margin: 50px auto;
                 }
             }
         }

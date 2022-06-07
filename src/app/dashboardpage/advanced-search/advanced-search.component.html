@@ -1,6 +1,6 @@
 
 <app-header-dashboardpage></app-header-dashboardpage>
-<div class="Advancesearch_section" *ngIf="(!submitted && !registerForm.valid) || (submitted && !registerForm.valid) || (!submitted && registerForm.valid )">
+<div class="Advancesearch_section">
     <div class="container-fluid p-0">
         <div class="card">
             <div class="row">
@@ -20,14 +20,15 @@
                 <div class="col-md-10 m-auto">
                     <div class="card-body">
                         <div class="form__section">
-                            <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                            <form id="#registerForm" [formGroup]="registerForm"
+                                (ngSubmit)="onSubmit()">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Candidate Name *</label>
                                             <input 
                                                 type="text" 
-                                                formControlName="name" 
+                                                formControlName="name"
                                                 class="form-control nosubmit"
                                                 id="form-control" 
                                                 [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" 
@@ -59,7 +60,7 @@
                                         <div class="form-group">
                                             <label for="mobileNumber">Phone Number*</label>  
                                             <input   
-                                                formControlName="phoneNumber"  
+                                                formControlName="phoneNumber" 
                                                 id="phoneNumber"   
                                                 type="text"   
                                                 class="form-control nosubmit" 
@@ -75,7 +76,7 @@
                                         <div class="form-group">
                                             <label for="mobileNumber">Primary Skill</label>  
                                             <input   
-                                                formControlName="primaryskill"     
+                                                formControlName="primaryskill"  
                                                 type="text"   
                                                 class="form-control nosubmit" 
                                                 [ngClass]="{ 'is-invalid': submitted && f['primaryskill'].errors }"
@@ -101,88 +102,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 d-none d-md-block">
+                                    <div class="col-md-12">
                                         <div class="d-flex justify-content-center">
                                             <button class="btn">Submit</button> 
                                         </div>
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="Advancesearch_section" *ngIf="registerForm.valid && submitted">
-    <div class="container-fluid p-0">
-        <div class="card">
-            <div class="row showingResults_section">
-                <div class="col-md-2">
-                    <p routerLink="/advancedsearch">
-                        <i class="fa fa-angle-left pr-5" aria-hidden="true"></i>
-                        Back
-                    </p>
-                </div>
-                <div class="col-md-10">
-                    <div class="card-title text-30-700-36">
-                        <span>
-                            <img src="../../assets/Images/search_resulticon.svg" alt="search_resulticon">
-                        </span>
-                        Showing search results
-                    </div>
-                    <div class="search-results text-25-500-30">
-                        {{onSubmit()}}
-                    </div>
-                    <div class="text-25-500-30">
-                        <a href="">
-                            Modify <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="candidate-card">
-                <div class="card">
-                    <div class="row card-body">
-                        <div class="col-md-9">
-                            <div class="text-30-700-36">
-                                Mahesh Rudra Badaballa<i class="fa fa-check" aria-hidden="true"></i>
-                            </div>
-                            <div class="person_information">
-                                <div class="text-20-400-24">
-                                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    badaballarocks@gmail.com<i class="fa fa-check" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="person_information">
-                                <div class="text-20-400-24">
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                    +91 8928382945 <i class="fa fa-check" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="person_information">
-                                <div class="text-20-400-24">
-                                    <i class="fa fa-cog" aria-hidden="true"></i>
-                                    Figma, Adobe XD
-                                </div>
-                            </div>
-                            <div class="person_information">
-                                <div class="text-20-400-24">
-                                    <i class="fa fa-building-o" aria-hidden="true"></i>
-                                    Bighaat Agro Pvt Ltd
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 btn-sec">
-                            <div class="write btn text-20-400-24"  routerLink="/writereview">
-                                Write Review
-                            </div>
-                            <div class="check btn text-20-400-24" routerLink="/checkreview">
-                                Check Reviews
-                            </div>
                         </div>
                     </div>
                 </div>
