@@ -43,7 +43,7 @@ import { SearchResultComponent } from './dashboardpage/search-result/search-resu
     ViewReviewComponent,
     ViewAllComponent,
     DashboardReviewComponent,
-    SearchResultComponent,
+    SearchResultComponent
   
   ],
   imports: [
