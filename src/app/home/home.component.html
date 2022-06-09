@@ -7,7 +7,7 @@
                 <div class="text-50-900-60" routerLink="/">Reverse Glassdoor</div>
             </div>
             <div class="hero_text">
-              <ul class="text-30-700-36">
+              <ul class="text-26-500-36">
                 <li (click)="changeStep(1)"><a>Login</a></li>
                 <li (click)="changeStep(1)" routerLink="/login"><a>Sign up</a></li>
               </ul>
@@ -20,7 +20,7 @@
 <!-- popup_section -->
 <div class="login_popup h-100 d-flex justify-content-center align-items-center">
     <!-- //logincard -->
-    <div class="card" *ngIf="step==1">
+    <div class="card" *ngIf="step==1" id="1">
         <div class="card-title">
             <h1 class="text-30-700-36">Login to find out about <br> your candidate</h1>
             <h3 class="text-18-400-27">By proceeding you agree to our <span>T & C</span></h3>
@@ -58,7 +58,6 @@
                     </label>
                     <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
                         <div *ngIf="f['password'].errors['required']">password is required</div>
-                        <!-- <div *ngIf="f['password'].errors['password']">Email must be a valid email address</div> -->
                     </div>
                 </div>
                 <div class="">
@@ -193,16 +192,18 @@
 <div class="home_section">
     <div class="hero_section">
         <div class="container-fluid">
-            <div class="card">
+            <div class="card" #write>
                 <div class="card_title text-center">
                     Search and find out about candidates
                 </div>
                 <form action="/action_page.php">
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Name / Email Address / Phone number" name="email">
+                      <input id = "search" type="text" class="form-control" placeholder="Name / Email Address / Phone number" name="email">
                       <span class="input-group-text">
                           <figure>
-                            <img src="../../assets/Images/Search_buttonicon.svg" alt="Search_buttonicon">
+                              <a routerLink="/searchresultfromhome">
+                                <img src="../../assets/Images/Search_buttonicon.svg" alt="Search_buttonicon">
+                              </a>
                           </figure>
                       </span>
                     </div>
@@ -226,10 +227,10 @@
                             Ratings given by other companies and HRs
                         </h1>
                         <small>
-                            Search about the candidatesusing their details mentioned in the resume
+                            Search about the candidates using their details mentioned in the resume
                             and find out what other companies have to say about them before hiring.
                         </small><br>
-                        <div class="btn">
+                        <div class="btn" (click)="write.scrollIntoView({ behavior: 'smooth', block: 'center' })">
                             <span>
                                 <img src="../../assets/Images/searchicon_candidate.svg" alt="searchicon_candidate">
                             </span>
@@ -266,10 +267,10 @@
                             in your interview
                         </h1>
                         <small>
-                            Search about the candidatesusing their details mentioned in the resume
+                            Search about the candidates using their details mentioned in the resume
                             and find out what other companies have to say about them before hiring.
                         </small><br>
-                        <div class="btn write-review_btn">
+                        <div class="btn write-review_btn" (click)="write.scrollIntoView({ behavior: 'smooth', block: 'center' })">
                             <span>
                                 <img src="../../assets/Images/write_review_icon.svg" alt="write_review_icon">
                             </span>
@@ -281,3 +282,4 @@
         </div>
     </div>
 </div>
+<app-footer></app-footer>

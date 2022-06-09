@@ -56,7 +56,7 @@
                 img {
                     background-size: cover;
                     border-radius: 100%;
-                    object-fit: scale-down;
+                    object-fit: contain;
                     @include width_height(149px, 149px);
                 }
             }

@@ -1,0 +1,143 @@
+<app-header-dashboardpage></app-header-dashboardpage>
+
+<div class="Advancesearch_section">
+    <div class="container-fluid p-0">
+        <div class="card">
+            <div class="row showingResults_section">
+                <div class="col-md-2">
+                    <p routerLink="/">
+                        <i class="fa fa-angle-left pr-5" aria-hidden="true"></i>
+                        Back
+                    </p>
+                </div>
+                <div class="col-md-10">
+                    <div class="card-title text-30-700-36">
+                        <span>
+                            <img src="./../../../assets/Images/search_resulticon.svg" alt="search_resulticon">
+                        </span>
+                        "10" search results found for
+                    </div>
+                    <div class="search-results text-25-500-30">
+                        {{data}}
+                    </div>
+                    <div class="text-25-500-30" [hidden] = "true">
+                        <a href="">
+                            Modify <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="position: relative;">
+            <div class="candidate's-cards" ngxUiLoaderBlurred [loaderId]="'loader-01'">
+                <div class="candidate-card">
+                    <div class="card">
+                        <div class="row card-body">
+                            <div class="col-md-9">
+                                <div class="text-30-700-36">
+                                    Mahesh Rudra Badaballa
+                                </div>
+                                <div class="person-information">
+                                    <div class="text-20-400-24">
+                                        <i class="fa fa-cog" aria-hidden="true"></i>
+                                        Figma, Adobe XD
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 btn-sec">
+                                <div class="check btn text-20-400-24" href="" data-toggle="modal" data-target="#loginPopUp">
+                                    Check Reviews
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="candidate-card">
+                    <div class="card">
+                        <div class="row card-body">
+                            <div class="col-md-9">
+                                <div class="text-30-700-36">
+                                    Paidapalli Mahesh
+                                </div>
+                                <div class="person-information">
+                                    <div class="text-20-400-24">
+                                        <i class="fa fa-cog" aria-hidden="true"></i>
+                                        Angular, React
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 btn-sec">
+                                <div class="check btn text-20-400-24" href="" data-toggle="modal" data-target="#loginPopUp">
+                                    Check Reviews
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="candidate-card">
+                    <div class="card">
+                        <div class="row card-body">
+                            <div class="col-md-9">
+                                <div class="text-30-700-36">
+                                    Mahesh Kumar Chodisetti
+                                </div>
+                                <div class="person-information">
+                                    <div class="text-20-400-24">
+                                        <i class="fa fa-cog" aria-hidden="true"></i>
+                                        Java, Python
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 btn-sec">
+                                <div class="check btn text-20-400-24" href="" data-toggle="modal" data-target="#loginPopUp">
+                                    Check Reviews
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="candidate-card">
+                    <div class="card">
+                        <div class="row card-body">
+                            <div class="col-md-9">
+                                <div class="text-30-700-36">
+                                    Mahesh Rudra Badaballa
+                                </div>
+                                <div class="person-information">
+                                    <div class="text-20-400-24">
+                                        <i class="fa fa-cog" aria-hidden="true"></i>
+                                        Figma, Adobe XD
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 btn-sec">
+                                <div class="check btn text-20-400-24" href="" data-toggle="modal" data-target="#loginPopUp">
+                                    Check Reviews
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="loginPopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <a type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
+                        <div class="body-modal">
+                            <h2>Login to see the Reviews</h2>
+                            <div class="text-18-400-22">
+                                Login and see the full information of the candidate.
+                            </div> 
+                            <span type="button" class="btn btn-primary" [routerLink]="['/']" fragment="1">
+                            OK
+                           </span>
+                        </div>     
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <ngx-ui-loader [loaderId]="'loader-01'"></ngx-ui-loader>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormDataService } from '../dashboardpage/advanced-search/form-data.service';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +14,12 @@ export class HomeComponent implements OnInit {
   submitted = false;
   isOpenpopup: boolean = false ;
   step = -1;
+  details: any;
+  
  
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private router: Router, 
+    private formData :FormDataService) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -48,6 +54,12 @@ export class HomeComponent implements OnInit {
     this.submitted = true;
     if (this.registerForm.invalid) {
         return;
+    }
+    else{
+      this.router.navigate(['/searchresultfromhome']);
+      this.formData.setData( this.details = 
+       (this.registerForm.get('email')?.value)
+      );
     }
 }
 

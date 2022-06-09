@@ -26,6 +26,7 @@ import { ViewOthersReviewComponent } from './dashboardpage/view-others-review/vi
 import { EditProfileComponent } from './dashboardpage/edit-profile/edit-profile.component';
 import { WriteReviewAgainComponent } from './dashboardpage/write-review-again/write-review-again.component';
 import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
+import { SearchresultfromhomeComponent } from './home/searchresultfromhome/searchresultfromhome.component';
 
 
 
@@ -50,6 +51,7 @@ import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
     ViewOthersReviewComponent,
     EditProfileComponent,
     WriteReviewAgainComponent,
+    SearchresultfromhomeComponent,
   
   ],
   imports: [

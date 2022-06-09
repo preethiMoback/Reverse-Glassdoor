@@ -45,7 +45,7 @@ export class EditProfileComponent implements OnInit {
     }
   }
   public delete(){
-      this.url = null;
+      this.url = "../../assets/Images/image_icon.svg";
     }
 
 

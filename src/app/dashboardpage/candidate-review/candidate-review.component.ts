@@ -9,7 +9,7 @@ import { FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class CandidateReviewComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
-  max: number = 10;
+  max: number = 5;
   value: number = 5;
   constructor(private formBuilder: FormBuilder) { }
 

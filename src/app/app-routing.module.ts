@@ -18,6 +18,7 @@ import { SearchResultComponent } from './dashboardpage/advanced-search/search-re
 import { ViewOthersReviewComponent } from './dashboardpage/view-others-review/view-others-review.component';
 import { EditProfileComponent } from './dashboardpage/edit-profile/edit-profile.component';
 import { WriteReviewAgainComponent } from './dashboardpage/write-review-again/write-review-again.component';
+import { SearchresultfromhomeComponent } from './home/searchresultfromhome/searchresultfromhome.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -37,6 +38,8 @@ const routes: Routes = [
   { path: 'othersreviews',  component: ViewOthersReviewComponent  },
   { path: 'editprofile',  component: EditProfileComponent  },
   { path: 'writereviewagain',  component: WriteReviewAgainComponent },
+  { path: 'searchresultfromhome',  component: SearchresultfromhomeComponent },
+
 
 
 

@@ -19,6 +19,18 @@
         @include pxtorem(20);
     }
 }
+.text-26-500-36{
+    @include font(500);
+    @include pxtorem(26);
+    @include line_height(36px);
+    @include breakpoint(xs) {
+        @include pxtorem(16);
+        @include line_height(20px);
+    }
+    @include breakpoint($min: 768px, $max: 1023px) {
+        @include pxtorem(20);
+    }
+}
 .text-30-500-36{
     @include font(500);
     @include pxtorem(30);

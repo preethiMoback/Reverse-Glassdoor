@@ -1,2 +1,121 @@
 @import "/src/styles/mixins";
 @import "/src/styles/extend";
+
+.foot-up{
+    background-color: var(--dusky-white);
+    display: flex;
+    flex-direction: column;
+    padding: 6em 4em 2em;
+    @include breakpoint(ipad){
+        padding: 6em 0 2em;
+    }
+    @include breakpoint(xs){
+        padding: 2em;
+    }
+    text-align: center;
+    .reverse{
+        text-align: center;
+        .text-50-500-65{
+            @include pxtorem(50);
+            @include font(500);
+            @include line_height(65px);
+            color: var(--purple);
+            margin-bottom: 10px;
+            cursor: pointer;
+                    @include breakpoint(xs) {
+                        @include line_height(20px);
+                        @include pxtorem(25);
+                    }
+                    @include breakpoint($min: 768px, $max: 1023px) {
+                        @include line_height(40px);
+                        @include pxtorem(35);
+                    }
+        }
+        .text-50-900-65{
+            @include pxtorem(50);
+            @include font(900);
+            @include line_height(65px);
+            color: var(--purple);
+            margin-bottom: 1em;
+            padding-left: 20px;
+            cursor: pointer;
+                    @include breakpoint(xs) {
+                        @include line_height(20px);
+                        @include pxtorem(25);
+                    }
+                    @include breakpoint($min: 768px, $max: 1023px) {
+                        @include line_height(40px);
+                        @include pxtorem(35);
+                    }
+                    @include breakpoint(ipad){
+                        padding-left: 0;
+                    }
+        }
+    }
+    .footer-content{
+        @include breakpoint(xs){
+            display: flex;
+            justify-content:center ;
+        }
+    }
+    .text-30-700-36{
+        color: var(--footer-black);
+        text-align: left;
+    }
+    li{
+        @include pxtorem(25);
+        @include font(500);
+        @include line_height(35px);
+        margin: 1em 0;
+        text-align: left;
+        @include breakpoint(ipad){
+            @include pxtorem(18);
+            @include line_height(30px);
+
+        }
+        @include breakpoint(xs){
+            @include pxtorem(12);
+            @include line_height(20px);
+        }
+        a{
+            text-decoration: none;
+            color: var(--footer-black);
+        }
+    }
+    img{
+        @include width_height(50px, 50px);
+        @include breakpoint(ipad){
+            @include width_height(40px, 40px);
+        }
+        @include breakpoint(xs){
+            @include width_height(30px, 30px);
+        }
+        margin: 0 10px;
+        color: var(--gray);
+        max-width: 100%;
+        height: auto;
+    }
+    .follow{
+        margin: 10px 0;
+    }
+}
+.foot-down{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+.text-32-400-45{
+    @include pxtorem(32);
+    @include font(400);
+    @include line_height(45px);
+    @include breakpoint(ipad){
+        @include pxtorem(18);
+        @include line_height(30px);
+    }
+    @include breakpoint(xs){
+        @include pxtorem(14);
+        @include line-height(24px);
+    }
+}
