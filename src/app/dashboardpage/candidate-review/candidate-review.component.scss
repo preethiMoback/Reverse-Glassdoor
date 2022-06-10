@@ -114,6 +114,9 @@
                     border-radius: 50%;
                     cursor: pointer;
                     margin-right: 1em;
+                    @include breakpoint(xs){
+                        @include width_height(15px, 15px);
+                    }
                     @include width_height(25px, 25px);
                     &::after, &:checked{
                         background: var(--purple) !important;
@@ -135,17 +138,8 @@
             }
             .form-radio .form-check label, .form-radio label{
                 @include breakpoint(sm){
-                @include line_height(55px!important);
+                @include line_height(42px!important);
                 padding-top: 20px;
-                }
-            }
-            .form-check-label{
-                @include breakpoint(ipad){
-                    margin-top: 50px;
-                }
-                @include breakpoint (xs){
-                    padding-left: 0;
-                    margin-top: 0;
                 }
             }
         }

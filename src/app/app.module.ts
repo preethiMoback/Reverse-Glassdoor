@@ -73,7 +73,7 @@ import { SearchresultfromhomeComponent } from './home/searchresultfromhome/searc
   "text": "Searching Please Wait",
   "textColor": "#000000",
   "textPosition": "center-center",
-      })
+      }),
   ],
   providers: [],
   bootstrap: [AppComponent]
