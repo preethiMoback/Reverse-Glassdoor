@@ -24,7 +24,7 @@ import { DashboardReviewComponent } from './dashboardpage/dashboard-review/dashb
 import { SearchResultComponent } from './dashboardpage/advanced-search/search-result/search-result.component';
 import { ViewOthersReviewComponent } from './dashboardpage/view-others-review/view-others-review.component';
 import { EditProfileComponent } from './dashboardpage/edit-profile/edit-profile.component';
-import { WriteReviewAgainComponent } from './dashboardpage/write-review-again/write-review-again.component';
+import { WriteReviewAgainComponent} from './dashboardpage/write-review-again/write-review-again.component';
 
 
 
