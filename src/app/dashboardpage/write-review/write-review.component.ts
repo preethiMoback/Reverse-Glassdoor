@@ -9,7 +9,7 @@ export class WriteReviewComponent implements OnInit {
 
   registerForm!: FormGroup;
   submitted = false;
-  max: number = 10;
+  max: number = 7;
   value: number = 5;
   constructor(private formBuilder: FormBuilder) { }
 

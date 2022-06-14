@@ -10,7 +10,7 @@ export class WriteReviewAgainComponent implements OnInit {
   
   registerForm!: FormGroup;
   submitted = false;
-  max: number = 10;
+  max: number = 5;
   value: number = 5;
   userData = {
     name: 'Mahesh Rudra Badaballa',
