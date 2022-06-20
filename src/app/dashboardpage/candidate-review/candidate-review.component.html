@@ -93,7 +93,7 @@
                                      <div class="col-md-12">
                                         <div class="radio-label">Choose phase of review*</div>
                                          <div class="form-radio">
-                                           <div class="form-check ">
+                                           <!-- <div class="form-check form-check-inline">
                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                                                <label class="form-check-label mt-1 pl-5" for="inlineRadio1">Interview </label>
                                              </div>
@@ -104,9 +104,40 @@
                                              <div class="form-check">
                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
                                                <label class="form-check-label pl-5 mt-1" for="inlineRadio3">Onboarding</label>
-                                             </div>
+                                             </div> -->
+                                             <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" formControlName="radio1" name="radio1" id="inlineRadio1" value="option1">
+                                                <label class="form-check-label" for="radio1">Interview</label>
+                                              </div>
+                                              <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" formControlName="radio2" id="radio2" value="option2">
+                                                <label class="form-check-label" for="radio2">Offer</label>
+                                              </div>
+                                              <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" formControlName="radio3" id="radio3" value="option3">
+                                                <label class="form-check-label" for="radio3">Onboarding</label>
+                                              </div>
                                          </div>
                                      </div>
+                                     <!-- <div class="group-gap">
+                                        <h5 class="mb-3">Gender</h5>
+                                        <div class="d-block my-3">
+                    
+                                            <div class="custom-control custom-radio">
+                                                <input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
+                                  <label class="custom-control-label" for="male">Male</label>
+                                </div>
+                    
+                                <div class="custom-control custom-radio">
+                                  <input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
+                                  <label class="custom-control-label" for="female">Female</label>
+                                </div>
+                    
+                                <div class="invalid-feedback" *ngIf="submitted && f['gender'].errors">
+                                  <p>Please select either value</p>
+                                </div>
+                              </div>
+                            </div> -->
                                      <div class="col-md-12">
                                        <div class="form-group">
                                            <label>Candidate Current organisation*</label>
@@ -124,12 +155,13 @@
                                      </div>
                                     <div class="col-md-12">
                                         <div class="form-group rating-star">
-                                           <label>Overall Rating*</label><br>
-                                           <rating 
+                                           <label>Overall Rating*</label>
+                                           <!-- <rating 
                                                [max]="max" 
                                                [readonly]="false" 
                                                [titles]="['one','two','three','four']">
-                                           </rating>        
+                                           </rating>  -->
+                                           <ngx-input-star-rating class="rating" formControlName="rating"></ngx-input-star-rating>       
                                         </div>
                                     </div>
                                     <div class="col-md-12">

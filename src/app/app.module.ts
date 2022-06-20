@@ -26,6 +26,7 @@ import { ViewOthersReviewComponent } from './dashboardpage/view-others-review/vi
 import { EditProfileComponent } from './dashboardpage/edit-profile/edit-profile.component';
 import { WriteReviewAgainComponent } from './dashboardpage/write-review-again/write-review-again.component';
 import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
+import { NgxInputStarRatingModule } from 'ngx-input-star-rating';
 import { SearchresultfromhomeComponent } from './home/searchresultfromhome/searchresultfromhome.component';
 
 
@@ -52,7 +53,6 @@ import { SearchresultfromhomeComponent } from './home/searchresultfromhome/searc
     EditProfileComponent,
     WriteReviewAgainComponent,
     SearchresultfromhomeComponent,
-  
   ],
   imports: [
     BrowserModule,
@@ -62,6 +62,7 @@ import { SearchresultfromhomeComponent } from './home/searchresultfromhome/searc
     CommonModule,
     RatingModule.forRoot(),
     HttpClientModule,
+    NgxInputStarRatingModule,
     NgxUiLoaderModule.forRoot({
   "fgsColor": "#62177C",
   "fgsPosition": "center-center",
