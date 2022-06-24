@@ -170,9 +170,137 @@
         </div>
     </div>
 </div>
+
+<!-- //signup_popup -->
+<div class="signup_popup h-100 d-flex align-items-center justify-content-center">
+    <div class="card">
+        <div class="card-title">
+            <h1 class="text-30-700-36">Sign up and find out about<br>your candidate</h1>
+            <h3 class="text-18-400-27">By proceeding you agree to our <span>T & C</span></h3>
+        </div>
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-md-6">
+                    <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group form-floating mb-4">
+                            <input 
+                                type="text" 
+                                formControlName="name"
+                                class="form-control" 
+                                id="floatingInput" 
+                                placeholder="Enter your Name" 
+                                [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" 
+                            >
+                            <label for="floatingInput">
+                                Enter your Name
+                            </label>
+                            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                                <div *ngIf="f['name'].errors['required']">Name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group form-floating mb-4">
+                            <input 
+                                type="text" 
+                                formControlName="organisationname"
+                                class="form-control" 
+                                id="floatingInput" 
+                                placeholder="Organisation Name"
+                                [ngClass]="{ 'is-invalid': submitted && f['organisationname'].errors }" 
+                            >
+                            <label for="floatingInput">
+                                Organisation Name
+                            </label>
+                            <div *ngIf="submitted && f['organisationname'].errors" class="invalid-feedback">
+                                <div *ngIf="f['organisationname'].errors['required']">Organisation Name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group form-floating mb-4">
+                            <input
+                                type="number" 
+                                id="floatingInput" 
+                                formControlName="phoneNumber" 
+                                class="form-control" 
+                                placeholder="Your phone number" 
+                                [ngClass]="{ 'is-invalid': submitted && f['phoneNumber'].errors }" 
+                            >
+                            <label for="floatingInput" >
+                                Your phone number
+                            </label>
+                            <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
+                                <div *ngIf="f['phoneNumber'].errors['required']">PhoneNumber is required</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group form-floating mb-4">
+                            <input
+                                type="text" 
+                                id="floatingInput" 
+                                formControlName="email" 
+                                class="form-control" 
+                                placeholder="Official Email Address" 
+                                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" 
+                            >
+                            <label for="floatingInput" >
+                                Official Email Address
+                            </label>
+                            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+                            </div>
+                        </div>
+                        <div class="form-group form-floating mb-4">
+                            <input 
+                                type="text" 
+                                formControlName="createpassword"
+                                class="form-control" 
+                                id="floatingPassword" 
+                                placeholder="Create Password"
+                                [ngClass]="{ 'is-invalid': submitted && f['createpassword'].errors }" 
+                            >
+                            <label for="floatingPassword">
+                                Enter Password
+                            </label>
+                            <div *ngIf="submitted && f['createpassword'].errors" class="invalid-feedback">
+                                <div *ngIf="f['createpassword'].errors['required']">password is required</div>
+                                <div *ngIf="f['createpassword'].errors['minlength']">Password must be at least 6 characters</div>
+                            </div>
+                        </div>
+                        <div class="form-group form-floating mb-4">
+                            <input 
+                                type="text" 
+                                formControlName="confirmpassword"
+                                class="form-control" 
+                                id="floatingPassword" 
+                                placeholder="Re-type Password"
+                                [ngClass]="{ 'is-invalid': submitted && f['confirmpassword'].errors }" 
+                            >
+                            <label for="floatingPassword">
+                                Confirm Password
+                            </label>
+                            <div *ngIf="submitted && f['confirmpassword'].errors" class="invalid-feedback">
+                                <div *ngIf="f['confirmpassword'].errors['required']">Confirm password is required</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="">
+                <h3 class="text-18-400-27">Password should contain minimum 8 characters (An upper case, lower case, special <br>characters and numbers).</h3>
+                <button class="btn">Register</button>
+                <h3 class="text-18-400-27">Already have an account ? <span> Login</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- //signup old -->
 <div class="signup_popup h-100 d-flex align-items-center justify-content-center">
     <!-- //signup card -->
-    <div class="card">
+    <!-- <div class="card">
         <div class="card-title">
             <h1 class="text-30-700-36">Sign up and find out about<br>your candidate</h1>
             <h3 class="text-18-400-27">By proceeding you agree to our <span>T & C</span></h3>
@@ -252,7 +380,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
     <!-- Email Verification -->
     <div class="card">
         <div class="card-title">
@@ -288,7 +416,7 @@
         </div>
     </div>
     <!-- Create Password -->
-    <div class="card">
+    <!-- <div class="card">
         <div class="card-title">
             <h1 class="title text-30-700-36">Create Password</h1>
             <h3 class="text-18-400-27">Password should contain minimum 8 <br>characters (An upper case, lower case, special<br> characters and numbers).</h3>
@@ -333,5 +461,5 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
 </div>

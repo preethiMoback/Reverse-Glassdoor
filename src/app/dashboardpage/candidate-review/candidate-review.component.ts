@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-candidate-review',
@@ -10,7 +11,10 @@ export class CandidateReviewComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
   max: number = 5;
-  value: number = 5;
+  // value: number = 5;
+  value!: Observable<number>;
+  registrationForm!: any;
+  
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -27,6 +31,8 @@ export class CandidateReviewComponent implements OnInit {
         companyWebsite:['', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
         message:['', Validators.required],
         acceptTerms: [false, Validators.requiredTrue],
+        rating: [3],
+        gender: ['male', [Validators.required]],
         email: ['', [
             Validators.required,
             Validators.minLength(5),
@@ -34,9 +40,14 @@ export class CandidateReviewComponent implements OnInit {
             Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
           ]],
     });
+    // this.value = this.registerForm.controls.rating.valueChanges;
+    
 }
-get f() { return this.registerForm.controls; }
 
+get f() { return this.registerForm.controls; }
+get myForm() {
+  return this.registrationForm.get('gender');
+}
 onSubmit() {
     this.submitted = true;
     if (this.registerForm.invalid) {
