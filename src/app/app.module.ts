@@ -27,6 +27,9 @@ import { EditProfileComponent } from './dashboardpage/edit-profile/edit-profile.
 import { WriteReviewAgainComponent } from './dashboardpage/write-review-again/write-review-again.component';
 import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
 import { SearchresultfromhomeComponent } from './home/searchresultfromhome/searchresultfromhome.component';
+import { ModeratorComponent } from './moderator/moderator.component';
+import { ViewReviewRejectComponent } from './dashboardpage/view-review-reject/view-review-reject.component';
+import { ViewReviewPendingComponent } from './dashboardpage/view-review-pending/view-review-pending.component';
 
 
 
@@ -52,6 +55,9 @@ import { SearchresultfromhomeComponent } from './home/searchresultfromhome/searc
     EditProfileComponent,
     WriteReviewAgainComponent,
     SearchresultfromhomeComponent,
+    ModeratorComponent,
+    ViewReviewRejectComponent,
+    ViewReviewPendingComponent,
   
   ],
   imports: [

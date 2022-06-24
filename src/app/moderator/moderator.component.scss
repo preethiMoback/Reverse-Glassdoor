@@ -1,6 +1,7 @@
 @import "/src/styles/mixins";
 @import "/src/styles/extend";
 
+
 .header_section{
     padding: 20px;
     background-color: var(--white);
@@ -40,26 +41,14 @@
             @include breakpoint(ipad){
                 margin-right: 0;
             }
-            .hdr-btn{
-                @include breakpoint(min1200) {
-                    @include width_height(180px, 50px);
-                }
+            .hdr{
                 color: var(--purple);
-                background-color: white;
-                border: 2px solid var(--purple);
-                @include font(400);
-                min-width: 119.38px;
-                border-radius: 5px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-                @include pxtorem(20);
-                @include line_height(30px);
+                @include font(500);
+                @include pxtorem(32);
+                @include line_height(40px);
                 @include breakpoint(ipad){
-                    border: 2px solid var(--purple);
-                    padding: 5px 10px;
-                    @include font(400);
+                    @include pxtorem(30);
+                    @include line_height(35px);
                 }
                 @include breakpoint(xs) {
                     @include line_height(16px);
@@ -199,3 +188,111 @@
 }
 }
 
+.moderator-section{
+    background-color: var(--dusky-white);
+    min-height: 100vh;
+    .moderator-card{
+        padding: 30px;
+        @include breakpoint(md){
+            padding: 80px 200px 50px 200px;
+        }
+        .mod-top{
+            margin: 10px;
+            .refresh-button{
+                background-color: white;
+                border-radius: 10px;
+                border: none;
+                @include pxtorem(20);
+                @include font(400);
+                @include line-height(24px);
+                @include breakpoint(ipad){
+                    @include line-height(20px);
+                    @include pxtorem(14);
+                }
+                box-shadow: 2px 2px 10px rgba(98, 23, 124, 0.2);
+                @include width_height(169px, 44px);
+                @include breakpoint(ipad){
+                    @include width_height(120px, 38px);
+                }
+                @include breakpoint(xs){
+                    @include width_height(80px, 38px);
+                    @include margin{
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+        .text-35-700-42{
+            @include pxtorem(35);
+            @include font(700);
+            @include line-height(42px);
+            @include breakpoint(ipad){
+                @include pxtorem(26);
+                @include line-height(30px);
+            }
+            @include breakpoint(xs){
+                @include pxtorem(20);
+                @include line-height(24px);
+            }
+        }
+        .text-20-400-24{
+            margin: 10px 0;
+        }
+        .rev{
+            margin-left: 1em;
+            @include breakpoint(xs){
+                margin-left: 0;
+            }
+        }
+        .text-25-400-30{
+            color: var(--grey-lighter);
+        }
+        .review{
+            color: var(--black) !important;
+        }
+        .text-30-500-36{
+            color: var(--black);
+            margin-top: 10px;
+            @include breakpoint(xs) {
+                @include pxtorem(24);
+                @include line_height(30px);
+            }
+        }
+        .allreview_card{
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px;
+            @include breakpoint(sm){
+                padding: 25px 70px 50px 70px;
+            }
+            .text-25-700-30{
+                @include font(700);
+                @include breakpoint(xs){
+                    padding: 20px 0px;
+                    @include pxtorem(22);
+                }
+            }
+            .text-25-400-30{
+                color: var(--black-light);
+                @include margin {
+                    margin: 1em 0;
+                }
+                .fa-user-circle{
+                    color: var(--grey-lighter);
+                    font-size: 1.4em;
+                }
+            }
+            .view_btn{
+                position: relative;
+                top: 45%;
+                @include margin {
+                    margin-left: auto;
+                } 
+                @include breakpoint(xs){
+                    top: 10%;
+                    margin-bottom: 40px;
+                } 
+            }
+        }
+    }
+}
