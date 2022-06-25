@@ -51,7 +51,6 @@
                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                       <div class="modal-content">
-                                            
                                                 <a type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </a>
@@ -64,9 +63,7 @@
                                                    Upload Photo
                                                    <input id="fileInput" type='file' (change)="onSelectFile($event)">
                                                </span>
-            
-                                                </div>
-                                                
+                                            </div>  
                                       </div>
                                     </div>
                                   </div>
@@ -162,7 +159,7 @@
                                                 <div class="text-20-600-24">
                                                     <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{candidate.success}}
                                                 </div>
-                                                <div class="view_btn text-20-400-24" routerLink="/dashboardreview">
+                                                <div class="view_btn text-20-400-24" routerLink="/viewreview">
                                                     View Review
                                                 </div>
                                             </div>
@@ -189,7 +186,7 @@
                                                 <div class="text-20-600-24 rejected_color">
                                                     <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{candidate.rejected}}
                                                 </div>
-                                                <div class="view_btn text-20-400-24">
+                                                <div class="view_btn text-20-400-24" routerLink="/viewreviewreject">
                                                     View Review
                                                 </div>
                                             </div>
@@ -216,7 +213,7 @@
                                                 <div class="text-20-600-24">
                                                     <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp;{{candidate.success}}
                                                 </div>
-                                                <div class="view_btn text-20-400-24">
+                                                <div class="view_btn text-20-400-24" routerLink="/viewreview">
                                                     View Review
                                                 </div>
                                             </div>
@@ -250,7 +247,7 @@
                                                 <div class="text-20-600-24 rejected_color">
                                                     <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{candidate.rejected}}
                                                 </div>
-                                                <div class="view_btn text-20-400-24">
+                                                <div class="view_btn text-20-400-24" routerLink="/viewreviewreject">
                                                     View Review
                                                 </div>
                                             </div>
@@ -276,7 +273,7 @@
                                                 <div class="text-20-600-24 pending-color">
                                                     {{candidate.pending}}
                                                 </div>
-                                                <div class="view_btn text-20-400-24">
+                                                <div class="view_btn text-20-400-24" routerLink="/viewreviewpending">
                                                     View Review
                                                 </div>
                                             </div>

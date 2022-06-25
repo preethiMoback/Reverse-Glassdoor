@@ -111,11 +111,33 @@
                     <div class="dropdown-menu" id="edit-profile" role="menu" aria-labelledby="imageDropdown">
                         <a class="dropdown-item  text-20-600-24" routerLink="/editprofile">Edit Profile</a>
                         <a class="dropdown-item  text-20-600-24" href="#">Help Center</a>
-                        <a class="dropdown-item  text-20-600-24" href="#">Logout</a>
+                        <a class="dropdown-item  text-20-600-24" data-toggle="modal" data-target="#logOutModal">Logout</a>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </header>
+
+<div class="modal fade" id="logOutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-deactivate-content">
+                <div class="body-modal">
+                    <h2>Log Out ?</h2>
+               <div>
+                <p class="text-20-400-24">
+                    Are you sure you want to log out?
+                </p>
+               </div> 
+               <div class="btn-sec">
+                    <span class="check btn text-20-400-24" type= "button">
+                        Cancel
+                    </span>
+                    <span class="write btn text-20-400-24" type= "button" >
+                        Log Out
+                    </span>
+                </div>
+            </div>  
+      </div>
+    </div>
+</div>

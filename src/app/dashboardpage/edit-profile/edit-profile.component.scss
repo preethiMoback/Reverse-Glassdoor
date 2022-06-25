@@ -42,6 +42,7 @@
         min-height: 100vh;
         position: relative;
         padding-top: 4%;
+        text-align: center;
         .card{
             padding: 30px;
             border-radius: 10px;
@@ -77,6 +78,14 @@
                     display: block;
                 }
             }
+        }
+        .deactivate{
+            background-color: var(--deactivate-red);
+            color: white;
+            border: none;
+            @include width_height(300px, 56px);
+            border-radius: 5px;
+            margin: 2em 0;
         }
     }
     .edit-profile-form{
