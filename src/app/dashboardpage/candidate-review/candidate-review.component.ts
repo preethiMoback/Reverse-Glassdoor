@@ -12,9 +12,14 @@ export class CandidateReviewComponent implements OnInit {
   submitted = false;
   max: number = 5;
   // value: number = 5;
-  value!: Observable<number>;
+  //value!: Observable<number>;
   registrationForm!: any;
   
+  value="";
+    public options = [
+    {value: "on", id:"On"},
+    {value: "off", id:"Off"},
+  ]
   constructor(private formBuilder: FormBuilder) { }
 
 //   ngOnInit() {
@@ -60,6 +65,7 @@ export class CandidateReviewComponent implements OnInit {
 //       this.submitted = false;
 //       this.registerForm.reset();
 //   }
+
 ngOnInit() {
   this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -68,7 +74,7 @@ ngOnInit() {
       primaryskill:['', Validators.required],
       countrycode:['',[]],//[Validators.required,Validators.pattern('/^(\+?\d{1,3}|\d{1,4})$/')]],
       rating: [3],
-      gender: ['male', [Validators.required]],
+      status: ['', [Validators.required]],
       phoneNumber: ['', [
           Validators.required,
           Validators.minLength(8),

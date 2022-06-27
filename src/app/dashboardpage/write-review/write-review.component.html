@@ -57,6 +57,7 @@
                                                type="text"   
                                                class="form-control" 
                                                [ngClass]="{ 'is-invalid': submitted && f['countrycode'].errors }"
+                                               placeholder="+91"
                                            />  
                                            <div *ngIf="submitted && f['countrycode'].errors" class="invalid-feedback">
                                                <div *ngIf="f['countrycode'].errors['required']">countrycode is required</div>
@@ -103,20 +104,20 @@
                                         <div class="radio-label">Choose phase of review*</div>
                                         <div class="custom-radiobtn">
                                             <div class="custom-control custom-radio">
-                                                <input id="male" type="radio" class="custom-control-input" value="male" name="gender" formControlName="gender">
-                                                <label class="custom-control-label" for="male">Male</label>
+                                                <input id="interview" type="radio" class="custom-control-input" value="interview" name="status" formControlName="status">
+                                                <label class="custom-control-label" for="interview">Interview</label>
                                             </div>
                     
                                             <div class="custom-control custom-radio">
-                                            <input id="female" type="radio" class="custom-control-input" value="female" name="gender" formControlName="gender">
-                                            <label class="custom-control-label" for="female">Female</label>
+                                            <input id="offer" type="radio" class="custom-control-input" value="offer" name="status" formControlName="status">
+                                            <label class="custom-control-label" for="offer">Offer</label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input id="unknown" type="radio" class="custom-control-input" value="unknown" name="gender" formControlName="gender">
-                                                <label class="custom-control-label" for="unknown">Unknown</label>
+                                                <input id="onboarding" type="radio" class="custom-control-input" value="onboarding" name="status" formControlName="status">
+                                                <label class="custom-control-label" for="onboarding">Onboarding</label>
                                             </div>
                                 
-                                            <div class="invalid-feedback" *ngIf="submitted && f['gender'].errors">
+                                            <div class="invalid-feedback" *ngIf="submitted && f['status'].errors">
                                             <p>Please select either value</p>
                                             </div>
                                         </div>
