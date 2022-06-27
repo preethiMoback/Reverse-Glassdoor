@@ -127,43 +127,5 @@
     .btn{
         @include width_height(215px, 49px);
     }
-    .modal-content{
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        text-align: left;
-        @include width_height (500px, 70px) ;
-        @include breakpoint(ipad){
-            width: 450px;
-        }
-        @include breakpoint(xs){
-            width: 300px;
-        }
-        
-        .body-modal{
-        display: flex;
-        border-radius: 10px;
-        background-color: var(--light-green);
-        justify-content: space-around;
-        align-items: flex-end;
-        color: var(--dusky-white);
-        @include width_height (500px, 70px) ;
-        @include breakpoint(ipad){
-            width: 450px;
-        }
-        @include breakpoint(xs){
-            @include width_height(300px, 70px)
-        }
-        
-       i{
-        font-size: 2rem;
-        
-    }
-       .vl {
-        border-right: 2px solid #FFFFFF;
-        height: 3rem;
-        width: 1px;
-        box-shadow: 1px 0px 4px rgba(98, 23, 124, 0.25);
-      }
-    }
-    }
+    
 }
