@@ -19,6 +19,9 @@ export class WriteReviewComponent implements OnInit {
         lastName: ['', Validators.required],
         companyName:['', Validators.required],
         primaryskill:['', Validators.required],
+        countrycode:['',[]],//[Validators.required,Validators.pattern('/^(\+?\d{1,3}|\d{1,4})$/')]],
+        rating: [3],
+      gender: ['male', [Validators.required]],
         phoneNumber: ['', [
             Validators.required,
             Validators.minLength(8),
