@@ -1,3 +1,4 @@
+import { Apiservice } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors} from '@angular/forms';
 import { Router } from '@angular/router';
@@ -25,6 +26,7 @@ export class AdvancedSearchComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router, 
+              private apiService: Apiservice,
               private formData :FormDataService) { }
 
   ngOnInit() {
@@ -76,11 +78,27 @@ export class AdvancedSearchComponent implements OnInit {
         (this.registerForm.get('companyName')?.value)
       )    
               ;
+          let name = this.registerForm.value.name.split(" ");
+          let payload: any = {
+          }
+          if(name.length > 0 && name) payload.first_name = name[0];
+          if(name.length > 1 && name) payload.last_name = name[1];
+          if(this.registerForm.value.email) payload.email_id = this.registerForm.value.email;
+          if(this.registerForm.value.phoneNumber) payload.mobile_num  = this.registerForm.value.phoneNumber;
+          if(this.registerForm.value.companyName) payload.organisation_name = this.registerForm.value.companyName;
+          if(this.registerForm.value.primaryskill) payload.primaryskill = this.registerForm.value.primaryskill;
+
+          this.apiService.candidateAdvanceSearch(payload)
+            .subscribe((res: any) =>{
+              console.log(res);
+              this.apiService.filteredResult.next(res.data);
+            });
         }
   }
  
   onReset() {
     this.submitted = false;
+    this.apiService.filteredResult.next({});
     this.registerForm.reset();
   }
 }

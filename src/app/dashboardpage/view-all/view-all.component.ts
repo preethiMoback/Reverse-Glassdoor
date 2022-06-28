@@ -1,3 +1,4 @@
+import { Apiservice } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewAllComponent implements OnInit {
   rate = 4;
- 
-  candidateData = [
-      {"name": "Manohar Kunireddi", "success":"Approved","rejected":"Rejected","pending":"Approval pending"},
-      {"name": "Amit","rejected":"Rejected","success":"Approved","pending":"Approval pending"},
-      {"name": "Puneet ","success":"Approved","rejected":"Rejected","pending":"Approval pending"},
-      ]
-  constructor() { }
+  reviewList: any[] = [];
+  type: string = 'allReview';
+  constructor(private apiService: Apiservice) {
+    this.apiService.currentReviewList.subscribe(res =>{
+      console.log(res);
+      this.reviewList = res.data;
+      this.type = res.type;
+    });
+   }
 
   ngOnInit(): void {
   }

@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             <button class="deactivate text-20-400-24"data-toggle="modal" data-target="#deactivateModal">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;
+                                <i class="fa fa-trash-o" aria-hidden="true" ></i>&nbsp;
                                 Deactivate Account
                             </button>
                             <div class="modal fade" id="deactivateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -75,7 +75,7 @@
                                                 <div class="check btn text-20-400-24" data-dismiss="modal" aria-label="Close">
                                                     Cancel
                                                 </div>
-                                                <div class="write btn text-20-400-24">
+                                                <div class="write btn text-20-400-24" (click)="deactivateAccount()">
                                                     Deactivate
                                                 </div>
                                             </div>
@@ -91,7 +91,7 @@
                                     <div class="card-body">
                                         <div class="form__section">
                                             <form id="#registerForm"
-                                             [formGroup]="registerForm">
+                                             [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                                                 <div class="row g-3">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
@@ -170,7 +170,7 @@
                                                       </div>
                                                     <div class="col-md-12">
                                                         <div class="d-flex justify-content-start">
-                                                            <button class="btn"  data-toggle="modal" data-target="#exampleModalCenter">Update</button> 
+                                                            <button class="btn"  data-toggle="modal" data-target="#exampleModalCenter" >Update</button> 
                                                         </div>
                                                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered" role="document">

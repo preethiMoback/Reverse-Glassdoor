@@ -141,9 +141,9 @@
                                                 <label>What is the type of review?</label><br>
                                             <div class="switch-toggle switch-2 switch-candy">
                                             <input id="on" name="state-d" type="radio" checked="" />
-                                            <label for="on" onclick="">Positive</label>
+                                            <label for="on" onclick="" formControlName="feedback_type1">Positive</label>
                                             <input id="off" name="state-d" type="radio" />
-                                            <label for="off" onclick="">Negative</label>
+                                            <label for="off" onclick="" formControlName="feedback_type2">Negative</label>
                                           </div>
                                             </div>
                                         </div>
@@ -151,7 +151,7 @@
                                      <div class="col-md-12">
                                        <div class="form-group text_area">
                                            <label>Give your review</label>
-                                           <textarea class="form-control" rows="7" placeholder="Please write about the candidate review here"></textarea>
+                                           <textarea class="form-control" rows="7" formControlName="feedback" placeholder="Please write about the candidate review here"></textarea>
                                        </div>
                                      </div>
                                      <div class="col-md-12">
@@ -338,9 +338,9 @@
                                                 <label>What is the type of review?</label><br>
                                             <div class="switch-toggle switch-2 switch-candy">
                                             <input id="on" name="state-d" type="radio" checked="checked" />
-                                            <label for="on" onclick="">Positive</label>
+                                            <label for="on" (click)="changeStatus('Positive')">Positive</label>
                                             <input id="off" name="state-d" type="radio" />
-                                            <label for="off" onclick="">Negative</label>
+                                            <label for="off" (click)="changeStatus('Negative')">Negative</label>
                                           </div>
                                             </div>
                                         </div>
@@ -348,7 +348,7 @@
                                      <div class="col-md-12">
                                        <div class="form-group text_area">
                                            <label>Give your review</label>
-                                           <textarea class="form-control" rows="7" placeholder="Please write about the candidate review here"></textarea>
+                                           <textarea class="form-control" rows="7"  formControlName="feedback" placeholder="Please write about the candidate review here"></textarea>
                                        </div>
                                      </div>
                                      <div class="col-md-12">

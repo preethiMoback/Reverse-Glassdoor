@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Apiservice } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -14,14 +17,9 @@ export class CandidateReviewComponent implements OnInit {
   // value: number = 5;
   //value!: Observable<number>;
   registrationForm!: any;
-  
-  value="";
-    public options = [
-    {value: "on", id:"On"},
-    {value: "off", id:"Off"},
-  ]
-  constructor(private formBuilder: FormBuilder) { }
+  feedbackType: string = 'Positive';
 
+  constructor(private formBuilder: FormBuilder, private apiService: Apiservice, private toaster: ToastrService, private router: Router) { }
 //   ngOnInit() {
 //     this.registerForm = this.formBuilder.group({
 //         name: ['', Validators.required],
@@ -69,19 +67,20 @@ export class CandidateReviewComponent implements OnInit {
 ngOnInit() {
   this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
-      lastName: ['', Validators.required],
+      // lastName: ['', Validators.required],
       companyName:['', Validators.required],
       primaryskill:['', Validators.required],
       countrycode:['',[]],//[Validators.required,Validators.pattern('/^(\+?\d{1,3}|\d{1,4})$/')]],
       rating: [3],
       status: ['', [Validators.required]],
+      feedback:['', Validators.required],
       phoneNumber: ['', [
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(12),
           Validators.pattern('^[0-9]*$')]],
-      companyWebsite:['', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
-      message:['', Validators.required],
+      // companyWebsite:['', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
+      // message:['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
       email: ['', [
           Validators.required,
@@ -94,17 +93,55 @@ ngOnInit() {
 get f() { return this.registerForm.controls; }
 
 onSubmit() {
-  this.submitted = true;
-  if (this.registerForm.invalid) {
-      return;
+    this.submitted = true;
+    console.log(this.registerForm.value);
+    console.log(this.registerForm);
+    if (this.registerForm.invalid) {
+        return;
+    }
+    else{
+      let names = this.registerForm.value.name.split(" ");
+      let phase = this.registerForm.value.radio1? 'Interview' : this.registerForm.value.radio2? 'Offer': 'Onboarding';
+      let ratingstring = '';
+      let ratvalue = this.registerForm.value.rating;
+      while(ratvalue--){
+        ratingstring += "*";
+      }
+      let payload = {
+        first_name: this.registerForm.value.name.split(" ")[0],
+        middle_name: '',
+        last_name: this.registerForm.value.name.split(" ")[names.length - 1],
+        mobile_num: this.registerForm.value.countrycode.split("+")[1] +  this.registerForm.value.phoneNumber,
+        email_id: this.registerForm.value.email,
+        current_organisation_name: this.registerForm.value.companyName,
+        phase: phase,
+        feedback: this.registerForm.value.feedback,
+        feedback_type: this.feedbackType,
+        submission_status: "pending approval",
+        justification_for_rejection: "---",
+        rating: ratingstring,
+        primary_skill: this.registerForm.value.primaryskill,
+      }
+    console.log(payload);
+      this.apiService.candidateReview(payload)
+        .subscribe(res =>{
+          this.toaster.success('', 'Submit Candidate Review Successfully!');
+          this.router.navigate(['/dashboardpage']);
+        })
+
+    }
+}
+
+changeStatus(status: string){
+  console.log(status);
+  this.feedbackType = status;
+
+}
+
+
+
+  onReset() {
+      this.submitted = false;
+      this.registerForm.reset();
   }
-  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
-}
-
-
-
-onReset() {
-    this.submitted = false;
-    this.registerForm.reset();
-}
 }

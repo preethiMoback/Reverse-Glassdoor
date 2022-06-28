@@ -1,3 +1,4 @@
+import { Apiservice } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
@@ -9,7 +10,7 @@ import { FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private apiService: Apiservice) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -45,6 +46,9 @@ export class LoginComponent implements OnInit {
     if (this.registerForm.invalid) {
         return;
     }
-}
+    else{
+      this.apiService.loginUser(this.registerForm.value);
+    }
+  }
 
 }

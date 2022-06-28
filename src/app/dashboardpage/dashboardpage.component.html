@@ -15,8 +15,8 @@
             <form action="/action_page.php">
                 <div class="input-group">
                     <i class="fa fa-search" aria-hidden="true"></i>
-                  <input type="text" class="form-control" placeholder="Search about candidate by name, email id or phone-number" name="email">
-                  <span class="input-group-text">
+                  <input type="text" class="form-control" [(ngModel)]="searchKey" placeholder="Search about candidate by name, email id or phone-number" name="email">
+                  <span class="input-group-text" (click)="searchByName()">
                       <figure>
                         <img src="../../assets/Images/Search_buttonicon.svg" alt="Search_buttonicon">
                       </figure>
@@ -71,11 +71,10 @@
                             </div>
                             <div class="profile_details">
                                 <h2 class="text-35-700-42">
-                                    Mahesh  Rudra  
-                                    <br> Badaballa
+                                    {{currentUserName}}
                                 </h2>
                                 <h4 class="text-25-400-30">
-                                    Daviskuruvilla@bighaat.com
+                                    {{currentUserEmail}}
                                 </h4>
                             </div>
                         </div>
@@ -90,61 +89,61 @@
 
                             <ul class="nav nav-tabs">
                                 <li class="nav-item active">
-                                  <a class="nav-link active" href="#" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"  role="tab" aria-controls="nav-home" aria-selected="true">
-                                    <div class="text-40-500-48">00</div>
+                                  <a class="nav-link active" href="#" id="nav-home-tab" data-bs-toggle="tab" (click)="tabChange(0)" data-bs-target="#nav-home"  role="tab" aria-controls="nav-home" aria-selected="true">
+                                    <div class="text-40-500-48">{{ candidateFeedbackCountList.allReview  }}</div>
                                     <small class="text-22-500-26">All Reviews</small>
                                   </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="#" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"  role="tab" aria-controls="nav-profile" aria-selected="false">
-                                    <div class="text-40-500-48">00</div>
+                                  <a class="nav-link" href="#" id="nav-profile-tab" data-bs-toggle="tab" (click)="tabChange(1)" data-bs-target="#nav-profile"  role="tab" aria-controls="nav-profile" aria-selected="false">
+                                    <div class="text-40-500-48">{{ candidateFeedbackCountList.approved }}</div>
                                     <small class="text-22-500-26">Approved</small>
                                   </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="#"  id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"  role="tab" aria-controls="nav-contact" aria-selected="false">
-                                    <div class="text-40-500-48">00</div>
+                                  <a class="nav-link" href="#"  id="nav-contact-tab" data-bs-toggle="tab" (click)="tabChange(2)" data-bs-target="#nav-contact"  role="tab" aria-controls="nav-contact" aria-selected="false">
+                                    <div class="text-40-500-48">{{ candidateFeedbackCountList.rejected }}</div>
                                     <small class="text-22-500-26">Rejected</small> 
                                   </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link " href="#" id="nav-pending-tab" data-bs-toggle="tab" data-bs-target="#nav-pending"  role="tab" aria-controls="nav-pending" aria-selected="false">
-                                    <div class="text-40-500-48">00</div>
+                                  <a class="nav-link " href="#" id="nav-pending-tab" data-bs-toggle="tab" (click)="tabChange(3)" data-bs-target="#nav-pending"  role="tab" aria-controls="nav-pending" aria-selected="false">
+                                    <div class="text-40-500-48">{{ candidateFeedbackCountList.pending }}</div>
                                     <small class="text-22-500-26">Pending</small>
                                   </a>
                                 </li>
                               </ul>
                         </div>
                         <div class="card content__part mt-4">
+                            <div class="card-title">
+                                All reviews<a class="text-18-400-21" (click)="goToViewAll()">View All</a>
+                            </div>
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <div class="card-title">
-                                        All reviews<a class="text-18-400-21" routerLink="/viewall">View All</a>
-                                    </div>
-                                    <div *ngFor="let candidate of candidateData">
+                                    <div *ngFor="let candidate of allReviewList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
                                                     {{candidate.name}}
                                                 </div>
                                                 <div class="text-25-400-30">
-                                                    Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
+                                                    Interview Review  <span class="text-20-400-24">Reviewed on {{candidate.update_time | date}}.</span>
                                                 </div>
-                                                <div class="text-25-400-30">
+                                                <div class="text-25-400-30" *ngIf="candidate.status === 'Approved'">
                                                     <div class="row ratings">
                                                         <div class="col-md-4">
-                                                            <rating [(ngModel)]="rate" [max]=5 [readonly]="false"></rating>
+                                                            <rating [(ngModel)]="candidate.rating.length" [max]=5 [readonly]="false"></rating>
                                                         </div>
                                                         <div class="col-md-8">
                                                             <div class="thumbs-rating">
                                                                 <div class="thumbs-up-rating">
-                                                                    <span class=" text-20-400-24">13</span>
+                                                                    <span class=" text-20-400-24">{{candidate.Helpful}}</span>
                                                                    <span class="thumbs-icon">
                                                                     <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                                                    </span>
                                                                 </div>
                                                                 <div class="thumbs-down-rating">
-                                                                    <span class="text-20-400-24">13</span>
+                                                                    <span class="text-20-400-24">{{candidate.Not_Helpful}}</span>
                                                                     <span class="thumbs-icon">
                                                                         <i class="fa fa-thumbs-down" aria-hidden="true"></i>
                                                                     </span>
@@ -154,19 +153,41 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="text-25-400-30" *ngIf="candidate.status === 'Rejected'">
+                                                    Reason for rejection
+                                                </div>
+                                                <div class="text-20-400-24" *ngIf="candidate.status === 'Rejected'">
+                                                    {{candidate.justification_for_rejection}}
+                                                </div>
                                             </div>
-                                            <div class="col-md-4 text-right">
+                                            <div class="col-md-4 text-right" *ngIf="candidate.status === 'Approved'">
                                                 <div class="text-20-600-24">
-                                                    <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{candidate.success}}
+                                                    <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{candidate.status}}
                                                 </div>
                                                 <div class="view_btn text-20-400-24" routerLink="/viewreview">
+                                                    View Review
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 text-right" *ngIf="candidate.status === 'Rejected'">
+                                                <div class="text-20-600-24 rejected_color">
+                                                    <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{candidate.status}}
+                                                </div>
+                                                <div class="view_btn text-20-400-24">
+                                                    View Review
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 text-right" *ngIf="candidate.status === 'Approval Pending'">
+                                                <div class="text-20-600-24 pending-color">
+                                                    {{candidate.status}}
+                                                </div>
+                                                <div class="view_btn text-20-400-24">
                                                     View Review
                                                 </div>
                                             </div>
                                         </div>
                                         <hr>
                                     </div>
-                                    <div *ngFor="let candidate of candidateData">
+                                    <!-- <div *ngFor="let candidate of candidateData">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
@@ -193,25 +214,46 @@
                                         </div>
                                        
                                         <hr>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                    <div class="card-title">
-                                        Approved <a class="text-18-400-21" routerLink="/viewall">View All</a>
-                                    </div>
-                                    <div *ngFor="let candidate of candidateData">
+                                    <div *ngFor="let candidate of approvedList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
                                                     {{candidate.name}}
                                                 </div>
                                                 <div class="text-25-400-30">
-                                                    Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
+                                                    Interview Review  <span class="text-20-400-24">Reviewed on {{candidate.update_time | date}}.</span>
+                                                </div>
+                                                <div class="text-25-400-30">
+                                                    <div class="row ratings">
+                                                        <div class="col-md-4">
+                                                            <rating [(ngModel)]="candidate.rating.length" [max]=5 [readonly]="false"></rating>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="thumbs-rating">
+                                                                <div class="thumbs-up-rating">
+                                                                    <span class=" text-20-400-24">{{candidate.Helpful}}</span>
+                                                                   <span class="thumbs-icon">
+                                                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                                                   </span>
+                                                                </div>
+                                                                <div class="thumbs-down-rating">
+                                                                    <span class=" text-20-400-24">{{candidate.Not_Helpful}}</span>
+                                                                    <span class="thumbs-icon">
+                                                                        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <span class="text-20-400-24">20 views</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 text-right">
                                                 <div class="text-20-600-24">
-                                                    <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp;{{candidate.success}}
+                                                    <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp;{{candidate.status}}
                                                 </div>
                                                 <div class="view_btn text-20-400-24" routerLink="/viewreview">
                                                     View Review
@@ -222,30 +264,27 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                    <div class="card-title">
-                                        Rejected<a class="text-18-400-21" routerLink="/viewall">View All</a>
-                                    </div>
-                                    <div *ngFor="let candidate of candidateData">
+                                    <div *ngFor="let candidate of rejectedList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
                                                     {{candidate.name}}
                                                 </div>
                                                 <div class="text-25-400-30">
-                                                    Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
+                                                    Interview Review  <span class="text-20-400-24">Reviewed on {{candidate.update_time | date}}.</span>
                                                 </div>
                                                 <br>
                                                 <div class="text-25-400-30">
                                                     Reason for rejection
                                                 </div>
                                                 <div class="text-20-400-24">
-                                                    Improper way of feedback
+                                                    {{candidate.justification_for_rejection}}
                                                 </div>
 
                                             </div>
                                             <div class="col-md-4 text-right">
                                                 <div class="text-20-600-24 rejected_color">
-                                                    <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{candidate.rejected}}
+                                                    <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{candidate.status}}
                                                 </div>
                                                 <div class="view_btn text-20-400-24" routerLink="/viewreviewreject">
                                                     View Review
@@ -256,22 +295,19 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-pending" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                    <div class="card-title">
-                                        Pending Approval<a class="text-18-400-21" routerLink="/viewall">View All</a>
-                                    </div>
-                                    <div *ngFor="let candidate of candidateData">
+                                    <div *ngFor="let candidate of pendingList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
                                                     {{candidate.name}}
                                                 </div>
                                                 <div class="text-25-400-30">
-                                                    Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
+                                                    Interview Review  <span class="text-20-400-24">Reviewed on {{candidate.update_time | date}}.</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 text-right">
                                                 <div class="text-20-600-24 pending-color">
-                                                    {{candidate.pending}}
+                                                    {{candidate.status}}
                                                 </div>
                                                 <div class="view_btn text-20-400-24" routerLink="/viewreviewpending">
                                                     View Review
