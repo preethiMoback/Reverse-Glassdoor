@@ -59,13 +59,15 @@
                         box-shadow: none;
                        }
                 }
-                rating{
-                    @include margin {
-                        margin-top: 10px;
-                    }
-                    @include pxtorem(32);
-                    color: var(--dark-gray);
-                }
+                // .rating{
+                //     button{
+                //         @include margin {
+                //             margin-top: 10px;
+                //         }
+                //         @include pxtorem(32);
+                //         color: var(--dark-gray); 
+                //     }
+                // }
                 .switch-toggle {
                     @include margin {
                         margin-top: 1em;

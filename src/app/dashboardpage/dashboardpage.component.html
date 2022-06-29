@@ -15,7 +15,7 @@
             <form action="/action_page.php">
                 <div class="input-group">
                     <i class="fa fa-search" aria-hidden="true"></i>
-                  <input type="text" class="form-control" [(ngModel)]="searchKey" placeholder="Search about candidate by name, email id or phone-number" name="email">
+                  <input type="text" class="form-control" [(ngModel)]="searchKey" placeholder="Search about candidate by name or email id" name="email">
                   <span class="input-group-text" (click)="searchByName()">
                       <figure>
                         <img src="../../assets/Images/Search_buttonicon.svg" alt="Search_buttonicon">
@@ -61,7 +61,7 @@
                                                </div> 
                                                <span type="button" class="btn btn-primary">
                                                    Upload Photo
-                                                   <input id="fileInput" type='file' (change)="onSelectFile($event)">
+                                                   <input id="fileInput" type='file' (change)="onSelectFile($event)" >
                                                </span>
                                             </div>  
                                       </div>

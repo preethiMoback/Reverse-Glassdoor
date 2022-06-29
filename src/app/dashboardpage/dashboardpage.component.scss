@@ -201,9 +201,13 @@
                 text-align: right;
                 background-color: white;
                 position: relative;
-                    @include breakpoint(min1200) {
-                        @include width_height (820px, 300px) ;
-                    }
+                @include width_height (820px, 380px) ;
+                @include breakpoint(ipad){
+                @include width_height (540px, 380px) ;
+                }
+                @include breakpoint(xs){
+                @include width_height (300px, 380px) ;
+                }
                     a{
                        text-decoration: none;
                        color: var(--grey-light);
@@ -217,8 +221,12 @@
                     align-items: center;
                     text-align: center;
                     color: var(--black-light);
-                    @include breakpoint(min1200) {
-                        @include width_height (780px, 280px) ;
+                    @include width_height (800px, 380px) ;
+                    @include breakpoint(ipad){
+                    @include width_height (520px, 380px) ;
+                    }
+                    @include breakpoint(xs){
+                    @include width_height (280px, 380px) ;
                     }
                     .text-18-400-22{
                         @include pxtorem(18);
