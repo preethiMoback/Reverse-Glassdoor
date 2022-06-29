@@ -99,7 +99,7 @@
                     </div>
                 </div>
                 <div class="btnn">
-                    <button class="btn">Request OTP</button>
+                    <button class="btn" (click)='startTimer()'>Request OTP</button>
                 </div>
                 <div class="">
                     <h3 class="text-18-400-27" (click)="changeStep('login',1)"><span>Back to Login</span></h3>
@@ -131,6 +131,7 @@
                     <div *ngIf="submitted && f['otp'].errors" class="invalid-feedback">
                         <div *ngIf="f['otp'].errors['required']">Please enter OTP</div>
                     </div>
+                    <div class="text-18-400-27">Try again in : <span id="timer">{{timeLeft}} sec</span></div>
                 </div>
                 <div class="btnn">
                     <button class="btn">Verify OTP</button>
@@ -308,7 +309,7 @@
             </div>
             <div class="">
                 <h3 class="text-18-400-27">Password should contain minimum 8 characters (An upper case, lower case, special <br>characters and numbers).</h3>
-                <button class="btn" (click)="onSubmit()">Register</button>
+                <button class="btn" (click)="onSubmit()"> Register</button>
                 <h3 class="text-18-400-27">Already have an account ? <span (click)="changeStep('login',1)"> Login</span></h3>
             </div>
         </div>
@@ -318,7 +319,8 @@
      <div class="card" *ngIf="step==2 && signup">
         <div class="card-title">
             <h1 class="title text-30-700-36">OTP Verification</h1>
-            <h3 class="text-18-400-27">We have sent an OTP to the given mail address.<br>(mailaddress@company.com)</h3>
+            <!-- <h3 class="text-18-400-27">We have sent an OTP to the given mail address.<br>(mailaddress@company.com)</h3> -->
+            <h3 class="text-18-400-27">Valid till : <span id="timer">{{timeLeft}}</span></h3>
         </div>
         <div class="card-body p-0">
            <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">

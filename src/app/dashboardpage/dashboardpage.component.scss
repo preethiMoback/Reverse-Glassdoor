@@ -317,6 +317,9 @@
             animation-fill-mode: forwards;
             animation-duration:1s;
             animation-timing-function: ease-out;
+            hr:nth-last-child(1){
+                display: none;
+            }
         }
         .card{
             .card-title{

@@ -274,6 +274,7 @@
         }
         span{
             color: var(--blue);
+            cursor: pointer;
         }
         .card-body{
             margin: auto;
@@ -306,27 +307,28 @@
                         @include pxtorem(14);
                     }
                 }
-                .btn{
-                    @include margin {
-                        margin: 30px auto 0px;
-                    }
-                    width: 100%;
-                    @include width_height(81%,50px);
-                    @include pxtorem(20);
-                    @include line_height(24px);
-                    @include breakpoint(sm) {
-                    @include width_height(220px,50px);
-                    }
-                    @include breakpoint(ipad){
-                        @include pxtorem(18);
-                    }
-                    &:focus {
-                        outline: none;
-                        box-shadow: none;
-                    }
-                }
                 .invalid-feedback{
                     text-align: left;
+                }
+            }
+            .btn{
+                @include margin {
+                    margin: 30px auto 0px;
+                }
+                width: 100%;
+                outline: none;
+                @include width_height(81%,50px);
+                @include pxtorem(20);
+                @include line_height(24px);
+                @include breakpoint(sm) {
+                @include width_height(220px,50px);
+                }
+                @include breakpoint(ipad){
+                    @include pxtorem(18);
+                }
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
                 }
             }
         }
