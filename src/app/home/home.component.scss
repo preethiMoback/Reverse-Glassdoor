@@ -306,25 +306,6 @@
                         @include pxtorem(14);
                     }
                 }
-                .btn{
-                    @include margin {
-                        margin: 30px auto 0px;
-                    }
-                    width: 100%;
-                    @include width_height(81%,50px);
-                    @include pxtorem(20);
-                    @include line_height(24px);
-                    @include breakpoint(sm) {
-                    @include width_height(220px,50px);
-                    }
-                    @include breakpoint(ipad){
-                        @include pxtorem(18);
-                    }
-                    &:focus {
-                        outline: none;
-                        box-shadow: none;
-                    }
-                }
                 .invalid-feedback{
                     text-align: left;
                 }
@@ -349,6 +330,25 @@
                     margin: 0px auto !important;
                 }
             }
+        }
+    }
+    .btn{
+        @include margin {
+            margin: 30px auto 0px;
+        }
+        width: 100%;
+        @include width_height(81%,50px);
+        @include pxtorem(20);
+        @include line_height(24px);
+        @include breakpoint(sm) {
+        @include width_height(220px,50px);
+        }
+        @include breakpoint(ipad){
+            @include pxtorem(18);
+        }
+        &:focus {
+            outline: none;
+            box-shadow: none;
         }
     }
 }
