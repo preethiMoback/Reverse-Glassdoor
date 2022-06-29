@@ -274,6 +274,10 @@
         }
         span{
             color: var(--blue);
+            cursor: pointer;
+            &:hover{
+                opacity: 0.8;
+            } 
         }
         .card-body{
             margin: auto;
