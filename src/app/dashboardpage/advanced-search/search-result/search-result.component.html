@@ -68,6 +68,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-30-700-36" *ngIf="candidateNotFound">
+                    No such Candidate found
+                </div>
             </div>
 
             <ngx-ui-loader [loaderId]="'loader-01'"></ngx-ui-loader>

@@ -6,6 +6,7 @@
     padding-bottom: 1em;
     .card{
         padding: 60px 0px;
+        margin-bottom: 2em;
         @include breakpoint(ipad){
             margin-top: -10px;
         }

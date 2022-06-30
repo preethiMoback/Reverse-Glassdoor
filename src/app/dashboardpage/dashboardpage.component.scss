@@ -317,9 +317,6 @@
             animation-fill-mode: forwards;
             animation-duration:1s;
             animation-timing-function: ease-out;
-            hr:nth-last-child(1){
-                display: none;
-            }
         }
         .card{
             .card-title{
@@ -383,6 +380,11 @@
                 @include breakpoint(xs){
                     align-items: flex-start;
                 }
+            }
+        }
+        .candidateCard:nth-last-child(1){
+            hr{
+                display: none;
             }
         }
     }

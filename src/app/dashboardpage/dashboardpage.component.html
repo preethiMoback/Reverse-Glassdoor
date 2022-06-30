@@ -120,7 +120,7 @@
                             </div>
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <div *ngFor="let candidate of allReviewList">
+                                    <div class="candidateCard" *ngFor="let candidate of allReviewList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
@@ -217,7 +217,7 @@
                                     </div> -->
                                 </div>
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                    <div *ngFor="let candidate of approvedList">
+                                    <div class="candidateCard" *ngFor="let candidate of approvedList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
@@ -264,7 +264,7 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                    <div *ngFor="let candidate of rejectedList">
+                                    <div class="candidateCard" *ngFor="let candidate of rejectedList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
@@ -295,7 +295,7 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-pending" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                    <div *ngFor="let candidate of pendingList">
+                                    <div class="candidateCard" *ngFor="let candidate of pendingList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">

@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   show: boolean = false;
   timeLeft: number = 120;
   interval:any;
+  timerOn = true;
 
 
  
@@ -223,7 +224,7 @@ passwordVerify(){
       if(this.timeLeft > 0) {
         this.timeLeft--;
       } else {
-        this.timeLeft = 60;
+        this.timeLeft = 0;
       }
     },1000)
   }
