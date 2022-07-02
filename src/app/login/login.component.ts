@@ -10,10 +10,6 @@ import { FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
-  timeLeft: number = 120;
-  interval:any;
-
-
   constructor(private formBuilder: FormBuilder, private apiService: Apiservice) { }
 
   ngOnInit(): void {
@@ -53,16 +49,6 @@ export class LoginComponent implements OnInit {
     else{
       this.apiService.loginUser(this.registerForm.value);
     }
-  }
-
-  startTimer() {
-    this.interval = setInterval(() => {
-      if(this.timeLeft > 0) {
-        this.timeLeft--;
-      } else {
-        this.timeLeft = 60;
-      }
-    },1000)
   }
 
 }

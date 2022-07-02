@@ -21,6 +21,7 @@ export class Apiservice {
     currentReviewList: BehaviorSubject<any> = new BehaviorSubject({});
     currenUserInfo: BehaviorSubject<any> = new BehaviorSubject({});
     reviewCandidateInfo: BehaviorSubject<any> = new BehaviorSubject({});
+    viewReviewDetails: BehaviorSubject<any> = new BehaviorSubject({});
 
 
     
@@ -121,6 +122,12 @@ export class Apiservice {
         return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/update_status/`,{},this.commonOptions2);
     }
 
-    
+    viewReview(payload: any){
+        return this.http.get(`http://${this.DeployedIP}:${this.DeployedPort}/user/ViewFeedback/?id=`+ payload.id + "&phase=" + payload.phase,this.commonOptions2);
+    }
+
+    changeHelpfull(payload: any){
+        return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/edit/`,payload,this.commonOptions2);
+    }
 
 }

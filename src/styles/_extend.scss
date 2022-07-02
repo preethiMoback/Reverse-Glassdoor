@@ -101,7 +101,7 @@
 }
 .check{
     @include width_height(215px, 49px);
-    border: 2px solid var(--purple);
+    border: 3px solid var(--purple);
     border-radius: 5px;
     cursor: pointer;
     @include font(500);
@@ -434,7 +434,7 @@ p{
     }
 }
 
-#deactivateModal,#logOutModal, #loginPopUp {
+#deactivateModal,#logOutModal{
     .modal-content{
         border-radius: 10px;
         padding: 0 1em;
@@ -442,12 +442,8 @@ p{
         position: relative;
         margin-right: 10px;
         background-color: #FFFFFF;
-        @include width_height (820px, 380px) ;
-            @include breakpoint(ipad){
-                @include width_height (540px, 380px) ;
-            }
-            @include breakpoint(xs){
-                @include width_height (300px, 380px) ;
+            @include breakpoint(min1200) {
+                @include width_height (820px, 380px) ;
             }
             .body-modal{
             display: flex;
@@ -462,12 +458,8 @@ p{
                 border-bottom: 2px solid black;
                 padding: 1em;
             }
-            @include width_height (800px, 380px) ;
-            @include breakpoint(ipad){
-                @include width_height (520px, 380px) ;
-            }
-            @include breakpoint(xs){
-                @include width_height (280px, 380px) ;
+            @include breakpoint(min1200) {
+                @include width_height (820px, 380px) ;
             }
             p{
                 color: var(--black);

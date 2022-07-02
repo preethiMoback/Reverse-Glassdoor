@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Apiservice } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ModeratorComponent implements OnInit {
 
   pendingReviewList: any[] = [];
-  constructor(private apiService: Apiservice) { }
+  constructor(private apiService: Apiservice, private router: Router) { }
 
   ngOnInit(): void {
     this.apiService.candidateInfo().subscribe((res: any) => {
@@ -29,6 +30,12 @@ export class ModeratorComponent implements OnInit {
         }
       });
     });
+  }
+
+
+  viewReview(candidate: any){
+    console.log(candidate);
+    this.router.navigate(['/dashboardreview']);
   }
 
 }

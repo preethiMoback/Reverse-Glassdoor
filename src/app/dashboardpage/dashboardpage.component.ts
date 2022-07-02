@@ -65,12 +65,15 @@ export class DashboardpageComponent implements OnInit {
 
     this.apiService.candidateInfo().subscribe((res: any) => {
       res.interview.filter((item: any) => {
+        item.phase = 'interview';
         this.findHelpulNotHelpFull(item,'interview');
       });
       res.offer.filter((item: any) => {
+        item.phase = 'offer';
         this.findHelpulNotHelpFull(item,'offer');
       });
       res.onboarding.filter((item: any) => {
+        item.phase = 'onboarding';
         this.findHelpulNotHelpFull(item,'onboarding');
       });
     });
@@ -126,6 +129,30 @@ export class DashboardpageComponent implements OnInit {
     }
     if (this.allReviewList.length < 5) this.allReviewList.push(item);
     this.allAllReviewList.push(item);
+  }
+
+  viewReview(candidate: any){
+    console.log(candidate);
+    let payload: any = {
+      id: candidate.id,
+      phase: candidate.phase
+    }
+    this.apiService.viewReview(payload)
+      .subscribe((res: any) =>{
+        
+        this.apiService.helpfullCount(payload)
+          .subscribe((count: any) =>{
+            res.data[0].Helpful = count.Helpful;
+            res.data[0].Not_Helpful = count.Not_Helpful;
+            res.data[0].phase = candidate.phase;
+            res.data[0].status = candidate.status;
+
+
+
+            this.apiService.viewReviewDetails.next(res.data[0]);
+            this.router.navigate(['/viewreview']);
+          })
+      })
   }
 
   tabChange(tabIndex:  number){

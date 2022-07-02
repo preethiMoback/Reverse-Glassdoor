@@ -23,11 +23,6 @@ export class HomeComponent implements OnInit {
   isEmailVerified: boolean = false;
   message: string = '';
   show: boolean = false;
-  timeLeft: number = 120;
-  interval:any;
-  timerOn = true;
-
-
  
   constructor(private formBuilder: FormBuilder,
     private router: Router, 
@@ -218,15 +213,4 @@ passwordVerify(){
       this.registerForm.get('createpassword')?.enable();
       this.registerForm.get('confirmpassword')?.enable();
   }
-
-  startTimer() {
-    this.interval = setInterval(() => {
-      if(this.timeLeft > 0) {
-        this.timeLeft--;
-      } else {
-        this.timeLeft = 0;
-      }
-    },1000)
-  }
-
 }

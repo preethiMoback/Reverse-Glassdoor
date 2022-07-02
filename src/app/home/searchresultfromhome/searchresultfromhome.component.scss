@@ -2,8 +2,7 @@
 @import "/src/styles/extend";
 .Advancesearch_section{
     background-color: var(--dusky-white) !important;
-    min-height: 100vh;
-    padding-bottom: 1em;
+    height: 100vh;
     .card{
         padding: 60px 0px;
         @include breakpoint(ipad){
@@ -66,6 +65,8 @@
                 }
             }
         }
+        // .text-30-700-36{
+        // }
         .text-25-500-30{
             @include pxtorem(25);
             @include line_height(30px);
@@ -87,91 +88,74 @@
             font-weight: 100;
         }
     }
-    .body-sec{
-        background-color: var(--dusky-white);
-        .candidate-card{
-            @include margin {margin: 40px 0;}
-            @include breakpoint($min:1300px){
-                width: 85%;
-            }
-            .card{
-                background-color: white !important;
-                border-radius: 10px;
-                padding: 0;
-                @include breakpoint($min: 768px,$max: 1199px){
-                    padding-right: 30px;
-                }
-    
-                .btn-sec{
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: flex-start;
-                    @include breakpoint(xs){
-                        align-items: center;
-                        margin: 1em 0;
-                    }
-                }
-                .text-30-700-36{
-                    @include breakpoint(ipad){
-                        @include pxtorem(26);
-                        @include line_height(30px);
-                        padding: 0.8em 1em;
-                    }
-                    @include breakpoint(xSmall){
-                        @include pxtorem(20);
-                        @include line_height(30px);
-                        padding: 0px;
-                    }
-                }
-            }
+    .candidate-card{
+        @include margin {margin: 40px 0;}
+        @include breakpoint($min:1300px){
+            width: 85%;
         }
-        .modal-content{
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        .card{
             border-radius: 10px;
-            padding: 0 1em;
-            text-align: right;
-            position: relative;
-                @include breakpoint(min1200) {
-                    @include width_height (700px, 280px) ;
-                }
-                a{
-                   text-decoration: none;
-                   color: var(--grey-light);
-                   font-size: 4em;
-                }
-                .body-modal{
-                    display: flex;
+            padding: 0;
+            @include breakpoint($min: 768px,$max: 1199px){
+                padding-right: 30px;
+            }
+
+            .btn-sec{
+                display: flex;
                 flex-direction: column;
-                justify-content: space-around;
-                align-items: center;
-                text-align: center;
-                color: var(--black-light);
-                @include breakpoint(min1200) {
-                    @include width_height (700px, 280px) ;
+                justify-content: center;
+                align-items: flex-start;
+                @include breakpoint(xs){
+                    align-items: center;
                 }
-                .text-18-400-22{
-                    @include pxtorem(18);
-                    @include line_height(21px);
-                    @include font(400);
-                }
-                .btn{
-                    margin-bottom: 2.5em;
-                    position: relative;
-                    overflow: hidden;
-                    @include breakpoint(ipad){
-                        height: 45px;
-                        margin: 1em 0;
-                    }
-                }
-                }
-                   }
-        input.nosubmit {
-            display: block;
-            padding: 9px 4px 9px 40px;
-            background: transparent url("./../../../assets/Images/search_resulticon.svg")no-repeat 40px center;
-            background-size: 30px;
+            }
         }
+    }
+    .modal-content{
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 0 1em;
+        text-align: right;
+        position: relative;
+            @include breakpoint(min1200) {
+                @include width_height (700px, 280px) ;
+            }
+            a{
+               text-decoration: none;
+               color: var(--grey-light);
+               font-size: 4em;
+            }
+            .body-modal{
+                display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            color: var(--black-light);
+            @include breakpoint(min1200) {
+                @include width_height (700px, 280px) ;
+            }
+            .text-18-400-22{
+                @include pxtorem(18);
+                @include line_height(21px);
+                @include font(400);
+            }
+            .btn{
+                margin-bottom: 2.5em;
+                position: relative;
+                overflow: hidden;
+                @include breakpoint(ipad){
+                    height: 45px;
+                    margin: 1em 0;
+                }
+            }
+            }
+               }
+    input.nosubmit {
+        display: block;
+        padding: 9px 4px 9px 40px;
+        background: transparent url("./../../../assets/Images/search_resulticon.svg")no-repeat 40px center;
+        background-size: 30px;
     } 
 }
 

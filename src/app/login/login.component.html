@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="btnn">
-                    <button class="btn" (click)='startTimer()'>Request OTP</button>
+                    <button class="btn">Request OTP</button>
                 </div>
                 <div class="">
                     <h3 class="text-18-400-27"><span>Back to Login</span></h3>
@@ -405,7 +405,6 @@
                     <div *ngIf="submitted && f['otp'].errors" class="invalid-feedback">
                         <div *ngIf="f['otp'].errors['required']">Please enter OTP</div>
                     </div>
-                    <div>Valid till : <span id="timer">{{timeLeft}}</span></div>
                 </div>
                 <div class="btnn">
                     <button class="btn">Verify OTP</button>

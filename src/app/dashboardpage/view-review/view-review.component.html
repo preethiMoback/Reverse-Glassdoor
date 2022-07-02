@@ -10,17 +10,23 @@
                     </p>
                     <div class="card-title">
                        <div class="text-30-700-36">
-                            Onboarding review 
-                            <span class="text-20-600-24">
-                                <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; Approved
+                            {{currentReview?.phase}} review 
+                            <span class="text-20-600-24" *ngIf="currentReview?.status === 'Approved'">
+                                <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{currentReview?.status}}
                             </span>
+                            <div class="text-20-600-24 rejected_color" *ngIf="currentReview?.status === 'Rejected'">
+                                <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{currentReview?.status}}
+                            </div>
+                            <div class="text-20-600-24 pending-color" *ngIf="currentReview?.status === 'Approval Pending'"> 
+                                {{currentReview?.status}}
+                            </div>
                             </div>
                         <div class="text-25-400-30">
                             by  <span><i class="fa fa-user-circle" aria-hidden="true"></i>
                             </span>  Davis Kuruvilla (Bighaat Pvt Ltd).
                         </div>
                         <div class="text-20-400-24">
-                            Reviewed on 13th Mar 2022.
+                            Reviewed on {{currentReview?.create_time | date}}
                         </div>
                     </div>
                     <div class="card-body">
@@ -28,21 +34,17 @@
                             <rating [(ngModel)]="rate" [max]=5 [readonly]="false"></rating>
                         </div>
                         <div class="text-20-400-24 para">
-                            Ask one person about including an objective statement on your resume and they’ll say it’s 
-                            paramount. Ask another person they’ll say it is outdated. Who knew that a few sentences can 
-                            be so polarizing? Ask one person about including an objective statement on your resume and 
-                            they’ll say it’s paramount. Ask another person they’ll say it is outdated. 
-                            Who knew that a few sentences can be so polarizing?
+                            {{currentReview?.feedback}}
                         </div>
                         <div class="thumbs-rating">
                             <div class="thumbs-up-rating">
-                                <span class=" text-20-400-24">13</span>
+                                <span class=" text-20-400-24">{{currentReview?.Helpful}}</span>
                                <span class="thumbs-icon">
                                 <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                </span>
                             </div>
                             <div class="thumbs-down-rating">
-                                <span class="text-20-400-24">2</span>
+                                <span class="text-20-400-24">{{currentReview?.Not_Helpful}}</span>
                                 <span class="thumbs-icon">
                                     <i class="fa fa-thumbs-down" aria-hidden="true"></i>
                                 </span>

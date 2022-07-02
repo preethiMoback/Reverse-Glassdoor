@@ -22,7 +22,7 @@
                         <div class="form__section">
                             <form id="#registerForm" [formGroup]="registerForm"
                                 (ngSubmit)="onSubmit()">
-                                <div class="row g-3"> 
+                                <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Candidate Name *</label>
@@ -33,7 +33,6 @@
                                                 id="form-control" 
                                                 [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" 
                                                 placeholder="Name of the Candidate"
-                                                autocomplete="off"
                                             />
                                             <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
                                                 <div *ngIf="f['name'].errors['required']">
@@ -50,7 +49,6 @@
                                                 class="form-control nosubmit" 
                                                 [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" 
                                                 placeholder="Candidate’s mail id"
-                                                autocomplete="off"
                                             />
                                             <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                                                 <div *ngIf="f['email'].errors['required']">Email is required</div>
@@ -67,7 +65,6 @@
                                                 type="text"   
                                                 class="form-control nosubmit" 
                                                 placeholder="Phone Number"
-                                                autocomplete="off"
                                                 [ngClass]="{ 'is-invalid': submitted && f['phoneNumber'].errors }"
                                             />  
                                             <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
@@ -84,7 +81,6 @@
                                                 class="form-control nosubmit" 
                                                 [ngClass]="{ 'is-invalid': submitted && f['primaryskill'].errors }"
                                                 placeholder="Candidate’s primary skill"
-                                                autocomplete="off"
                                             />  
                                             <div *ngIf="submitted && f['primaryskill'].errors" class="invalid-feedback">
                                                 <div *ngIf="f['primaryskill'].errors['required']">Candidate’s primary skill</div>
@@ -100,7 +96,6 @@
                                                 class="form-control nosubmit" 
                                                 [ngClass]="{ 'is-invalid': submitted && f['companyName'].errors }" 
                                                 placeholder="Organisation name"
-                                                autocomplete="off"
                                             />
                                             <div *ngIf="submitted && f['companyName'].errors" class="invalid-feedback">
                                                 <div *ngIf="f['companyName'].errors['required']">Company Name is required</div>
