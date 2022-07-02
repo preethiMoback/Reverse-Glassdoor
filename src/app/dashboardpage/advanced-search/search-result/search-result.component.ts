@@ -13,6 +13,7 @@ export class SearchResultComponent implements OnInit {
 
   data = this.formData.getData();   
   filterList: any[] = [];    
+  candidateNotFound = false;
 
   constructor(private formData:FormDataService,
     private apiService: Apiservice,
@@ -27,10 +28,20 @@ export class SearchResultComponent implements OnInit {
       this.ngxLoader.stopLoader('loader-01');
     });
 
-    this.apiService.filteredResult.subscribe((res: any)=>{
+    this.apiService.filteredResult.subscribe(
+      (res: any)=>{
       console.log(res);
       this.filterList = res;
+      // if (this.filterList.length >= 1 ){
+      //   this.candidateNotFound = true;
+      // }
+      if (res.length === 0) {
+        this.candidateNotFound = true;
+        } else {
+         this.candidateNotFound = false;
+        }
     })
+
   }
 
 
