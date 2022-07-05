@@ -1,6 +1,9 @@
 @import 'styles/colors.css';
 @import "/src/styles/mixins";
 @import "/src/styles/extend";
+// regular style toast
+@import '~ngx-toastr/toastr';
+
 
 // html {
 //     scroll-behavior: smooth;

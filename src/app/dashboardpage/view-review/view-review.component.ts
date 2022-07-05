@@ -1,3 +1,4 @@
+import { Apiservice } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewReviewComponent implements OnInit {
   rate = 1;
-  constructor() { }
+  currentReview: any;
+  constructor(private apiService: Apiservice) { }
 
   ngOnInit(): void {
+    this.apiService.viewReviewDetails.subscribe((res =>{
+      console.log(res);
+      this.currentReview = res;
+      this.rate = res &&  res.rating && res.rating.length;
+    }))
   }
 
 }

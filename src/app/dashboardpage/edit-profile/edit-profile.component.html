@@ -4,7 +4,7 @@
         <div class="card">
             <div class="row">
                 <div class="col-md-2">
-                    <p routerLink="/dashboardpage">
+                    <p data-toggle="modal" data-target="#saveChangesModal" routerLink="/dashboardpage">
                         <i class="fa fa-angle-left pr-5" aria-hidden="true"></i>
                         Back
                     </p>
@@ -54,14 +54,44 @@
                                     </div>
                                 </div>
                             </div>
+                            <button class="deactivate text-20-400-24"data-toggle="modal" data-target="#deactivateModal">
+                                <i class="fa fa-trash-o" aria-hidden="true" ></i>&nbsp;
+                                Deactivate Account
+                            </button>
+                            <div class="modal fade" id="deactivateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                  <div class="modal-content">
+                                            <div class="body-modal">
+                                                <h2>Deactivate Account?</h2>
+                                           <div>
+                                            <p class="text-20-400-24">
+                                                This action will deactivate your account. Please select deactivate to proceed action.
+                                            </p>
+                                            <p class="text-20-400-24">
+                                                You can always re-activate your account by contacting our support team.
+                                            </p>
+                                           </div> 
+                                           <div class="btn-sec">
+                                                <div class="check btn text-20-400-24" data-dismiss="modal" aria-label="Close">
+                                                    Cancel
+                                                </div>
+                                                <div class="write btn text-20-400-24" (click)="deactivateAccount()">
+                                                    Deactivate
+                                                </div>
+                                            </div>
+                                        </div>  
+                                  </div>
+                                </div>
+                              </div>
                         </div>
+                       
                         <div class="col-12 col-md-12 col-lg-8">
                             <div class="edit-profile-form">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="form__section">
                                             <form id="#registerForm"
-                                             [formGroup]="registerForm">
+                                             [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                                                 <div class="row g-3">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
@@ -140,7 +170,7 @@
                                                       </div>
                                                     <div class="col-md-12">
                                                         <div class="d-flex justify-content-start">
-                                                            <button class="btn"  data-toggle="modal" data-target="#exampleModalCenter">Update</button> 
+                                                            <button class="btn"  data-toggle="modal" data-target="#exampleModalCenter" >Update</button> 
                                                         </div>
                                                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -167,6 +197,29 @@
                 </div> 
             </div>
         </div>
+        <div class="modal fade" id="saveChangesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-deactivate-content">
+                        <div class="body-modal">
+                            <h2>Save Changes</h2>
+                       <div>
+                        <p class="text-20-400-24">
+                            You haven’t saved the changes you made to your profile.
+                            Do you want to save changes?
+                        </p>
+                       </div> 
+                       <div class="btn-sec">
+                            <span class="check btn text-20-400-24" type= "button" routerLink="/dashboardpage">
+                                Cancel
+                            </span>
+                            <span class="write btn text-20-400-24" type= "button" >
+                                Save Changes
+                            </span>
+                        </div>
+                    </div>  
+              </div>
+            </div>
+          </div>
         <div class="tab-content premium-content" id="nav-tabContent">
             <div class="tab-pane fade show" id="nav-premium" role="tabpanel" aria-labelledby="nav-premium-tab">
             </div>

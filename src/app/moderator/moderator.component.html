@@ -1,0 +1,142 @@
+
+
+<header class="fixed-top header_section">
+    <div class="container-fluid">
+        <div class="hero_section">
+            <div class="hero_logo">
+                <div class="text-50-900-60" routerLink="/">Reverse Glassdoor</div>
+            </div>
+            <div class="hero_icons">
+                <div class="hdr">
+                    David Kuruvilla
+                </div>
+                <div class="dropdown dropleft  dropdown-toggle-split" >
+                    <a href="" id="imageDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <img src="../../assets/Images/image_icon.svg">
+                    </a>
+                    <div class="dropdown-menu" id="edit-profile" role="menu" aria-labelledby="imageDropdown">
+                        <a class="dropdown-item  text-20-600-24" routerLink="/editprofile">Edit Profile</a>
+                        <a class="dropdown-item  text-20-600-24" href="#">Help Center</a>
+                        <a class="dropdown-item  text-20-600-24" href="#">Logout</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="moderator-section">
+    <div class="container-fluid">
+        <div class="moderator-card">
+            <div class="row mod-top">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-4 col-sm-5  text-35-700-42">
+                    Waiting to Approve
+                </div>
+                <div class="col-lg-1 col-sm-1">
+                    <button class="refresh-button" routerLink="/moderator">
+                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 p-0">
+                    <div class="card content_part allreview_card" *ngFor="let candidate of pendingReviewList">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="text-30-500-36">
+                                    Manohar Kunireddi
+                                </div>
+                                <div class="text-20-400-24">
+                                    manohardesmond@gmail.com
+                                </div>
+                                <div class="text-20-400-24">
+                                    +91 7013110417
+                                </div>
+                                <div class="text-25-400-30 review">
+                                    Employment Review  <span class="text-20-400-24 rev">Reviewed on 13th Mar 2022.</span>
+                                </div>
+                                <div class="text-25-400-30">
+                                    by  <span><i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    </span> Davis Kuruvilla (Bighaat Pvt Ltd).
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="view_btn text-20-400-24" (click)="viewReview(candidate)">
+                                    View Review
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- <div class="row">
+                            <div class="col-md-8">
+                                <div class="text-30-500-36">
+                                    Manohar Kunireddi
+                                </div>
+                                <div class="text-20-400-24">
+                                    manohardesmond@gmail.com
+                                </div>
+                                <div class="text-20-400-24">
+                                    +91 7013110417
+                                </div>
+                                <div class="text-25-400-30 review">
+                                    Employment Review  <span class="text-20-400-24 rev">Reviewed on 13th Mar 2022.</span>
+                                </div>
+                                <div class="text-25-400-30">
+                                    by  <span><i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    </span> Davis Kuruvilla (Bighaat Pvt Ltd).
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="view_btn text-20-400-24" routerLink="/dashboardreview">
+                                    View Review
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="text-30-500-36">
+                                    Manohar Kunireddi
+                                </div>
+                                <div class="text-20-400-24">
+                                    manohardesmond@gmail.com
+                                </div>
+                                <div class="text-20-400-24">
+                                    +91 7013110417
+                                </div>
+                                <div class="text-25-400-30 review">
+                                    Employment Review  <span class="text-20-400-24 rev">Reviewed on 13th Mar 2022.</span>
+                                </div>
+                                <div class="text-25-400-30">
+                                    by  <span><i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    </span> Davis Kuruvilla (Bighaat Pvt Ltd).
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="view_btn text-20-400-24" routerLink="/dashboardreview">
+                                    View Review
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+            <div class="body-modal text-25-700-30">
+                <div>
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+                <div class="vl"></div>
+                Review Approved Successfully
+            </div>  
+      </div>
+    </div>
+</div>

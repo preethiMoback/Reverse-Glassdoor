@@ -19,6 +19,10 @@ import { ViewOthersReviewComponent } from './dashboardpage/view-others-review/vi
 import { EditProfileComponent } from './dashboardpage/edit-profile/edit-profile.component';
 import { WriteReviewAgainComponent } from './dashboardpage/write-review-again/write-review-again.component';
 import { SearchresultfromhomeComponent } from './home/searchresultfromhome/searchresultfromhome.component';
+import { ModeratorComponent } from './moderator/moderator.component';
+import { ViewReviewRejectComponent } from './dashboardpage/view-review-reject/view-review-reject.component';
+import { ViewReviewPendingComponent } from './dashboardpage/view-review-pending/view-review-pending.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -39,6 +43,11 @@ const routes: Routes = [
   { path: 'editprofile',  component: EditProfileComponent  },
   { path: 'writereviewagain',  component: WriteReviewAgainComponent },
   { path: 'searchresultfromhome',  component: SearchresultfromhomeComponent },
+  { path: 'moderator',  component: ModeratorComponent },
+  { path: 'viewreviewreject',  component: ViewReviewRejectComponent },
+  { path: 'viewreviewpending',  component: ViewReviewPendingComponent },
+
+
 
 
 

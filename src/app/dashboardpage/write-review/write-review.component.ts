@@ -10,7 +10,13 @@ export class WriteReviewComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
   max: number = 7;
-  value: number = 5;
+  // value: number = 5;
+
+  value="";
+  public options = [
+  {value: "on", id:"On"},
+  {value: "off", id:"Off"},
+]
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -19,6 +25,9 @@ export class WriteReviewComponent implements OnInit {
         lastName: ['', Validators.required],
         companyName:['', Validators.required],
         primaryskill:['', Validators.required],
+        countrycode:['',[]],//[Validators.required,Validators.pattern('/^(\+?\d{1,3}|\d{1,4})$/')]],
+        rating: [3],
+      status: ['', [Validators.required]],
         phoneNumber: ['', [
             Validators.required,
             Validators.minLength(8),

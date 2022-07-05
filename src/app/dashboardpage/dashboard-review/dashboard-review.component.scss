@@ -50,6 +50,11 @@
                         @include line_height(31px);
                     }
                 }
+                .btn-sec{
+                    margin: 5em 0;
+                    display: flex;
+                    gap: 3em;
+                }
                 .help_btn{
                     display: flex;
                     @include margin {

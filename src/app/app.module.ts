@@ -1,3 +1,5 @@
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,9 +28,11 @@ import { ViewOthersReviewComponent } from './dashboardpage/view-others-review/vi
 import { EditProfileComponent } from './dashboardpage/edit-profile/edit-profile.component';
 import { WriteReviewAgainComponent } from './dashboardpage/write-review-again/write-review-again.component';
 import { NgxUiLoaderModule, NgxUiLoaderConfig } from 'ngx-ui-loader';
+import { NgxInputStarRatingModule } from 'ngx-input-star-rating';
 import { SearchresultfromhomeComponent } from './home/searchresultfromhome/searchresultfromhome.component';
-
-
+import { ModeratorComponent } from './moderator/moderator.component';
+import { ViewReviewRejectComponent } from './dashboardpage/view-review-reject/view-review-reject.component';
+import { ViewReviewPendingComponent } from './dashboardpage/view-review-pending/view-review-pending.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +56,9 @@ import { SearchresultfromhomeComponent } from './home/searchresultfromhome/searc
     EditProfileComponent,
     WriteReviewAgainComponent,
     SearchresultfromhomeComponent,
+    ModeratorComponent,
+    ViewReviewRejectComponent,
+    ViewReviewPendingComponent,
   
   ],
   imports: [
@@ -61,7 +68,14 @@ import { SearchresultfromhomeComponent } from './home/searchresultfromhome/searc
     ReactiveFormsModule,
     CommonModule,
     RatingModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }),
     HttpClientModule,
+    NgxInputStarRatingModule,
     NgxUiLoaderModule.forRoot({
   "fgsColor": "#62177C",
   "fgsPosition": "center-center",

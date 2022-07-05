@@ -1,3 +1,4 @@
+import { Apiservice } from './../../../services/api.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
@@ -10,9 +11,11 @@ import { FormDataService } from '../form-data.service';
 })
 export class SearchResultComponent implements OnInit {
 
- data = this.formData.getData();       
+  data = this.formData.getData();   
+  filterList: any[] = [];    
 
   constructor(private formData:FormDataService,
+    private apiService: Apiservice,
     private ngxLoader: NgxUiLoaderService, 
     private http: HttpClient) { }
 
@@ -23,6 +26,11 @@ export class SearchResultComponent implements OnInit {
       console.log(res);
       this.ngxLoader.stopLoader('loader-01');
     });
+
+    this.apiService.filteredResult.subscribe((res: any)=>{
+      console.log(res);
+      this.filterList = res;
+    })
   }
 
 

@@ -19,29 +19,15 @@
                             <div class="card-title">
                                 Notifications   
                             </div>
-                            <div class="card-body">
-                                <a class="dropdown-item">
-                                    <div class="card reject">
-                                        <div class="card-body text-20-600-24 ">
-                                             <div class="rejected_color">
-                                                    <img  class="status" src="../../../assets/Images/cross.svg" alt="">
-                                                    Rejected
-                                            </div >
-                                            <div>
-                                                Interview Review (Manohar Konireddi)
-                                            </div>
-                                            <div class="text-18-400-21" >
-                                              1 hour ago
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item">
-                                    <div class="card reject">
-                                        <div class="card-body text-20-600-24 ">
-                                            <div class="rejected_color">
-                                                    <img  class="status" src="../../../assets/Images/cross.svg" alt="">
-                                                    Rejected
+                            <div *ngFor="let candidate of allAllReviewList">
+                                <div class="card-body" >
+                                    <!-- {{candidate| json}} -->
+                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Approval Pending'">
+                                        <div class="card reject" >
+                                            <div class="card-body text-20-600-24 ">
+                                                <div class="pending-color">
+                                                {{candidate?.status}}
+                                                </div>
                                             </div>
                                             <div>
                                                 Interview Review (Manohar Konireddi)
@@ -50,56 +36,40 @@
                                                 1 hour ago
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item">
-                                    <div class="card reject">
-                                        <div class="card-body text-20-600-24 ">
-                                            <div class="rejected_color">
-                                                    <img  class="status" src="../../../assets/Images/cross.svg" alt="">
-                                                    Rejected
-                                            </div>
-                                            <div>
-                                                Interview Review (Manohar Konireddi)
-                                            </div>
-                                            <div class="text-18-400-21" >
-                                                  1 hour ago
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item">
-                                    <div class="card approve">
-                                        <div class="card-body text-20-600-24 ">
-                                            <div class="approved_color">
-                                                    <img  class="status" src="../../../assets/Images/tick.svg" alt="">
-                                                    Approved
-                                            </div>
-                                            <div>
-                                                Interview Review (Manohar Konireddi)
-                                            </div>
-                                            <div class="text-18-400-21" >
-                                                 2 hour ago
+                                    </a>
+                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Rejected'">
+                                        <div class="card reject" >
+                                            <div class="card-body text-20-600-24 ">
+                                                <div class="rejected_color">
+                                                        <img  class="status" src="../../../assets/Images/cross.svg" alt="">
+                                                        {{candidate?.status}}
+                                                </div>
+                                                <div>
+                                                    Interview Review (Manohar Konireddi)
+                                                </div>
+                                                <div class="text-18-400-21" >
+                                                      1 hour ago
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item">
-                                    <div class="card approve">
-                                        <div class="card-body text-20-600-24 ">
-                                            <div class="approved_color">
-                                                    <img  class="status" src="../../../assets/Images/tick.svg" alt="">
-                                                    Approved
-                                            </div>
-                                            <div>
-                                                Interview Review (Manohar Konireddi)
-                                            </div>
-                                            <div class="text-18-400-21" >
-                                                 5 hour ago
+                                    </a>
+                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Approved'">
+                                        <div class="card approve" >
+                                            <div class="card-body text-20-600-24 ">
+                                                <div class="approved_color">
+                                                        <img  class="status" src="../../../assets/Images/tick.svg" alt="">
+                                                        {{candidate?.status}}
+                                                </div>
+                                                <div>
+                                                    Interview Review (Manohar Konireddi)
+                                                </div>
+                                                <div class="text-18-400-21" >
+                                                     5 hour ago
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -111,11 +81,33 @@
                     <div class="dropdown-menu" id="edit-profile" role="menu" aria-labelledby="imageDropdown">
                         <a class="dropdown-item  text-20-600-24" routerLink="/editprofile">Edit Profile</a>
                         <a class="dropdown-item  text-20-600-24" href="#">Help Center</a>
-                        <a class="dropdown-item  text-20-600-24" href="#">Logout</a>
+                        <a class="dropdown-item  text-20-600-24" data-toggle="modal" data-target="#logOutModal">Logout</a>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </header>
+
+<div class="modal fade" id="logOutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+                <div class="body-modal">
+                    <h2>Log Out ?</h2>
+               <div>
+                <p class="text-20-400-24">
+                    Are you sure you want to log out?
+                </p>
+               </div> 
+               <div class="btn-sec">
+                    <span class="check btn text-20-400-24" data-dismiss="modal" aria-label="Close">
+                        Cancel
+                    </span>
+                    <span class="write btn text-20-400-24" data-dismiss="modal" routerLink="/" (click)="removeUserInfo()">
+                        Log Out
+                    </span>
+                </div>
+            </div>  
+      </div>
+    </div>
+</div>

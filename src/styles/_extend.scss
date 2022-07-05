@@ -1,10 +1,4 @@
-.container, .container-fluid {
-    // @include breakpoint($max: 2559.98px) {
-    //     max-width: 89vw;
-    // }
-    // @include breakpoint($min: 2560px) {
-    //     max-width: 2360px;
-    // }  
+.container, .container-fluid {  
 }
 
 .text-30-700-36{
@@ -35,7 +29,7 @@
     @include font(500);
     @include pxtorem(30);
     @include line_height(36px);
-    color: var(--white);
+    color: var(--white); 
     @include breakpoint(xs) {
         @include pxtorem(16);
         @include line_height(20px);
@@ -79,6 +73,7 @@
     align-items: center;
     background: var(--purple);
     border-radius: 5px;
+    cursor: pointer;
     color: var(--white);
     backdrop-filter: blur(20px);
     @include font(500);
@@ -94,6 +89,7 @@
 .write{
     @include width_height(215px, 49px);
     color: var(--white) !important;
+    cursor: pointer;
     @include margin{margin: 1em 0em};
     @include breakpoint(ipad) {
         @include width_height(150px, 30px);
@@ -107,6 +103,7 @@
     @include width_height(215px, 49px);
     border: 3px solid var(--purple);
     border-radius: 5px;
+    cursor: pointer;
     @include font(500);
     background-color: white;
     color: var(--purple) !important;
@@ -190,7 +187,7 @@ p{
     }
     .thumbs-icon{
         @include margin {
-            margin-left: 0.4em;
+            margin-left: 0.5em;
         }
         cursor: pointer;
         background-color: #C4C4C4;
@@ -209,7 +206,7 @@ p{
          }
         @include breakpoint(min1200){
             @include margin {
-               margin-left: 0.4em;
+               margin-left: 0.6em;
             }
         }
     }
@@ -329,13 +326,203 @@ p{
     @include breakpoint(xs){
         padding: 20px 0;
     }
-    // @include breakpoint(sm){
-    //     text-align: right;
-    // }
 }
 .rejected_color{
     color: var(--red);
 }
 .pending-color{
     color: var(--faded-red);
+}
+// View Reviews : Approved, Rejected & Pending
+.candidate-card{
+    border-radius: 0px;
+    box-shadow: unset;
+    .card{
+        background-color: transparent !important;
+        border: none;
+    }
+    .card-header{
+        background-color: transparent !important;
+        color: var(--purple) !important;
+        border-radius: 0px;
+        border: none;
+    }
+    .text-30-700-36{
+        @include font(700);
+        @include pxtorem(35);
+        @include line_height(42px);
+    }
+    .candidate_name{
+        @include font(600);
+        @include pxtorem(25);
+        @include line_height(30px);
+    }
+}
+.Onboarding_reviewpage{
+    .container-fluid{
+        background-color: var(--dusky-white);
+        min-height: 100vh;
+        .Onboarding_reviewContainer{
+            padding: 60px 0px;
+            min-height: 100vh;
+            .card-title{
+                padding: 10px;
+                @include breakpoint(sm){
+                    padding: 30px 60px 0px 60px;
+                }
+                .text-30-700-36, .text-25-400-30, .text-20-400-24 {
+                    padding-bottom: 10px;
+                    @include breakpoint(sm){
+                        padding-bottom: 18px;
+                    }
+                }
+                .text-25-400-30{
+                    color: var(--black);
+                    @include breakpoint(ipad){
+                        @include pxtorem(16);
+                    }
+                    .fa-user-circle{
+                        color: var(--grey-lighter);
+                    }
+                }
+                .text-20-600-24{
+                    @include margin{
+                        margin-left: 3em;
+                        @include breakpoint(xs){
+                            margin-left: 1em;
+                            @include pxtorem(14);
+                        }
+                    }
+                }
+            }
+            .card-body{
+                @include breakpoint(sm){
+                    padding: 30px 60px 60px 60px;
+                }
+                .text-20-400-24{
+                    @include font(400);
+                    @include pxtorem(20);
+                    @include line_height(34px);
+                    color: var(--black);
+                    @include breakpoint(ipad){
+                        @include pxtorem(16);
+                        @include line_height(31px);
+                    }
+                }
+                .improper{
+                    color: var(--gray-lighter) !important;
+                    @include margin{
+                        margin-top: -15px;
+                        margin-bottom: 2em;
+                    }
+                }
+                .para{
+                    @include margin{
+                        margin-top: 1em;
+                        margin-bottom: 50px;     
+                    }
+                }
+                .thumbs-rating{
+                    display: flex;
+                }
+                .btn{
+                    color: white;
+                    margin: 1em 0;
+                }
+            }
+        }
+    }
+}
+
+#deactivateModal,#logOutModal{
+    .modal-content{
+        border-radius: 10px;
+        padding: 0 1em;
+        text-align: right;
+        position: relative;
+        margin-right: 10px;
+        background-color: #FFFFFF;
+            @include breakpoint(min1200) {
+                @include width_height (820px, 380px) ;
+            }
+            .body-modal{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            background-color: white;
+            text-align: center;
+            padding: 0 1em;
+            h2{
+                color: var(--black-light);
+                border-bottom: 2px solid black;
+                padding: 1em;
+            }
+            @include breakpoint(min1200) {
+                @include width_height (820px, 380px) ;
+            }
+            p{
+                color: var(--black);
+                padding-right: 40px;
+            }
+            .btn-sec{
+                display: flex;
+                gap: 3em;
+                @include breakpoint(xs){
+                    gap: 1em;
+                    }
+                .btn{
+                    @include breakpoint(ipad){
+                        height: 45px;
+                        margin: 1em 0;
+                    }
+                    @include breakpoint(xs){
+                        @include width_height(100px, 30px);
+                    }
+                }
+                .check{
+                    @include margin{margin: 1em 0em};
+                }
+            }
+            }
+    }
+}
+
+// Green Staus Modal Popup
+ 
+.modal-content{
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: left;
+    @include width_height (500px, 70px) ;
+    @include breakpoint(ipad){
+        width: 450px;
+    }
+    @include breakpoint(xs){
+        width: 300px;
+    }
+    .body-modal{
+    display: flex;
+    border-radius: 10px;
+    background-color: var(--light-green);
+    justify-content: space-around;
+    align-items: flex-end;
+    color: var(--dusky-white);
+    @include width_height (500px, 70px) ;
+    @include breakpoint(ipad){
+        width: 450px;
+    }
+    @include breakpoint(xs){
+        @include width_height(300px, 70px)
+    }
+   i{
+    font-size: 2rem;  
+}
+   .vl {
+    border-right: 2px solid #FFFFFF;
+    height: 3rem;
+    width: 1px;
+    box-shadow: 1px 0px 4px rgba(98, 23, 124, 0.25);
+  }
+}
 }
