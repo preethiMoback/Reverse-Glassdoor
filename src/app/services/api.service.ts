@@ -130,4 +130,8 @@ export class Apiservice {
         return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/edit/`,payload,this.commonOptions2);
     }
 
+    viewhelpful(payload: any){
+        return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/helpful_nothelpful/`,payload,this.commonOptions2);
+    }
+
 }
