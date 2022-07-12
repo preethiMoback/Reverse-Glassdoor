@@ -47,11 +47,6 @@ const routes: Routes = [
   { path: 'viewreviewreject',  component: ViewReviewRejectComponent },
   { path: 'viewreviewpending',  component: ViewReviewPendingComponent },
 
-
-
-
-
-
 ];
 
 @NgModule({

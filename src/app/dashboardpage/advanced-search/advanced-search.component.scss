@@ -1,5 +1,7 @@
 @import "/src/styles/mixins";
 @import "/src/styles/extend";
+
+
 @keyframes from-top {
     0%  {transform:translateY(-1000px);}
     100% { transform:translateY(0)}
