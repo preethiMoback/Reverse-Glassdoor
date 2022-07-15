@@ -2,9 +2,12 @@
 @import "/src/styles/extend";
 .Advancesearch_section{
     background-color: var(--dusky-white) !important;
-    height: 100vh;
+    min-height: 100vh;
+    padding-bottom: 1em;
     .card{
         padding: 60px 0px;
+        margin-bottom: 2em;
+        background-color: white !important;
         @include breakpoint(ipad){
             margin-top: -10px;
         }
@@ -107,6 +110,18 @@
                 align-items: flex-start;
                 @include breakpoint(xs){
                     align-items: center;
+                }
+            }
+            .text-30-700-36{
+                @include breakpoint(ipad){
+                    @include pxtorem(26);
+                    @include line_height(30px);
+                    padding: 0.8em 1em;
+                }
+                @include breakpoint(xSmall){
+                    @include pxtorem(20);
+                    @include line_height(30px);
+                    padding: 0px;
                 }
             }
         }

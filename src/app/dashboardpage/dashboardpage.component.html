@@ -15,7 +15,7 @@
             <form action="/action_page.php">
                 <div class="input-group">
                     <i class="fa fa-search" aria-hidden="true"></i>
-                  <input type="text" class="form-control" [(ngModel)]="searchKey" placeholder="Search about candidate by name, email id or phone-number" name="email">
+                  <input type="text" class="form-control" [(ngModel)]="searchKey" placeholder="Search about candidate by name or email id" name="email">
                   <span class="input-group-text" (click)="searchByName()">
                       <figure>
                         <img src="../../assets/Images/Search_buttonicon.svg" alt="Search_buttonicon">
@@ -120,7 +120,7 @@
                             </div>
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <div *ngFor="let candidate of allReviewList">
+                                    <div class="candidateCard" *ngFor="let candidate of allReviewList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
@@ -137,13 +137,13 @@
                                                         <div class="col-md-8">
                                                             <div class="thumbs-rating">
                                                                 <div class="thumbs-up-rating">
-                                                                    <span class=" text-20-400-24">{{candidate.Helpful}}</span>
+                                                                    <span class=" tooltiptext text-20-400-24">{{candidate.Helpful}}</span>
                                                                    <span class="thumbs-icon">
                                                                     <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                                                    </span>
                                                                 </div>
                                                                 <div class="thumbs-down-rating">
-                                                                    <span class="text-20-400-24">{{candidate.Not_Helpful}}</span>
+                                                                    <span class="tooltiptext text-20-400-24">{{candidate.Not_Helpful}}</span>
                                                                     <span class="thumbs-icon">
                                                                         <i class="fa fa-thumbs-down" aria-hidden="true"></i>
                                                                     </span>
@@ -187,37 +187,10 @@
                                         </div>
                                         <hr>
                                     </div>
-                                    <!-- <div *ngFor="let candidate of candidateData">
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <div class="text-25-700-30">
-                                                    {{candidate.name}}
-                                                </div>
-                                                <div class="text-25-400-30">
-                                                    Interview Review  <span class="text-20-400-24">Reviewed on 13th Mar 2022.</span>
-                                                </div>
-                                                <div class="text-25-400-30">
-                                                    Reason for rejection
-                                                </div>
-                                                <div class="text-20-400-24" >
-                                                    Improper way of feedback
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 text-right">
-                                                <div class="text-20-600-24 rejected_color">
-                                                    <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{candidate.rejected}}
-                                                </div>
-                                                <div class="view_btn text-20-400-24" (click)="viewReview(candidate)">
-                                                    View Review
-                                                </div>
-                                            </div>
-                                        </div>
-                                       
-                                        <hr>
-                                    </div> -->
+                                   
                                 </div>
                                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                    <div *ngFor="let candidate of approvedList">
+                                    <div class="candidateCard" *ngFor="let candidate of approvedList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
@@ -234,13 +207,13 @@
                                                         <div class="col-md-8">
                                                             <div class="thumbs-rating">
                                                                 <div class="thumbs-up-rating">
-                                                                    <span class=" text-20-400-24">{{candidate.Helpful}}</span>
+                                                                    <span class=" tooltiptext text-20-400-24">{{candidate.Helpful}}</span>
                                                                    <span class="thumbs-icon">
                                                                     <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                                                    </span>
                                                                 </div>
                                                                 <div class="thumbs-down-rating">
-                                                                    <span class=" text-20-400-24">{{candidate.Not_Helpful}}</span>
+                                                                    <span class=" tooltiptext text-20-400-24">{{candidate.Not_Helpful}}</span>
                                                                     <span class="thumbs-icon">
                                                                         <i class="fa fa-thumbs-down" aria-hidden="true"></i>
                                                                     </span>
@@ -264,7 +237,7 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                    <div *ngFor="let candidate of rejectedList">
+                                    <div class="candidateCard" *ngFor="let candidate of rejectedList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
@@ -295,7 +268,7 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-pending" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                    <div *ngFor="let candidate of pendingList">
+                                    <div class="candidateCard" *ngFor="let candidate of pendingList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">

@@ -22,7 +22,7 @@
                             <div *ngFor="let candidate of allAllReviewList">
                                 <div class="card-body" >
                                     <!-- {{candidate| json}} -->
-                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Approval Pending'">
+                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Approval Pending'" routerLink="/viewreviewpending">
                                         <div class="card reject" >
                                             <div class="card-body text-20-600-24 ">
                                                 <div class="pending-color">
@@ -37,7 +37,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Rejected'">
+                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Rejected'" routerLink="/viewreviewreject">
                                         <div class="card reject" >
                                             <div class="card-body text-20-600-24 ">
                                                 <div class="rejected_color">
@@ -53,7 +53,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Approved'">
+                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Approved'"  routerLink="/viewreview">
                                         <div class="card approve" >
                                             <div class="card-body text-20-600-24 ">
                                                 <div class="approved_color">

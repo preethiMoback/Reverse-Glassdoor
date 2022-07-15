@@ -201,9 +201,13 @@
                 text-align: right;
                 background-color: white;
                 position: relative;
-                    @include breakpoint(min1200) {
-                        @include width_height (820px, 300px) ;
-                    }
+                @include width_height (820px, 380px) ;
+                @include breakpoint(ipad){
+                @include width_height (540px, 380px) ;
+                }
+                @include breakpoint(xs){
+                @include width_height (300px, 380px) ;
+                }
                     a{
                        text-decoration: none;
                        color: var(--grey-light);
@@ -217,8 +221,12 @@
                     align-items: center;
                     text-align: center;
                     color: var(--black-light);
-                    @include breakpoint(min1200) {
-                        @include width_height (780px, 280px) ;
+                    @include width_height (800px, 380px) ;
+                    @include breakpoint(ipad){
+                    @include width_height (520px, 380px) ;
+                    }
+                    @include breakpoint(xs){
+                    @include width_height (280px, 380px) ;
                     }
                     .text-18-400-22{
                         @include pxtorem(18);
@@ -309,6 +317,7 @@
             animation-fill-mode: forwards;
             animation-duration:1s;
             animation-timing-function: ease-out;
+            
         }
         .card{
             .card-title{
@@ -354,6 +363,30 @@
                     }
                 }
             }
+            .thumbs-rating{
+                .thumbs-up-rating , .thumbs-down-rating {
+                    position: relative;
+                    display: inline-block;
+                    .tooltiptext{
+                    visibility: hidden;
+                    @include width_height(200px, 50px);
+                    background-color: var(--white);
+                    color: var(--black);
+                    text-align: center;
+                    border-radius: 20px;
+                    padding: 2px 0;
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    position: absolute;
+                    z-index: 1;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -60px;
+                    }
+                    &:hover .tooltiptext{
+                        visibility: visible;
+                    }
+                  }
+            }
             .view_btn{
                 // add icons and remove the padding
                 margin-bottom: 45px;
@@ -372,6 +405,11 @@
                 @include breakpoint(xs){
                     align-items: flex-start;
                 }
+            }
+        }
+        .candidateCard:nth-last-child(1){
+            hr{
+                display: none;
             }
         }
     }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Apiservice } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-write-review-again',
@@ -20,7 +21,8 @@ export class WriteReviewAgainComponent implements OnInit {
     primaryskill: 'Figma'
   }
   
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private apiService: Apiservice) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -63,12 +65,11 @@ export class WriteReviewAgainComponent implements OnInit {
   }
 
   setData(){
-    this.registerForm.get('name')!.setValue(this.userData.name)
+
+    this.registerForm.get('name')!.setValue(this.userData.name);
     this.registerForm.get('email')!.setValue(this.userData.email);
     this.registerForm.get('companyName')!.setValue(this.userData.companyName);
-    this.registerForm.get('phoneNumber')!.setValue(this.userData.phoneNumber);
-    this.registerForm.get('primaryskill')!.setValue(this.userData.primaryskill);
-
+    this.registerForm.get('phoneNumber')!.setValue(this.userData.phoneNumber);  
 
 }
 

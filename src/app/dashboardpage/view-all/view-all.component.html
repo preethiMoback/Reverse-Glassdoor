@@ -24,7 +24,7 @@
                     All reviews<a class="text-18-400-21" routerLink="/viewall">View All</a>
                 </div>
                 <div class="content__part" *ngIf="type === 'allReview'">
-                    <div *ngFor="let candidate of reviewList">
+                    <div  class="candidateCard" *ngFor="let candidate of reviewList">
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="text-25-700-30">
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="content__part" *ngIf="type === 'allApprove'">
-                    <div *ngFor="let candidate of reviewList" >
+                    <div  class="candidateCard" *ngFor="let candidate of reviewList" >
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="text-25-700-30">
@@ -140,7 +140,7 @@
                     </div>
                 </div>
                 <div class="content__part" *ngIf="type === 'allReject'">
-                    <div *ngFor="let candidate of reviewList">
+                    <div class="candidateCard" *ngFor="let candidate of reviewList">
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="text-25-700-30">
@@ -171,7 +171,7 @@
                     </div>
                 </div>
                 <div class="content__part" *ngIf="type === 'allPending'">
-                    <div *ngFor="let candidate of reviewList">
+                    <div  class="candidateCard"  *ngFor="let candidate of reviewList">
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="text-25-700-30">

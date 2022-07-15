@@ -33,6 +33,7 @@
                                                 id="form-control" 
                                                 [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" 
                                                 placeholder="Name of the Candidate"
+                                                autocomplete="off"
                                             />
                                             <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
                                                 <div *ngIf="f['name'].errors['required']">
@@ -49,6 +50,7 @@
                                                 class="form-control nosubmit" 
                                                 [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" 
                                                 placeholder="Candidate’s mail id"
+                                                autocomplete="off"
                                             />
                                             <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                                                 <div *ngIf="f['email'].errors['required']">Email is required</div>

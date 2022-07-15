@@ -20,11 +20,6 @@
                     <div class="search-results text-25-500-30">
                         {{data}}
                     </div>
-                    <div class="text-25-500-30" >
-                        <a routerLink="/advancedsearch">
-                            Modify <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -72,6 +67,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="text-30-700-36" *ngIf="candidateNotFound">
+                    No such Candidate found
                 </div>
             </div>
 
