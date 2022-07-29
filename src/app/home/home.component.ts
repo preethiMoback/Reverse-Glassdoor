@@ -208,9 +208,30 @@ passwordVerify(){
 //   //return this.isOpenpopup;
 // }
   changeStep(curval: string, stepVal:number){
+    debugger;
+    let overlayElement = document.getElementById("modalPopup");
+
+    if(curval === 'login' || curval === 'signup' && !overlayElement?.classList.contains('open')) {
+      overlayElement?.classList.add('open');
+    }
+    debugger;
     this.login = curval == 'login'? true:false;
     this.signup = curval == 'signup'? true:false;
     this.step = stepVal;
+  }
+
+  closeModal(e: any) {
+    debugger;
+    e.preventDefault();
+    
+    let overlayElement = document.getElementById("modalPopup");
+    
+    if(e.target.id === "modalPopup" && overlayElement?.classList.contains('open')) {
+        overlayElement?.classList.remove('open');
+        this.login = false;
+        this.signup = false;
+        this.step = -1;
+    }
   }
 
   makeEnable(){

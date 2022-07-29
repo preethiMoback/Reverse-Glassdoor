@@ -236,6 +236,22 @@
 
 // pop-up_section
 .login_popup,.signup_popup{
+    &::before {
+        content: "";
+        display: none;
+        background: rgba(0, 0, 0, 0.6);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2000;
+    }
+    &.open {
+        &::before {
+            display: block;
+        }
+    }
     .card{
         padding: 40px;
         margin-top: 100%;
@@ -249,7 +265,7 @@
         position: absolute;
         top: -10%;
         transform: translate(0%, 50%);
-        z-index: 100;
+        z-index: 2500;
         @include breakpoint(xSmall){
             width: 95%;
             padding: 30px 10px;

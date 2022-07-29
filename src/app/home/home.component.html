@@ -18,7 +18,7 @@
 
 
 <!-- popup_section -->
-<div class="login_popup h-100 d-flex justify-content-center align-items-center"> 
+<div id="modalPopup" class="login_popup h-100 d-flex justify-content-center align-items-center" (click)="closeModal($event)"> 
     <!-- //logincard -->
     <div class="card section" id="stepOne" *ngIf="step==1 && login"  data-backdrop="true">
         <div class="card-title">
