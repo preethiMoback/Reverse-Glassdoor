@@ -26,13 +26,16 @@ export class HomeComponent implements OnInit {
   timeLeft: number = 120;
   interval:any;
   timerOn = true;
+  routerData: any;
   
  
   constructor(private formBuilder: FormBuilder,
     private router: Router, 
     private apiService: Apiservice,
     private toastr: ToastrService,
-    private formData :FormDataService) { }
+    private formData :FormDataService) {
+      this.routerData = this.router.getCurrentNavigation()?.extras.state;
+    }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -60,6 +63,7 @@ export class HomeComponent implements OnInit {
           Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
         ]],
     });
+    this.changeStep(this.routerData?.type, this.routerData?.step);
   }
   get f() { return this.registerForm.controls; }
 
@@ -208,22 +212,18 @@ passwordVerify(){
 //   //return this.isOpenpopup;
 // }
   changeStep(curval: string, stepVal:number){
-    debugger;
     let overlayElement = document.getElementById("modalPopup");
 
     if(curval === 'login' || curval === 'signup' && !overlayElement?.classList.contains('open')) {
       overlayElement?.classList.add('open');
     }
-    debugger;
+    
     this.login = curval == 'login'? true:false;
     this.signup = curval == 'signup'? true:false;
     this.step = stepVal;
   }
 
   closeModal(e: any) {
-    debugger;
-    e.preventDefault();
-    
     let overlayElement = document.getElementById("modalPopup");
     
     if(e.target.id === "modalPopup" && overlayElement?.classList.contains('open')) {

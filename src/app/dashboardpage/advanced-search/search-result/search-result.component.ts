@@ -11,7 +11,7 @@ import { FormDataService } from '../form-data.service';
 })
 export class SearchResultComponent implements OnInit {
 
-  data = this.formData.getData();   
+  data = this.formData.getData();
   filterList: any[] = [];    
   candidateNotFound = false;
 
@@ -22,14 +22,15 @@ export class SearchResultComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.ngxLoader.startLoader('loader-01'); 
+    this.ngxLoader.startLoader('loader-01');
+    this.data = this.data.split(/[\s,]+/).join().replace(/,*$/, '');
     this.http.get(`https://api.npmjs.org/downloads/range/last-year/ngx-ui-loader`).subscribe((res: any) => {
       console.log(res);
       this.ngxLoader.stopLoader('loader-01');
     });
 
     this.apiService.filteredResult.subscribe((res: any)=>{
-      console.log(res);
+      console.log("result",res);
       this.filterList = res;
       if (res.length === 0) {
         this.candidateNotFound = true;
