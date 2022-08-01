@@ -9,10 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent implements OnInit {
-  url :any = '../../assets/Images/profile_img.svg';
+  url :any;
   submitted = false;
   registerForm!: FormGroup;
   msg = "";
+  token: string = localStorage.getItem('token') || '';
   userData = {
     name: 'Mahesh Rudra Badaballa',
     email: 'maheshbadaballa@bighaat.com',
@@ -49,20 +50,35 @@ export class EditProfileComponent implements OnInit {
 
     reader.onload = (_event) => {
       this.msg = "";
-      this.url = reader.result; 
+      this.url = reader.result;
     }
     const uploadData = new FormData();
-    uploadData.append( 'pic', 'Test.jpg');
-    let payload = {
-      pic: 'test.jpg',
-      xyz: "testing"
-    }
-    // uploadData.append('pic', file);
-    
-    this.apiService.uploadNewPhoto(payload)
-    .subscribe(res =>{
-        console.log(res);
-    })
+    uploadData.append( 'pic', file);
+
+    let xhr = new XMLHttpRequest();
+    xhr.withCredentials = false;
+
+    let toasterMsg =  this.toastr;
+    let apiService = this.apiService;
+
+    xhr.addEventListener("readystatechange", function() {
+      if(this.readyState === 4) {
+        console.log(this.responseText);
+        apiService.userInfo()
+          .subscribe((res: any) =>{
+            localStorage.setItem('currentUserInfo', JSON.stringify(res.data));
+        })
+        toasterMsg.success('Profile Picture Updated Succesfully');
+      }
+    });
+
+    xhr.open("POST", "http://54.208.4.29:8000/user/update-user-picture/");
+    xhr.setRequestHeader("Authorization", this.token);
+
+    xhr.send(uploadData);
+
+    let curUserData = JSON.parse(localStorage.getItem('currentUserInfo') || '');
+    this.url = curUserData.pic ? "http://54.208.4.29:8080/" + curUserData.pic : "../../assets/Images/image_icon.svg";
   }
 
 
@@ -106,11 +122,12 @@ export class EditProfileComponent implements OnInit {
   }
 
   setData(){
-    let curUserData = JSON.parse(localStorage.getItem('currentUserInfo') || '')
+    let curUserData = JSON.parse(localStorage.getItem('currentUserInfo') || '');
     this.userData.name = curUserData.first_name + " " + curUserData.middle_name + " " + curUserData.last_name;
     this.userData.companyName = curUserData.current_org;
     this.userData.email = curUserData.current_org_mail_id;
     this.userData.phoneNumber = curUserData.mobile_num;
+    this.url = curUserData.pic ? "http://54.208.4.29:8080/" + curUserData.pic : "../../assets/Images/image_icon.svg";
     this.registerForm.get('name')!.setValue(this.userData.name);
     this.registerForm.get('email')!.setValue(this.userData.email);
     this.registerForm.get('companyName')!.setValue(this.userData.companyName);
@@ -121,6 +138,7 @@ export class EditProfileComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit(){
+    debugger;
     let name = this.registerForm.get('name')?.value.split(" ");
     let payload = {
       first_name: name[0],
@@ -130,10 +148,9 @@ export class EditProfileComponent implements OnInit {
       current_org_mailid: this.registerForm.get('email')?.value,
       current_org: this.registerForm.get('companyName')?.value,
     }
-    console.log(payload);
     this.apiService.updateUserInfo(payload)
       .subscribe(res =>{
-        console.log(res);
+        this.toastr.success('Your Profile has been successfully updated!')
         this.apiService.userInfo()
           .subscribe((res: any) =>{
             localStorage.setItem('currentUserInfo', JSON.stringify(res.data));

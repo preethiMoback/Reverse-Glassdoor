@@ -98,9 +98,9 @@ export class Apiservice {
         return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/update-user-profile/`,payload,this.commonOptions2);
     }
 
-    uploadNewPhoto(payload: any){
-        return this.http.post<any>(`http://${this.DeployedIP}:${this.DeployedPort}/user/update-user-picture/`,payload,this.commonOptions3);
-    }
+    // uploadNewPhoto(payload: any){
+    //     return this.http.post<any>(`http://${this.DeployedIP}:${this.DeployedPort}/user/update-user-picture/`,payload,this.commonOptions3);
+    // }
 
     RemovePhoto(){
         return this.http.get(`http://${this.DeployedIP}:${this.DeployedPort}/user/delete-user-picture/`,this.commonOptions2);

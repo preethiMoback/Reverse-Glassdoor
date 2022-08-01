@@ -15,6 +15,7 @@ export class DashboardpageComponent implements OnInit {
   searchKey: string = '';
   currentUserName: string = '';
   currentUserEmail: string = '';
+  currentUserImage: string = '';
   candidateFeedbackCountList = {
     allReview: 0,
     approved: 0,
@@ -49,6 +50,7 @@ export class DashboardpageComponent implements OnInit {
       console.log(res);
       this.currentUserName = res.first_name + " " + res.middle_name + " " + res.last_name;
       this.currentUserEmail = res.current_org_mail_id;
+      this.currentUserImage = res.pic ? "http://54.208.4.29:8080/" + res.pic : "../../assets/Images/image_icon.svg";
     })
 
     this.apiService.candidateFeedbackCount().subscribe((res: any) => {

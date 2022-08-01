@@ -139,7 +139,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-2 ">
+                                                    <!-- Commenting it for now since we aren't getting country code during user registration -->
+                                                    <!-- <div class="col-2 ">
                                                         <div class="form-group">
                                                             <label for="mobileNumber" class="text-18-400-22">Phone No.</label>  
                                                             <input   
@@ -153,26 +154,30 @@
                                                                 <div *ngIf="f['phoneNumber'].errors['required']">Phone Number is required</div>
                                                             </div> 
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-10 col-10 ">
+                                                    </div> -->
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label for="mobileNumber"></label>
+                                                            <label for="phoneNumber" class="text-18-400-22">Phone No.</label>
                                                             <input 
                                                                 type="text" 
-                                                                formControlName="phoneNumber" 
+                                                                formControlName="phoneNumber"
+                                                                id="phoneNumber"
                                                                 class="form-control" 
                                                                 [ngClass]="{ 'is-invalid': submitted && f['phoneNumber'].errors }" 
                                                             />
+                                                            <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
+                                                                <div *ngIf="f['phoneNumber'].errors['required']">Phone Number is required</div>
+                                                            </div> 
                                                         </div>
-                                                      </div>
-                                                      <div class="col-md-12">
-                                                          <a href="" class="text-18-400-22">Change existing Password ?</a>
-                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <a href="" class="text-18-400-22">Change existing Password ?</a>
+                                                    </div>
                                                     <div class="col-md-12">
                                                         <div class="d-flex justify-content-start">
                                                             <button class="btn"  data-toggle="modal" data-target="#exampleModalCenter" >Update</button> 
                                                         </div>
-                                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                        <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                               <div class="modal-content">
                                                                     <div class="body-modal text-25-700-30">
@@ -184,7 +189,7 @@
                                                                     </div>  
                                                               </div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </div>
                                             </form>
