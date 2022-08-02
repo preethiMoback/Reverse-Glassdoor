@@ -67,8 +67,9 @@ export class EditProfileComponent implements OnInit {
         apiService.userInfo()
           .subscribe((res: any) =>{
             localStorage.setItem('currentUserInfo', JSON.stringify(res.data));
+            apiService.currenUserInfo.next(res.data);
+            toasterMsg.success('Profile Picture Updated Succesfully');
         })
-        toasterMsg.success('Profile Picture Updated Succesfully');
       }
     });
 
@@ -86,6 +87,11 @@ export class EditProfileComponent implements OnInit {
     this.apiService.RemovePhoto()
     .subscribe(res =>{
       console.log(res);
+      this.apiService.userInfo()
+        .subscribe((res: any) =>{
+          localStorage.setItem('currentUserInfo', JSON.stringify(res.data));
+          this.apiService.currenUserInfo.next(res.data);
+      })
       this.url = "../../assets/Images/image_icon.svg";
     })
 
@@ -138,7 +144,6 @@ export class EditProfileComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit(){
-    debugger;
     let name = this.registerForm.get('name')?.value.split(" ");
     let payload = {
       first_name: name[0],

@@ -2,6 +2,7 @@ import { FormDataService } from 'src/app/dashboardpage/advanced-search/form-data
 import { Router } from '@angular/router';
 import { Apiservice } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboardpage',
@@ -15,7 +16,8 @@ export class DashboardpageComponent implements OnInit {
   searchKey: string = '';
   currentUserName: string = '';
   currentUserEmail: string = '';
-  currentUserImage: string = '';
+  currentUserImage: any = '';
+  token: string = localStorage.getItem('token') || '';
   candidateFeedbackCountList = {
     allReview: 0,
     approved: 0,
@@ -38,7 +40,8 @@ export class DashboardpageComponent implements OnInit {
   constructor(
     private apiService: Apiservice,
     private router: Router,
-    private formData: FormDataService
+    private formData: FormDataService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -188,10 +191,38 @@ export class DashboardpageComponent implements OnInit {
 
     var reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
+    const file: File =  event.target.files[0];
 
     reader.onload = (_event) => {
       this.msg = '';
-      this.url = reader.result;
+      this.currentUserImage = reader.result;
     };
+    const uploadData = new FormData();
+    uploadData.append( 'pic', file);
+
+    let xhr = new XMLHttpRequest();
+    xhr.withCredentials = false;
+
+    let toasterMsg =  this.toastr;
+    let apiService = this.apiService;
+
+    xhr.addEventListener("readystatechange", function() {
+      if(this.readyState === 4) {
+        console.log(this.responseText);
+        apiService.userInfo()
+          .subscribe((res: any) =>{
+            localStorage.setItem('currentUserInfo', JSON.stringify(res.data));
+            apiService.currenUserInfo.next(res.data);
+        })
+        toasterMsg.success('Profile Picture Updated Succesfully');
+      }
+    });
+
+    xhr.open("POST", "http://54.208.4.29:8000/user/update-user-picture/");
+    xhr.setRequestHeader("Authorization", this.token);
+
+    xhr.send(uploadData);
+    let curUserData = JSON.parse(localStorage.getItem('currentUserInfo') || '');
+    this.currentUserImage = curUserData.pic ? "http://54.208.4.29:8080/" + curUserData.pic : "../../assets/Images/image_icon.svg";
   }
 }
