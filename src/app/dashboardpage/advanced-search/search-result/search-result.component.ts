@@ -23,7 +23,7 @@ export class SearchResultComponent implements OnInit {
   ngOnInit(): void {
 
     this.ngxLoader.startLoader('loader-01');
-    this.data = this.data.split(/[\s,]+/).join().replace(/,*$/, '');
+    this.data = this.data.split(/[\s,]+/).join().replace(/^,|,$/g, '');
     this.http.get(`https://api.npmjs.org/downloads/range/last-year/ngx-ui-loader`).subscribe((res: any) => {
       console.log(res);
       this.ngxLoader.stopLoader('loader-01');

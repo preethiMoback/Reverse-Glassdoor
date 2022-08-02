@@ -91,6 +91,7 @@ export class EditProfileComponent implements OnInit {
         .subscribe((res: any) =>{
           localStorage.setItem('currentUserInfo', JSON.stringify(res.data));
           this.apiService.currenUserInfo.next(res.data);
+          this.toastr.success('Photo Removed Successfully!');
       })
       this.url = "../../assets/Images/image_icon.svg";
     })

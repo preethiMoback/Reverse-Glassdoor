@@ -20,7 +20,8 @@ export class SearchresultfromhomeComponent implements OnInit {
     private router: Router) { }
  
   ngOnInit(): void {
-    this.ngxLoader.startLoader('loader-01'); 
+    this.ngxLoader.startLoader('loader-01');
+    this.data = this.data.split(/[\s,]+/).join().replace(/^,|,$/g, '');
     this.http.get(`https://api.npmjs.org/downloads/range/last-year/ngx-ui-loader`).subscribe((res: any) => {
       console.log(res);
       this.ngxLoader.stopLoader('loader-01');
