@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors} from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormDataService } from './form-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class AdvancedSearchComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router, 
               private apiService: Apiservice,
-              private formData :FormDataService) { }
+              private formData :FormDataService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.createForm();
@@ -61,7 +63,13 @@ export class AdvancedSearchComponent implements OnInit {
     this.submitted = true;
 
     if (!this.registerForm.valid) {
+      debugger;
       this.submitted = false;
+      if(this.registerForm.controls['email'].status === "INVALID") {
+        this.toastr.error("Please Enter a Valid Email");
+        return;
+      }
+      this.toastr.error("Please Enter Atleast One Field Value");
       return;
     } 
     else{

@@ -91,6 +91,12 @@ export class Apiservice {
     }
 
     userInfo(){
+        let newToken: string = localStorage.getItem('token') || '';
+        let newHeader: any = new HttpHeaders({
+            "Content-Type": "application/json",
+            'Authorization': newToken
+        })
+        this.commonOptions2 = {headers: newHeader};
         return this.http.get(`http://${this.DeployedIP}:${this.DeployedPort}/user/get-details/`,this.commonOptions2);
     }
 
