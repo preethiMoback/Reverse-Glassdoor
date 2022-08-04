@@ -165,7 +165,7 @@
                     </label>
                     <div *ngIf="submitted && f['createpassword'].errors" class="invalid-feedback">
                         <div *ngIf="f['createpassword'].errors['required']">password is required</div>
-                        <div *ngIf="f['createpassword'].errors['minlength']">Password must be at least 6 characters</div>
+                        <div *ngIf="f['createpassword'].errors['minlength']">Password must be at least 8 characters</div>
                     </div>
                 </div>
                 <div class="form-group form-floating mb-4">
@@ -268,8 +268,10 @@
                             </label>
                             <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                                 <div *ngIf="f['email'].errors['required']">Email is required</div>
-                                <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+                                <div *ngIf="f['email'].errors['pattern']">Email must be a valid email address</div>
                             </div>
+                            <button *ngIf="!isEmailVerified" type="button" (click)="emailVerify()">Verify</button>
+                            <span *ngIf="isEmailVerified">Verified</span>
                         </div>
                         <div class="form-group form-floating mb-4">
                             <input 
@@ -285,7 +287,7 @@
                             </label>
                             <div *ngIf="submitted && f['createpassword'].errors" class="invalid-feedback">
                                 <div *ngIf="f['createpassword'].errors['required']">password is required</div>
-                                <div *ngIf="f['createpassword'].errors['minlength']">Password must be at least 6 characters</div>
+                                <div *ngIf="f['createpassword'].errors['minlength']">Password must be at least 8 characters</div>
                             </div>
                         </div>
                         <div class="form-group form-floating mb-4">
@@ -345,7 +347,7 @@
                     <button class="btn">Verify OTP</button>
                 </div>
                 <div class="">
-                    <h3 class="text-18-400-27"><span>Back to Login</span></h3>
+                    <h3 class="text-18-400-27" (click)="changeStep('login',1)"><span>Back to Login</span></h3>
                 </div>
             </form>
         </div>

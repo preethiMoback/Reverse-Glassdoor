@@ -28,6 +28,9 @@
                 @include breakpoint(ipad){
                     padding-top: 20px;
                 }
+                .form-control.phoneNumber {
+                    margin-top: 50px;
+                }
                 label{
                     @include font(500);
                     @include pxtorem(20);
@@ -141,6 +144,9 @@
                 @include line_height(42px!important);
                 padding-top: 20px;
                 }
+            }
+            .form-check-label {
+                align-items: flex-start !important;
             }
             .custom-radiobtn{
                 @include breakpoint(sm){

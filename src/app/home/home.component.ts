@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
       password:['', Validators.required],
       otp:['', Validators.required],
       organisationname:['', Validators.required],
-      createpassword: [{value: '', disabled: true}, [Validators.required, Validators.minLength(6)]],
+      createpassword: [{value: '', disabled: true}, [Validators.required, Validators.minLength(8)]],
       confirmpassword: [{value: '', disabled: true}, Validators.required],
       companyName:['', Validators.required],
       productdemo:['', Validators.required],
@@ -66,6 +66,25 @@ export class HomeComponent implements OnInit {
     this.changeStep(this.routerData?.type, this.routerData?.step);
   }
   get f() { return this.registerForm.controls; }
+
+  emailVerify() {
+    if(this.checkEmailVerif()){
+      let payload = {
+        email_id: this.registerForm.get('email')?.value
+      }
+      this.apiService.emailVerification(payload)
+      .subscribe(response => {
+        this.toastr.success('', 'Send Otp Successfully!');
+        this.changeStep('signup',2);
+        this.startTimer();
+      }
+      )
+    }
+    else {
+      this.toastr.error("Please enter all the details");
+    }
+    this.onSubmit();
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -123,59 +142,79 @@ export class HomeComponent implements OnInit {
       }
       this.apiService.otpValidate(payload)
       .subscribe(response => {
-        this.toastr.success('', 'Email Verified Successfully!');
+        this.toastr.success('', 'Otp Verified Successfully!');
         this.makeEnable();
+        this.registerForm.controls['otp']?.setValue('');
         this.changeStep('login',4);
       },(err =>{
-        this.toastr.error('', 'Otp is not correct!');
+        this.toastr.error(err.error.message);
       }))
     }
     else if(this.step == 4 && this.login){// reset Password
-      let payload = {
-          "email" : this.registerForm.value.email,
-          "new_password" : this.registerForm.value.createpassword,
-          "confirm_password" : this.registerForm.value.confirmpassword
+      if(this.passwordVerify()) {
+        let payload = {
+            "email" : this.registerForm.value.email,
+            "new_password" : this.registerForm.value.createpassword,
+            "confirm_password" : this.registerForm.value.confirmpassword
+        }
+        this.apiService.resetPassword(payload)
+        .subscribe((res: any)=>{
+          this.toastr.success('', 'Changed Password Successfully!');
+          this.makeDisable();
+          this.changeStep('login',1);
+        },
+        (error) => {
+          this.toastr.error(error.error.message);
+        })
       }
-      this.apiService.resetPassword(payload)
-      .subscribe((res: any)=>{
-        this.toastr.success('', 'Changed Password Successfully!');
-        this.changeStep('login',1);
-      })
     }
 
     if(this.signup && this.step == 1){ // Sign up
 
-      if(this.checkEmailVerif()){
-        let payload = {
-          email_id: this.registerForm.get('email')?.value
-        }
-        this.apiService.emailVerification(payload)
-        .subscribe(response => {
-          this.isEmailVerified = true;
-          this.toastr.success('', 'Send Otp Successfully!');
-          this.changeStep('signup',2);
-        })
-      }
-      else if(this.passwordVerify()){
-        let name = this.registerForm.value.name.split(" ");
-        let payload = {
-          first_name: name[0],
-          middle_name: this.registerForm.value.middleName?this.registerForm.value.middleName: '',
-          last_name: name.length > 1? name[1]: '',
-          mobilenum: this.registerForm.value.phoneNumber.toString(),
-          current_org: this.registerForm.value.companyName,
-          current_org_mailid: this.registerForm.value.email,
-          password: this.registerForm.value.confirmpassword,
-          confirm_password: this.registerForm.value.confirmpassword,
-          user_category: 'normal user'
-        }
+      // if(this.checkEmailVerif()){
+      //   let payload = {
+      //     email_id: this.registerForm.get('email')?.value
+      //   }
+      //   this.apiService.emailVerification(payload)
+      //   .subscribe(response => {
+      //     this.isEmailVerified = true;
+      //     this.toastr.success('', 'Send Otp Successfully!');
+      //     this.changeStep('signup',2);
+      //     this.startTimer();
+      //   }
+      //   )
+      // }
+      if(this.passwordVerify()){
+        if(this.f['confirmpassword'].value === this.f['createpassword'].value) {
+          let name = this.registerForm.value.name.split(" ");
+          let payload = {
+            first_name: name[0],
+            middle_name: this.registerForm.value.middleName?this.registerForm.value.middleName: '',
+            last_name: name.length > 1? name[1]: '',
+            mobilenum: this.registerForm.value.phoneNumber.toString(),
+            current_org: this.registerForm.value.companyName,
+            current_org_mailid: this.registerForm.value.email,
+            password: this.registerForm.value.confirmpassword,
+            confirm_password: this.registerForm.value.confirmpassword,
+            user_category: 'normal user'
+          }
 
-        this.apiService.registerUser(payload)
-          .subscribe(response =>{
-            this.toastr.success('', 'Register User Successfully!');
-            this.changeStep('',-1);
-          })
-        // console.log(payload);
+          this.apiService.registerUser(payload)
+            .subscribe(response =>{
+              this.toastr.success('', 'Register User Successfully!');
+              this.registerForm.get('email')?.enable();
+              this.isEmailVerified = false;
+              this.changeStep('',-1);
+            },
+            (error) => {
+              this.toastr.error(error.error.message);
+            }
+          )
+          // console.log(payload);
+        }
+        else {
+          this.toastr.error("The passwords don't match");
+        }
       }
     }
     else if(this.step == 2 && this.signup && this.f['otp'].valid){ //Otp Verification
@@ -187,16 +226,21 @@ export class HomeComponent implements OnInit {
       .subscribe(response => {
         this.isEmailVerified = true;
         this.makeEnable();
+        this.registerForm.get('email')?.disable();
+        this.registerForm.controls['otp']?.setValue('');
         this.toastr.success('', 'Email Verified Successfully!');
 
         console.log(this.registerForm);
         this.changeStep('signup',1);
+      },
+      (error) => {
+        this.toastr.error(error.error.message);
       })
     }
 }
 
 checkEmailVerif(){
-  return this.f['email'].valid && this.f['name'].valid && this.f['companyName'].valid && this.f['phoneNumber'].valid && !this.f['createpassword'].valid ;
+  return this.f['email'].valid && this.f['name'].valid && this.f['companyName'].valid && this.f['phoneNumber'].valid ;
 }
 
 passwordVerify(){
@@ -216,6 +260,7 @@ passwordVerify(){
 
     if(curval === 'login' || curval === 'signup' && !overlayElement?.classList.contains('open')) {
       overlayElement?.classList.add('open');
+      this.registerForm.get('email')?.enable();
     }
     
     this.login = curval == 'login'? true:false;
@@ -231,12 +276,20 @@ passwordVerify(){
         this.login = false;
         this.signup = false;
         this.step = -1;
+        this.makeDisable();
+        this.isEmailVerified = false;
+        this.registerForm.get('email')?.enable();
     }
   }
 
   makeEnable(){
       this.registerForm.get('createpassword')?.enable();
       this.registerForm.get('confirmpassword')?.enable();
+  }
+
+  makeDisable() {
+    this.registerForm.get('createpassword')?.disable();
+    this.registerForm.get('confirmpassword')?.disable();
   }
 
   startTimer() {
