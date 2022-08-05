@@ -22,6 +22,7 @@ export class Apiservice {
     currenUserInfo: BehaviorSubject<any> = new BehaviorSubject({});
     reviewCandidateInfo: BehaviorSubject<any> = new BehaviorSubject({});
     viewReviewDetails: BehaviorSubject<any> = new BehaviorSubject({});
+    writeReviewAgainInfo: BehaviorSubject<any> = new BehaviorSubject({});
 
 
     

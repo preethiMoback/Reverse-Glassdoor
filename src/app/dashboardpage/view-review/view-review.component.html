@@ -9,21 +9,21 @@
                         Back
                     </p>
                     <div class="card-title">
-                       <div class="text-30-700-36">
-                            <span class="text-capitalize">{{currentReview?.phase}}</span> review 
-                            <span class="text-20-600-24" *ngIf="currentReview?.status === 'Approved'">
+                       <div class="text-30-700-36 d-flex">
+                            <span class="text-capitalize">{{currentReview?.phase}} review</span> 
+                            <span class="text-20-600-24 p-0 review-status" *ngIf="currentReview?.status === 'Approved'">
                                 <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{currentReview?.status}}
                             </span>
-                            <div class="text-20-600-24 rejected_color" *ngIf="currentReview?.status === 'Rejected'">
+                            <div class="text-20-600-24 rejected_color p-0 review-status" *ngIf="currentReview?.status === 'Rejected'">
                                 <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{currentReview?.status}}
                             </div>
-                            <div class="text-20-600-24 pending-color" *ngIf="currentReview?.status === 'Approval Pending'"> 
+                            <div class="text-20-600-24 pending-color p-0 review-status" *ngIf="currentReview?.status === 'Approval Pending'"> 
                                 {{currentReview?.status}}
                             </div>
                             </div>
-                        <div class="text-25-400-30">
+                        <div class="text-25-400-30 mb-0">
                             by  <span><i class="fa fa-user-circle" aria-hidden="true"></i>
-                            </span>  Davis Kuruvilla (Bighaat Pvt Ltd).
+                            </span>  {{reviewerInfo?.first_name}} {{reviewerInfo?.middle_name}} {{reviewerInfo?.last_name}} <span class="text-capitalize">({{reviewerInfo?.current_org}})</span>.
                         </div>
                         <div class="text-20-400-24">
                             Reviewed on {{currentReview?.create_time | date}}
@@ -31,12 +31,15 @@
                     </div>
                     <div class="card-body">
                         <div class="text-30-700-36 ratings">
-                            <rating [(ngModel)]="rate" [max]=5 [readonly]="false"></rating>
+                            <rating [(ngModel)]="rate" [max]=5 [readonly]="true"></rating>
                         </div>
                         <div class="text-20-400-24 para">
                             {{currentReview?.feedback}}
                         </div>
-                        <div class="thumbs-rating">
+                        <div *ngIf="currentReview?.status === 'Approval Pending'">
+                            <button class="btn">Update Review</button>
+                        </div>
+                        <div class="thumbs-rating" *ngIf="currentReview?.status === 'Approved'">
                             <div class="thumbs-up-rating">
                                 <span class=" text-20-400-24">{{currentReview?.Helpful}}</span>
                                <span class="thumbs-icon">
@@ -73,32 +76,32 @@
                         </div>
                         <div class="card-body p-0">
                             <div class="candidate_name text-30-700-36">
-                                Mahesh Rudra Badaballa
+                                {{currentReview?.first_name}} {{currentReview?.middle_name}} {{currentReview?.last_name}}
                             </div>
-                            <div class="person_information">
+                            <!-- Hide till apyment option has been introduced -->
+                            <!-- <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    <!-- <img src="../../assets/Images/mobileicon.svg" alt="mobileicon"> -->
-                                    badaballarocks@gmail.com
+                                    
+                                    {{currentReview?.email}}
                                 </div>
                             </div>
                             <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <!-- <img src="../../assets/Images/mobileicon.svg" alt="mobileicon"> -->
-                                    +91 8928382945
+                                    {{currentReview?.phone_number}}
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-cog" aria-hidden="true"></i>
-                                    Figma, Adobe XD
+                                    {{currentReview?.primary_skill}}
                                 </div>
                             </div>
                             <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-building-o" aria-hidden="true"></i>
-                                    Bighaat Agro Pvt Ltd
+                                    {{currentReview?.current_org}}
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,23 @@
 @import "/src/styles/mixins";
 @import "/src/styles/extend";
 
-
+.Onboarding_reviewpage {
+    .card-title {
+        .text-20-600-24 {
+            &.review-status {
+                line-height: inherit;
+            }
+        }
+    }
+    .card-body{
+        .btn {
+            width: 215px;
+        }
+    }
+    .candidate-card {
+        .card-header {
+            padding-left: 25px;
+        }
+    }
+}
 

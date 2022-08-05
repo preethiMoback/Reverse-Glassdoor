@@ -21,17 +21,17 @@
         <div class="container">
             <div class="card content__part mt-4">
                 <div class="card-title">
-                    All reviews<a class="text-18-400-21" routerLink="/viewall">View All</a>
+                    All reviews
                 </div>
-                <div class="content__part" *ngIf="type === 'allReview'">
+                <div class="content__part">
                     <div  class="candidateCard" *ngFor="let candidate of reviewList">
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="text-25-700-30">
-                                    {{candidate.name}}
+                                    {{candidate.first_name}} {{candidate.middle_name}} {{candidate.last_name}}
                                 </div>
                                 <div class="text-25-400-30">
-                                    Interview Review  <span class="text-20-400-24">Reviewed on {{candidate.update_time | date}}.</span>
+                                    <span class="text-capitalize">{{candidate.phase}} Review</span> <span class="text-20-400-24">Reviewed on {{candidate.update_time | date}}.</span>
                                 </div>
                                 <div class="text-25-400-30" *ngIf="candidate.status === 'Approved'">
                                     <div class="row ratings">
@@ -64,27 +64,32 @@
                                     {{candidate.justification_for_rejection}}
                                 </div>
                             </div>
-                            <div class="col-md-4 text-right" *ngIf="candidate.status === 'Approved'">
-                                <div class="text-20-600-24">
-                                    <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{candidate.status}}
+                            <div class="col-md-4 text-right">
+                                <div *ngIf="candidate.status === 'Approved'">
+                                    <div class="text-20-600-24">
+                                        <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{candidate.status}}
+                                    </div>
+                                    <!-- <div class="view_btn text-20-400-24" routerLink="/viewreview">
+                                        View Review
+                                    </div> -->
                                 </div>
-                                <div class="view_btn text-20-400-24" routerLink="/viewreview">
-                                    View Review
+                                <div *ngIf="candidate.status === 'Rejected'">
+                                    <div class="text-20-600-24 rejected_color">
+                                        <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{candidate.status}}
+                                    </div>
+                                    <!-- <div class="view_btn text-20-400-24">
+                                        View Review
+                                    </div> -->
                                 </div>
-                            </div>
-                            <div class="col-md-4 text-right" *ngIf="candidate.status === 'Rejected'">
-                                <div class="text-20-600-24 rejected_color">
-                                    <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{candidate.status}}
+                                <div *ngIf="candidate.status === 'Approval Pending'">
+                                    <div class="text-20-600-24 pending-color">
+                                        {{candidate.status}}
+                                    </div>
+                                    <!-- <div class="view_btn text-20-400-24" routerLink="/viewreviewreject">
+                                        View Review
+                                    </div> -->
                                 </div>
-                                <div class="view_btn text-20-400-24">
-                                    View Review
-                                </div>
-                            </div>
-                            <div class="col-md-4 text-right" *ngIf="candidate.status === 'Approval Pending'">
-                                <div class="text-20-600-24 pending-color">
-                                    {{candidate.status}}
-                                </div>
-                                <div class="view_btn text-20-400-24" routerLink="/viewreviewreject">
+                                <div class="view_btn text-20-400-24" routerLink="/viewreview" (click)="goToViewReview(candidate)">
                                     View Review
                                 </div>
                             </div>
@@ -92,7 +97,7 @@
                         <hr>
                     </div>
                 </div>
-                <div class="content__part" *ngIf="type === 'allApprove'">
+                <!-- <div class="content__part" *ngIf="type === 'allApprove'">
                     <div  class="candidateCard" *ngFor="let candidate of reviewList" >
                         <div class="row">
                             <div class="col-md-8">
@@ -192,7 +197,7 @@
                         </div>
                         <hr>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -9,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class ViewReviewComponent implements OnInit {
   rate = 1;
   currentReview: any;
+  reviewerInfo: any;
   constructor(private apiService: Apiservice) { }
 
   ngOnInit(): void {
+    this.reviewerInfo = JSON.parse(localStorage.getItem("currentUserInfo") || '');
     this.apiService.viewReviewDetails.subscribe((res =>{
       if(Object.keys(res).length === 0) {
         res = JSON.parse(localStorage.getItem("viewReviewDetails") || '');

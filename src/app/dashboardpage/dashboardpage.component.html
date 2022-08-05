@@ -3,7 +3,7 @@
 <div class="fixed-top dashboardpage_header">
     <div class="container-fluid search-bar-container">
         <div class="write-review-btn">
-            <div class="btn write-review_btn" routerLink="/candidatereview">
+            <div class="btn write-review_btn" (click)="onWriteReviewClick()" routerLink="/candidatereview">
                 <span>
                     <img src="../../assets/Images/write_review_icon.svg" alt="write_review_icon">
                 </span>
@@ -95,19 +95,19 @@
                                   </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="#" id="nav-profile-tab" data-bs-toggle="tab" (click)="tabChange(1)" data-bs-target="#nav-profile"  role="tab" aria-controls="nav-profile" aria-selected="false">
+                                  <a class="nav-link" href="#" id="nav-profile-tab" data-bs-toggle="tab" (click)="tabChange(1)" data-bs-target="#nav-home"  role="tab" aria-controls="nav-home" aria-selected="false">
                                     <div class="text-40-500-48">{{ candidateFeedbackCountList.approved }}</div>
                                     <small class="text-22-500-26">Approved</small>
                                   </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="#"  id="nav-contact-tab" data-bs-toggle="tab" (click)="tabChange(2)" data-bs-target="#nav-contact"  role="tab" aria-controls="nav-contact" aria-selected="false">
+                                  <a class="nav-link" href="#"  id="nav-contact-tab" data-bs-toggle="tab" (click)="tabChange(2)" data-bs-target="#nav-home"  role="tab" aria-controls="nav-home" aria-selected="false">
                                     <div class="text-40-500-48">{{ candidateFeedbackCountList.rejected }}</div>
                                     <small class="text-22-500-26">Rejected</small> 
                                   </a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link " href="#" id="nav-pending-tab" data-bs-toggle="tab" (click)="tabChange(3)" data-bs-target="#nav-pending"  role="tab" aria-controls="nav-pending" aria-selected="false">
+                                  <a class="nav-link " href="#" id="nav-pending-tab" data-bs-toggle="tab" (click)="tabChange(3)" data-bs-target="#nav-home"  role="tab" aria-controls="nav-home" aria-selected="false">
                                     <div class="text-40-500-48">{{ candidateFeedbackCountList.pending }}</div>
                                     <small class="text-22-500-26">Pending</small>
                                   </a>
@@ -119,12 +119,12 @@
                                 All reviews<a class="text-18-400-21" (click)="goToViewAll()">View All</a>
                             </div>
                             <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <div class="candidateCard" *ngFor="let candidate of allReviewList">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel">
+                                    <div class="candidateCard" *ngFor="let candidate of candidateList">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="text-25-700-30">
-                                                    {{candidate.name}}
+                                                    {{candidate.first_name}} {{candidate.middle_name}} {{candidate.last_name}}
                                                 </div>
                                                 <div class="text-25-400-30">
                                                     <span class="text-capitalize">{{candidate.phase}}</span> Review  <span class="text-20-400-24">Reviewed on {{candidate.update_time | date}}.</span>
@@ -160,27 +160,32 @@
                                                     {{candidate.justification_for_rejection}}
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 text-right" *ngIf="candidate.status === 'Approved'">
-                                                <div class="text-20-600-24">
-                                                    <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{candidate.status}}
+                                            <div class="col-md-4 text-right">
+                                                <div *ngIf="candidate.status === 'Approved'">
+                                                    <div class="text-20-600-24">
+                                                        <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{candidate.status}}
+                                                    </div>
+                                                    <!-- <div class="view_btn text-20-400-24" routerLink="/viewreview">
+                                                        View Review
+                                                    </div> -->
                                                 </div>
-                                                <div class="view_btn text-20-400-24" (click)="viewReview(candidate)">
-                                                    View Review
+                                                <div *ngIf="candidate.status === 'Rejected'">
+                                                    <div class="text-20-600-24 rejected_color">
+                                                        <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{candidate.status}}
+                                                    </div>
+                                                    <!-- <div class="view_btn text-20-400-24">
+                                                        View Review
+                                                    </div> -->
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4 text-right" *ngIf="candidate.status === 'Rejected'">
-                                                <div class="text-20-600-24 rejected_color">
-                                                    <img src="../../assets/Images/cross.svg" alt="cross" >&nbsp;&nbsp;{{candidate.status}}
+                                                <div *ngIf="candidate.status === 'Approval Pending'">
+                                                    <div class="text-20-600-24 pending-color">
+                                                        {{candidate.status}}
+                                                    </div>
+                                                    <!-- <div class="view_btn text-20-400-24" routerLink="/viewreviewreject">
+                                                        View Review
+                                                    </div> -->
                                                 </div>
-                                                <div class="view_btn text-20-400-24" (click)="viewReview(candidate)">
-                                                    View Review
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 text-right" *ngIf="candidate.status === 'Approval Pending'">
-                                                <div class="text-20-600-24 pending-color">
-                                                    {{candidate.status}}
-                                                </div>
-                                                <div class="view_btn text-20-400-24" (click)="viewReview(candidate)">
+                                                <div class="view_btn text-20-400-24" routerLink="/viewreview" (click)="viewReview(candidate)">
                                                     View Review
                                                 </div>
                                             </div>
@@ -189,7 +194,7 @@
                                     </div>
                                    
                                 </div>
-                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <!-- <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                     <div class="candidateCard" *ngFor="let candidate of approvedList">
                                         <div class="row">
                                             <div class="col-md-8">
@@ -289,7 +294,7 @@
                                         </div>
                                         <hr>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>                        
                     </div>

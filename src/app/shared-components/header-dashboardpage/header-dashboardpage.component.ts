@@ -44,7 +44,7 @@ export class HeaderDashboardpageComponent implements OnInit {
   }
 
   removeUserInfo = () =>{
-    localStorage.removeItem("currentUserInfo");
+    localStorage.clear();
   }
 
 }

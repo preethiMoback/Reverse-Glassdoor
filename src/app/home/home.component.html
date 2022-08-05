@@ -375,13 +375,32 @@
                       </span>
                     </div>
                 </form>
-                <div class="write-reviewbtn text-30-500-36">
+                <div class="write-reviewbtn text-30-500-36" data-toggle="modal" data-target="#loginPopUp">
                     <span>
                         <img src="../../assets/Images/write_review_icon.svg" alt="write_review_icon">
                     </span>
                     Write a review?
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="modal " id="loginPopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <a type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </a>
+            <div class="body-modal">
+                <h2>Login to Write Reviews</h2>
+                <div class="text-18-400-22">
+                    Login and give detailed review of the candidate.
+                </div> 
+                <!-- <span type="button" class="btn btn-primary" routerLink='/' fragment='stepOne' data-dismiss="modal"> -->
+                <span type="button" class="btn btn-primary" (click)="changeStep('login', 1)" data-dismiss="modal">
+                OK
+               </span>
+            </div>     
+          </div>
         </div>
     </div>
     <div class="search_candidate_section">

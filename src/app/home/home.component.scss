@@ -123,6 +123,7 @@
             border-radius: 5px;
             backdrop-filter: blur(20px);
             background: rgba(5, 4, 7, 0.7);
+            cursor: pointer;
             position: absolute;
             top: 120%;
             left: 50%;
@@ -235,6 +236,49 @@
     .write-review_btn,.btn img{
         width: 40px;
         height: 40px;
+    }
+    .modal-dialog-centered {
+        justify-content: center;
+    }
+    .modal-content{
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 0 1em;
+        text-align: right;
+        position: relative;
+            @include breakpoint(min1200) {
+                @include width_height (700px, 280px) ;
+            }
+            a{
+               text-decoration: none;
+               color: var(--grey-light);
+               font-size: 4em;
+            }
+            .body-modal{
+                display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            color: var(--black-light);
+            @include breakpoint(min1200) {
+                @include width_height (700px, 280px) ;
+            }
+            .text-18-400-22{
+                @include pxtorem(18);
+                @include line_height(21px);
+                @include font(400);
+            }
+            .btn{
+                margin-bottom: 2.5em;
+                position: relative;
+                overflow: hidden;
+                @include breakpoint(ipad){
+                    height: 45px;
+                    margin: 1em 0;
+                }
+            }
+        }
     }
 }
 

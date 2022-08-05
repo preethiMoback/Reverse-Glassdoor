@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { FormDataService } from '../form-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-result',
@@ -18,7 +19,8 @@ export class SearchResultComponent implements OnInit {
   constructor(private formData:FormDataService,
     private apiService: Apiservice,
     private ngxLoader: NgxUiLoaderService, 
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -40,6 +42,9 @@ export class SearchResultComponent implements OnInit {
     })
   }
 
-
+  goToWriteReview(candidate: any) {
+    this.apiService.writeReviewAgainInfo.next(candidate);
+    this.router.navigate(['/candidatereview']);
+  }
 
 }

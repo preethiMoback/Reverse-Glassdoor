@@ -27,6 +27,8 @@ export class DashboardpageComponent implements OnInit {
   details: any;
   currentTabIndex: number = 0;
 
+  candidateList: any[] = [];
+
   allReviewList: any[] = [];
   approvedList: any[] = [];
   rejectedList: any[] = [];
@@ -98,7 +100,25 @@ export class DashboardpageComponent implements OnInit {
     subscribe( (res:any) =>{
       item.Helpful = res.Helpful;
       item.Not_Helpful = res.Not_Helpful;
+      this.getCandidateInfo(item);
+    })
+  }
+
+  getCandidateInfo(item: any) {
+    let payload: any = { candidate_user_id: item.candidate_user_id}
+    this.apiService.reviewcandidateInfo(payload).subscribe((res: any) => {
+      let val: any = res[0][0];
+      item.first_name = val.candidate_first_name;
+      item.middle_name = val.candidate_middle_name;
+      item.last_name = val.candidate_last_name;
+      item.current_org = val.current_organisation_name;
+      item.primary_skill = val.primary_skill;
+      item.email = val.email_id;
+      item.phone_number = val.mobile_number;
       this.prepareData(item);
+    },
+    (error) => {
+      this.toastr.error(error.error.message);
     })
   }
 
@@ -134,34 +154,41 @@ export class DashboardpageComponent implements OnInit {
     }
     if (this.allReviewList.length < 5) this.allReviewList.push(item);
     this.allAllReviewList.push(item);
+
+    this.candidateList = this.allReviewList;
   }
 
   viewReview(candidate: any){
-    console.log(candidate);
-    let payload: any = {
-      id: candidate.id,
-      phase: candidate.phase
-    }
-    this.apiService.viewReview(payload)
-      .subscribe((res: any) =>{
-        console.log("viewReview", res);
-        this.apiService.helpfullCount(payload)
-          .subscribe((count: any) =>{
-            res.data[0].Helpful = count.Helpful;
-            res.data[0].Not_Helpful = count.Not_Helpful;
-            res.data[0].phase = candidate.phase;
-            res.data[0].status = candidate.status;
+    // console.log("candidate", candidate);
+    // let payload: any = {
+    //   id: candidate.id,
+    //   phase: candidate.phase
+    // }
+    // this.apiService.viewReview(payload)
+    //   .subscribe((res: any) =>{
+    //     console.log("viewReview", res);
+        // this.apiService.helpfullCount(payload)
+        //   .subscribe((count: any) =>{
+            // res.data[0].Helpful = count.Helpful;
+            // res.data[0].Not_Helpful = count.Not_Helpful;
+            // res.data[0].phase = candidate.phase;
+            // res.data[0].status = candidate.status;
+            // console.log("helpfullcount", count)
 
-
-            this.apiService.viewReviewDetails.next(res.data[0]);
+            this.apiService.viewReviewDetails.next(candidate);
             this.router.navigate(['/viewreview']);
-          })
-      })
+          // })
+      // })
   }
 
   tabChange(tabIndex:  number){
     console.log(tabIndex);
     this.currentTabIndex = tabIndex;
+    if(this.currentTabIndex === 0) this.candidateList = this.allReviewList;
+    else if(this.currentTabIndex === 1) this.candidateList = this.allApprovedList;
+    else if(this.currentTabIndex === 2) this.candidateList = this.allRejectedList;
+    else if(this.currentTabIndex === 3) this.candidateList = this.allPendingList;
+
   }
 
   goToViewAll(){
@@ -223,5 +250,10 @@ export class DashboardpageComponent implements OnInit {
     xhr.send(uploadData);
     let curUserData = JSON.parse(localStorage.getItem('currentUserInfo') || '');
     this.currentUserImage = curUserData.pic ? "http://54.208.4.29:8080/" + curUserData.pic : "../../assets/Images/image_icon.svg";
+  }
+
+  onWriteReviewClick() {
+    this.apiService.writeReviewAgainInfo.next({});
+    localStorage.removeItem('candidInfo');
   }
 }

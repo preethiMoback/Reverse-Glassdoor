@@ -89,6 +89,17 @@ ngOnInit() {
           Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
         ]],
   });
+
+  this.apiService.writeReviewAgainInfo.subscribe((res) => {
+    if(Object.keys(res).length === 0) {
+      res = JSON.parse(localStorage.getItem("candidInfo") || '');
+    } else {
+      localStorage.setItem("candidInfo", JSON.stringify(res));
+    }
+    this.registerForm.get('name')?.setValue(res.candidate_first_name + ` ${res.candidate_middle_name}` + ` ${res.candidate_last_name}`);
+    this.registerForm.get('primaryskill')?.setValue(res?.["primary skill"])
+  })
+  this.apiService.writeReviewAgainInfo.next({});
 }
 get f() { return this.registerForm.controls; }
 
