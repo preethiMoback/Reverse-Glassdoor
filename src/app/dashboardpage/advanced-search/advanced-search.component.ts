@@ -63,7 +63,6 @@ export class AdvancedSearchComponent implements OnInit {
     this.submitted = true;
 
     if (!this.registerForm.valid) {
-      debugger;
       this.submitted = false;
       if(this.registerForm.controls['email'].status === "INVALID") {
         this.toastr.error("Please Enter a Valid Email");

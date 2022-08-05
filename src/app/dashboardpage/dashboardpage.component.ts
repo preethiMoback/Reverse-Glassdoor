@@ -57,7 +57,7 @@ export class DashboardpageComponent implements OnInit {
     })
 
     this.apiService.candidateFeedbackCount().subscribe((res: any) => {
-      console.log(res);
+      console.log("feedbackcount",res);
       this.candidateFeedbackCountList.allReview =
         res.All_phases['Total feedback given'];
       this.candidateFeedbackCountList.approved =
@@ -69,6 +69,7 @@ export class DashboardpageComponent implements OnInit {
     });
 
     this.apiService.candidateInfo().subscribe((res: any) => {
+      console.log("all reviews info",res);
       res.interview.filter((item: any) => {
         item.phase = 'interview';
         this.findHelpulNotHelpFull(item,'interview');
@@ -95,7 +96,6 @@ export class DashboardpageComponent implements OnInit {
     }
     this.apiService.helpfullCount(payload).
     subscribe( (res:any) =>{
-      console.log(res);
       item.Helpful = res.Helpful;
       item.Not_Helpful = res.Not_Helpful;
       this.prepareData(item);
@@ -144,14 +144,13 @@ export class DashboardpageComponent implements OnInit {
     }
     this.apiService.viewReview(payload)
       .subscribe((res: any) =>{
-        
+        console.log("viewReview", res);
         this.apiService.helpfullCount(payload)
           .subscribe((count: any) =>{
             res.data[0].Helpful = count.Helpful;
             res.data[0].Not_Helpful = count.Not_Helpful;
             res.data[0].phase = candidate.phase;
             res.data[0].status = candidate.status;
-
 
 
             this.apiService.viewReviewDetails.next(res.data[0]);

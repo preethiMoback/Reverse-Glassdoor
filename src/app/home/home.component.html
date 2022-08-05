@@ -363,15 +363,15 @@
                 <div class="card_title text-center">
                     Search and find out about candidates
                 </div>
-                <form action="/action_page.php">
+                <form id="searchInputForm" [formGroup]="searchForm" (ngSubmit)="searchCandidate()">
                     <div class="input-group mb-3">
-                      <input id = "search" type="text" class="form-control" placeholder="Search with candidate's Name" name="email">
+                      <input id = "search" type="text" class="form-control" formControlName="searchName" placeholder="Search with candidate's Name" name="name">
                       <span class="input-group-text">
-                          <figure>
-                              <a routerLink="/searchresultfromhome">
+                          <!-- <figure> -->
+                              <button class="search-button">
                                 <img src="../../assets/Images/Search_buttonicon.svg" alt="Search_buttonicon">
-                              </a>
-                          </figure>
+                              </button>
+                          <!-- </figure> -->
                       </span>
                     </div>
                 </form>

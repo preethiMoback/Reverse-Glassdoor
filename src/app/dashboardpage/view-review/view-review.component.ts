@@ -13,7 +13,12 @@ export class ViewReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService.viewReviewDetails.subscribe((res =>{
-      console.log(res);
+      if(Object.keys(res).length === 0) {
+        res = JSON.parse(localStorage.getItem("viewReviewDetails") || '');
+      } else {
+        localStorage.setItem("viewReviewDetails", JSON.stringify(res));
+      }
+      console.log("viewReviewDetails",res);
       this.currentReview = res;
       this.rate = res &&  res.rating && res.rating.length;
     }))

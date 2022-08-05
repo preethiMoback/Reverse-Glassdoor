@@ -10,7 +10,7 @@
                     </p>
                     <div class="card-title">
                        <div class="text-30-700-36">
-                            {{currentReview?.phase}} review 
+                            <span class="text-capitalize">{{currentReview?.phase}}</span> review 
                             <span class="text-20-600-24" *ngIf="currentReview?.status === 'Approved'">
                                 <img src="../../assets/Images/tick.svg" alt="tick">&nbsp;&nbsp; {{currentReview?.status}}
                             </span>

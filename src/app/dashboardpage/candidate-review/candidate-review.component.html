@@ -222,14 +222,14 @@
                                    </div>
                                    <div class="col">
                                        <div class="form-group">
-                                           <label for="mobileNumber">Phone Number*</label>  
+                                           <label for="mobileNumber">Country Code*</label>  
                                            <input   
                                                formControlName="countrycode"  
                                                id="countrycode"   
-                                               type="text"   
+                                               type="number"   
                                                class="form-control" 
                                                [ngClass]="{ 'is-invalid': submitted && f['countrycode'].errors }"
-                                               placeholder="+91"
+                                               placeholder="91"
                                            />  
                                            <div *ngIf="submitted && f['countrycode'].errors" class="invalid-feedback">
                                                <div *ngIf="f['countrycode'].errors['required']">countrycode is required</div>
@@ -238,6 +238,7 @@
                                    </div>
                                    <div class="col-md-4">
                                        <div class="form-group">
+                                            <label for="mobileNumber">Phone Number*</label>  
                                            <!-- <label></label>
                                            <input 
                                                type="text" 
@@ -249,7 +250,7 @@
                                                formControlName="phoneNumber"  
                                                id="phoneNumber"   
                                                type="text"   
-                                               class="form-control phoneNumber" 
+                                               class="form-control" 
                                                [ngClass]="{ 'is-invalid': submitted && f['phoneNumber'].errors }"
                                            />  
                                            <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">

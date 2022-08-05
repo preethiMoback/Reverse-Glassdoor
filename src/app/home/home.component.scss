@@ -113,6 +113,11 @@
                     @include pxtorem(30);
                 }
             }
+            .search-button {
+                background-color: transparent;
+                padding-bottom: 1rem;
+                border: none;
+            }
         }
         .write-reviewbtn{
             border-radius: 5px;

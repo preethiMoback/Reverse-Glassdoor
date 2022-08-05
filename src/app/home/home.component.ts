@@ -1,6 +1,6 @@
 import { Apiservice } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormDataService } from '../dashboardpage/advanced-search/form-data.service';
 import { ToastrService } from 'ngx-toastr';
@@ -27,6 +27,8 @@ export class HomeComponent implements OnInit {
   interval:any;
   timerOn = true;
   routerData: any;
+  searchText: string = '';
+  searchForm!: FormGroup;
   
  
   constructor(private formBuilder: FormBuilder,
@@ -63,9 +65,15 @@ export class HomeComponent implements OnInit {
           Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
         ]],
     });
+
+    this.searchForm = this.formBuilder.group({
+      searchName: ['', Validators.required]
+    });
+
     this.changeStep(this.routerData?.type, this.routerData?.step);
   }
   get f() { return this.registerForm.controls; }
+  get sf() { return this.searchForm.controls; }
 
   emailVerify() {
     if(this.checkEmailVerif()){
@@ -77,6 +85,9 @@ export class HomeComponent implements OnInit {
         this.toastr.success('', 'Send Otp Successfully!');
         this.changeStep('signup',2);
         this.startTimer();
+      },
+      (error) => {
+        this.toastr.error(error.error.message);
       }
       )
     }
@@ -84,6 +95,16 @@ export class HomeComponent implements OnInit {
       this.toastr.error("Please enter all the details");
     }
     this.onSubmit();
+  }
+
+  searchCandidate() {
+    if(this.searchForm.value.searchName) {
+      localStorage.setItem('searchValue', this.searchForm.value.searchName);
+      this.router.navigate(['/searchresultfromhome']);
+    }
+    else {
+      this.toastr.error("Please enter a name to be searched");
+    }
   }
 
   onSubmit() {
@@ -206,9 +227,9 @@ export class HomeComponent implements OnInit {
               this.isEmailVerified = false;
               this.changeStep('',-1);
             },
-            (error) => {
-              this.toastr.error(error.error.message);
-            }
+            // (error) => {
+            //   this.toastr.error(error.error.message);
+            // }
           )
           // console.log(payload);
         }
@@ -293,6 +314,8 @@ passwordVerify(){
   }
 
   startTimer() {
+    clearInterval(this.interval);
+    this.timeLeft = 120;
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
         this.timeLeft--;
