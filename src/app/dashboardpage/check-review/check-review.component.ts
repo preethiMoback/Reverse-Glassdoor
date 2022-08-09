@@ -9,23 +9,55 @@ import { Apiservice } from './../../services/api.service';
 })
 export class CheckReviewComponent implements OnInit {
 
+  allReviews: any[] = [];
+  candidateInfo: any;
+
   constructor(  private apiService: Apiservice,
     private router: Router,) { }
 
   ngOnInit(): void {
+    this.apiService.checkReviewsInfo.subscribe((res: any) => {
+      if(Object.keys(res).length === 0) {
+        res = JSON.parse(localStorage.getItem("candidInfo") || '');
+      } else {
+        localStorage.setItem("candidInfo", JSON.stringify(res));
+      }
+      console.log(res);
+      this.candidateInfo = res;
+      let payload: any = {candidate_user_id: res.candidate_user_id};
+      this.apiService.getCandidateReviews(payload).subscribe((result: any) => {
+        result.interview.filter((item: any) => {
+          item.phase = 'interview';
+          this.findHelpulNotHelpFull(item,'interview');
+        });
+        result.offer.filter((item: any) => {
+          item.phase = 'offer';
+          this.findHelpulNotHelpFull(item,'offer');
+        });
+        result.onboarding.filter((item: any) => {
+          item.phase = 'onboarding';
+          this.findHelpulNotHelpFull(item,'onboarding');
+        });
+      })
+    })
   }
 
-  viewhelpful(item: any, phase: string){
+  findHelpulNotHelpFull(item: any, phase: string){
     let payload = {
-      id: item.id,
-      phase:  phase
+      id: item.review_id,
+      phase: phase
     }
     this.apiService.helpfullCount(payload).
     subscribe( (res:any) =>{
-      console.log(res);
       item.Helpful = res.Helpful;
       item.Not_Helpful = res.Not_Helpful;
-      // this.prepareData(item);
+      this.allReviews.push(item);
     })
+  }
+
+  goToWriteReview(candidate: any) {
+    localStorage.removeItem('viewReviewDetails');
+    this.apiService.writeReviewAgainInfo.next(candidate);
+    this.router.navigate(['/candidatereview']);
   }
 }

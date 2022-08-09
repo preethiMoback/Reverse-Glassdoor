@@ -17,9 +17,9 @@
                         </div>
                         <div class="card-body">
                             <div class="text-30-700-36">
-                                Mahesh Rudra Badaballa
+                                {{candidateInfo?.candidate_first_name}} {{candidateInfo?.candidate_middle_name}} {{candidateInfo?.candidate_last_name}}
                             </div>
-                            <div class="person_information">
+                            <!-- <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                     badaballarocks@gmail.com
@@ -30,49 +30,49 @@
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                     +91 8928382945
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-cog" aria-hidden="true"></i>
-                                    Figma, Adobe XD
+                                    {{candidateInfo?.["primary skill"]}}
                                 </div>
                             </div>
-                            <div class="person_information">
+                            <!-- <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-building-o" aria-hidden="true"></i>
                                     Bighaat Agro Pvt Ltd
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
-                <div class="write btn text-20-400-24" routerLink="/writereviewagain">
+                <div class="write btn text-20-400-24" (click)="goToWriteReview(candidateInfo)">
                     Write Review
                 </div>
             </div>
             <div class="col-md-12 col-lg-7 p-0 from-right">
                 <div class="card content_part allreview_card">
-                    <div class="row">
+                    <div class="row" *ngFor="let review of allReviews">
                         <div class="col-md-8">
                             <div class="text-25-700-30">
-                                Onboarding review 
+                                <span class="text-capitalize">{{review?.phase}} Review</span> 
                             </div>
                             <div class="text-20-400-24">
-                                13th Mar 2022.
+                                {{review?.update_time | date}}
                             </div>
                             <div class="text-25-400-30">
-                                by  <span><i class="fa fa-user-circle" aria-hidden="true"></i>
-                                </span>Davis Kuruvilla (Bighaat Pvt Ltd).
+                                by  <span><i class="fa fa-user-circle user-icon" aria-hidden="true"></i>
+                                </span>{{review?.user_name}} <span class="text-capitalize">({{review?.organization_name}})</span>
                             </div>
                             <div class="thumbs-rating">
                                 <div class="thumbs-up-rating">
-                                    <!-- <span class=" text-20-400-24">13 {{candidate.helpful}}</span> -->
+                                    <span class=" text-20-400-24">{{review?.Helpful}}</span>
                                    <span class="thumbs-icon">
                                     <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                    </span>
                                 </div>
                                 <div class="thumbs-down-rating">
-                                    <!-- <span class="text-20-400-24">{{candidate.nothelpful}}</span> -->
+                                    <span class="text-20-400-24">{{review?.Not_Helpful}}</span>
                                     <span class="thumbs-icon">
                                         <i class="fa fa-thumbs-down" aria-hidden="true"></i>
                                     </span>
@@ -85,76 +85,7 @@
                                 View Review
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="text-25-700-30">
-                                Onboarding review 
-                            </div>
-                            <div class="text-20-400-24">
-                                13th Mar 2022.
-                            </div>
-                            <div class="text-25-400-30">
-                                by  <span><i class="fa fa-user-circle" aria-hidden="true"></i>
-                                </span>Davis Kuruvilla (Bighaat Pvt Ltd).
-                            </div>
-                            <div class="thumbs-rating">
-                                <div class="thumbs-up-rating">
-                                    <span class=" text-20-400-24">13</span>
-                                   <span class="thumbs-icon">
-                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                                   </span>
-                                </div>
-                                <div class="thumbs-down-rating">
-                                    <span class="text-20-400-24">13</span>
-                                    <span class="thumbs-icon">
-                                        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                                <span class="text-20-400-24">20 views</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="view_btn text-20-400-24" routerLink="/viewreview">
-                                View Review
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="text-25-700-30">
-                                Onboarding review 
-                            </div>
-                            <div class="text-20-400-24">
-                                19th June 2022.
-                            </div>
-                            <div class="text-25-400-30">
-                                by  <span><i class="fa fa-user-circle" aria-hidden="true"></i>
-                                </span>Farrah Jones (Takshila Pvt Ltd).
-                            </div>
-                            <div class="thumbs-rating">
-                                <div class="thumbs-up-rating">
-                                    <span class=" text-20-400-24">13</span>
-                                   <span class="thumbs-icon">
-                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                                   </span>
-                                </div>
-                                <div class="thumbs-down-rating">
-                                    <span class="text-20-400-24">13</span>
-                                    <span class="thumbs-icon">
-                                        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                                <span class="text-20-400-24">20 views</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="view_btn text-20-400-24" routerLink="/othersreviews">
-                                View Review
-                            </div>
-                        </div>
+                        <hr>
                     </div>
                 </div>
             </div>

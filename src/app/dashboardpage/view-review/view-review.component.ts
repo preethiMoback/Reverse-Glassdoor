@@ -26,4 +26,8 @@ export class ViewReviewComponent implements OnInit {
     }))
   }
 
+  updateReview() {
+    this.apiService.writeReviewAgainInfo.next(this.currentReview);
+  }
+
 }

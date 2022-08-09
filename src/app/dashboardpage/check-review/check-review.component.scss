@@ -15,17 +15,18 @@
     min-height: 100vh;
     .from-left{
         transform:translateX(-1000px);
-            animation-name:left;
-            animation-fill-mode: forwards;
-            animation-duration:1s;
-            animation-timing-function: ease-out;
+        animation-name:left;
+        animation-fill-mode: forwards;
+        animation-duration:1s;
+        animation-timing-function: ease-out;
     }
     .from-right{
+        background-color: var(--white);
         transform:translateX(1500px);
-            animation-name:right;
-            animation-fill-mode: forwards;
-            animation-duration:1s;
-            animation-timing-function: ease-out;
+        animation-name:right;
+        animation-fill-mode: forwards;
+        animation-duration:1s;
+        animation-timing-function: ease-out;
     }
     .allreview_card{
         padding: 20px;
@@ -65,6 +66,9 @@
         }
     }
     hr{
+        &:last-child {
+            display: none;
+        }
         @include margin {
             margin-top: 45px;
         }
@@ -92,11 +96,23 @@
         }
     }
     .candidate-card{
+        background-color: var(--white);
         @include breakpoint(sm){
             margin-top: 136px;
         }
         @include breakpoint(min1601){
             margin: 70px 50px;
         }
+    }
+    .card-header {
+        background-color: var(--purple) !important;
+        color: var(--white) !important;
+        border-radius: 10px;
+    }
+    .card {
+        border: none;
+    }
+    .user-icon {
+        margin-right: 10px;
     }
 }

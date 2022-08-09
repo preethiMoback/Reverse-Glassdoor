@@ -36,8 +36,8 @@
                         <div class="text-20-400-24 para">
                             {{currentReview?.feedback}}
                         </div>
-                        <div *ngIf="currentReview?.status === 'Approval Pending'">
-                            <button class="btn">Update Review</button>
+                        <div *ngIf="currentReview?.status !== 'Approved'">
+                            <button class="btn" (click)="updateReview()" routerLink="/candidatereview">Update Review</button>
                         </div>
                         <div class="thumbs-rating" *ngIf="currentReview?.status === 'Approved'">
                             <div class="thumbs-up-rating">

@@ -232,7 +232,8 @@
                                                placeholder="91"
                                            />  
                                            <div *ngIf="submitted && f['countrycode'].errors" class="invalid-feedback">
-                                               <div *ngIf="f['countrycode'].errors['required']">countrycode is required</div>
+                                               <div *ngIf="f['countrycode'].errors['required']">Country Code is required</div>
+                                               <div *ngIf="f['countrycode'].errors['max']">Enter valid Country Code</div>
                                            </div> 
                                        </div>
                                    </div>
@@ -255,6 +256,8 @@
                                            />  
                                            <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
                                                <div *ngIf="f['phoneNumber'].errors['required']">Phone Number is required</div>
+                                               <div *ngIf="f['phoneNumber'].errors['maxlength']">Enter valid phone number</div>
+                                               <div *ngIf="f['phoneNumber'].errors['minlength']">Enter valid phone number</div>
                                            </div>
                                        </div>
                                      </div>
@@ -306,10 +309,9 @@
                                                 <input id="onboarding" type="radio" class="custom-control-input" value="onboarding" name="status" formControlName="status">
                                                 <label class="custom-control-label" for="onboarding">Onboarding</label>
                                             </div>
-                                
-                                            <div class="invalid-feedback" *ngIf="submitted && f['status'].errors">
-                                            <p>Please select either value</p>
-                                            </div>
+                                        </div>
+                                        <div *ngIf="submitted && f['status'].errors" class="invalid-radio">
+                                            <div *ngIf="f['status'].errors['required']">Company Name is required</div>
                                         </div>
                                     </div>
                                      <div class="col-md-12">
@@ -334,17 +336,27 @@
                                          </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <div class="toggle-button">
                                                 <label>What is the type of review?</label><br>
                                             <div class="switch-toggle switch-2 switch-candy">
-                                            <input id="on" name="state-d" type="radio" checked="checked" />
+                                            <input id="on" name="state-d" type="checkbox" checked />
                                             <label for="on" (click)="changeStatus('Positive')">Positive</label>
-                                            <input id="off" name="state-d" type="radio" />
+                                            <input id="off" name="state-d" type="checkbox" />
                                             <label for="off" (click)="changeStatus('Negative')">Negative</label>
                                           </div>
                                             </div>
+                                        </div> -->
+                                        <div class="form-group">
+                                            <label>What is the type of review?</label>
                                         </div>
+                                        <label class="switch">
+                                            <input id="toggleSwitch" type="checkbox" (click)="onToggleStatus()">
+                                            <span class="slider">
+                                                <span class="positive-btn">Positive</span>
+                                                <span class="negative-btn">Negative</span>
+                                            </span>
+                                          </label>
                                     </div>
                                      <div class="col-md-12">
                                        <div class="form-group text_area">
@@ -352,7 +364,7 @@
                                            <textarea class="form-control" rows="7"  formControlName="feedback" placeholder="Please write about the candidate review here"></textarea>
                                        </div>
                                      </div>
-                                     <div class="col-md-12">
+                                     <div class="col-md-12" *ngIf="!hideTandC">
                                        <div class="form-check">
                                            <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input mt-1" 
                                            [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }" />

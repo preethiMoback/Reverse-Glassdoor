@@ -23,6 +23,7 @@ export class Apiservice {
     reviewCandidateInfo: BehaviorSubject<any> = new BehaviorSubject({});
     viewReviewDetails: BehaviorSubject<any> = new BehaviorSubject({});
     writeReviewAgainInfo: BehaviorSubject<any> = new BehaviorSubject({});
+    checkReviewsInfo: BehaviorSubject<any> = new BehaviorSubject({});
 
 
     
@@ -133,12 +134,16 @@ export class Apiservice {
         return this.http.get(`http://${this.DeployedIP}:${this.DeployedPort}/user/ViewFeedback/?id=`+ payload.id + "&phase=" + payload.phase,this.commonOptions2);
     }
 
-    changeHelpfull(payload: any){
+    updateReview(payload: any){
         return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/edit/`,payload,this.commonOptions2);
     }
 
     viewhelpful(payload: any){
         return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/helpful_nothelpful/`,payload,this.commonOptions2);
+    }
+
+    getCandidateReviews(payload: any) {
+        return this.http.get(`http://${this.DeployedIP}:${this.DeployedPort}/user/cand_phase_info/?candidate_user_id=`+ payload.candidate_user_id);
     }
 
 }

@@ -16,8 +16,12 @@ export class CandidateReviewComponent implements OnInit {
   max: number = 5;
   // value: number = 5;
   //value!: Observable<number>;
-  registrationForm!: any;
+  // registrationForm!: any;
   feedbackType: string = 'Positive';
+  viewReviewData: any = {};
+  hideTandC: boolean = false;
+  reviewId: any;
+  reviewPhase: any;
 
   constructor(private formBuilder: FormBuilder, private apiService: Apiservice, private toaster: ToastrService, private router: Router) { }
 //   ngOnInit() {
@@ -70,14 +74,14 @@ ngOnInit() {
       // lastName: ['', Validators.required],
       companyName:['', Validators.required],
       primaryskill:['', Validators.required],
-      countrycode:['',[Validators.required, Validators.maxLength(4)]],//[Validators.required,Validators.pattern('/^(\+?\d{1,3}|\d{1,4})$/')]],
+      countrycode:['',[Validators.required, Validators.max(9999)]],//[Validators.required,Validators.pattern('/^(\+?\d{1,3}|\d{1,4})$/')]],
       rating: [3],
       status: ['', [Validators.required]],
       feedback:['', Validators.required],
       phoneNumber: ['', [
           Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(12),
+          Validators.minLength(10),
+          Validators.maxLength(10),
           Validators.pattern('^[0-9]*$')]],
       // companyWebsite:['', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
       // message:['', Validators.required],
@@ -96,59 +100,119 @@ ngOnInit() {
     } else {
       localStorage.setItem("candidInfo", JSON.stringify(res));
     }
-    this.registerForm.get('name')?.setValue(res.candidate_first_name + ` ${res.candidate_middle_name}` + ` ${res.candidate_last_name}`);
-    this.registerForm.get('primaryskill')?.setValue(res?.["primary skill"])
+    console.log(res);
+    if(res?.status) {
+      let el = document.getElementById('toggleSwitch') as HTMLInputElement;
+
+      this.registerForm.get('name')?.setValue(res.first_name + ` ${res.middle_name}` + ` ${res.last_name}`);
+      this.registerForm.get('companyName')?.setValue(res.current_org);
+      this.registerForm.get('email')?.setValue(res.email);
+      this.registerForm.get('countrycode')?.setValue(res.country_code);
+      this.registerForm.get('phoneNumber')?.setValue(res.phone_number);
+      this.registerForm.get('primaryskill')?.setValue(res.primary_skill);
+      this.registerForm.get('status')?.setValue(res.phase);
+      this.registerForm.get('rating')?.setValue(res.rating.length);
+      if(res.feedback_type === 'Positive') {
+        el.checked = false;
+        this.onToggleStatus();
+      }
+      else {
+        el.checked = true;
+        this.onToggleStatus();
+      }
+      this.registerForm.get('feedback')?.setValue(res.feedback);
+      this.registerForm.get('acceptTerms')?.setValue(true);
+
+      this.registerForm.get('name')?.disable();
+      this.registerForm.get('companyName')?.disable();
+      this.registerForm.get('email')?.disable();
+      this.registerForm.get('countrycode')?.disable();
+      this.registerForm.get('phoneNumber')?.disable();
+      this.registerForm.get('primaryskill')?.disable();
+      this.registerForm.get('status')?.disable();
+
+      this.reviewId = res.id;
+      this.reviewPhase = res.phase;
+      this.hideTandC = true;
+    }
+    else {
+      this.registerForm.get('name')?.setValue(res.candidate_first_name + ` ${res.candidate_middle_name}` + ` ${res.candidate_last_name}`);
+      this.registerForm.get('primaryskill')?.setValue(res?.["primary skill"]);
+    }
   })
-  this.apiService.writeReviewAgainInfo.next({});
 }
 get f() { return this.registerForm.controls; }
 
 onSubmit() {
     this.submitted = true;
-    console.log(this.registerForm.value);
-    console.log(this.registerForm);
     if (this.registerForm.invalid) {
         return;
     }
     else{
-      let names = this.registerForm.value.name.split(" ");
-      let phase = this.registerForm.value.radio1? 'Interview' : this.registerForm.value.radio2? 'Offer': 'Onboarding';
+      debugger;
       let ratingstring = '';
       let ratvalue = this.registerForm.value.rating;
       while(ratvalue--){
         ratingstring += "*";
       }
-      let payload = {
-        first_name: this.registerForm.value.name.split(" ")[0],
-        middle_name: '',
-        last_name: this.registerForm.value.name.split(" ")[names.length - 1],
-        country_code: this.registerForm.value.countrycode.toString(),
-        mobile_num: this.registerForm.value.phoneNumber,
-        email_id: this.registerForm.value.email,
-        current_organisation_name: this.registerForm.value.companyName,
-        phase: phase,
-        feedback: this.registerForm.value.feedback,
-        feedback_type: this.feedbackType,
-        submission_status: "pending approval",
-        justification_for_rejection: "---",
-        rating: ratingstring,
-        primary_skill: this.registerForm.value.primaryskill,
-      }
-    console.log(payload);
-      this.apiService.candidateReview(payload)
+
+      if(!this.hideTandC) {
+        let names = this.registerForm.value.name.split(" ");
+        let phase = this.registerForm.value.radio1? 'Interview' : this.registerForm.value.radio2? 'Offer': 'Onboarding';
+        
+        let payload = {
+          first_name: this.registerForm.value.name.split(" ")[0],
+          middle_name: '',
+          last_name: this.registerForm.value.name.split(" ")[names.length - 1],
+          country_code: this.registerForm.value.countrycode.toString(),
+          mobile_num: this.registerForm.value.phoneNumber,
+          email_id: this.registerForm.value.email,
+          current_organisation_name: this.registerForm.value.companyName,
+          phase: phase,
+          feedback: this.registerForm.value.feedback,
+          feedback_type: this.feedbackType,
+          submission_status: "pending approval",
+          justification_for_rejection: "---",
+          rating: ratingstring,
+          primary_skill: this.registerForm.value.primaryskill,
+        }
+        console.log(payload);
+        this.apiService.candidateReview(payload)
         .subscribe(res =>{
           this.toaster.success('', 'Submit Candidate Review Successfully!');
           this.router.navigate(['/dashboardpage']);
         })
+      }
+
+      else {
+        let payload = {
+          id: this.reviewId,
+          phase: this.reviewPhase,
+          feedback: this.registerForm.value.feedback,
+          feedback_type: this.feedbackType,
+          rating: ratingstring
+        }
+        console.log(payload);
+        this.apiService.updateReview(payload).subscribe((res) => {
+          this.toaster.success('', 'Update Candidate Review Successfully!');
+          this.router.navigate(['/dashboardpage']);
+        })
+      }
 
     }
 }
 
-changeStatus(status: string){
-  console.log(status);
-  this.feedbackType = status;
-
+onToggleStatus() {
+  let el = document.getElementById('toggleSwitch') as HTMLInputElement;
+  if(el.checked === false) this.feedbackType = 'Positive';
+  else this.feedbackType = 'Negative';
 }
+
+// changeStatus(status: string){
+//   console.log(status);
+//   this.feedbackType = status;
+
+// }
 
 
 

@@ -43,8 +43,14 @@ export class SearchResultComponent implements OnInit {
   }
 
   goToWriteReview(candidate: any) {
+    localStorage.removeItem('viewReviewDetails');
     this.apiService.writeReviewAgainInfo.next(candidate);
     this.router.navigate(['/candidatereview']);
+  }
+
+  gotToCheckReview(candidate: any) {
+    this.apiService.checkReviewsInfo.next(candidate);
+    this.router.navigate(['/checkreview']);
   }
 
 }

@@ -51,10 +51,11 @@ export class HomeComponent implements OnInit {
       confirmpassword: [{value: '', disabled: true}, Validators.required],
       companyName:['', Validators.required],
       productdemo:['', Validators.required],
+      countrycode:['', [Validators.required, Validators.max(9999)]],
       phoneNumber: ['', [
           Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(12),
+          Validators.minLength(10),
+          Validators.maxLength(10),
           Validators.pattern('^[0-9]*$')]],
       companyWebsite:['', [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
       message:['', Validators.required],
@@ -212,7 +213,8 @@ export class HomeComponent implements OnInit {
             first_name: name[0],
             middle_name: this.registerForm.value.middleName?this.registerForm.value.middleName: '',
             last_name: name.length > 1? name[1]: '',
-            mobilenum: this.registerForm.value.phoneNumber.toString(),
+            country_code: this.registerForm.value.countrycode.toString(),
+            mobilenum: this.registerForm.value.phoneNumber,
             current_org: this.registerForm.value.companyName,
             current_org_mailid: this.registerForm.value.email,
             password: this.registerForm.value.confirmpassword,
@@ -261,7 +263,7 @@ export class HomeComponent implements OnInit {
 }
 
 checkEmailVerif(){
-  return this.f['email'].valid && this.f['name'].valid && this.f['companyName'].valid && this.f['phoneNumber'].valid ;
+  return this.f['email'].valid && this.f['name'].valid && this.f['companyName'].valid && this.f['phoneNumber'].valid && this.f['countrycode'].valid;
 }
 
 passwordVerify(){

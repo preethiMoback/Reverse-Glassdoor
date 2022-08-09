@@ -52,18 +52,19 @@
                                         {{candidate?.["primary skill"]}} 
                                     </div>
                                 </div>
-                                <div class="person_information">
+                                <!-- Hide for now until payment options is implemented -->
+                                <!-- <div class="person_information">
                                     <div class="text-20-400-24">
                                         <i class="fa fa-building-o" aria-hidden="true"></i>
                                         Bighaat Agro Pvt Ltd
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-3 btn-sec">
                                 <div class="write btn text-20-400-24" (click)="goToWriteReview(candidate)">
                                     Write Review
                                 </div>
-                                <div class="check btn text-20-400-24" routerLink="/checkreview">
+                                <div class="check btn text-20-400-24" (click)="gotToCheckReview(candidate)">
                                     Check Reviews
                                 </div>
                             </div>
