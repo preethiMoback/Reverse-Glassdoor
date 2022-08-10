@@ -241,6 +241,8 @@ export class DashboardpageComponent implements OnInit {
             apiService.currenUserInfo.next(res.data);
         })
         toasterMsg.success('Profile Picture Updated Succesfully');
+        let el = document.getElementById("closeBtn") as HTMLButtonElement;
+        el.click();
       }
     });
 
@@ -255,5 +257,49 @@ export class DashboardpageComponent implements OnInit {
   onWriteReviewClick() {
     this.apiService.writeReviewAgainInfo.next({});
     localStorage.removeItem('candidInfo');
+  }
+
+  updateHelpfulCount(val: string, candidate: any) {
+    let payload = {
+      id: candidate.id,
+      phase: candidate.phase,
+      helpful: false,
+      nothelpful: false
+
+    }
+    if(val == 'helpful') {
+      payload.helpful = true;
+      payload.nothelpful = false;
+    }
+    else if(val == 'not helpful') {
+      payload.helpful = false;
+      payload.nothelpful = true;
+    }
+    this.apiService.viewhelpful(payload).subscribe((res) => {
+      this.approvedList.forEach((item:  any) => {
+        if(item.id === candidate.id) {
+          if(val === 'helpful') item.Helpful = item.Helpful + 1;
+          else item.Not_Helpful = item.Not_Helpful + 1; 
+        }
+      })
+      this.allApprovedList.forEach((item:  any) => {
+        if(item.id === candidate.id) {
+          if(val === 'helpful') item.Helpful = item.Helpful + 1;
+          else item.Not_Helpful = item.Not_Helpful + 1; 
+        }
+      })
+      this.allReviewList.forEach((item:  any) => {
+        if(item.id === candidate.id) {
+          if(val === 'helpful') item.Helpful = item.Helpful + 1;
+          else item.Not_Helpful = item.Not_Helpful + 1; 
+        }
+      })
+      this.allAllReviewList.forEach((item:  any) => {
+        if(item.id === candidate.id) {
+          if(val === 'helpful') item.Helpful = item.Helpful + 1;
+          else item.Not_Helpful = item.Not_Helpful + 1; 
+        }
+      })
+    })
   }
 }

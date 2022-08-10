@@ -67,13 +67,13 @@
                             <div class="thumbs-rating">
                                 <div class="thumbs-up-rating">
                                     <span class=" text-20-400-24">{{review?.Helpful}}</span>
-                                   <span class="thumbs-icon">
+                                   <span class="thumbs-icon" (click)="updateHelpfulCount('helpful', review)">
                                     <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                    </span>
                                 </div>
                                 <div class="thumbs-down-rating">
                                     <span class="text-20-400-24">{{review?.Not_Helpful}}</span>
-                                    <span class="thumbs-icon">
+                                    <span class="thumbs-icon" (click)="updateHelpfulCount('not helpful', review)">
                                         <i class="fa fa-thumbs-down" aria-hidden="true"></i>
                                     </span>
                                 </div>

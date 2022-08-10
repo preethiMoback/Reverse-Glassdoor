@@ -92,14 +92,23 @@
                     padding: 0;
                     width: 32em;
                     border-radius: 10px;
+                    top: 37px !important;
+                    left: 63px !important;
                     @include breakpoint(xs){
                         width: 18em;
+                        top: 30px !important;
                     }
                 
                 .card{
                     padding: 0 1em;
                     border-radius: 10px;
                     width: 100%;
+
+                    &.outer {
+                        @include breakpoint(xs) {
+                            padding: 0;
+                        }
+                    }
                     .card-title{
                         margin: 1em;
                         @include pxtorem(30);
@@ -108,6 +117,10 @@
                         color: var(--black);
                         @include breakpoint(ipad){
                             @include pxtorem(20);
+                        }
+                        @include breakpoint(xs) {
+                            line-height: 30px;
+                            margin: 0.5em 1em;
                         }
                     }
                     .card-body{
@@ -122,25 +135,33 @@
                                 clear: both;
                             }
                         }
+                        .status{
+                            width: 0.8em;
+                        }
                         .text-20-600-24{
-                            @include pxtorem(20);
-                            @include line_height(24px);
-                            @include font(400);
-                            color:var(--black);  
-                            padding: 45px 0px; 
-                            @include breakpoint(xs){
-                            @include pxtorem(14);
-                            @include line_height(12px);
+                            @include breakpoint(xs) {
+                                font-size: 16px;
+                                line-height: 20px;
                             }
-                            .status{
-                                width: 0.8em;
+                        }
+
+                        .phase {
+                            font-size: 20px;
+                            font-weight: 500;
+                            line-height: 24px;
+                            margin: 5px 0;
+                            @include breakpoint(xs) {
+                                display: flex;
+                                flex-direction: column;
+                                font-size: 16px;
+                                line-height: 20px;
                             }
                         }
                         .text-18-400-21{
                             @include pxtorem(18);
                             @include line_height(21px);
-                            @include font(400);
-                            margin: 10px 0;
+                            @include font(500);
+                            margin: 6px 0 11px;
                             padding: 0;
                             text-decoration: none;
                             text-align: start;
@@ -148,20 +169,18 @@
                             @include breakpoint(ipad){
                                 @include pxtorem(12);
                             }
+                            @include breakpoint(xs) {
+                                margin-top: 0;
+                            }
                         }
                         .reject{
                             border-left: 10px solid var(--red);
                         }
                         .approve{
                             border-left: 10px solid var(--light-green);
-
                         }
-                       
-                        .rejected_color{
-                            color: var(--red);
-                        }
-                        .approved_color{
-                            color: var(--light-green);
+                        .pending {
+                            border-left: 10px solid var(--faded-red);
                         }
                     } 
                 }

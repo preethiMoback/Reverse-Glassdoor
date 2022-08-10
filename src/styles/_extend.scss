@@ -333,6 +333,9 @@ p{
 .pending-color{
     color: var(--faded-red);
 }
+.approved-color {
+    color: var(--light-green);
+}
 // View Reviews : Approved, Rejected & Pending
 .candidate-card{
     border-radius: 0px;

@@ -30,13 +30,13 @@
                 <div class="form-group form-floating mb-4">
                     <input
                         type="text" 
-                        id="floatingInput" 
+                        id="floatingEmailId" 
                         formControlName="email" 
                         class="form-control" 
                         placeholder="name@example.com" 
                         [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" 
                     >
-                    <label for="floatingInput" >
+                    <label for="floatingEmailId" >
                         Email address
                     </label>
                     <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
@@ -46,14 +46,14 @@
                 </div>
                 <div class="form-group form-floating mb-4">
                     <input 
-                        type="text" 
+                        type="password" 
                         formControlName="password"
                         class="form-control" 
-                        id="floatingPassword" 
+                        id="floatingPword" 
                         placeholder="Password"
                         [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" 
                     >
-                    <label for="floatingPassword">
+                    <label for="floatingPword">
                         Password
                     </label>
                     <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
@@ -84,13 +84,13 @@
                 <div class="form-group form-floating mb-4">
                     <input
                         type="text" 
-                        id="floatingInput" 
+                        id="floatingEmailID" 
                         formControlName="email" 
                         class="form-control" 
                         placeholder="name@example.com" 
                         [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" 
                     >
-                    <label for="floatingInput" >
+                    <label for="floatingEmailID" >
                         Email address
                     </label>
                     <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
@@ -120,12 +120,12 @@
                         type="text" 
                         formControlName="otp"
                         class="form-control" 
-                        id="floatingInput" 
+                        id="floatingOtp" 
                         placeholder="Enter OTP" 
                         type="text" 
                         [ngClass]="{ 'is-invalid': submitted && f['otp'].errors }" 
                     >
-                    <label for="floatingInput">
+                    <label for="floatingOtp">
                         Enter OTP
                     </label>
                     <div *ngIf="submitted && f['otp'].errors" class="invalid-feedback">
@@ -153,7 +153,7 @@
             <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <div class="form-group form-floating mb-4">
                     <input 
-                        type="text" 
+                        type="password" 
                         formControlName="createpassword"
                         class="form-control" 
                         id="floatingPassword" 
@@ -173,11 +173,11 @@
                         type="text" 
                         formControlName="confirmpassword"
                         class="form-control" 
-                        id="floatingPassword" 
+                        id="floatingRePassword" 
                         placeholder="Re-type Password"
                         [ngClass]="{ 'is-invalid': submitted && f['confirmpassword'].errors }" 
                     >
-                    <label for="floatingPassword">
+                    <label for="floatingRePassword">
                         Re-type Password
                     </label>
                     <div *ngIf="submitted && f['confirmpassword'].errors" class="invalid-feedback">
@@ -207,15 +207,16 @@
                                 type="text" 
                                 formControlName="name"
                                 class="form-control" 
-                                id="floatingInput" 
+                                id="floatingName" 
                                 placeholder="Enter your Name" 
                                 [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" 
                             >
-                            <label for="floatingInput">
-                                Enter your Name
+                            <label for="floatingName">
+                                Enter your Full Name
                             </label>
                             <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
                                 <div *ngIf="f['name'].errors['required']">Name is required</div>
+                                <div *ngIf="f['name'].errors['pattern']">Proper Full Name is required</div>
                             </div>
                         </div>
                         <div class="form-group form-floating mb-4">
@@ -223,11 +224,11 @@
                                 type="text" 
                                 formControlName="companyName"
                                 class="form-control" 
-                                id="floatingInput" 
+                                id="floatingCompanyName" 
                                 placeholder="Organisation Name"
                                 [ngClass]="{ 'is-invalid': submitted && f['companyName'].errors }" 
                             >
-                            <label for="floatingInput">
+                            <label for="floatingCompanyName">
                                 Organisation Name
                             </label>
                             <div *ngIf="submitted && f['companyName'].errors" class="invalid-feedback">
@@ -239,13 +240,13 @@
                                 <div class="form-group form-floating mb-4">
                                     <input
                                         type="number" 
-                                        id="floatingInput" 
+                                        id="floatingCountryCode" 
                                         formControlName="countrycode" 
                                         class="form-control w-100" 
                                         placeholder="91"
                                         [ngClass]="{ 'is-invalid': submitted && f['countrycode'].errors }" 
                                     >
-                                    <label for="floatingInput" >
+                                    <label for="floatingCountryCode" >
                                         91
                                     </label>
                                     <div *ngIf="submitted && f['countrycode'].errors" class="invalid-feedback">
@@ -258,13 +259,13 @@
                                 <div class="form-group form-floating mb-4">
                                     <input
                                         type="text" 
-                                        id="floatingInput" 
+                                        id="floatingNumber" 
                                         formControlName="phoneNumber" 
                                         class="form-control w-100" 
                                         placeholder="Your phone number" 
                                         [ngClass]="{ 'is-invalid': submitted && f['phoneNumber'].errors }" 
                                     >
-                                    <label for="floatingInput" >
+                                    <label for="floatingNumber" >
                                         Your phone number
                                     </label>
                                     <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
@@ -281,13 +282,13 @@
                         <div class="form-group form-floating mb-4">
                             <input
                                 type="text" 
-                                id="floatingInput" 
+                                id="floatingEmail" 
                                 formControlName="email" 
                                 class="form-control" 
                                 placeholder="Official Email Address" 
                                 [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" 
                             >
-                            <label for="floatingInput" >
+                            <label for="floatingEmail" >
                                 Official Email Address
                             </label>
                             <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
@@ -299,14 +300,14 @@
                         </div>
                         <div class="form-group form-floating mb-4">
                             <input 
-                                type="text" 
+                                type="password" 
                                 formControlName="createpassword"
                                 class="form-control" 
-                                id="floatingPassword" 
+                                id="floatingpassword" 
                                 placeholder="Create Password"
                                 [ngClass]="{ 'is-invalid': submitted && f['createpassword'].errors }" 
                             >
-                            <label for="floatingPassword">
+                            <label for="floatingpassword">
                                 Enter Password
                             </label>
                             <div *ngIf="submitted && f['createpassword'].errors" class="invalid-feedback">
@@ -319,11 +320,11 @@
                                 type="text" 
                                 formControlName="confirmpassword"
                                 class="form-control" 
-                                id="floatingPassword" 
+                                id="floatingConfirmPassword" 
                                 placeholder="Re-type Password"
                                 [ngClass]="{ 'is-invalid': submitted && f['confirmpassword'].errors }" 
                             >
-                            <label for="floatingPassword">
+                            <label for="floatingConfirmPassword">
                                 Confirm Password
                             </label>
                             <div *ngIf="submitted && f['confirmpassword'].errors" class="invalid-feedback">
@@ -355,12 +356,12 @@
                         type="text" 
                         formControlName="otp"
                         class="form-control" 
-                        id="floatingInput" 
+                        id="floatingOTP" 
                         placeholder="Enter OTP" 
                         type="text" 
                         [ngClass]="{ 'is-invalid': submitted && f['otp'].errors }" 
                     >
-                    <label for="floatingInput">
+                    <label for="floatingOTP">
                         Enter OTP
                     </label>
                     <div *ngIf="submitted && f['otp'].errors" class="invalid-feedback">

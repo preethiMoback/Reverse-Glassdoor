@@ -33,4 +33,29 @@ export class ViewAllComponent implements OnInit {
     this.router.navigate(['/viewreview']);
   }
 
+  updateHelpfulCount(val: string, candidate: any) {
+    let payload = {
+      id: candidate.id,
+      phase: candidate.phase,
+      helpful: false,
+      nothelpful: false
+
+    }
+    if(val == 'helpful') {
+      payload.helpful = true;
+      payload.nothelpful = false;
+    }
+    else if(val == 'not helpful') {
+      payload.helpful = false;
+      payload.nothelpful = true;
+    }
+    this.apiService.viewhelpful(payload).subscribe((res) => {
+      this.reviewList.forEach((item:  any) => {
+        if(item.review_id === candidate.id) {
+          if(val === 'helpful') item.Helpful = item.Helpful + 1;
+          else item.Not_Helpful = item.Not_Helpful + 1; 
+        }
+      })
+    })
+  }
 }

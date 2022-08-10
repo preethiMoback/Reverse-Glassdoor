@@ -60,4 +60,30 @@ export class CheckReviewComponent implements OnInit {
     this.apiService.writeReviewAgainInfo.next(candidate);
     this.router.navigate(['/candidatereview']);
   }
+
+  updateHelpfulCount(val: string, review: any) {
+    let payload = {
+      id: review.review_id,
+      phase: review.phase,
+      helpful: false,
+      nothelpful: false
+
+    }
+    if(val == 'helpful') {
+      payload.helpful = true;
+      payload.nothelpful = false;
+    }
+    else if(val == 'not helpful') {
+      payload.helpful = false;
+      payload.nothelpful = true;
+    }
+    this.apiService.viewhelpful(payload).subscribe((res) => {
+      this.allReviews.forEach((item:  any) => {
+        if(item.review_id === review.review_id) {
+          if(val === 'helpful') item.Helpful = item.Helpful + 1;
+          else item.Not_Helpful = item.Not_Helpful + 1; 
+        }
+      })
+    })
+  }
 }

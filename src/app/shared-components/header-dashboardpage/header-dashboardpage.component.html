@@ -15,29 +15,30 @@
                         <img src="../../assets/Images/notification_icon.svg">
                     </a>
                     <div class="dropdown-menu" role="menu" aria-labelledby="notificationDropdown">
-                        <div class="card">
+                        <div class="card outer">
                             <div class="card-title">
                                 Notifications   
                             </div>
                             <div *ngFor="let candidate of allAllReviewList">
                                 <div class="card-body" >
                                     <!-- {{candidate| json}} -->
-                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Approval Pending'" routerLink="/viewreviewpending">
-                                        <div class="card reject" >
+                                    <!-- <a class="dropdown-item" *ngIf="candidate?.status === 'Approval Pending'"> -->
+                                    <a class="dropdown-item">
+                                        <div class="card" [ngClass]="{'pending': candidate?.status === 'Approval Pending', 'reject': candidate?.status === 'Rejected', 'approve': candidate?.status === 'Approved'}" >
                                             <div class="card-body text-20-600-24 ">
-                                                <div class="pending-color">
+                                                <div  [ngClass]="{'pending-color': candidate?.status === 'Approval Pending', 'rejected_color': candidate?.status === 'Rejected', 'approved-color': candidate?.status === 'Approved'}">
                                                 {{candidate?.status}}
                                                 </div>
                                             </div>
-                                            <div>
-                                                Interview Review (Manohar Konireddi)
+                                            <div class="phase">
+                                                <span class="text-capitalize">{{candidate?.phase}} Review</span> <span>({{candidate?.first_name}} {{candidate?.last_name}})</span>
                                             </div>
                                             <div class="text-18-400-21" >
-                                                1 hour ago
+                                                {{candidate?.hours}} hours ago
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Rejected'" routerLink="/viewreviewreject">
+                                    <!-- <a class="dropdown-item" *ngIf="candidate?.status === 'Rejected'">
                                         <div class="card reject" >
                                             <div class="card-body text-20-600-24 ">
                                                 <div class="rejected_color">
@@ -53,10 +54,10 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Approved'"  routerLink="/viewreview">
+                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Approved'">
                                         <div class="card approve" >
                                             <div class="card-body text-20-600-24 ">
-                                                <div class="approved_color">
+                                                <div class="approved-color">
                                                         <img  class="status" src="../../../assets/Images/tick.svg" alt="">
                                                         {{candidate?.status}}
                                                 </div>
@@ -68,7 +69,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
                         </div>

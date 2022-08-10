@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern("(^[A-Za-z]{3,16})([ ]{1,1})([A-Za-z]{3,16})([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})")]],
       password:['', Validators.required],
       otp:['', Validators.required],
       organisationname:['', Validators.required],
@@ -263,6 +263,7 @@ export class HomeComponent implements OnInit {
 }
 
 checkEmailVerif(){
+  debugger;
   return this.f['email'].valid && this.f['name'].valid && this.f['companyName'].valid && this.f['phoneNumber'].valid && this.f['countrycode'].valid;
 }
 
