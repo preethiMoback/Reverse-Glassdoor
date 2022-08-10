@@ -276,29 +276,27 @@ export class DashboardpageComponent implements OnInit {
       payload.nothelpful = true;
     }
     this.apiService.viewhelpful(payload).subscribe((res) => {
-      this.approvedList.forEach((item:  any) => {
-        if(item.id === candidate.id) {
-          if(val === 'helpful') item.Helpful = item.Helpful + 1;
-          else item.Not_Helpful = item.Not_Helpful + 1; 
+      this.approvedList.filter((approvedItem: any)=> {
+        let helpfulCountpayload = {
+          id: approvedItem.id,
+          phase:  approvedItem.phase
         }
+        this.apiService.helpfullCount(helpfulCountpayload).
+        subscribe( (res:any) =>{
+          approvedItem.Helpful = res.Helpful;
+          approvedItem.Not_Helpful = res.Not_Helpful;
+        })
       })
-      this.allApprovedList.forEach((item:  any) => {
-        if(item.id === candidate.id) {
-          if(val === 'helpful') item.Helpful = item.Helpful + 1;
-          else item.Not_Helpful = item.Not_Helpful + 1; 
+      this.allReviewList.filter((reviewItem: any)=> {
+        let helpfulpayload = {
+          id: reviewItem.id,
+          phase:  reviewItem.phase
         }
-      })
-      this.allReviewList.forEach((item:  any) => {
-        if(item.id === candidate.id) {
-          if(val === 'helpful') item.Helpful = item.Helpful + 1;
-          else item.Not_Helpful = item.Not_Helpful + 1; 
-        }
-      })
-      this.allAllReviewList.forEach((item:  any) => {
-        if(item.id === candidate.id) {
-          if(val === 'helpful') item.Helpful = item.Helpful + 1;
-          else item.Not_Helpful = item.Not_Helpful + 1; 
-        }
+        this.apiService.helpfullCount(helpfulpayload).
+        subscribe( (res:any) =>{
+          reviewItem.Helpful = res.Helpful;
+          reviewItem.Not_Helpful = res.Not_Helpful;
+        })
       })
     })
   }

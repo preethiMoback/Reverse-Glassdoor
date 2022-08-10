@@ -23,9 +23,25 @@ export class ViewAllComponent implements OnInit {
       } else {
         localStorage.setItem("currentReviewList", JSON.stringify(res));
       }
-      this.reviewList = res.data;
+      // this.reviewList = res.data;
       this.type = res.type;
+      this.getUpdatedHelpfulCount(res.data);
     });
+  }
+
+  getUpdatedHelpfulCount(data: any) {
+    data.forEach((item: any) => {
+      let payload = {
+        id: item.id,
+        phase:  item.phase
+      }
+      this.apiService.helpfullCount(payload).
+      subscribe( (res:any) =>{
+        item.Helpful = res.Helpful;
+        item.Not_Helpful = res.Not_Helpful;
+        this.reviewList = data;
+      })
+    })
   }
 
   goToViewReview(candidate: any) {
@@ -51,7 +67,7 @@ export class ViewAllComponent implements OnInit {
     }
     this.apiService.viewhelpful(payload).subscribe((res) => {
       this.reviewList.forEach((item:  any) => {
-        if(item.review_id === candidate.id) {
+        if(item.id === candidate.id) {
           if(val === 'helpful') item.Helpful = item.Helpful + 1;
           else item.Not_Helpful = item.Not_Helpful + 1; 
         }

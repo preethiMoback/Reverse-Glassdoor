@@ -52,40 +52,45 @@
             </div>
             <div class="col-md-12 col-lg-7 p-0 from-right">
                 <div class="card content_part allreview_card">
-                    <div class="row" *ngFor="let review of allReviews">
-                        <div class="col-md-8">
-                            <div class="text-25-700-30">
-                                <span class="text-capitalize">{{review?.phase}} Review</span> 
-                            </div>
-                            <div class="text-20-400-24">
-                                {{review?.update_time | date}}
-                            </div>
-                            <div class="text-25-400-30">
-                                by  <span><i class="fa fa-user-circle user-icon" aria-hidden="true"></i>
-                                </span>{{review?.user_name}} <span class="text-capitalize">({{review?.organization_name}})</span>
-                            </div>
-                            <div class="thumbs-rating">
-                                <div class="thumbs-up-rating">
-                                    <span class=" text-20-400-24">{{review?.Helpful}}</span>
-                                   <span class="thumbs-icon" (click)="updateHelpfulCount('helpful', review)">
-                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                                   </span>
+                    <div  *ngIf="allReviews.length !== 0">
+                        <div class="row" *ngFor="let review of allReviews">
+                            <div class="col-md-8">
+                                <div class="text-25-700-30">
+                                    <span class="text-capitalize">{{review?.phase}} Review</span> 
                                 </div>
-                                <div class="thumbs-down-rating">
-                                    <span class="text-20-400-24">{{review?.Not_Helpful}}</span>
-                                    <span class="thumbs-icon" (click)="updateHelpfulCount('not helpful', review)">
-                                        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                                <div class="text-20-400-24">
+                                    {{review?.update_time | date}}
+                                </div>
+                                <div class="text-25-400-30">
+                                    by  <span><i class="fa fa-user-circle user-icon" aria-hidden="true"></i>
+                                    </span>{{review?.user_name}} <span class="text-capitalize">({{review?.organization_name}})</span>
+                                </div>
+                                <div class="thumbs-rating">
+                                    <div class="thumbs-up-rating">
+                                        <span class=" text-20-400-24">{{review?.Helpful}}</span>
+                                    <span class="thumbs-icon" (click)="updateHelpfulCount('helpful', review)">
+                                        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                     </span>
+                                    </div>
+                                    <div class="thumbs-down-rating">
+                                        <span class="text-20-400-24">{{review?.Not_Helpful}}</span>
+                                        <span class="thumbs-icon" (click)="updateHelpfulCount('not helpful', review)">
+                                            <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <span class="text-20-400-24">20 views</span>
                                 </div>
-                                <span class="text-20-400-24">20 views</span>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="view_btn text-20-400-24" routerLink="/viewreview">
-                                View Review
+                            <div class="col-md-4">
+                                <div class="view_btn text-20-400-24" routerLink="/viewreview">
+                                    View Review
+                                </div>
                             </div>
+                            <hr>
                         </div>
-                        <hr>
+                    </div>
+                    <div *ngIf="allReviews.length == 0" class="text-30-700-36">
+                        No Reviews Found for this Candidate.
                     </div>
                 </div>
             </div>
