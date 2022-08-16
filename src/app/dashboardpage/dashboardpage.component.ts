@@ -123,19 +123,24 @@ export class DashboardpageComponent implements OnInit {
   }
 
   searchByName() {
-    this.router.navigate(['/searchresult']);
-    let name = this.searchKey.split(' ');
-    let payload: any = {};
-    if (name.length > 0 && name) payload.first_name = name[0];
-    if (name.length > 1 && name) payload.last_name = name[1];
-    this.formData.setData(
-      (this.details = this.searchKey + ',')
-    );
+    if(this.searchKey.length) {
+      this.router.navigate(['/searchresult']);
+      let name = this.searchKey.split(' ');
+      let payload: any = {};
+      if (name.length > 0 && name) payload.first_name = name[0];
+      if (name.length > 1 && name) payload.last_name = name[1];
+      this.formData.setData(
+        (this.details = this.searchKey + ',')
+      );
 
-    this.apiService.candidateAdvanceSearch(payload).subscribe((res: any) => {
-      console.log(res);
-      this.apiService.filteredResult.next(res.data);
-    });
+      this.apiService.candidateAdvanceSearch(payload).subscribe((res: any) => {
+        console.log(res);
+        this.apiService.filteredResult.next(res.data);
+      });
+    }
+    else {
+      this.toastr.error("Please enter a value to be searched")
+    }
   }
 
   prepareData(item: any) {
@@ -156,6 +161,7 @@ export class DashboardpageComponent implements OnInit {
     this.allAllReviewList.push(item);
 
     this.candidateList = this.allReviewList;
+    this.candidateList.sort((a: any,b: any) => new Date(b.update_time).getTime() - new Date(a.update_time).getTime() );
   }
 
   viewReview(candidate: any){
@@ -188,6 +194,8 @@ export class DashboardpageComponent implements OnInit {
     else if(this.currentTabIndex === 1) this.candidateList = this.allApprovedList;
     else if(this.currentTabIndex === 2) this.candidateList = this.allRejectedList;
     else if(this.currentTabIndex === 3) this.candidateList = this.allPendingList;
+
+    this.candidateList.sort((a: any,b: any) => new Date(b.update_time).getTime() - new Date(a.update_time).getTime() );
 
   }
 

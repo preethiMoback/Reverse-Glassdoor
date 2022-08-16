@@ -40,6 +40,7 @@ export class ViewAllComponent implements OnInit {
         item.Helpful = res.Helpful;
         item.Not_Helpful = res.Not_Helpful;
         this.reviewList = data;
+        this.reviewList.sort((a: any,b: any) => new Date(b.update_time).getTime() - new Date(a.update_time).getTime() );
       })
     })
   }
@@ -72,6 +73,7 @@ export class ViewAllComponent implements OnInit {
           else item.Not_Helpful = item.Not_Helpful + 1; 
         }
       })
+      this.reviewList.sort((a: any,b: any) => new Date(b.update_time).getTime() - new Date(a.update_time).getTime() );
     })
   }
 }

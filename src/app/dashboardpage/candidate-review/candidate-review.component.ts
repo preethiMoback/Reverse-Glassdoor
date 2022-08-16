@@ -70,7 +70,7 @@ export class CandidateReviewComponent implements OnInit {
 
 ngOnInit() {
   this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern("(^[A-Za-z]{3,16})([ ]{1,1})([A-Za-z]{3,16})([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})")]],
       // lastName: ['', Validators.required],
       companyName:['', Validators.required],
       primaryskill:['', Validators.required],
@@ -149,7 +149,6 @@ onSubmit() {
         return;
     }
     else{
-      debugger;
       let ratingstring = '';
       let ratvalue = this.registerForm.value.rating;
       while(ratvalue--){

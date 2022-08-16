@@ -2,6 +2,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Apiservice } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile',
@@ -24,7 +25,8 @@ export class EditProfileComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, 
     private apiService: Apiservice,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
     ) {
    
   }
@@ -108,14 +110,14 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() : void{
     this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      companyName:['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern("(^[A-Za-z]{3,16})([ ]{1,1})([A-Za-z]{3,16})([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})")]],
+      companyName:[{value: '', disabled: true}, Validators.required],
       phoneNumber: ['', [
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(12),
           Validators.pattern('^[0-9]*$')]],
-      email: ['', [
+      email: [{value: '', disabled: true}, [
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(80),
@@ -163,6 +165,13 @@ export class EditProfileComponent implements OnInit {
             this.apiService.currenUserInfo.next(res.data);
         })
       })
+  }
+
+  navigateToLogin() {
+    localStorage.clear();
+    this.router.navigate([''], {
+      state: {step: 2, type: 'login'}
+    });
   }
 
 

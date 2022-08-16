@@ -193,6 +193,22 @@
         @include line_height(21px);
         @include font(400);  
     }
+
+    span.text-18-400-22{
+        @include pxtorem(16);
+        @include line_height(21px);
+        @include font(400);  
+        color: rgb(13, 110, 253);
+        text-decoration: underline;
+        text-decoration-color: rgb(13, 110, 253);
+        cursor: pointer;
+
+        &:hover {
+            color: #0a58ca;
+            text-decoration-color: #0a58ca;
+        }
+    }
+
     .btn{
         @include width_height(215px, 49px);
     }

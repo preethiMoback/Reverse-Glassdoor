@@ -128,6 +128,7 @@
                                                             />
                                                             <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
                                                                 <div *ngIf="f['name'].errors['required']">Name is required</div>
+                                                                <div *ngIf="f['name'].errors['pattern']">Proper Full Name is required</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -194,7 +195,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <a href="" class="text-18-400-22">Change existing Password ?</a>
+                                                        <span href="" class="text-18-400-22" (click)="navigateToLogin()">Change existing Password ?</span>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="d-flex justify-content-start">
