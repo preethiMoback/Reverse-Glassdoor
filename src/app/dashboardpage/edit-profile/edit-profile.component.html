@@ -125,6 +125,7 @@
                                                                 class="form-control" 
                                                                 [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" 
                                                                 placeholder="Name of the Candidate"
+                                                                (keyup)="onValueChange()"
                                                             />
                                                             <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
                                                                 <div *ngIf="f['name'].errors['required']">Name is required</div>
@@ -144,7 +145,7 @@
                                                             />
                                                             <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                                                                 <div *ngIf="f['email'].errors['required']">Email is required</div>
-                                                                <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+                                                                <div *ngIf="f['email'].errors['pattern']">Email must be a valid email address</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -180,18 +181,41 @@
                                                         </div>
                                                     </div> -->
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="phoneNumber" class="text-18-400-22">Phone No.</label>
-                                                            <input 
-                                                                type="text" 
-                                                                formControlName="phoneNumber"
-                                                                id="phoneNumber"
-                                                                class="form-control" 
-                                                                [ngClass]="{ 'is-invalid': submitted && f['phoneNumber'].errors }" 
-                                                            />
-                                                            <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
-                                                                <div *ngIf="f['phoneNumber'].errors['required']">Phone Number is required</div>
-                                                            </div> 
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <div class="form-group">
+                                                                    <label for="countryCode" class="text-18-400-22">Country Code</label>
+                                                                    <input 
+                                                                        type="text" 
+                                                                        formControlName="countryCode"
+                                                                        id="countryCode"
+                                                                        class="form-control" 
+                                                                        [ngClass]="{ 'is-invalid': submitted && f['countryCode'].errors }"
+                                                                        (keyup)="onValueChange()"
+                                                                    />
+                                                                    <div *ngIf="submitted && f['countryCode'].errors" class="invalid-feedback">
+                                                                        <div *ngIf="f['countryCode'].errors['required']">Country Code is required</div>
+                                                                        <div *ngIf="f['countryCode'].errors['pattern'] || f['countryCode'].errors['maxlength'] || f['countryCode'].errors['minlength']">Enter Valid Phone number</div>
+                                                                    </div> 
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                <div class="form-group">
+                                                                    <label for="phoneNumber" class="text-18-400-22">Phone No.</label>
+                                                                    <input 
+                                                                        type="text" 
+                                                                        formControlName="phoneNumber"
+                                                                        id="phoneNumber"
+                                                                        class="form-control" 
+                                                                        [ngClass]="{ 'is-invalid': submitted && f['phoneNumber'].errors }"
+                                                                        (keyup)="onValueChange()" 
+                                                                    />
+                                                                    <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
+                                                                        <div *ngIf="f['phoneNumber'].errors['required']">Phone Number is required</div>
+                                                                        <div *ngIf="f['phoneNumber'].errors['pattern'] || f['phoneNumber'].errors['maxlength'] || f['phoneNumber'].errors['minlength']">Enter Valid Phone number</div>
+                                                                    </div> 
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
@@ -199,8 +223,11 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="d-flex justify-content-start">
-                                                            <button class="btn"  data-toggle="modal" data-target="#exampleModalCenter" >Update</button> 
+                                                            <button class="btn" id="updateBtn" disabled>Update</button> 
                                                         </div>
+                                                        <!-- <div class="d-flex justify-content-start">
+                                                            <button class="btn"  data-toggle="modal" data-target="#exampleModalCenter" >Update</button> 
+                                                        </div> -->
                                                         <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                               <div class="modal-content">

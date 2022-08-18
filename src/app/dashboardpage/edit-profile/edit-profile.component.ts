@@ -16,10 +16,11 @@ export class EditProfileComponent implements OnInit {
   msg = "";
   token: string = localStorage.getItem('token') || '';
   userData = {
-    name: 'Mahesh Rudra Badaballa',
-    email: 'maheshbadaballa@bighaat.com',
-    companyName: 'Bighaat Pvt Ltd',
-    phoneNumber: +9170110417
+    name: '',
+    email: '',
+    companyName: '',
+    phoneNumber: '',
+    countryCode: ''
   }
   
 
@@ -110,13 +111,19 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() : void{
     this.registerForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.pattern("(^[A-Za-z]{3,16})([ ]{1,1})([A-Za-z]{3,16})([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})")]],
+      name: ['', [Validators.required, Validators.pattern("(^[A-Za-z]{3,16})([ ]{1,1})([A-Za-z]{1,16})([ ]{0,1})?([A-Za-z]{0,16})?([ ]{0,1})?([A-Za-z]{0,16})")]],
       companyName:[{value: '', disabled: true}, Validators.required],
       phoneNumber: ['', [
           Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(12),
+          Validators.minLength(10),
+          Validators.maxLength(10),
           Validators.pattern('^[0-9]*$')]],
+      countryCode: ['', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(4),
+        Validators.pattern('^[0-9]*$')
+      ]],
       email: [{value: '', disabled: true}, [
           Validators.required,
           Validators.minLength(5),
@@ -132,26 +139,32 @@ export class EditProfileComponent implements OnInit {
 
   setData(){
     let curUserData = JSON.parse(localStorage.getItem('currentUserInfo') || '');
-    this.userData.name = curUserData.first_name + " " + curUserData.middle_name + " " + curUserData.last_name;
+    this.userData.name = curUserData.first_name + (curUserData.middle_name.length ? ` ${curUserData.middle_name} ` : ' ') + curUserData.last_name;
     this.userData.companyName = curUserData.current_org;
     this.userData.email = curUserData.current_org_mail_id;
     this.userData.phoneNumber = curUserData.mobile_num;
+    this.userData.countryCode = curUserData.country_code;
     this.url = curUserData.pic ? "http://54.208.4.29:8080/" + curUserData.pic : "../../assets/Images/image_icon.svg";
     this.registerForm.get('name')!.setValue(this.userData.name);
     this.registerForm.get('email')!.setValue(this.userData.email);
     this.registerForm.get('companyName')!.setValue(this.userData.companyName);
     this.registerForm.get('phoneNumber')!.setValue(this.userData.phoneNumber);
-
+    this.registerForm.get('countryCode')!.setValue(this.userData.countryCode);
   }
 
   get f() { return this.registerForm.controls; }
 
   onSubmit(){
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+      return;
+    }
     let name = this.registerForm.get('name')?.value.split(" ");
     let payload = {
       first_name: name[0],
       middle_name: name.length > 2? name[1]: '',
       last_name: name.length > 1? name[name.length - 1]: '',
+      country_code: this.registerForm.get('countryCode')?.value,
       mobilenum: this.registerForm.get('phoneNumber')?.value,
       current_org_mailid: this.registerForm.get('email')?.value,
       current_org: this.registerForm.get('companyName')?.value,
@@ -163,6 +176,9 @@ export class EditProfileComponent implements OnInit {
           .subscribe((res: any) =>{
             localStorage.setItem('currentUserInfo', JSON.stringify(res.data));
             this.apiService.currenUserInfo.next(res.data);
+            this.setData();
+            let el = document.getElementById("updateBtn") as HTMLButtonElement;
+            el.disabled = true;
         })
       })
   }
@@ -172,6 +188,14 @@ export class EditProfileComponent implements OnInit {
     this.router.navigate([''], {
       state: {step: 2, type: 'login'}
     });
+  }
+
+  onValueChange() {
+    let el = document.getElementById("updateBtn") as HTMLButtonElement;
+    if(this.registerForm.get('name')?.value !== this.userData.name || this.registerForm.get('phoneNumber')?.value !== this.userData.phoneNumber || this.registerForm.get('countryCode')?.value !== this.userData.countryCode) {
+      el.disabled = false;
+    }
+    else el.disabled = true;
   }
 
 

@@ -70,7 +70,7 @@ export class CandidateReviewComponent implements OnInit {
 
 ngOnInit() {
   this.registerForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.pattern("(^[A-Za-z]{3,16})([ ]{1,1})([A-Za-z]{3,16})([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})")]],
+      name: ['', [Validators.required, Validators.pattern("(^[A-Za-z]{3,16})([ ]{1,1})([A-Za-z]{1,16})([ ]{0,1})?([A-Za-z]{0,16})?([ ]{0,1})?([A-Za-z]{0,16})")]],
       // lastName: ['', Validators.required],
       companyName:['', Validators.required],
       primaryskill:['', Validators.required],
@@ -157,7 +157,7 @@ onSubmit() {
 
       if(!this.hideTandC) {
         let names = this.registerForm.value.name.split(" ");
-        let phase = this.registerForm.value.radio1? 'Interview' : this.registerForm.value.radio2? 'Offer': 'Onboarding';
+        // let phase = this.registerForm.value.radio1? 'Interview' : this.registerForm.value.radio2? 'Offer': 'Onboarding';
         
         let payload = {
           first_name: this.registerForm.value.name.split(" ")[0],
@@ -167,7 +167,7 @@ onSubmit() {
           mobile_num: this.registerForm.value.phoneNumber,
           email_id: this.registerForm.value.email,
           current_organisation_name: this.registerForm.value.companyName,
-          phase: phase,
+          phase: this.registerForm.value.status,
           feedback: this.registerForm.value.feedback,
           feedback_type: this.feedbackType,
           submission_status: "pending approval",

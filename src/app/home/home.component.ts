@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      name: ['', [Validators.required, Validators.pattern("(^[A-Za-z]{3,16})([ ]{1,1})([A-Za-z]{3,16})([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})")]],
+      name: ['', [Validators.required, Validators.pattern("(^[A-Za-z]{3,16})([ ]{1,1})([A-Za-z]{1,16})([ ]{0,1})?([A-Za-z]{0,16})?([ ]{0,1})?([A-Za-z]{0,16})")]],
       password:['', Validators.required],
       otp:['', Validators.required],
       organisationname:['', Validators.required],
@@ -209,6 +209,7 @@ export class HomeComponent implements OnInit {
       if(this.passwordVerify()){
         if(this.f['confirmpassword'].value === this.f['createpassword'].value) {
           let name = this.registerForm.value.name.split(" ");
+          debugger;
           let payload = {
             first_name: name[0],
             middle_name: this.registerForm.value.middleName?this.registerForm.value.middleName: '',
@@ -216,7 +217,7 @@ export class HomeComponent implements OnInit {
             country_code: this.registerForm.value.countrycode.toString(),
             mobilenum: this.registerForm.value.phoneNumber,
             current_org: this.registerForm.value.companyName,
-            current_org_mailid: this.registerForm.value.email,
+            current_org_mailid: this.registerForm.get('email')?.value,
             password: this.registerForm.value.confirmpassword,
             confirm_password: this.registerForm.value.confirmpassword,
             user_category: 'normal user'
@@ -227,6 +228,7 @@ export class HomeComponent implements OnInit {
               this.toastr.success('', 'Register User Successfully!');
               this.registerForm.get('email')?.enable();
               this.isEmailVerified = false;
+              document.getElementById("modalPopup")?.classList.remove('open');
               this.changeStep('',-1);
             },
             // (error) => {
