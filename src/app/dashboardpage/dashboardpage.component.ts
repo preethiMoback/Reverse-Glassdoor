@@ -26,6 +26,8 @@ export class DashboardpageComponent implements OnInit {
   };
   details: any;
   currentTabIndex: number = 0;
+  showApprovedNotification: boolean = false;
+  showRejectedNotification: boolean = false;
 
   candidateList: any[] = [];
 
@@ -115,10 +117,19 @@ export class DashboardpageComponent implements OnInit {
       item.primary_skill = val.primary_skill;
       item.email = val.email_id;
       item.phone_number = val.mobile_number;
-      this.prepareData(item);
+      this.getHelpfulInfo(item);
     },
     (error) => {
       this.toastr.error(error.error.message);
+    })
+  }
+
+  getHelpfulInfo(item: any) {
+    let payload: any = {id: item.id, phase: item.phase};
+    this.apiService.helpfulInfo(payload).subscribe((res: any) => {
+      item.helpfulSelected = res.Helpful;
+      item.nothelpfulSelected = res.Not_helpful;
+      this.prepareData(item);
     })
   }
 
@@ -145,15 +156,17 @@ export class DashboardpageComponent implements OnInit {
 
   prepareData(item: any) {
     if (item.submission_status == 'pending approval') {
-      item.status = 'Approval Pending';
+      item.status = 'Approval Pending'; 
       if (this.pendingList.length < 5) this.pendingList.push(item);
       this.allPendingList.push(item);
     } else if (item.submission_status == 'rejected') {
       item.status = 'Rejected';
+      if(item.viewed === 'False') this.showRejectedNotification = true;
       if (this.rejectedList.length < 5) this.rejectedList.push(item);
       this.allRejectedList.push(item);
     } else if (item.submission_status == 'approved') {
       item.status = 'Approved';
+      if(item.viewed === 'False') this.showApprovedNotification = true;
       if (this.approvedList.length < 5) this.approvedList.push(item);
       this.allApprovedList.push(item);
     }
@@ -189,11 +202,33 @@ export class DashboardpageComponent implements OnInit {
 
   tabChange(tabIndex:  number){
     console.log(tabIndex);
+    let approvedPayload: any = [];
+    let rejectedPayload: any = [];
     this.currentTabIndex = tabIndex;
     if(this.currentTabIndex === 0) this.candidateList = this.allReviewList;
-    else if(this.currentTabIndex === 1) this.candidateList = this.allApprovedList;
-    else if(this.currentTabIndex === 2) this.candidateList = this.allRejectedList;
-    else if(this.currentTabIndex === 3) this.candidateList = this.allPendingList;
+    else if(this.currentTabIndex === 1) {
+      this.showApprovedNotification = false;
+      this.allApprovedList.forEach((item: any) => {
+        if(item.viewed === 'False') {
+          approvedPayload.push({id: item.id, phase: item.phase});
+        }
+      })
+      if(approvedPayload.length)
+        this.apiService.updateNotifications(approvedPayload).subscribe((res: any) => console.log(res))
+      this.candidateList = this.approvedList;
+    }
+    else if(this.currentTabIndex === 2) {
+      this.showRejectedNotification = false;
+      this.allRejectedList.forEach((item: any) => {
+        if(item.viewed === 'False') {
+          rejectedPayload.push({id: item.id, phase: item.phase});
+        }
+      })
+      if(rejectedPayload.length)
+        this.apiService.updateNotifications(rejectedPayload).subscribe((res: any) => console.log(res))
+      this.candidateList = this.rejectedList;
+    }
+    else if(this.currentTabIndex === 3) this.candidateList = this.pendingList;
 
     this.candidateList.sort((a: any,b: any) => new Date(b.update_time).getTime() - new Date(a.update_time).getTime() );
 
@@ -278,10 +313,14 @@ export class DashboardpageComponent implements OnInit {
     if(val == 'helpful') {
       payload.helpful = true;
       payload.nothelpful = false;
+      candidate.helpfulSelected = 1;
+      candidate.nothelpfulSelected = 0;
     }
     else if(val == 'not helpful') {
       payload.helpful = false;
       payload.nothelpful = true;
+      candidate.helpfulSelected = 0;
+      candidate.nothelpfulSelected = 1;
     }
     this.apiService.viewhelpful(payload).subscribe((res) => {
       this.approvedList.filter((approvedItem: any)=> {

@@ -146,4 +146,12 @@ export class Apiservice {
         return this.http.get(`http://${this.DeployedIP}:${this.DeployedPort}/user/cand_phase_info/?candidate_user_id=`+ payload.candidate_user_id);
     }
 
+    updateNotifications(payload: any) {
+        return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/update_viewed_status/`,payload);
+    }
+
+    helpfulInfo(payload: any) {
+        return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/user-info-helpful-nothelpful/`, payload, this.commonOptions2);
+    }
+
 }

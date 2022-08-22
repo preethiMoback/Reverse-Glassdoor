@@ -9,7 +9,7 @@
     @include margin {
         padding-top: 110px;
     }
-    z-index: 1;
+    z-index: 5;
     background-color: var(--white);
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -385,6 +385,13 @@
                     &:hover .tooltiptext{
                         visibility: visible;
                     }
+
+                    .thumbs-icon {
+                        &.selected {
+                            background-color: #3498db;
+                            pointer-events: none;
+                        }
+                    }
                   }
             }
             .view_btn{
@@ -412,6 +419,19 @@
                 display: none;
             }
         }
+    }
+
+    .notification {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        right: 10px;
+        top: 3px;
+        border: solid 1px red;
+        border-radius: 50%;
+        box-shadow: 0px 0px 5px 1px rgb(255 0 0);
+        z-index: 1;
     }
 }
 
