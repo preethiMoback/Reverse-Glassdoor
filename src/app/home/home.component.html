@@ -238,7 +238,7 @@
                         <div class="row phone-row">
                             <div class="col-md-3 pr-0">
                                 <div class="form-group form-floating mb-4">
-                                    <input
+                                    <!-- <input
                                         type="number" 
                                         id="floatingCountryCode" 
                                         formControlName="countrycode" 
@@ -248,6 +248,13 @@
                                     >
                                     <label for="floatingCountryCode" >
                                         91
+                                    </label> -->
+                                    <select id="floatingCountryCode" formControlName="countrycode" class="form-control w-100" [ngClass]="{ 'is-invalid': submitted && f['countrycode'].errors }">
+                                        <option value="" disabled selected>Select</option>
+                                        <option *ngFor="let code of countryCode" [value]='code["COUNTRY CODE"]'>{{code["COUNTRY CODE"]}}</option>
+                                    </select>
+                                    <label for="floatingCountryCode" >
+                                        Code
                                     </label>
                                     <div *ngIf="submitted && f['countrycode'].errors" class="invalid-feedback">
                                         <div *ngIf="f['countrycode'].errors['required']">Country Code is required</div>

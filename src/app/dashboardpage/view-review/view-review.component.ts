@@ -35,8 +35,19 @@ export class ViewReviewComponent implements OnInit {
     subscribe( (res:any) =>{
       data.Helpful = res.Helpful;
       data.Not_Helpful = res.Not_Helpful;
-      this.currentReview = data;
+      this.getHelpfulInfo(data);
     })
+  }
+
+  getHelpfulInfo(data: any) {
+    if(data.submission_status === 'approved') {
+      let payload: any = {id: data.id, phase: data.phase};
+      this.apiService.helpfulInfo(payload).subscribe((res: any) => {
+        data.helpfulSelected = res.Helpful;
+        data.nothelpfulSelected = res.Not_helpful;
+        this.currentReview = data;
+      })
+    } else this.currentReview = data;
   }
 
   updateReview() {
@@ -49,19 +60,29 @@ export class ViewReviewComponent implements OnInit {
       phase: review.phase,
       helpful: false,
       nothelpful: false
-
     }
     if(val == 'helpful') {
       payload.helpful = true;
       payload.nothelpful = false;
+      this.currentReview.helpfulSelected = 1;
+      this.currentReview.nothelpfulSelected = 0;
     }
     else if(val == 'not helpful') {
       payload.helpful = false;
       payload.nothelpful = true;
+      this.currentReview.helpfulSelected = 0;
+      this.currentReview.nothelpfulSelected = 1;
     }
     this.apiService.viewhelpful(payload).subscribe((res) => {
-      if(val === 'helpful') this.currentReview.Helpful = this.currentReview.Helpful + 1;
-      else this.currentReview.Not_Helpful = this.currentReview.Not_Helpful + 1; 
+        let helpfulCountpayload = {
+          id: this.currentReview.id,
+          phase:  this.currentReview.phase
+        }
+        this.apiService.helpfullCount(helpfulCountpayload).
+        subscribe( (res:any) =>{
+          this.currentReview.Helpful = res.Helpful;
+          this.currentReview.Not_Helpful = res.Not_Helpful;
+        })
     })
   }
 

@@ -22,6 +22,7 @@ export class CandidateReviewComponent implements OnInit {
   hideTandC: boolean = false;
   reviewId: any;
   reviewPhase: any;
+  countryCodeList: any;
 
   constructor(private formBuilder: FormBuilder, private apiService: Apiservice, private toaster: ToastrService, private router: Router) { }
 //   ngOnInit() {
@@ -74,7 +75,7 @@ ngOnInit() {
       // lastName: ['', Validators.required],
       companyName:['', Validators.required],
       primaryskill:['', Validators.required],
-      countrycode:['',[Validators.required, Validators.max(9999)]],//[Validators.required,Validators.pattern('/^(\+?\d{1,3}|\d{1,4})$/')]],
+      countrycode:['', Validators.required],//[Validators.required,Validators.pattern('/^(\+?\d{1,3}|\d{1,4})$/')]],
       rating: [3],
       status: ['', [Validators.required]],
       feedback:['', Validators.required],
@@ -140,6 +141,9 @@ ngOnInit() {
       this.registerForm.get('primaryskill')?.setValue(res?.["primary skill"]);
     }
   })
+
+  this.countryCodeList = JSON.parse(localStorage.getItem('countryCodeList') || '');
+
 }
 get f() { return this.registerForm.controls; }
 

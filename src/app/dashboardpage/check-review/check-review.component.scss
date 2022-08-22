@@ -115,4 +115,10 @@
     .user-icon {
         margin-right: 10px;
     }
+    .thumbs-icon {
+        &.selected {
+            background-color: #3498db;
+            pointer-events: none;
+        }
+    }
 }

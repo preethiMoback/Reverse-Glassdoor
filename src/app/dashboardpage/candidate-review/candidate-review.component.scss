@@ -11,6 +11,7 @@
             color: var(--purple);
         }
     }
+
     .card{
         padding:40px 80px;
         @include breakpoint(ipad){
@@ -269,5 +270,14 @@
             -ms-transform: translateX(150px);
             transform: translateX(150px);
         }
+    }
+
+    .select-dropdown {
+        margin-top: 10px;
+        height: 60px;
+        font-size: 1.125rem;
+        font-family: "Lato", sans-serif;
+        font-style: normal;
+        font-weight: 400;
     }
 }

@@ -154,4 +154,8 @@ export class Apiservice {
         return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/user-info-helpful-nothelpful/`, payload, this.commonOptions2);
     }
 
+    countryCodeList() {
+        return this.http.get(`http://${this.DeployedIP}:${this.DeployedPort}/user/country_code_list/`);
+    }
+
 }

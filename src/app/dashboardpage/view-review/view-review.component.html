@@ -42,13 +42,13 @@
                         <div class="thumbs-rating" *ngIf="currentReview?.status === 'Approved'">
                             <div class="thumbs-up-rating">
                                 <span class=" text-20-400-24">{{currentReview?.Helpful}}</span>
-                               <span class="thumbs-icon" (click)="updateHelpfulCount('helpful', currentReview)">
+                               <span class="thumbs-icon" [ngClass]="{'selected':currentReview.helpfulSelected === 1}" (click)="updateHelpfulCount('helpful', currentReview)">
                                 <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                                </span>
                             </div>
                             <div class="thumbs-down-rating">
                                 <span class="text-20-400-24">{{currentReview?.Not_Helpful}}</span>
-                                <span class="thumbs-icon" (click)="updateHelpfulCount('not helpful', currentReview)">
+                                <span class="thumbs-icon" [ngClass]="{'selected':currentReview.nothelpfulSelected === 1}" (click)="updateHelpfulCount('not helpful', currentReview)">
                                     <i class="fa fa-thumbs-down" aria-hidden="true"></i>
                                 </span>
                             </div>

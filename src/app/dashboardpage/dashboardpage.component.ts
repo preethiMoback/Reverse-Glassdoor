@@ -116,6 +116,7 @@ export class DashboardpageComponent implements OnInit {
       item.current_org = val.current_organisation_name;
       item.primary_skill = val.primary_skill;
       item.email = val.email_id;
+      item.country_code = val.country_code;
       item.phone_number = val.mobile_number;
       this.getHelpfulInfo(item);
     },
@@ -125,12 +126,14 @@ export class DashboardpageComponent implements OnInit {
   }
 
   getHelpfulInfo(item: any) {
-    let payload: any = {id: item.id, phase: item.phase};
-    this.apiService.helpfulInfo(payload).subscribe((res: any) => {
-      item.helpfulSelected = res.Helpful;
-      item.nothelpfulSelected = res.Not_helpful;
-      this.prepareData(item);
-    })
+    if(item.submission_status === 'approved') {
+      let payload: any = {id: item.id, phase: item.phase};
+      this.apiService.helpfulInfo(payload).subscribe((res: any) => {
+        item.helpfulSelected = res.Helpful;
+        item.nothelpfulSelected = res.Not_helpful;
+        this.prepareData(item);
+      })
+    } else this.prepareData(item);
   }
 
   searchByName() {

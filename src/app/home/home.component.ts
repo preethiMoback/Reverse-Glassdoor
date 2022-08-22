@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   routerData: any;
   searchText: string = '';
   searchForm!: FormGroup;
+  countryCode: any;
   
  
   constructor(private formBuilder: FormBuilder,
@@ -70,6 +71,11 @@ export class HomeComponent implements OnInit {
     this.searchForm = this.formBuilder.group({
       searchName: ['', Validators.required]
     });
+
+    this.apiService.countryCodeList().subscribe((res: any) => {
+      this.countryCode = JSON.parse(res["CountryCode Data"]);
+      localStorage.setItem('countryCodeList', res["CountryCode Data"]);
+    })
 
     this.changeStep(this.routerData?.type, this.routerData?.step);
   }

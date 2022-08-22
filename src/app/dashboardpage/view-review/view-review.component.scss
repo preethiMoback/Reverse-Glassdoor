@@ -19,5 +19,11 @@
             padding-left: 25px;
         }
     }
+    .thumbs-icon {
+        &.selected {
+            background-color: #3498db;
+            pointer-events: none;
+        }
+    }
 }
 

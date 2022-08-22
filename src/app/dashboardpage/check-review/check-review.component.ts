@@ -51,6 +51,15 @@ export class CheckReviewComponent implements OnInit {
     subscribe( (res:any) =>{
       item.Helpful = res.Helpful;
       item.Not_Helpful = res.Not_Helpful;
+      this.getHelpfulInfo(item);
+    })
+  }
+
+  getHelpfulInfo(item: any) {
+    let payload: any = {id: item.review_id, phase: item.phase};
+    this.apiService.helpfulInfo(payload).subscribe((res: any) => {
+      item.helpfulSelected = res.Helpful;
+      item.nothelpfulSelected = res.Not_helpful;
       this.allReviews.push(item);
     })
   }
@@ -72,16 +81,27 @@ export class CheckReviewComponent implements OnInit {
     if(val == 'helpful') {
       payload.helpful = true;
       payload.nothelpful = false;
+      review.helpfulSelected = 1;
+      review.nothelpfulSelected = 0;
     }
     else if(val == 'not helpful') {
       payload.helpful = false;
       payload.nothelpful = true;
+      review.helpfulSelected = 0;
+      review.nothelpfulSelected = 1;
     }
     this.apiService.viewhelpful(payload).subscribe((res) => {
       this.allReviews.forEach((item:  any) => {
         if(item.review_id === review.review_id) {
-          if(val === 'helpful') item.Helpful = item.Helpful + 1;
-          else item.Not_Helpful = item.Not_Helpful + 1; 
+          let helpfulCountpayload = {
+            id: review.review_id,
+            phase:  review.phase
+          }
+          this.apiService.helpfullCount(helpfulCountpayload).
+          subscribe( (res:any) =>{
+            item.Helpful = res.Helpful;
+            item.Not_Helpful = res.Not_Helpful;
+          })
         }
       })
     })

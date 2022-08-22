@@ -191,8 +191,9 @@
                                <div class="row g-3">
                                    <div class="col-md-12">
                                        <div class="form-group">
-                                           <label>Candidate Full Name *</label>
+                                           <label for="name">Candidate Full Name *</label>
                                            <input 
+                                                id="name"
                                                type="text" 
                                                formControlName="name" 
                                                class="form-control" 
@@ -207,8 +208,9 @@
                                    </div>
                                    <div class="col-md-12">
                                        <div class="form-group">
-                                           <label>Candidate Email id *</label>
+                                           <label for="email">Candidate Email id *</label>
                                            <input 
+                                                id="email"
                                                type="text" 
                                                formControlName="email" 
                                                class="form-control" 
@@ -223,7 +225,7 @@
                                    </div>
                                    <div class="col">
                                        <div class="form-group">
-                                           <label for="mobileNumber">Country Code*</label>  
+                                           <!-- <label for="countrycode">Country Code*</label>  
                                            <input   
                                                formControlName="countrycode"  
                                                id="countrycode"   
@@ -231,16 +233,23 @@
                                                class="form-control" 
                                                [ngClass]="{ 'is-invalid': submitted && f['countrycode'].errors }"
                                                placeholder="91"
-                                           />  
+                                           />   -->
+                                            <label for="countryCode" >
+                                                Code
+                                            </label>
+                                            <select id="countryCode" formControlName="countrycode" class="select-dropdown form-control w-100" [ngClass]="{ 'is-invalid': submitted && f['countrycode'].errors }">
+                                                <option value="" disabled selected>Select</option>
+                                                <option *ngFor="let code of countryCodeList" [value]='code["COUNTRY CODE"]'>{{code["COUNTRY CODE"]}}</option>
+                                            </select>
                                            <div *ngIf="submitted && f['countrycode'].errors" class="invalid-feedback">
                                                <div *ngIf="f['countrycode'].errors['required']">Country Code is required</div>
-                                               <div *ngIf="f['countrycode'].errors['max']">Enter valid Country Code</div>
+                                               <!-- <div *ngIf="f['countrycode'].errors['max']">Enter valid Country Code</div> -->
                                            </div> 
                                        </div>
                                    </div>
                                    <div class="col-md-4">
                                        <div class="form-group">
-                                            <label for="mobileNumber">Phone Number*</label>  
+                                            <label for="phoneNumber">Phone Number*</label>  
                                            <!-- <label></label>
                                            <input 
                                                type="text" 
@@ -264,8 +273,9 @@
                                      </div>
                                      <div class="col-md-6">
                                        <div class="form-group">
-                                           <label for="mobileNumber">Primary Skill</label>  
+                                           <label for="primarySkill">Primary Skill</label>  
                                            <input   
+                                                id="primarySkill"
                                                formControlName="primaryskill"     
                                                type="text"   
                                                class="form-control" 
@@ -317,8 +327,9 @@
                                     </div>
                                      <div class="col-md-12">
                                        <div class="form-group">
-                                           <label>Candidate Current organisation*</label>
+                                           <label for="currentOrg">Candidate Current organisation*</label>
                                            <input 
+                                                id="currentOrg"
                                                type="text" 
                                                formControlName="companyName" 
                                                class="form-control" 
