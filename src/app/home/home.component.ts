@@ -308,10 +308,16 @@ passwordVerify(){
         this.login = false;
         this.signup = false;
         this.step = -1;
-        this.makeDisable();
-        this.isEmailVerified = false;
-        this.registerForm.get('email')?.enable();
+        this.formReset();
     }
+  }
+
+  formReset() {
+    this.registerForm.reset();
+    this.makeDisable();
+    this.isEmailVerified = false;
+    this.registerForm.get('email')?.enable();
+    this.submitted = false;
   }
 
   makeEnable(){
