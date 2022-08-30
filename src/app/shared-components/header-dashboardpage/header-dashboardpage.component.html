@@ -10,7 +10,7 @@
                 <div class="hdr-btn" [hidden]="true">
                     Try Premium
                 </div>
-                <div class="dropdown dropleft ">
+                <!-- <div class="dropdown dropleft ">
                     <a href="#" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" role="button">
                         <img src="../../assets/Images/notification_icon.svg">
                     </a>
@@ -21,8 +21,6 @@
                             </div>
                             <div *ngFor="let candidate of allAllReviewList">
                                 <div class="card-body" >
-                                    <!-- {{candidate| json}} -->
-                                    <!-- <a class="dropdown-item" *ngIf="candidate?.status === 'Approval Pending'"> -->
                                     <a class="dropdown-item">
                                         <div class="card" [ngClass]="{'pending': candidate?.status === 'Approval Pending', 'reject': candidate?.status === 'Rejected', 'approve': candidate?.status === 'Approved'}" >
                                             <div class="card-body text-20-600-24 ">
@@ -38,43 +36,11 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <!-- <a class="dropdown-item" *ngIf="candidate?.status === 'Rejected'">
-                                        <div class="card reject" >
-                                            <div class="card-body text-20-600-24 ">
-                                                <div class="rejected_color">
-                                                        <img  class="status" src="../../../assets/Images/cross.svg" alt="">
-                                                        {{candidate?.status}}
-                                                </div>
-                                                <div>
-                                                    Interview Review (Manohar Konireddi)
-                                                </div>
-                                                <div class="text-18-400-21" >
-                                                      1 hour ago
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" *ngIf="candidate?.status === 'Approved'">
-                                        <div class="card approve" >
-                                            <div class="card-body text-20-600-24 ">
-                                                <div class="approved-color">
-                                                        <img  class="status" src="../../../assets/Images/tick.svg" alt="">
-                                                        {{candidate?.status}}
-                                                </div>
-                                                <div>
-                                                    Interview Review (Manohar Konireddi)
-                                                </div>
-                                                <div class="text-18-400-21" >
-                                                     5 hour ago
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a> -->
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="dropdown dropleft  dropdown-toggle-split" >
                     <a href="" id="imageDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <img src="../../assets/Images/image_icon.svg">

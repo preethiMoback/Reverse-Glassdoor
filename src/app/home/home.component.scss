@@ -19,9 +19,9 @@
                 @include line_height(60px);
                 color: var(--purple);
                 cursor: pointer;
-                @include breakpoint(xs) {
-                    @include line_height(20px);
-                    @include pxtorem(17);
+                @media (max-width: 767px) {
+                    @include line_height(24px);
+                    @include pxtorem(20);
                 }
                 @include breakpoint($min: 768px, $max: 1023px) {
                     @include line_height(25px);
@@ -34,6 +34,9 @@
             justify-content: center;
             align-items: center;
             margin-right: 3em;
+            @media (max-width: 767px) {
+                margin-right: 0;
+            }
             .text-30-700-36{
                 color: var(--purple);
             }
@@ -49,12 +52,12 @@
                     &:hover{
                         opacity: 0.8;
                     }
-                    @include breakpoint(xSmall) {
-                        padding-left: 15px;
+                    @media (max-width: 767px) {
+                        padding-left: 30px;
                     }
-                    @include breakpoint(ipad) {
-                        padding-left: 40px;
-                    }
+                    // @include breakpoint(ipad) {
+                    //     padding-left: 40px;
+                    // }
                 }
 
             }
@@ -79,8 +82,8 @@
         background-size: cover;
         position: relative;
         text-align: center;
-        @include breakpoint(xs) {
-            height: 85vh;
+        @media (max-width: 767px) {
+            height: 50vh;
         }
         .card{
             width: 70%;
@@ -141,6 +144,12 @@
             width: 80%;
             margin: auto;
 
+            .input-group-text img {
+                @media (max-width: 767px) {
+                    width: 32px;
+                }
+            }
+
         }
     }
     .search_candidate_section{
@@ -188,6 +197,10 @@
         padding: 100px;
         @include breakpoint(ipad){
             padding: 50px 0px;
+        }
+
+        @media (max-width: 767px) {
+            text-align: center;
         }
         .btn{
             @include width_height(465px, 79px);

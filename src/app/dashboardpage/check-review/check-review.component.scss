@@ -79,8 +79,8 @@
         }
     }
     .back_btn{
-        margin-top: 70px;
-        @include breakpoint(sm){
+        margin-top: 20px;
+        @include breakpoint(lg){
             margin-top: 70px;
         }
     }
@@ -119,6 +119,23 @@
         &.selected {
             background-color: #3498db;
             pointer-events: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .candidate-card {
+            .text-30-700-36 {
+                font-size: 24px;
+            }
+
+            .text-20-400-24 {
+                font-size: 16px;
+            }
+
+            .card-header {
+                font-size: 26px;
+                height: 52px;
+            }
         }
     }
 }

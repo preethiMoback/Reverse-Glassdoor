@@ -28,7 +28,7 @@
                 <div class="candidate-card" *ngFor="let candidate of filterList">
                     <div class="card">
                         <div class="row card-body">
-                            <div class="col-md-9">
+                            <div class="col-7 col-md-9">
                                 <div class="text-30-700-36">
                                     {{candidate?.candidate_first_name}} {{candidate?.candidate_middle_name}} {{candidate?.candidate_last_name}}
                                     <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
@@ -60,7 +60,7 @@
                                     </div>
                                 </div> -->
                             </div>
-                            <div class="col-md-3 btn-sec">
+                            <div class="col-5 col-md-3 btn-sec">
                                 <div class="write btn text-20-400-24" (click)="goToWriteReview(candidate)">
                                     Write Review
                                 </div>

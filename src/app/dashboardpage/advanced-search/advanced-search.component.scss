@@ -15,6 +15,13 @@
         @include breakpoint(ipad){
             margin-top: -10px;
         }
+        @media (max-width: 768px) {
+            padding-top: 20px;
+
+            .card-body {
+                padding-top: 0;
+            }
+        }
         transform:translateY(-1000px);
         animation-name:from-top;
         animation-fill-mode: forwards;

@@ -6,6 +6,9 @@
     background-color: var(--dusky-white) !important;
     .card{
         padding:50px 0px 20px 0px;
+        @media (max-width: 768px) {
+            padding: 10px 18px;
+        }
         .card-title{
             @include pxtorem(30);
             @include line_height(36px);
@@ -34,15 +37,33 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-end;
-                @include breakpoint(xs){
-                    align-items: flex-start;
-                }
             }
         }
         .candidateCard:nth-last-child(1){
             hr{
                 display: none;
             }
+        }
+    }
+    @media (max-width: 768px) {
+        .candidateCard {
+            .text-20-600-24 {
+                padding: 0;
+                @include pxtorem(15);
+            }
+        }
+
+        .text-right {
+            align-items: center !important;
+            justify-content: space-between !important;
+        }
+
+        .view_btn {
+            margin-bottom: 0 !important;
+        }
+
+        .text-25-700-30 {
+            padding: 10px 0 13px;
         }
     }
     

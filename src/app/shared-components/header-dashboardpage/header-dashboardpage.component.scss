@@ -9,9 +9,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        @include breakpoint(xSmall){
-            justify-content: center;
-        }
         .hero_logo{
             display: flex;
             justify-content: center;

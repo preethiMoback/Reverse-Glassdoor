@@ -108,9 +108,6 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
-                @include breakpoint(xs){
-                    align-items: center;
-                }
             }
             .text-30-700-36{
                 @include breakpoint(ipad){
@@ -132,6 +129,31 @@
         background: transparent url("./../../../../assets/Images/search_icon.svg")no-repeat 40px center;
         background-size: 30px;
     } 
+
+    @media (max-width: 768px) {
+        .card {
+            padding: 12px 0 0;
+        }
+        .card-title, .text-30-700-36 {
+            font-size: 17px !important;
+
+            img {
+                width: 40px;
+            }
+        }
+        .text-20-400-24 {
+            margin-top: 0;
+            i {
+                padding-right: 0.5em;
+            }
+        }
+        .btn-sec {
+            align-items: flex-end !important;
+        }
+        .write, .check {
+            width: 130px;
+        }
+    }
 }
 
 
