@@ -1,5 +1,7 @@
 import { Apiservice } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-review',
@@ -10,7 +12,9 @@ export class ViewReviewComponent implements OnInit {
   rate = 1;
   currentReview: any;
   reviewerInfo: any;
-  constructor(private apiService: Apiservice) { }
+  constructor(private apiService: Apiservice,
+    private toastr: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.reviewerInfo = JSON.parse(localStorage.getItem("currentUserInfo") || '');
@@ -83,6 +87,20 @@ export class ViewReviewComponent implements OnInit {
           this.currentReview.Helpful = res.Helpful;
           this.currentReview.Not_Helpful = res.Not_Helpful;
         })
+    })
+  }
+
+  moderatorAction(val: string) {
+    let payload: any = {};
+    payload.id = this.currentReview.id;
+    payload.phase = this.currentReview.phase;
+    payload.submission_status = val;
+    val === 'approved' ? payload.justification_for_rejection = '' : payload.justification_for_rejection = 'Justification message';
+    console.log(payload);
+    this.apiService.statusUpdateByMorderator(payload).subscribe(res => {
+      this.router.navigate(['/dashboardpage']);
+      let toastrMsg = 'Review ' + val + ' succesfully';
+      this.toastr.success(toastrMsg);
     })
   }
 

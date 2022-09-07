@@ -22,8 +22,9 @@
                             </div>
                             </div>
                         <div class="text-25-400-30 mb-0">
-                            by  <span><i class="fa fa-user-circle" aria-hidden="true"></i>
-                            </span>  {{reviewerInfo?.first_name}} {{reviewerInfo?.middle_name}} {{reviewerInfo?.last_name}} <span class="text-capitalize">({{reviewerInfo?.current_org}})</span>.
+                            by  <span><i class="fa fa-user-circle" aria-hidden="true"></i></span>
+                            <span *ngIf="reviewerInfo?.user_category === 'normal user'">{{reviewerInfo?.first_name}} {{reviewerInfo?.middle_name}} {{reviewerInfo?.last_name}} <span class="text-capitalize">({{reviewerInfo?.current_org}})</span>.</span>
+                            <span *ngIf="reviewerInfo?.user_category === 'moderator'">{{currentReview?.reviewerName}} <span class="text-capitalize">({{currentReview?.reviewerOrg}})</span>.</span>
                         </div>
                         <div class="text-20-400-24">
                             Reviewed on {{currentReview?.create_time | date}}
@@ -36,8 +37,12 @@
                         <div class="text-20-400-24 para">
                             {{currentReview?.feedback}}
                         </div>
-                        <div *ngIf="currentReview?.status !== 'Approved'">
+                        <div *ngIf="currentReview?.status !== 'Approved' && reviewerInfo?.user_category === 'normal user'">
                             <button class="btn" (click)="updateReview()" routerLink="/candidatereview">Update Review</button>
+                        </div>
+                        <div *ngIf="reviewerInfo?.user_category === 'moderator'" class="d-flex">
+                            <button class="btn" (click)="moderatorAction('approved')">Approve</button>
+                            <button class="btn reject-btn" (click)="moderatorAction('rejected')">Reject</button>
                         </div>
                         <div class="thumbs-rating" *ngIf="currentReview?.status === 'Approved'">
                             <div class="thumbs-up-rating">

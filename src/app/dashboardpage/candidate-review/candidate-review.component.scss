@@ -25,6 +25,7 @@
                 height: 60px;
             }
             .rating-star {
+                margin-bottom: 20px !important;
                 position: relative;
             }
             .form__section .form-group, .form-check{
@@ -292,9 +293,7 @@
         }
     }
 
-    .rating-star {
-        margin-bottom: 20px !important;
-
+    @media (max-width: 768px) {
         .rating {
             margin-top: 0 !important;
             left: 0;

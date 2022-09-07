@@ -13,6 +13,12 @@
         .btn {
             width: 215px;
         }
+        .reject-btn {
+            margin-left: 16px !important;
+            background-color: transparent;
+            color: var(--purple) !important;
+            border:solid 2px;
+        }
     }
     .candidate-card {
         .card-header {

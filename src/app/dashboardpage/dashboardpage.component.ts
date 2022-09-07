@@ -41,6 +41,8 @@ export class DashboardpageComponent implements OnInit {
   allRejectedList: any[] = [];
   allPendingList: any[] = [];
 
+  type: string = '';
+
   constructor(
     private apiService: Apiservice,
     private router: Router,
@@ -58,6 +60,7 @@ export class DashboardpageComponent implements OnInit {
       this.currentUserName = res.first_name + " " + res.middle_name + " " + res.last_name;
       this.currentUserEmail = res.current_org_mail_id;
       this.currentUserImage = res.pic ? "http://54.208.4.29:8080/" + res.pic : "../../assets/Images/image_icon.svg";
+      this.type = res.user_category;
     })
 
     this.apiService.candidateFeedbackCount().subscribe((res: any) => {
@@ -158,6 +161,13 @@ export class DashboardpageComponent implements OnInit {
   }
 
   prepareData(item: any) {
+    if(this.type === 'moderator') {
+      let payload = {user_id: item.user_id};
+      this.apiService.getReviewverInfo(payload).subscribe((res: any) => {
+        item.reviewerName = res.data["Full name"];
+        item.reviewerOrg = res.data.current_org;
+      })
+    }
     if (item.submission_status == 'pending approval') {
       item.status = 'Approval Pending'; 
       if (this.pendingList.length < 5) this.pendingList.push(item);

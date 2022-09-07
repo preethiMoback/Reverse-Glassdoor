@@ -126,8 +126,8 @@ export class Apiservice {
         return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/deactivate/`,{},this.commonOptions2);
     }
 
-    statusUpdateByMorderator(){
-        return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/update_status/`,{},this.commonOptions2);
+    statusUpdateByMorderator(payload: any){
+        return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/update_status/`,payload,this.commonOptions2);
     }
 
     viewReview(payload: any){
@@ -156,6 +156,10 @@ export class Apiservice {
 
     countryCodeList() {
         return this.http.get(`http://${this.DeployedIP}:${this.DeployedPort}/user/country_code_list/`);
+    }
+
+    getReviewverInfo(payload: any) {
+        return this.http.get(`http://${this.DeployedIP}:${this.DeployedPort}/user/get_user_name_review/?user_id=` + payload.user_id);
     }
 
 }
