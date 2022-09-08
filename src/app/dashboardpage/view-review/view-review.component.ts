@@ -12,6 +12,11 @@ export class ViewReviewComponent implements OnInit {
   rate = 1;
   currentReview: any;
   reviewerInfo: any;
+  modalHeader: string = '';
+  modalContent: string = '';
+  confirmRejection: boolean = false;
+  reason: string = '';
+  selectedStatus: string = '';
   constructor(private apiService: Apiservice,
     private toastr: ToastrService,
     private router: Router) { }
@@ -90,18 +95,46 @@ export class ViewReviewComponent implements OnInit {
     })
   }
 
-  moderatorAction(val: string) {
+  moderatorAction(val: string, submit: boolean) {
+    this.confirmRejection = false;
+    this.selectedStatus = val;
     let payload: any = {};
     payload.id = this.currentReview.id;
     payload.phase = this.currentReview.phase;
     payload.submission_status = val;
-    val === 'approved' ? payload.justification_for_rejection = '' : payload.justification_for_rejection = 'Justification message';
+    if(val === 'approved') {
+      this.modalHeader = 'Approve ?';
+      this.modalContent = 'You are about to approve the review with this action. Are you sure you want to approve?';
+      payload.justification_for_rejection = ''
+    }
+    else if(val === 'rejected') {
+      this.modalHeader = 'Reason For Rejection'
+      payload.justification_for_rejection = this.reason
+    }
     console.log(payload);
-    this.apiService.statusUpdateByMorderator(payload).subscribe(res => {
-      this.router.navigate(['/dashboardpage']);
-      let toastrMsg = 'Review ' + val + ' succesfully';
-      this.toastr.success(toastrMsg);
-    })
+    if(submit) {
+      this.apiService.statusUpdateByMorderator(payload).subscribe(res => {
+        let el = document.getElementById("cancelButton") as HTMLButtonElement;
+        el.click();
+        this.router.navigate(['/dashboardpage']);
+        let toastrMsg = 'Review ' + val + ' succesfully';
+        this.toastr.success(toastrMsg);
+      })
+    }
+  }
+
+  onCancel() {
+    this.modalHeader = '';
+    this.modalContent = '';
+    this.reason = '';
+    this.confirmRejection = false;
+  }
+
+  onSubmit() {
+    this.confirmRejection = true;
+    this.modalHeader = 'Reject ?';
+    this.modalContent = 'You are about to reject the review. Have you given the valid reason for rejection ?';
+    
   }
 
 }
