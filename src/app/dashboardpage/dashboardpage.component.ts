@@ -97,16 +97,19 @@ export class DashboardpageComponent implements OnInit {
   }
 
   findHelpulNotHelpFull(item: any, phase: string){
-    let payload = {
-      id: item.id,
-      phase:  phase
+    if(item.submission_status === 'approved') {
+      let payload = {
+        id: item.id,
+        phase:  phase
+      }
+      this.apiService.helpfullCount(payload).
+      subscribe( (res:any) =>{
+        item.Helpful = res.Helpful;
+        item.Not_Helpful = res.Not_Helpful;
+        this.getCandidateInfo(item);
+      })
     }
-    this.apiService.helpfullCount(payload).
-    subscribe( (res:any) =>{
-      item.Helpful = res.Helpful;
-      item.Not_Helpful = res.Not_Helpful;
-      this.getCandidateInfo(item);
-    })
+    else this.getCandidateInfo(item);
   }
 
   getCandidateInfo(item: any) {
