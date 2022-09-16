@@ -137,7 +137,7 @@ ngOnInit() {
       this.hideTandC = true;
     }
     else {
-      this.registerForm.get('name')?.setValue(res.candidate_first_name + ` ${res.candidate_middle_name}` + ` ${res.candidate_last_name}`);
+      this.registerForm.get('name')?.setValue(res.candidate_first_name + (res.candidate_middle_name.length ? ` ${res.candidate_middle_name}` : ' ') + res.candidate_last_name);
       this.registerForm.get('primaryskill')?.setValue(res?.["primary skill"]);
     }
   })

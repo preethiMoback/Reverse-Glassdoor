@@ -249,7 +249,7 @@
                                     <label for="floatingCountryCode" >
                                         91
                                     </label> -->
-                                    <select id="floatingCountryCode" formControlName="countrycode" class="form-control w-100" [ngClass]="{ 'is-invalid': submitted && f['countrycode'].errors }">
+                                    <select id="floatingCountryCode" formControlName="countrycode" class="form-control w-100 cc-dropdown" [ngClass]="{ 'is-invalid': submitted && f['countrycode'].errors }">
                                         <option value="" disabled selected>Select</option>
                                         <option *ngFor="let code of countryCode" [value]='code["COUNTRY CODE"]'>{{code["COUNTRY CODE"]}}</option>
                                     </select>
