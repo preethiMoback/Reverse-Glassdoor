@@ -55,6 +55,9 @@
                     @media (max-width: 767px) {
                         padding-left: 30px;
                     }
+                    a {
+                        color: var(--purple);
+                    }
                     // @include breakpoint(ipad) {
                     //     padding-left: 40px;
                     // }
@@ -137,7 +140,7 @@
             @include width_height(60%, 50px);
             padding: 20px;
             @include breakpoint(sm){
-                @include width_height(353px, 79px);
+                @include width_height(440px, 79px);
             }
         }
         .input-group{
@@ -332,7 +335,7 @@
             padding: 30px 10px;
         }
         .text-30-700-36{
-            color: var(--black-light);
+            color: var(--purple);
             @include breakpoint(ipad){
                 @include pxtorem(20);
                 @include line_height(27px);
@@ -350,8 +353,8 @@
             }
         }
         span{
-            color: var(--blue);
-            cursor: pointer;
+            color: var(--purple);
+            align-self: center;
         }
         .card-body{
             margin: auto;
@@ -364,6 +367,9 @@
                         border: 1px solid #62177C;
                     }
                     .invalid-feedback{
+                        position: absolute;
+                        margin-top: 0;
+                        bottom: -16px;
                         text-align: left;
                         border: 1px solid green !important;
                         &:focus {
@@ -376,6 +382,10 @@
                         @include width_height(400px,63px); 
                     }
                 }
+                .email-input {
+                    width: 80%;
+                    margin-right: 20px;
+                }
                 .form-floating>label{
                     @include pxtorem(18);
                     font-family: 'Lato';
@@ -386,6 +396,14 @@
                 }
                 .invalid-feedback{
                     text-align: left;
+                    position: absolute;
+                    margin-top: 0;
+                    bottom: -16px;
+                    &.cc-error {
+                        @media (min-width: 768px) {
+                            bottom: -33px;
+                        }
+                    }
                 }
                 .phone-row{
                     max-width: 424px;
@@ -424,6 +442,15 @@
                 &:focus {
                     outline: none;
                     box-shadow: none;
+                }
+
+                &-verify {
+                    margin-top: 0;
+                    width: 20%;
+                    height: 63px;
+                    @media (max-width: 768px) {
+                        height: 58px;
+                    }
                 }
             }
         }

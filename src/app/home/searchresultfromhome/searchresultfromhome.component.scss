@@ -157,6 +157,10 @@
                         padding: 0px;
                     }
                 }
+
+                i {
+                    padding-top: 0.1em;
+                }
             }
         }
     }
@@ -209,6 +213,11 @@
         background: transparent url("./../../../assets/Images/search_resulticon.svg")no-repeat 40px center;
         background-size: 30px;
     } 
+
+    .text-blur {
+        color: transparent;
+        text-shadow: 0 0 7px rgb(0 0 0 / 70%);
+    }
 }
 
 

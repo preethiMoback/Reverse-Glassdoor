@@ -33,7 +33,8 @@ export class SearchresultfromhomeComponent implements OnInit {
     let payload = {
       "first_name": "",
       "middle_name": "",
-      "last_name": ""
+      "last_name": "",
+      "user_id": null
     }
     let names: any = [];
     names = this.data.split(" ");

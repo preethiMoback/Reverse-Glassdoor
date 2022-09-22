@@ -162,4 +162,7 @@ export class Apiservice {
         return this.http.get(`http://${this.DeployedIP}:${this.DeployedPort}/user/get_user_name_review/?user_id=` + payload.user_id);
     }
 
+    changeUserPassword(payload: any) {
+        return this.http.post(`http://${this.DeployedIP}:${this.DeployedPort}/user/changepassword_user_logged_in/`, payload, this.commonOptions2);
+    }
 }

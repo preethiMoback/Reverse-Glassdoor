@@ -71,7 +71,7 @@ export class CandidateReviewComponent implements OnInit {
 
 ngOnInit() {
   this.registerForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.pattern("(^[A-Za-z]{3,16})([ ]{1,1})([A-Za-z]{1,16})([ ]{0,1})?([A-Za-z]{0,16})?([ ]{0,1})?([A-Za-z]{0,16})")]],
+      name: ['', [Validators.required]],
       // lastName: ['', Validators.required],
       companyName:['', Validators.required],
       primaryskill:['', Validators.required],
@@ -105,7 +105,7 @@ ngOnInit() {
     if(res?.status) {
       let el = document.getElementById('toggleSwitch') as HTMLInputElement;
 
-      this.registerForm.get('name')?.setValue(res.first_name + ` ${res.middle_name}` + ` ${res.last_name}`);
+      this.registerForm.get('name')?.setValue(res.first_name + (res.middle_name.length ? ` ${res.middle_name}` : '') + (res.last_name.length ? ` ${res.last_name}` : ''));
       this.registerForm.get('companyName')?.setValue(res.current_org);
       this.registerForm.get('email')?.setValue(res.email);
       this.registerForm.get('countrycode')?.setValue(res.country_code);
@@ -137,7 +137,7 @@ ngOnInit() {
       this.hideTandC = true;
     }
     else {
-      this.registerForm.get('name')?.setValue(res.candidate_first_name + (res.candidate_middle_name.length ? ` ${res.candidate_middle_name}` : ' ') + res.candidate_last_name);
+      this.registerForm.get('name')?.setValue(res.candidate_first_name + (res.candidate_middle_name.length ? ` ${res.candidate_middle_name}` : '') + (res.candidate_last_name.length ? ` ${res.candidate_last_name}` : ''));
       this.registerForm.get('primaryskill')?.setValue(res?.["primary skill"]);
     }
   })
@@ -164,9 +164,9 @@ onSubmit() {
         // let phase = this.registerForm.value.radio1? 'Interview' : this.registerForm.value.radio2? 'Offer': 'Onboarding';
         
         let payload = {
-          first_name: this.registerForm.value.name.split(" ")[0],
+          first_name: names[0],
           middle_name: '',
-          last_name: this.registerForm.value.name.split(" ")[names.length - 1],
+          last_name: '',
           country_code: this.registerForm.value.countrycode.toString(),
           mobile_num: this.registerForm.value.phoneNumber,
           email_id: this.registerForm.value.email,
@@ -178,6 +178,12 @@ onSubmit() {
           justification_for_rejection: "---",
           rating: ratingstring,
           primary_skill: this.registerForm.value.primaryskill,
+        }
+        if(names.length > 2) {
+          payload.middle_name = names.slice(1,names.length-1).join(" ");
+        }
+        if(names.length >= 2) {
+          payload.last_name = names[names.length - 1];
         }
         console.log(payload);
         this.apiService.candidateReview(payload)

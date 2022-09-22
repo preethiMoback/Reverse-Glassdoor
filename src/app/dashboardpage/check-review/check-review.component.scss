@@ -98,10 +98,17 @@
     .candidate-card{
         background-color: var(--white);
         @include breakpoint(sm){
-            margin-top: 136px;
+            margin-top: 65px;
         }
         @include breakpoint(min1601){
             margin: 70px 50px;
+        }
+        .card-body {
+            .text-20-400-24 {
+                i {
+                    padding-top: 0.1em;
+                }
+            }
         }
     }
     .card-header {

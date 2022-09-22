@@ -202,7 +202,6 @@
                                            />
                                            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
                                                <div *ngIf="f['name'].errors['required']">Name is required</div>
-                                               <div *ngIf="f['name'].errors['pattern']">Proper Full Name is required</div>
                                            </div>
                                        </div>
                                    </div>
@@ -283,7 +282,7 @@
                                                placeholder="Candidate’s primary skill"
                                            />  
                                            <div *ngIf="submitted && f['primaryskill'].errors" class="invalid-feedback">
-                                               <div *ngIf="f['primaryskill'].errors['required']">Candidate’s primary skill</div>
+                                               <div *ngIf="f['primaryskill'].errors['required']">Primary skill is required</div>
                                            </div> 
                                        </div>
                                      </div>
@@ -372,8 +371,11 @@
                                     </div>
                                      <div class="-col-12 col-md-12">
                                        <div class="form-group text_area">
-                                           <label>Give your review</label>
-                                           <textarea class="form-control" rows="7"  formControlName="feedback" placeholder="Please write about the candidate review here"></textarea>
+                                            <label>Give your review</label>
+                                            <textarea class="form-control" rows="7"  formControlName="feedback" [ngClass]="{ 'is-invalid': submitted && f['feedback'].errors }" placeholder="Please write about the candidate review here"></textarea>
+                                            <div *ngIf="submitted && f['feedback'].errors" class="invalid-feedback">
+                                                <div *ngIf="f['feedback'].errors['required']">Feedback is required</div>
+                                            </div>
                                        </div>
                                      </div>
                                      <div class="col-12 col-md-12" *ngIf="!hideTandC">

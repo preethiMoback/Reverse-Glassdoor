@@ -212,5 +212,66 @@
     .btn{
         @include width_height(215px, 49px);
     }
+
+    #changePasswordModal {
+        .modal-content {
+            height: auto;
+        }
+
+        .card {
+            padding: 40px;
+            border-radius: 10px;
+
+            &-title {
+                text-align: center;
+                color: var(--purple);
+                .text-30-700-36{
+                    @include breakpoint(ipad){
+                        @include pxtorem(20);
+                        @include line_height(27px);
+                    } 
+                }
+            }
+
+            &-body {
+                form{
+                    input{
+                        width: 100%;
+                        &:focus {
+                            outline: none;
+                            box-shadow: none;
+                            border: 1px solid #62177C;
+                        }
+                        @include breakpoint(sm){
+                            @include width_height(400px,63px); 
+                        }
+                    }
+                    .form-floating>label{
+                        @include pxtorem(18);
+                        font-family: 'Lato';
+                        color: var(--gray-light);
+                        @include breakpoint(ipad) {
+                            @include pxtorem(14);
+                        }
+                    }
+                    .invalid-feedback{
+                        text-align: left;
+                        position: absolute;
+                        margin-top: 0;
+                        bottom: -16px;
+                    }
+                }
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 6px;
+                right: 15px;
+                font-size: 26px;
+                color: var(--gray-light);
+                cursor: pointer;
+            }
+        }
+    }
     
 }

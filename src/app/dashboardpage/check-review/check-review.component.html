@@ -19,30 +19,30 @@
                             <div class="text-30-700-36">
                                 {{candidateInfo?.candidate_first_name}} {{candidateInfo?.candidate_middle_name}} {{candidateInfo?.candidate_last_name}}
                             </div>
-                            <!-- <div class="person_information">
+                            <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                                    badaballarocks@gmail.com
+                                    <span *ngIf="candidateInfo.email_id">{{candidateInfo?.email_id}}</span>
                                 </div>
                             </div>
                             <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                    +91 8928382945
+                                    <span *ngIf="candidateInfo.mobile_number">{{candidateInfo?.mobile_number}}</span>
                                 </div>
-                            </div> -->
+                            </div>
                             <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-cog" aria-hidden="true"></i>
                                     {{candidateInfo?.["primary skill"]}}
                                 </div>
                             </div>
-                            <!-- <div class="person_information">
+                            <div class="person_information">
                                 <div class="text-20-400-24">
                                     <i class="fa fa-building-o" aria-hidden="true"></i>
-                                    Bighaat Agro Pvt Ltd
+                                    <span *ngIf="candidateInfo.organisation_name">{{candidateInfo?.organisation_name}}</span>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>

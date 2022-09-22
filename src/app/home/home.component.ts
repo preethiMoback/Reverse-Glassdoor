@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   searchText: string = '';
   searchForm!: FormGroup;
   countryCode: any;
+  showEmailError: boolean = false;
   
  
   constructor(private formBuilder: FormBuilder,
@@ -44,7 +45,7 @@ export class HomeComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      name: ['', [Validators.required, Validators.pattern("(^[A-Za-z]{3,16})([ ]{1,1})([A-Za-z]{1,16})([ ]{0,1})?([A-Za-z]{0,16})?([ ]{0,1})?([A-Za-z]{0,16})")]],
+      name: ['', [Validators.required]],
       password:['', Validators.required],
       otp:['', Validators.required],
       organisationname:['', Validators.required],
@@ -99,9 +100,9 @@ export class HomeComponent implements OnInit {
       )
     }
     else {
-      this.toastr.error("Please enter all the details");
+      this.showEmailError = true;
+      this.toastr.error("Please verify email");
     }
-    this.onSubmit();
   }
 
   searchCandidate() {
@@ -115,9 +116,10 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
+    debugger;
     console.log(this.step); 
     if(this.step == 1 && this.login){ // log in
+      this.submitted = true;
       let payload = {
         username: this.registerForm.value.email,
         password: this.registerForm.value.password
@@ -128,7 +130,7 @@ export class HomeComponent implements OnInit {
           this.formData.setData( this.details = 
             (this.registerForm.get('email')?.value)
           );
-          
+          localStorage.setItem('user_id', res.id);
           localStorage.setItem('token', res.jwt);
           this.UserNotExist = false;
           this.toastr.success('', 'Loggedin Successfully!');
@@ -146,6 +148,7 @@ export class HomeComponent implements OnInit {
     }
     else if(this.step == 2 && this.login) // forget Password
     {
+      this.submitted = true;
         let payload = {
           email: this.registerForm.value.email
         }
@@ -164,6 +167,7 @@ export class HomeComponent implements OnInit {
         );
     }
     else if(this.step == 3 && this.login){ //Otp Verification
+      this.submitted = true;
       let payload = {
         email_id: this.registerForm.get('email')?.value,
         otp: this.registerForm.get('otp')?.value
@@ -179,6 +183,7 @@ export class HomeComponent implements OnInit {
       }))
     }
     else if(this.step == 4 && this.login){// reset Password
+      this.submitted = true;
       if(this.passwordVerify()) {
         let payload = {
             "email" : this.registerForm.value.email,
@@ -198,7 +203,10 @@ export class HomeComponent implements OnInit {
     }
 
     if(this.signup && this.step == 1){ // Sign up
-
+      if(!this.isEmailVerified) {
+        this.toastr.error("Please verify Email");
+        return;
+      }
       // if(this.checkEmailVerif()){
       //   let payload = {
       //     email_id: this.registerForm.get('email')?.value
@@ -213,13 +221,14 @@ export class HomeComponent implements OnInit {
       //   )
       // }
       if(this.passwordVerify()){
+        this.submitted = true;
         if(this.f['confirmpassword'].value === this.f['createpassword'].value) {
           let name = this.registerForm.value.name.split(" ");
           debugger;
           let payload = {
             first_name: name[0],
-            middle_name: this.registerForm.value.middleName?this.registerForm.value.middleName: '',
-            last_name: name.length > 1? name[1]: '',
+            middle_name: name.length > 2 ? name.slice(1,name.length-1).join(" ") : '',
+            last_name: name.length >= 2 ? name[name.length - 1]: '',
             country_code: this.registerForm.value.countrycode.toString(),
             mobilenum: this.registerForm.value.phoneNumber,
             current_org: this.registerForm.value.companyName,
@@ -244,11 +253,13 @@ export class HomeComponent implements OnInit {
           // console.log(payload);
         }
         else {
+          this.submitted = true;
           this.toastr.error("The passwords don't match");
         }
       }
     }
     else if(this.step == 2 && this.signup && this.f['otp'].valid){ //Otp Verification
+      this.submitted = true;
       let payload = {
         email_id: this.registerForm.get('email')?.value,
         otp: this.registerForm.get('otp')?.value
@@ -272,11 +283,11 @@ export class HomeComponent implements OnInit {
 
 checkEmailVerif(){
   debugger;
-  return this.f['email'].valid && this.f['name'].valid && this.f['companyName'].valid && this.f['phoneNumber'].valid && this.f['countrycode'].valid;
+  return this.f['email'].valid;
 }
 
 passwordVerify(){
-  return this.f['confirmpassword'].valid && this.f['createpassword'].valid ;
+  return this.f['confirmpassword'].valid && this.f['createpassword'].valid && this.f['name'].valid && this.f['companyName'].valid && this.f['phoneNumber'].valid && this.f['countrycode'].valid;
 }
 
 

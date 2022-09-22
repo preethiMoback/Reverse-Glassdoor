@@ -91,11 +91,12 @@ export class AdvancedSearchComponent implements OnInit {
           let payload: any = {
           }
           if(name.length > 0 && name) payload.first_name = name[0];
-          if(name.length > 1 && name) payload.last_name = name[1];
+          if(name.length > 1 && name) payload.last_name = name[name.length - 1];
           if(this.registerForm.value.email) payload.email_id = this.registerForm.value.email;
           if(this.registerForm.value.phoneNumber) payload.mobile_number  = this.registerForm.value.phoneNumber;
           if(this.registerForm.value.companyName) payload.current_organisation_name = this.registerForm.value.companyName;
           if(this.registerForm.value.primaryskill) payload.primary_skill = this.registerForm.value.primaryskill;
+          payload.user_id = localStorage.getItem('user_id') || null;
 
           this.apiService.candidateAdvanceSearch(payload)
             .subscribe((res: any) =>{

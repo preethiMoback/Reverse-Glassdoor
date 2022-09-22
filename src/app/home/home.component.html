@@ -57,7 +57,7 @@
                         Password
                     </label>
                     <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-                        <div *ngIf="f['password'].errors['required']">password is required</div>
+                        <div *ngIf="f['password'].errors['required']">Password is required</div>
                     </div>
                 </div>
                 <div *ngIf="submitted && UserNotExist" class="invalid-feedback">
@@ -164,7 +164,7 @@
                         Create Password
                     </label>
                     <div *ngIf="submitted && f['createpassword'].errors" class="invalid-feedback">
-                        <div *ngIf="f['createpassword'].errors['required']">password is required</div>
+                        <div *ngIf="f['createpassword'].errors['required']">Password is required</div>
                         <div *ngIf="f['createpassword'].errors['minlength']">Password must be at least 8 characters</div>
                     </div>
                 </div>
@@ -202,6 +202,62 @@
             <div class="row">
                 <div class="col-md-6">
                     <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group form-floating mb-4 d-flex">
+                            <input
+                                type="text" 
+                                id="floatingEmail" 
+                                formControlName="email" 
+                                class="form-control email-input" 
+                                placeholder="Official Email Address" 
+                                [ngClass]="{ 'is-invalid': showEmailError && f['email'].errors }" 
+                            >
+                            <label for="floatingEmail" >
+                                Official Email Address
+                            </label>
+                            <div *ngIf="showEmailError && f['email'].errors" class="invalid-feedback">
+                                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                <div *ngIf="f['email'].errors['pattern']">Email must be a valid email address</div>
+                            </div>
+                            <button *ngIf="!isEmailVerified" class="btn btn-verify" type="button" (click)="emailVerify()">Verify</button>
+                            <span *ngIf="isEmailVerified">Verified</span>
+                        </div>
+                        <div class="form-group form-floating mb-4">
+                            <input 
+                                type="password" 
+                                formControlName="createpassword"
+                                class="form-control" 
+                                id="floatingpassword" 
+                                placeholder="Create Password"
+                                [ngClass]="{ 'is-invalid': submitted && f['createpassword'].errors }" 
+                            >
+                            <label for="floatingpassword">
+                                Enter Password
+                            </label>
+                            <div *ngIf="submitted && f['createpassword'].errors" class="invalid-feedback">
+                                <div *ngIf="f['createpassword'].errors['required']">Password is required</div>
+                                <div *ngIf="f['createpassword'].errors['minlength']">Password must be at least 8 characters</div>
+                            </div>
+                        </div>
+                        <div class="form-group form-floating mb-4">
+                            <input 
+                                type="password" 
+                                formControlName="confirmpassword"
+                                class="form-control" 
+                                id="floatingConfirmPassword" 
+                                placeholder="Re-type Password"
+                                [ngClass]="{ 'is-invalid': submitted && f['confirmpassword'].errors }" 
+                            >
+                            <label for="floatingConfirmPassword">
+                                Confirm Password
+                            </label>
+                            <div *ngIf="submitted && f['confirmpassword'].errors" class="invalid-feedback">
+                                <div *ngIf="f['confirmpassword'].errors['required']">Confirm password is required</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                         <div class="form-group form-floating mb-4">
                             <input 
                                 type="text" 
@@ -212,11 +268,10 @@
                                 [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" 
                             >
                             <label for="floatingName">
-                                Enter your Full Name
+                                Enter your Name
                             </label>
                             <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
                                 <div *ngIf="f['name'].errors['required']">Name is required</div>
-                                <div *ngIf="f['name'].errors['pattern']">Proper Full Name is required</div>
                             </div>
                         </div>
                         <div class="form-group form-floating mb-4">
@@ -256,7 +311,7 @@
                                     <label for="floatingCountryCode" >
                                         Code
                                     </label>
-                                    <div *ngIf="submitted && f['countrycode'].errors" class="invalid-feedback">
+                                    <div *ngIf="submitted && f['countrycode'].errors" class="invalid-feedback cc-error">
                                         <div *ngIf="f['countrycode'].errors['required']">Country Code is required</div>
                                         <div *ngIf="f['countrycode'].errors['max']">Enter Valid Country Code</div>
                                     </div>
@@ -280,62 +335,6 @@
                                         <div *ngIf="f['phoneNumber'].errors['maxlength'] || f['phoneNumber'].errors['minlength'] || f['phoneNumber'].errors['pattern']">Enter valid phone number</div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md-6">
-                    <form id="#registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                        <div class="form-group form-floating mb-4">
-                            <input
-                                type="text" 
-                                id="floatingEmail" 
-                                formControlName="email" 
-                                class="form-control" 
-                                placeholder="Official Email Address" 
-                                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" 
-                            >
-                            <label for="floatingEmail" >
-                                Official Email Address
-                            </label>
-                            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-                                <div *ngIf="f['email'].errors['required']">Email is required</div>
-                                <div *ngIf="f['email'].errors['pattern']">Email must be a valid email address</div>
-                            </div>
-                            <button *ngIf="!isEmailVerified" type="button" (click)="emailVerify()">Verify</button>
-                            <span *ngIf="isEmailVerified">Verified</span>
-                        </div>
-                        <div class="form-group form-floating mb-4">
-                            <input 
-                                type="password" 
-                                formControlName="createpassword"
-                                class="form-control" 
-                                id="floatingpassword" 
-                                placeholder="Create Password"
-                                [ngClass]="{ 'is-invalid': submitted && f['createpassword'].errors }" 
-                            >
-                            <label for="floatingpassword">
-                                Enter Password
-                            </label>
-                            <div *ngIf="submitted && f['createpassword'].errors" class="invalid-feedback">
-                                <div *ngIf="f['createpassword'].errors['required']">password is required</div>
-                                <div *ngIf="f['createpassword'].errors['minlength']">Password must be at least 8 characters</div>
-                            </div>
-                        </div>
-                        <div class="form-group form-floating mb-4">
-                            <input 
-                                type="password" 
-                                formControlName="confirmpassword"
-                                class="form-control" 
-                                id="floatingConfirmPassword" 
-                                placeholder="Re-type Password"
-                                [ngClass]="{ 'is-invalid': submitted && f['confirmpassword'].errors }" 
-                            >
-                            <label for="floatingConfirmPassword">
-                                Confirm Password
-                            </label>
-                            <div *ngIf="submitted && f['confirmpassword'].errors" class="invalid-feedback">
-                                <div *ngIf="f['confirmpassword'].errors['required']">Confirm password is required</div>
                             </div>
                         </div>
                     </form>
@@ -411,7 +410,7 @@
                     <span>
                         <img src="../../assets/Images/write_review_icon.svg" alt="write_review_icon">
                     </span>
-                    Write a review?
+                    Write a candidate review?
                 </div>
             </div>
         </div>

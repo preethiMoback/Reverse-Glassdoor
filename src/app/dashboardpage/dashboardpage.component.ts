@@ -148,7 +148,9 @@ export class DashboardpageComponent implements OnInit {
       let name = this.searchKey.split(' ');
       let payload: any = {};
       if (name.length > 0 && name) payload.first_name = name[0];
-      if (name.length > 1 && name) payload.last_name = name[1];
+      if (name.length > 1 && name) payload.last_name = name[name.length - 1];
+      payload.user_id = localStorage.getItem('user_id') || null;
+
       this.formData.setData(
         (this.details = this.searchKey + ',')
       );

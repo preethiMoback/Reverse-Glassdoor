@@ -121,6 +121,9 @@
                     padding: 0px;
                 }
             }
+            i {
+                padding-top: 0.1em;
+            }
         }
     }
     input.nosubmit {
@@ -153,6 +156,11 @@
         .write, .check {
             width: 130px;
         }
+    }
+
+    .text-blur {
+        color: transparent;
+        text-shadow: 0 0 7px rgb(0 0 0 / 70%);
     }
 }
 

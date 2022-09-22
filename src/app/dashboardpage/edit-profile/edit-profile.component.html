@@ -105,7 +105,7 @@
                                         </div>  
                                   </div>
                                 </div>
-                              </div>
+                            </div>
                         </div>
                        
                         <div class="col-12 col-md-12 col-lg-8">
@@ -124,12 +124,11 @@
                                                                 formControlName="name" 
                                                                 class="form-control" 
                                                                 [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" 
-                                                                placeholder="Name of the Candidate"
+                                                                placeholder="Enter your Name"
                                                                 (keyup)="onValueChange()"
                                                             />
                                                             <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
                                                                 <div *ngIf="f['name'].errors['required']">Name is required</div>
-                                                                <div *ngIf="f['name'].errors['pattern']">Proper Full Name is required</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -219,7 +218,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <span href="" class="text-18-400-22" (click)="navigateToLogin()">Change existing Password ?</span>
+                                                        <span href="" class="text-18-400-22" data-toggle="modal" data-target="#changePasswordModal">Change existing Password ?</span>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="d-flex justify-content-start">
@@ -251,6 +250,75 @@
                         </div>
                     </div>
                 </div> 
+            </div>
+        </div>
+        <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog"  aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="card">
+                        <span id="close" class="close-btn"  data-dismiss="modal" aria-label="Close">&times;</span>
+                        <div class="card-title">
+                            <h1 class="text-30-700-36">Reset Password</h1>
+                        </div>
+                        <div class="card-body">
+                            <form id="#changePasswordForm" [formGroup]="changePasswordForm" (ngSubmit)="onResetPassword()">
+                                <div class="form-group form-floating mb-4">
+                                    <input 
+                                        type="password" 
+                                        formControlName="oldPassword"
+                                        class="form-control" 
+                                        id="floatingOldPassword" 
+                                        placeholder="Enter Old Password"
+                                        [ngClass]="{ 'is-invalid': resetPassword && cf['oldPassword'].errors }" 
+                                    >
+                                    <label for="floatingOldPassword">
+                                        Enter Old Password
+                                    </label>
+                                    <div *ngIf="resetPassword && cf['oldPassword'].errors" class="invalid-feedback">
+                                        <div *ngIf="cf['oldPassword'].errors['required']">Old Password is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group form-floating mb-4">
+                                    <input 
+                                        type="password" 
+                                        formControlName="newPassword"
+                                        class="form-control" 
+                                        id="floatingNewPassword" 
+                                        placeholder="Enter New Password"
+                                        [ngClass]="{ 'is-invalid': resetPassword && cf['newPassword'].errors }" 
+                                    >
+                                    <label for="floatingNewPassword">
+                                        Enter New Password
+                                    </label>
+                                    <div *ngIf="resetPassword && cf['newPassword'].errors" class="invalid-feedback">
+                                        <div *ngIf="cf['newPassword'].errors['required']">Password is required</div>
+                                        <div *ngIf="cf['newPassword'].errors['minlength']">Password must be at least 8 characters</div>
+                                    </div>
+                                </div>
+                                <div class="form-group form-floating mb-4">
+                                    <input 
+                                        type="password" 
+                                        formControlName="confirmPassword"
+                                        class="form-control" 
+                                        id="floatingRePassword" 
+                                        placeholder="Re-type Password"
+                                        [ngClass]="{ 'is-invalid': resetPassword && (cf['confirmPassword'].value !== cf['newPassword'].value) }" 
+                                    >
+                                    <label for="floatingRePassword">
+                                        Re-type Password
+                                    </label>
+                                    <div *ngIf="resetPassword && (cf['confirmPassword'].value !== cf['newPassword'].value)" class="invalid-feedback">
+                                        <div *ngIf="!cf['confirmPassword'].value.length">Confirm your Password</div>
+                                        <div *ngIf="(cf['confirmPassword'].value !== cf['newPassword'].value) && cf['confirmPassword'].value.length">Passwords don't match</div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <button class="btn m-auto" type="submit">Change Password</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="modal fade" id="saveChangesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

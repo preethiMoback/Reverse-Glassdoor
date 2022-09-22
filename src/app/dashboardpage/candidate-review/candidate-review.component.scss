@@ -25,11 +25,14 @@
                 height: 60px;
             }
             .rating-star {
-                margin-bottom: 20px !important;
+                margin-bottom: 35px !important;
                 position: relative;
+                @media (max-width: 768px) {
+                    margin-bottom: 20px !important;
+                }
             }
             .form__section .form-group, .form-check{
-                padding-top: 45px;
+                padding-top: 10px;
                 @include breakpoint(ipad){
                     padding-top: 20px;
                 }
@@ -66,7 +69,7 @@
                 }
                 .rating{
                     position: absolute;
-                    top: 34px;
+                    top: 5px;
                     @include margin {
                         margin-top: 10px;
                     }

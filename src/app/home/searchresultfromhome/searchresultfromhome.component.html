@@ -41,10 +41,28 @@
                                 <div class="text-30-700-36">
                                     {{candidate?.candidate_first_name}} {{candidate?.candidate_middle_name}} {{candidate?.candidate_last_name}}
                                 </div>
+                                <div class="person_information">
+                                    <div class="text-20-400-24">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                        <span *ngIf="!candidate.email_id" class="text-blur">badaballarocks@gmail.com</span>
+                                    </div>
+                                </div>
+                                <div class="person_information">
+                                    <div class="text-20-400-24">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                        <span *ngIf="!candidate.mobile_number" class="text-blur">+91 7013110417</span>
+                                    </div>
+                                </div>
                                 <div class="person-information">
                                     <div class="text-20-400-24">
                                         <i class="fa fa-cog" aria-hidden="true"></i>
                                         {{candidate?.["primary skill"]}}
+                                    </div>
+                                </div>
+                                <div class="person_information">
+                                    <div class="text-20-400-24">
+                                        <i class="fa fa-building-o" aria-hidden="true"></i>
+                                        <span *ngIf="!candidate.organisation_name" class="text-blur">Bighaat Argo Pvt Ltd.</span>
                                     </div>
                                 </div>
                             </div>
