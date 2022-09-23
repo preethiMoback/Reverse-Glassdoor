@@ -45,7 +45,7 @@
                                 <div class="person_information">
                                     <div class="text-20-400-24">
                                         <i class="fa fa-phone" aria-hidden="true"></i>
-                                        <span *ngIf="candidate.mobile_number">{{candidate?.mobile_number}}</span>
+                                        <span *ngIf="candidate.mobile_number">+{{candidate?.country_code}} {{candidate?.mobile_number}}</span>
                                         <span *ngIf="!candidate.mobile_number" class="text-blur">+91 7013110417</span>
                                         <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
                                     </div>

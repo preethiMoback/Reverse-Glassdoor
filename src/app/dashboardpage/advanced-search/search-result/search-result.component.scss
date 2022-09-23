@@ -92,7 +92,7 @@
         }
     }
     .candidate-card{
-        @include margin {margin: 40px 0;}
+        @include margin {margin: 40px auto;}
         @include breakpoint($min:1300px){
             width: 85%;
         }

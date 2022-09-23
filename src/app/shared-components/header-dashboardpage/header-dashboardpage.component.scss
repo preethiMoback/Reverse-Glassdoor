@@ -96,122 +96,131 @@
                         top: 30px !important;
                     }
                 
-                .card{
-                    padding: 0 1em;
-                    border-radius: 10px;
-                    width: 100%;
+                    .card{
+                        padding: 0 1em;
+                        border-radius: 10px;
+                        width: 100%;
 
-                    &.outer {
-                        @include breakpoint(xs) {
-                            padding: 0;
-                        }
-                    }
-                    .card-title{
-                        margin: 1em;
-                        @include pxtorem(30);
-                        @include line_height(36px);
-                        @include font(700);
-                        color: var(--black);
-                        @include breakpoint(ipad){
-                            @include pxtorem(20);
-                        }
-                        @include breakpoint(xs) {
-                            line-height: 30px;
-                            margin: 0.5em 1em;
-                        }
-                    }
-                    .card-body{
-                        padding: 0;
-                        .card{
-                            width: 100%;
-                           margin: 5px 0;
-                           border-top: none;
-                            .card-body{
-                                padding: 2px;
-                                overflow:hidden;
-                                clear: both;
-                            }
-                        }
-                        .status{
-                            width: 0.8em;
-                        }
-                        .text-20-600-24{
+                        &.outer {
                             @include breakpoint(xs) {
-                                font-size: 16px;
-                                line-height: 20px;
+                                padding: 0;
                             }
                         }
-
-                        .phase {
-                            font-size: 20px;
-                            font-weight: 500;
-                            line-height: 24px;
-                            margin: 5px 0;
-                            @include breakpoint(xs) {
-                                display: flex;
-                                flex-direction: column;
-                                font-size: 16px;
-                                line-height: 20px;
-                            }
-                        }
-                        .text-18-400-21{
-                            @include pxtorem(18);
-                            @include line_height(21px);
-                            @include font(500);
-                            margin: 6px 0 11px;
-                            padding: 0;
-                            text-decoration: none;
-                            text-align: start;
-                            color: gray;
+                        .card-title{
+                            margin: 1em;
+                            @include pxtorem(30);
+                            @include line_height(36px);
+                            @include font(700);
+                            color: var(--black);
                             @include breakpoint(ipad){
-                                @include pxtorem(12);
+                                @include pxtorem(20);
                             }
                             @include breakpoint(xs) {
-                                margin-top: 0;
+                                line-height: 30px;
+                                margin: 0.5em 1em;
                             }
                         }
-                        .reject{
-                            border-left: 10px solid var(--red);
-                        }
-                        .approve{
-                            border-left: 10px solid var(--light-green);
-                        }
-                        .pending {
-                            border-left: 10px solid var(--faded-red);
-                        }
-                    } 
-                }
-            }
-            #edit-profile{
-                width: 10em;
-                border-radius: 10px;
-                // padding: 1em;
-                &:hover{
-                    opacity: 1;
-                }
-                @include breakpoint(sm){
-                    width: 5em;
-                    padding: 5px;
-                }
-                .text-20-600-24{
-                    @include pxtorem(20);
-                    @include line_height(24px);
-                    @include font(400);
-                    color:var(--black);  
-                    @include breakpoint(xs){
-                        @include pxtorem(14);
-                    @include line_height(12px);
+                        .card-body{
+                            padding: 0;
+                            .card{
+                                width: 100%;
+                            margin: 5px 0;
+                            border-top: none;
+                                .card-body{
+                                    padding: 2px;
+                                    overflow:hidden;
+                                    clear: both;
+                                }
+                            }
+                            .status{
+                                width: 0.8em;
+                            }
+                            .text-20-600-24{
+                                @include breakpoint(xs) {
+                                    font-size: 16px;
+                                    line-height: 20px;
+                                }
+                            }
+
+                            .phase {
+                                font-size: 20px;
+                                font-weight: 500;
+                                line-height: 24px;
+                                margin: 5px 0;
+                                @include breakpoint(xs) {
+                                    display: flex;
+                                    flex-direction: column;
+                                    font-size: 16px;
+                                    line-height: 20px;
+                                }
+                            }
+                            .text-18-400-21{
+                                @include pxtorem(18);
+                                @include line_height(21px);
+                                @include font(500);
+                                margin: 6px 0 11px;
+                                padding: 0;
+                                text-decoration: none;
+                                text-align: start;
+                                color: gray;
+                                @include breakpoint(ipad){
+                                    @include pxtorem(12);
+                                }
+                                @include breakpoint(xs) {
+                                    margin-top: 0;
+                                }
+                            }
+                            .reject{
+                                border-left: 10px solid var(--red);
+                            }
+                            .approve{
+                                border-left: 10px solid var(--light-green);
+                            }
+                            .pending {
+                                border-left: 10px solid var(--faded-red);
+                            }
+                        } 
                     }
                 }
-                a{
-                    padding: 1em;
+                #edit-profile{
+                    width: 10em;
+                    border-radius: 10px;
+                    // padding: 1em;
                     &:hover{
-                        background-color: var(--hover);
+                        opacity: 1;
+                    }
+                    @include breakpoint(sm){
+                        width: 5em;
+                        padding: 5px;
+                    }
+                    .text-20-600-24{
+                        @include pxtorem(20);
+                        @include line_height(24px);
+                        @include font(400);
+                        color:var(--black);  
+                        @include breakpoint(xs){
+                            @include pxtorem(14);
+                        @include line_height(12px);
+                        }
+                    }
+                    a{
+                        padding: 1em;
+                        &:hover{
+                            background-color: var(--hover);
+                        }
                     }
                 }
-            }
-        }   
+            }   
+        }
     }
 }
+#logOutModal {
+    .modal-dialog {
+        @media (min-width: 576px) {
+            max-width: none;
+        }
+    }
+    .modal-content {
+        margin: auto;
+    }
 }
-

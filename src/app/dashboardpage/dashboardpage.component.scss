@@ -228,6 +228,11 @@
         }
 
         #uploadPhotoModal{
+            .modal-dialog {
+                @media (min-width: 576px) {
+                    max-width: none;
+                }
+            }
             .modal-content{
                 box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
                 border-radius: 10px;
@@ -235,12 +240,13 @@
                 text-align: right;
                 background-color: white;
                 position: relative;
+                margin: auto;
                 @include width_height (820px, 380px) ;
                 @include breakpoint(ipad){
-                @include width_height (540px, 380px) ;
+                    @include width_height (540px, 380px) ;
                 }
                 @include breakpoint(xs){
-                @include width_height (300px, 380px) ;
+                    @include width_height (300px, 380px) ;
                 }
                     a{
                        text-decoration: none;

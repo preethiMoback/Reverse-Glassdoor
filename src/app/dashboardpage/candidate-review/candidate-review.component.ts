@@ -139,6 +139,10 @@ ngOnInit() {
     else {
       this.registerForm.get('name')?.setValue(res.candidate_first_name + (res.candidate_middle_name.length ? ` ${res.candidate_middle_name}` : '') + (res.candidate_last_name.length ? ` ${res.candidate_last_name}` : ''));
       this.registerForm.get('primaryskill')?.setValue(res?.["primary skill"]);
+      res?.email_id ? this.registerForm.get('email')?.setValue(res?.email_id) : '';
+      res?.mobile_number ? this.registerForm.get('phoneNumber')?.setValue(res?.mobile_number) : '';
+      res?.country_code ? this.registerForm.get('countrycode')?.setValue(res?.country_code) : '';
+      res?.organisation_name ? this.registerForm.get('companyName')?.setValue(res?.organisation_name) : '';
     }
   })
 
